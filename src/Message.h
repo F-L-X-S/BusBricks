@@ -1,44 +1,42 @@
 #ifndef MESSAGE_H
-#define MESSAGE_H
+    #define MESSAGE_H
 
-#include "Content.h"
-    
-#define MAXPDUSIZE 252
+    #ifdef ARDUINO
+        #include <Arduino.h>    // include Arduino-Library for platformIO-build 
+    #else
+        #include <iostream>     // include iostream for local testing 
+        #include <cstring>
+        using namespace std;
+    #endif
 
-struct Message_content_t{
-    char msg_text[MAXPDUSIZE-2];
-    char receiver_id;
-    char sender_id;
-};
+    #include "Content.h"        // include Content-template
+    #define MAXPDUSIZE 252      // Max size of generated pdu for Modbus-RTU-Frame
 
-class Message: Content<Message_content_t>
-{
-    private:
-        // Create Message from frame
-        Message_content_t* pdu_to_content(unsigned char* frame) {
-            Message_content_t* msg_content = new Message_content_t(); // store new message-content and safe pointer
-            //
-            //
-            //
-            return msg_content;
-        }
+    struct Message_content_t{
+        char msg_text[MAXPDUSIZE-3]; //Rec-ID[1 Byte] Src-ID[1 Byte] 16x3A [1 Byte] Message-Text[249 Byte]
+        unsigned int size;
+        char receiver_id;
+        char sender_id;
+    };
 
-        // Create frame from Message-structure
-        char* content_to_pdu() {
-            char* pdu = new char[MAXPDUSIZE]; // store new pdu and safe pointer
-            //
-            //
-            //
-            return pdu; // return pointer to pdu
-        }
+    class Message: Content<Message_content_t>
+    {
+        private:
+            // Create Message from frame
+            Message_content_t* pdu_to_content(unsigned char* pdu, uint8_t* pdu_size) override;
 
-    public:
-        // Constructor for creating Message from frame
-        Message(unsigned char* frame) : Content(pdu_to_content(frame)) {}
+            // Create frame from Message-structure
+            char* content_to_pdu(Message_content_t* message_content) override;
 
-        // Constructor for creating Message from msg-content
-        Message(Message_content_t* message_content) : Content(message_content) {}
+        public:
+            // Constructor for creating Message from pdu
+            Message(unsigned char* pdu, uint8_t* pdu_size);
 
-};
+            // Constructor for creating Message from msg-content
+            Message(Message_content_t* message_content);
+
+            // String-representation
+            char* to_string();
+    };
 
 #endif
