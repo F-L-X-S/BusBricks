@@ -1,5 +1,4 @@
 .pio
-.vscode/
 *.dSYM
 **/*.out
 **/*.exes
