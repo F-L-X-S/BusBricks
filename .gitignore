@@ -1,3 +1,6 @@
 .pio
 .vscode/
-
+*.dSYM
+**/*.out
+**/*.exes
+**/.DS_Store
