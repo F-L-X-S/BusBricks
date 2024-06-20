@@ -8,7 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-I${workspaceFolder}/lib", 
                 "-g",
-                "${workspaceFolder}/test/*.cpp", 
+                "${file}", 
                 "${workspaceFolder}/lib/*.cpp", 
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
