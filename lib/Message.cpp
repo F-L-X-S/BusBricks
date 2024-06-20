@@ -9,11 +9,11 @@ Message::Message(Message_content_t* message_content) : Content(message_content){
 // Create Message from pdu 
 Message_content_t* Message::pdu_to_content(unsigned char* pdu, uint8_t* pdu_size) {
     Message_content_t* message_content = new Message_content_t();               // store new message-content and safe pointer
-    message_content->receiver_id = static_cast<uint8_t>(pdu[0]);                // get receiver-ID from PDU 
-    message_content->sender_id = static_cast<uint8_t>(pdu[1]);                  // get sender-ID from PDU
-    message_content->txt_size = static_cast<uint8_t>(pdu[2]);                  // get sender-ID from PDU
+    message_content->sender_id = static_cast<uint8_t>(pdu[0]);                  // get sender-ID from PDU 
+    message_content->receiver_id = static_cast<uint8_t>(pdu[1]);                // get receiver-ID from PDU
+    message_content->txt_size = *pdu_size-2;
     
-    for (int i = 0; i < *pdu_size; ++i) {
+    for (int i = 0; i < message_content->txt_size; ++i) {
         message_content->msg_text[i] = static_cast<char>(pdu[i+2]);             // copy message from pdu
     };
 
@@ -37,15 +37,23 @@ char* Message::content_to_pdu(Message_content_t* message_content) {
 // String Represenation 
 char* Message::to_string(){
     char* str = new char[MAXPDUSIZE];
-    // append receiver-ID
-    strcpy(str, "Receiver:\t");
-    strncat(str, &content->receiver_id, 1);
+    char temp[3];
+
     //append sender-ID
-    strcat(str, "Sender:\t");
-    strncat(str, &content->sender_id, 1);
-    //append text
+    strcpy(str, "Sender: ");
+    snprintf(temp, sizeof(temp), "%02X", content->sender_id);
+    strcat(str, temp);
+
+    // append receiver-ID
+    strcat(str, "\t\tReceiver: ");
+    snprintf(temp, sizeof(temp), "%02X", content->receiver_id);
+    strcat(str, temp);
+
+    //append message-text
     strcat(str, "\n");
     strcat(str, content->msg_text);
+    strcat(str, "\n");
+
     return str;
 };
 
