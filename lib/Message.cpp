@@ -10,7 +10,8 @@ Message::Message(Message_content_t* message_content) : Content(message_content){
 Message_content_t* Message::pdu_to_content(unsigned char* pdu, uint8_t* pdu_size) {
     Message_content_t* message_content = new Message_content_t();               // store new message-content and safe pointer
     message_content->receiver_id = static_cast<uint8_t>(pdu[0]);                // get receiver-ID from PDU 
-    message_content->sender_id = static_cast<uint8_t>(pdu[1]);                  // get sender-ID from PDU 
+    message_content->sender_id = static_cast<uint8_t>(pdu[1]);                  // get sender-ID from PDU
+    message_content->txt_size = static_cast<uint8_t>(pdu[2]);                  // get sender-ID from PDU
     
     for (int i = 0; i < *pdu_size; ++i) {
         message_content->msg_text[i] = static_cast<char>(pdu[i+2]);             // copy message from pdu
@@ -25,8 +26,8 @@ char* Message::content_to_pdu(Message_content_t* message_content) {
     pdu[0]=static_cast<uint8_t>(message_content->receiver_id);                  // add receiver-ID to PDU 
     pdu[1]=static_cast<uint8_t>(message_content->sender_id);                    // add sender-ID to PDU 
 
-    unsigned int size = static_cast<uint8_t>(message_content->size);            // get message-size
-    for (int i = 0; i < size; ++i) {
+    unsigned int txt_size = static_cast<uint8_t>(message_content->txt_size);            // get message-size
+    for (int i = 0; i < txt_size; ++i) {
         pdu[3+i] = static_cast<char>(message_content->msg_text[i]);             // copy message to pdu
     };
 
