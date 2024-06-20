@@ -18,7 +18,7 @@ Message_content_t* Message::pdu_to_content(unsigned char* pdu, uint8_t* pdu_size
     };
 
     return message_content;                                                     // return message_content-pointer
-}
+};
 
 // Create frame from Message-structure
 char* Message::content_to_pdu(Message_content_t* message_content) {
