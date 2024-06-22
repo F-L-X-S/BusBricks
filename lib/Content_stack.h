@@ -36,10 +36,14 @@ public:
         return true;                                                    // return true, if deleted successful
     };
 
-    content_type getElement(int index){
-        if (index < 0 || index >= size) {
+    content_type getElement(int index = 0){                             // Get the element in the stack by index
+        if (index >= size || size+index<0) {                            
             return false;}  
-        return elements[index];
+
+        if (index<0){
+            return elements[size+index];                                // neg. index: return element indexed from end of stack (size)
+        }
+        return elements[index];                                         // pos. index: return element indexed from beginning of stack (0)
     };                      
 };
 

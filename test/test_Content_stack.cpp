@@ -11,9 +11,9 @@ int main() {
     while (reached_max == false)                            // add elements as long as the stack is not full 
     {
         // create Message-content 
-        msg_content[i].sender_id = 0x1;
-        msg_content[i].receiver_id = 0xF;
-        std::string message_text = "This is Message Number " + std::to_string(i);
+        msg_content[i].sender_id = 0x11;
+        msg_content[i].receiver_id = 0xFF;
+        std::string message_text = "This is Message Number " + std::to_string(i+1);
         strncpy(msg_content[i].msg_text, message_text.c_str(), sizeof(msg_content[i].msg_text) - 1);
 
         // create Message-element from Message-content 
@@ -23,7 +23,7 @@ int main() {
         reached_max = !msg_stack.addElement(msg);
         if (!reached_max)
         {
-            cout<<"Added element:\n"<<msg_stack.getElement(i).to_string()<<std::endl;
+            cout<<"Added element:\n"<<msg_stack.getElement(-1).to_string()<<std::endl;
             i ++;
         }
     }
@@ -33,7 +33,7 @@ int main() {
     bool reached_min = false;                               // stack not empty
     while (reached_min == false)                            // delete elements as long as the stack is not full 
     {
-        Message element_to_del = msg_stack.getElement(0);
+        Message element_to_del = msg_stack.getElement(0);   // save element that should be deleted 
         reached_min = !msg_stack.deleteElement(0);          // delete element on index 0 
         if (!reached_min)
         {
