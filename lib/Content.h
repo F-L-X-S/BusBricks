@@ -12,7 +12,7 @@
 template<typename content_type>
 class Content{
 public: 
-    Content(content_type* data) : content(data) {}                                          // Construct Content-class with an unspecific type
+    Content(content_type* data = nullptr) : content(data) {}                                // Construct Content-class with an unspecific type
 
 protected:
     content_type* content;                                                                  // Pointer to unspecified type, depends on type of payload 

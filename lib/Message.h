@@ -13,15 +13,23 @@
 #define MAXPDUSIZE 252      // Max size of generated pdu for Modbus-RTU-Frame
 
 struct Message_content_t{
-    char msg_text[MAXPDUSIZE-3];    //Rec-ID[1 Byte] Src-ID[1 Byte] 16x3A [1 Byte] Message-Text[249 Byte]
-    uint8_t txt_size;               //Size of Message-Text in Bytes
-    uint8_t receiver_id;
-    uint8_t sender_id;
+    char msg_text[MAXPDUSIZE-3];    // Message-Text[249 Byte]
+    uint8_t txt_size;               // Size of Message-Text in Bytes
+    uint8_t receiver_id;            // Rec-ID[1 Byte]
+    uint8_t sender_id;              // Src-ID[1 Byte]
+
+    Message_content_t() : msg_text("\0"), txt_size(0), receiver_id(0x0), sender_id(0x0) {} // Default Constructor 
 };
 
 class Message: Content<Message_content_t>
 {
     public:
+        // Default Constructor 
+        Message();
+
+        // Constructor for creating Message from boolean expression
+        Message(bool boolean_expression);
+
         // Constructor for creating Message from pdu
         Message(unsigned char* pdu, uint8_t* pdu_size);
 

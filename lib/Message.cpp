@@ -1,6 +1,12 @@
 #include "Message.h"
 
-// Constructor for creating Message from frame
+// Default Constructor
+Message::Message() : Content<Message_content_t>(new Message_content_t()) {}
+
+// Constructor for creating Message from boolean expression
+Message::Message(bool boolean_expression) : Content<Message_content_t>(new Message_content_t()) {}
+
+// Constructor for creating Message from PDU
 Message::Message(unsigned char* pdu, uint8_t* pdu_size) : Content(pdu_to_content(pdu, pdu_size)){}
 
 // Constructor for creating Message from msg-content
