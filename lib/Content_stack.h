@@ -15,26 +15,32 @@ private:
     content_type elements[MaxSize];                                     // Array for saving elements of the template                                                 
     int size;                                                           // Current number of stored elements
 public: 
-    Content_stack(): size(0) {}                          // Construct Content_stack-class with zero elements
+    Content_stack(): size(0) {}                                         // Construct Content_stack-class with zero elements
 
     bool addElement(const content_type& element){                       // Add element to stack                     
         if (size >= MaxSize) {
-            return false;}
+            return false;}                                              // return false, if stacksize has reached maximum 
         elements[size] = element;
         size++;
-        return true;
+        return true;                                                    // return true, if added successful 
     };
 
-    bool deleteElement(int index){                                      // delete element from stack  
+    bool deleteElement(int index){                                      // delete element from stack   
         if (index < 0 || index >= size) {
-            return false;}
+            return false;}                                              // return false, if index of element to delete is out of range 
         // delete element, slice remaining elements, reduce size by 1
         for (int i = index; i < size - 1; ++i) {
             elements[i] = elements[i + 1];
         }
         size--;
-        return true;
-    };                        
+        return true;                                                    // return true, if deleted successful
+    };
+
+    content_type getElement(int index){
+        if (index < 0 || index >= size) {
+            return false;}  
+        return elements[index];
+    };                      
 };
 
 #endif // CONTENT_STACK_H
