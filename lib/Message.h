@@ -10,7 +10,6 @@
 #endif
 
 #include "Content.h"        // include Content-template
-#define MAXPDUSIZE 252      // Max size of generated pdu for Modbus-RTU-Frame
 
 struct Message_content_t{
     char msg_text[MAXPDUSIZE-3];    // Message-Text[249 Byte]

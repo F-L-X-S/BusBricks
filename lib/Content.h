@@ -8,6 +8,7 @@
     using namespace std;
 #endif
 
+#define MAXPDUSIZE 252      // Max size of generated pdu for Modbus-RTU-Frame
 
 template<typename content_type>
 class Content{
