@@ -35,15 +35,15 @@ class Message: Content<Message_content_t>
         // Constructor for creating Message from msg-content
         Message(Message_content_t* message_content);
 
+        // Create frame from Message-structure
+        bool get_pdu(char* pdu_destination);
+
         // String-representation
         char* to_string();
         
     private:
         // Create Message from frame
         Message_content_t* pdu_to_content(unsigned char* pdu, uint8_t* pdu_size);
-
-        // Create frame from Message-structure
-        char* content_to_pdu(Message_content_t* message_content);
 
 };
 

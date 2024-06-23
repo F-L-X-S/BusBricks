@@ -28,7 +28,8 @@ public:
     };
 
     unsigned char* get_response(){                                                                              // get the response-pdu from the service 
-        strcpy((char*)response_pdu, "ACK");
+        content_class first_element = rec_stack.getElement();
+        first_element.get_pdu(reinterpret_cast<char*>(response_pdu));
         return response_pdu;
     };                                                                      
                                

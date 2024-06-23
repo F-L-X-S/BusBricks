@@ -9,8 +9,8 @@ int main() {
     Service<Message, STACKSIZE> message_service(FUNCTIONCODE);
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    unsigned char sample_pdu[] = {0x1, 0xF, 'H', 'e', 'l', 'l', 'o'};
-    uint8_t pdu_size = 7; // Size of PDU
+    unsigned char sample_pdu[] = {0x1, 0xF, 'H', 'e', 'l', 'l', 'o', '!'};
+    uint8_t pdu_size = 8; // Size of PDU
 
     // Impart PDU to Service till rec-stack is full
     bool recStack_not_full = true;

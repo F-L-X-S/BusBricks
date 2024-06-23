@@ -26,18 +26,18 @@ Message_content_t* Message::pdu_to_content(unsigned char* pdu, uint8_t* pdu_size
     return message_content;                                                     // return message_content-pointer
 };
 
-// Create frame from Message-structure
-char* Message::content_to_pdu(Message_content_t* message_content) {
-    char* pdu = new char[MAXPDUSIZE];                                           // store new pdu and safe pointer
-    pdu[0]=static_cast<uint8_t>(message_content->receiver_id);                  // add receiver-ID to PDU 
-    pdu[1]=static_cast<uint8_t>(message_content->sender_id);                    // add sender-ID to PDU 
-
-    unsigned int txt_size = static_cast<uint8_t>(message_content->txt_size);            // get message-size
+// Create PDU from Message-Object, write PDU to destination-char-array
+bool Message::get_pdu(char* pdu_destination) {
+    if (content == nullptr) return false;
+    unsigned int txt_size = static_cast<uint8_t>(content->txt_size);            // get message-size
+    memset(pdu_destination, '\0', txt_size+4);                                  // initialize destination-array with zeros
+    pdu_destination[0]=static_cast<uint8_t>(content->sender_id);                // add receiver-ID to PDU 
+    pdu_destination[1]=static_cast<uint8_t>(content->receiver_id);              // add sender-ID to PDU 
+    pdu_destination[2]=0x3A;                                                    // add delimeter to PDU 
     for (int i = 0; i < txt_size; ++i) {
-        pdu[3+i] = static_cast<char>(message_content->msg_text[i]);             // copy message to pdu
+        pdu_destination[3+i] = content->msg_text[i];                            // copy message to pdu
     };
-
-    return pdu;                                                                 // return pdu-pointer
+    return true;                                                                // return pdu
 };
 
 // String Represenation 
