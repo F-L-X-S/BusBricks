@@ -18,7 +18,7 @@ public:
 
 protected:
     content_type* content;                                                                  // Pointer to unspecified type, depends on type of payload 
-    virtual content_type* pdu_to_content(unsigned char* pdu, uint8_t* pdu_size)=0;          // has to be defined in derived class (=0)                                                       
+    virtual content_type* pdu_to_content(char* pdu, uint8_t* pdu_size)=0;          // has to be defined in derived class (=0)                                                       
 };
 
 #endif // CONTENT_H

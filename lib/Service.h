@@ -17,19 +17,19 @@ class Service{
 private: 
     uint8_t function_code;                                                                                      // Modbus-rtu function code                                  
     Content_stack<content_class, stackSize> rec_stack;                                                          // stack for received content-elements
-    unsigned char response_pdu[MAXPDUSIZE];                                                                     // PDU with response 
+    char response_pdu[MAXPDUSIZE];                                                                     // PDU with response 
 
 public: 
     Service(uint8_t function_code): function_code(function_code){}     
 
-    bool impart_pdu(unsigned char* pdu, uint8_t* pdu_size){                                                     // impart new PDU to Service  
+    bool impart_pdu(char* pdu, uint8_t* pdu_size){                                                     // impart new PDU to Service  
         content_class content(pdu, pdu_size);                                                                   // create Content-object from PDU
         return rec_stack.addElement(content);                                                                   // add Content-Object to Rec-Stack
     };
 
-    unsigned char* get_response(){                                                                              // get the response-pdu from the service 
+    char* get_response(){                                                                              // get the response-pdu from the service 
         content_class first_element = rec_stack.getElement();
-        first_element.get_pdu(reinterpret_cast<char*>(response_pdu));
+        first_element.get_pdu(&(response_pdu[0]));                                                     // write PDU of last element in Rec-Stack to Response-PDU 
         return response_pdu;
     };                                                                      
                                

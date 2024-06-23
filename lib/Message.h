@@ -30,7 +30,7 @@ class Message: Content<Message_content_t>
         Message(bool boolean_expression);
 
         // Constructor for creating Message from pdu
-        Message(unsigned char* pdu, uint8_t* pdu_size);
+        Message(char* pdu, uint8_t* pdu_size);
 
         // Constructor for creating Message from msg-content
         Message(Message_content_t* message_content);
@@ -43,7 +43,7 @@ class Message: Content<Message_content_t>
         
     private:
         // Create Message from frame
-        Message_content_t* pdu_to_content(unsigned char* pdu, uint8_t* pdu_size);
+        Message_content_t* pdu_to_content(char* pdu, uint8_t* pdu_size);
 
 };
 
