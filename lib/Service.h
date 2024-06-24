@@ -14,22 +14,29 @@
 // Template to create a Service class by defining the Content (derived Class of "Content") to handle and the size of the service-stacks
 template<typename content_class, int stackSize>                                       
 class Service{
-private: 
-    uint8_t function_code;                                                                                      // Modbus-rtu function code                                  
-    Content_stack<content_class, stackSize> rec_stack;                                                          // stack for received content-elements
+protected: 
+    uint8_t function_code;                                                                             // Modbus-rtu function code  
+    uint8_t instance_id;                                                                               // service-instance-id                                
+    Content_stack<content_class, stackSize> rec_stack;                                                 // stack for received content-elements
     char response_pdu[MAXPDUSIZE];                                                                     // PDU with response 
+    void write_response_pdu(content_class* response_object){
+        response_object.get_pdu(&(response_pdu[0]));                                                   // write PDU of last element in Rec-Stack to Response-PDU 
+    }
 
 public: 
-    Service(uint8_t function_code): function_code(function_code){}     
+    Service(uint8_t function_code, uint8_t instance_id): function_code(function_code), instance_id(instance_id){}     
 
     bool impart_pdu(char* pdu, uint8_t* pdu_size){                                                     // impart new PDU to Service  
-        content_class content(pdu, pdu_size);                                                                   // create Content-object from PDU
-        return rec_stack.addElement(content);                                                                   // add Content-Object to Rec-Stack
+        content_class content(pdu, pdu_size);                                                          // create Content-object from PDU
+        return rec_stack.addElement(content);                                                          // add Content-Object to Rec-Stack
     };
 
-    char* get_response(){                                                                              // get the response-pdu from the service 
-        content_class first_element = rec_stack.getElement();
-        first_element.get_pdu(&(response_pdu[0]));                                                     // write PDU of last element in Rec-Stack to Response-PDU 
+    virtual char* get_response(){                                                                      // get the response-pdu from the service 
+        // generic response element 
+        content_class response_element;
+        // write pdu from this element to response-pdu-memory of service-instance 
+        write_response_pdu(response_element);
+        // return the response-pdu of the service-instance
         return response_pdu;
     };                                                                      
                                
