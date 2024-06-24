@@ -19,7 +19,8 @@ protected:
     uint8_t instance_id;                                                                               // service-instance-id                                
     Content_stack<content_class, stackSize> rec_stack;                                                 // stack for received content-elements
     char response_pdu[MAXPDUSIZE];                                                                     // PDU with response 
-    void write_response_pdu(content_class* response_object){
+    
+    void write_response_pdu(content_class response_object){
         response_object.get_pdu(&(response_pdu[0]));                                                   // write PDU of last element in Rec-Stack to Response-PDU 
     }
 
