@@ -15,11 +15,14 @@
 #define FUNCTIONCODE 0x6D // ASCII: "m"
 
 // Service-class for handling Content from type "Message"                                  
-class Message_service: Service<Message, STACKSIZE>
+class Message_service: public Service<Message, STACKSIZE>
 {
 public:
     // Constructor for creating Message-service 
-    Message_service();
+    Message_service(uint8_t instance_id);
+
+    // get the response PDU 
+    char* get_response() override;
 };
 
 #endif // MESSAGE_SERVICE_H
