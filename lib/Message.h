@@ -12,15 +12,26 @@
 #include "Content.h"        // include Content-template
 
 struct Message_content_t{
+    uint8_t sender_id;              // Src-ID[1 Byte]
+    uint8_t receiver_id;            // Rec-ID[1 Byte]
     char msg_text[MAXPDUSIZE-3];    // Message-Text[249 Byte]
     uint8_t txt_size;               // Size of Message-Text in Bytes
-    uint8_t receiver_id;            // Rec-ID[1 Byte]
-    uint8_t sender_id;              // Src-ID[1 Byte]
 
-    Message_content_t() : msg_text("\0"), txt_size(0), receiver_id(0x0), sender_id(0x0) {} // Default Constructor 
+    // Default Constructor
+    Message_content_t() : sender_id(0x0), receiver_id(0x0), txt_size(1) {
+        memset(msg_text, 0, sizeof(msg_text));
+    }
+
+    // Constructor with std::string parameter
+    Message_content_t(uint8_t sender_id, uint8_t receiver_id, const std::string& msg_txt, uint8_t txt_size) : 
+        sender_id(sender_id), receiver_id(receiver_id), txt_size(txt_size) {
+        // Kopieren der Zeichenkette und Sicherstellen der Null-Terminierung
+        strncpy(msg_text, msg_txt.c_str(), sizeof(msg_text) - 1);
+        msg_text[sizeof(msg_text) - 1] = '\0';
+    }
 };
 
-class Message: Content<Message_content_t>
+class Message: public Content<Message_content_t>
 {
     public:
         // Default Constructor 
