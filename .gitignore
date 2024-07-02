@@ -6,3 +6,5 @@
 *.bkp
 *.dtmp
 *_exe
+/.vscode/*
+!/.vscode/tasks.json
