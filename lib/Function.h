@@ -11,7 +11,6 @@
 #include "Content.h"
 
 // Template to create a Function class by defining the content-type to handle 
-
 template<typename content_type>                                       
 class Function{
 public: 

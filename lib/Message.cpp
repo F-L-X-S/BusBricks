@@ -4,6 +4,8 @@
 Message::Message() : Content<Message_content_t>(new Message_content_t()) {}
 
 // Constructor for creating Message from boolean expression
+// Message is constructed using the default constructor of Message_Content_t:
+// Sender: 0x0; Receiver: 0x0; Text: \0
 Message::Message(bool boolean_expression) : Content<Message_content_t>(new Message_content_t()) {}
 
 // Constructor for creating Message from PDU
@@ -12,7 +14,7 @@ Message::Message(char* pdu, uint8_t* pdu_size) : Content(pdu_to_content(pdu, pdu
 // Constructor for creating Message from msg-content
 Message::Message(Message_content_t* message_content) : Content(message_content){}
 
-// Create Message from pdu 
+// Create Message from byte-formatted PDU 
 Message_content_t* Message::pdu_to_content(char* pdu, uint8_t* pdu_size) {
     Message_content_t* message_content = new Message_content_t();               // store new message-content and safe pointer
     message_content->sender_id = static_cast<uint8_t>(pdu[0]);                  // get sender-ID from PDU 
@@ -27,6 +29,7 @@ Message_content_t* Message::pdu_to_content(char* pdu, uint8_t* pdu_size) {
 };
 
 // Create PDU from Message-Object, write PDU to destination-char-array
+// Return True if successful
 bool Message::get_pdu(char* pdu_destination) {
     if (content == nullptr) return false;
     unsigned int txt_size = static_cast<uint8_t>(content->txt_size);            // get message-size
@@ -40,7 +43,7 @@ bool Message::get_pdu(char* pdu_destination) {
     return true;                                                                // return pdu
 };
 
-// String Represenation 
+// String Represenation of the Message-Object 
 char* Message::to_string(){
     char* str = new char[MAXPDUSIZE];
     char temp[3];

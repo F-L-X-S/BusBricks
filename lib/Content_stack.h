@@ -17,7 +17,9 @@ private:
 public: 
     Content_stack(): size(0) {}                                         // Construct Content_stack-class with zero elements
 
-    bool addElement(const content_class& element){                       // Add element to stack                     
+    // Add element to stack
+    // True if successful
+    bool addElement(const content_class& element){                                          
         if (size >= MaxSize) {
             return false;}                                              // return false, if stacksize has reached maximum 
         elements[size] = element;
@@ -25,7 +27,10 @@ public:
         return true;                                                    // return true, if added successful 
     };
 
-    bool deleteElement(int index){                                      // delete element from stack   
+    // Delete element on index-position from stack 
+    // only positive index-positions
+    // True if successful
+    bool deleteElement(int index){                                        
         if (index < 0 || index >= size) {
             return false;}                                              // return false, if index of element to delete is out of range 
         // delete element, slice remaining elements, reduce size by 1
@@ -36,7 +41,11 @@ public:
         return true;                                                    // return true, if deleted successful
     };
 
-    content_class getElement(int index = 0){                             // Get the element in the stack by index
+    // Get the element in the stack by index: 
+    // neg. index: return element indexed from end of stack (size)
+    // pos. index: return element indexed from beginning of stack (0)
+    // True if successful
+    content_class getElement(int index = 0){                             
         if (index >= size || size+index<0) {                            
             return false;}  
 

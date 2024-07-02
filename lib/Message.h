@@ -31,6 +31,7 @@ struct Message_content_t{
     }
 };
 
+// Defines the mapping of Byte formatted PDU to a text-message with information for sender and receiver
 class Message: public Content<Message_content_t>
 {
     public:
@@ -38,6 +39,8 @@ class Message: public Content<Message_content_t>
         Message();
 
         // Constructor for creating Message from boolean expression
+        // Message is constructed using the default constructor of Message_Content_t:
+        // Sender: 0x0; Receiver: 0x0; Text: \0
         Message(bool boolean_expression);
 
         // Constructor for creating Message from pdu
