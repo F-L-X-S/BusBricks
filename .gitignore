@@ -3,3 +3,5 @@
 **/*.out
 **/*.exes
 **/.DS_Store
+*.bkp
+*.dtmp
