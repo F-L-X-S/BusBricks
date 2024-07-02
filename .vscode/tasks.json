@@ -14,7 +14,7 @@
                 "${workspaceFolder}/lib/*.cpp", 
                 "${workspaceFolder}/lib/**/*.cpp", 
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}_exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
