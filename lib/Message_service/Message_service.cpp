@@ -11,7 +11,7 @@ char* Message_service::get_response() {
     // generate the ACK-Response to the last element
     Message_content_t response_content;
     response_content.sender_id = instance_id;
-    if (static_cast<string>(last_content.msg_text)!="\0"){  
+    if (static_cast<std::string>(last_content.msg_text)!="\0"){  
         response_content.receiver_id = last_content.sender_id;
         std::string message_text = "ACK";
         strncpy(response_content.msg_text, message_text.c_str(), sizeof(message_text));
