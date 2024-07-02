@@ -7,9 +7,12 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-I${workspaceFolder}/lib", 
+                "-I${workspaceFolder}/lib/Service", 
+                "-I${workspaceFolder}/lib/Message_service", 
                 "-g",
                 "${file}", 
                 "${workspaceFolder}/lib/*.cpp", 
+                "${workspaceFolder}/lib/**/*.cpp", 
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
