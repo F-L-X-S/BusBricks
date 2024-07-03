@@ -79,7 +79,7 @@ void test_Service(void) {
         // Check response-PDU after each impart
         char empty_pdu[MAXPDUSIZE];
         Message empty_msg;
-        TEST_ASSERT_EQUAL_STRING_ARRAY_MESSAGE(*empty_msg.get_pdu(), *message_service.get_response(), MAXPDUSIZE, "Expected default-PDU as response-PDu for abstract Service");       
+        TEST_ASSERT_EQUAL_STRING_MESSAGE(empty_msg.get_pdu(), message_service.get_response(), "Expected default-PDU as response-PDu for abstract Service");       
     }
     char message[100];
     sprintf(message, "Added %d elements to rec-stack, but initialized stack with max-size %d", size, STACKSIZE);
