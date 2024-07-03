@@ -32,7 +32,7 @@ public:
     // Delete element on index-position from stack 
     // only positive index-positions
     // True if successful
-    bool deleteElement(int index){                                        
+    bool deleteElement(int index=0){                                        
         if (index < 0 || index >= size) {
             return false;}                                              // return false, if index of element to delete is out of range 
         // delete element, slice remaining elements, reduce size by 1
