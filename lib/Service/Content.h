@@ -19,7 +19,7 @@ public:
     Content(content_type* data = nullptr) : content(data) {}                                // Construct Content-class with an unspecific type
     
     // write the pdu to a destination char-array, has to be defined in derived class (=0)
-    virtual bool get_pdu(char* pdu_destination)=0;                               
+    virtual char* get_pdu()=0;                               
 
     // Get the Content formatted as content_type from the Object 
     content_type get_content(){                                                             

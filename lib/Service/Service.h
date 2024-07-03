@@ -25,7 +25,9 @@ protected:
     
     // write the response-PDU to the reserved memory of the service-instance 
     void write_response_pdu(content_class response_object){
-        response_object.get_pdu(&(response_pdu[0]));                                                   // write PDU of last element in Rec-Stack to Response-PDU 
+        memset(response_pdu, '\0', sizeof(response_pdu));
+        char* pdu = response_object.get_pdu();
+        strncpy(response_pdu, response_object.get_pdu(), sizeof(pdu));                                  // write PDU of last element in Rec-Stack to Response-PDU                                            
     }
 
 public: 

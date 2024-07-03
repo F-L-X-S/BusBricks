@@ -28,19 +28,19 @@ Message_content_t* Message::pdu_to_content(char* pdu, uint8_t* pdu_size) {
     return message_content;                                                     // return message_content-pointer
 };
 
-// Create PDU from Message-Object, write PDU to destination-char-array
-// Return True if successful
-bool Message::get_pdu(char* pdu_destination) {
-    if (content == nullptr) return false;
+// Create PDU from Message-Object, return ptr to pdu
+char* Message::get_pdu() {
     unsigned int txt_size = static_cast<uint8_t>(content->txt_size);            // get message-size
-    memset(pdu_destination, '\0', txt_size+4);                                  // initialize destination-array with zeros
-    pdu_destination[0]=static_cast<uint8_t>(content->sender_id);                // add receiver-ID to PDU 
-    pdu_destination[1]=static_cast<uint8_t>(content->receiver_id);              // add sender-ID to PDU 
-    pdu_destination[2]=0x3A;                                                    // add delimeter to PDU 
+    uint8_t pdu_size = txt_size+4;
+    char* pdu = new char[pdu_size];                                             // create pdu-array
+    memset(pdu, '\0', pdu_size);                                                // initialize destination-array with zeros
+    pdu[0]=static_cast<uint8_t>(content->sender_id);                            // add receiver-ID to PDU 
+    pdu[1]=static_cast<uint8_t>(content->receiver_id);                          // add sender-ID to PDU 
+    pdu[2]=0x3A;                                                                // add delimeter to PDU 
     for (int i = 0; i < txt_size; ++i) {
-        pdu_destination[3+i] = content->msg_text[i];                            // copy message to pdu
+        pdu[3+i] = content->msg_text[i];                                        // copy message to pdu
     };
-    return true;                                                                // return pdu
+    return pdu;                                                                 // return pdu-ptr
 };
 
 // String Represenation of the Message-Object 

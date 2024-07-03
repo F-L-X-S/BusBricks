@@ -21,7 +21,7 @@ char* Message_service::get_response() {
     // initialize response-message-Object 
     Message response_msg(&response_content);
     // write PDU to Response-PDU-memory of the Service-instance
-    response_msg.get_pdu(&(response_pdu[0]));  
+    write_response_pdu(response_msg);
     // delete the element the response was generated for                                           
     rec_stack.deleteElement(0);                                                                   
     return response_pdu;

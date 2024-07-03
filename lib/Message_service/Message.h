@@ -52,7 +52,7 @@ class Message: public Content<Message_content_t>
         Message(Message_content_t* message_content);
 
         // Create frame from Message-structure
-        bool get_pdu(char* pdu_destination);
+        char* get_pdu();
 
         // String-representation
         char* to_string();
