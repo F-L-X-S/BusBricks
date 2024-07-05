@@ -12,8 +12,8 @@ int main() {
     std::cout<<msg_from_content.get_pdu()<<std::endl;
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    char sample_pdu[] = {0x1, 0xF, 'H', 'e', 'l', 'l', 'o'};
-    uint8_t pdu_size = 7; // Size of PDU
+    char sample_pdu[] = {0x1, 0xF, ':','H', 'e', 'l', 'l', 'o'};
+    uint8_t pdu_size = sizeof(sample_pdu); // Size of PDU
     Message msg_from_pdu(sample_pdu, &pdu_size);
     std::cout<<msg_from_pdu.to_string()<<std::endl;
     std::cout<<msg_from_pdu.get_pdu()<<std::endl;

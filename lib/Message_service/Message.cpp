@@ -19,10 +19,10 @@ Message_content_t* Message::pdu_to_content(char* pdu, uint8_t* pdu_size) {
     Message_content_t* message_content = new Message_content_t();               // store new message-content and safe pointer
     message_content->sender_id = static_cast<uint8_t>(pdu[0]);                  // get sender-ID from PDU 
     message_content->receiver_id = static_cast<uint8_t>(pdu[1]);                // get receiver-ID from PDU
-    message_content->txt_size = *pdu_size-2;
+    message_content->txt_size = *pdu_size-3;
     
     for (int i = 0; i < message_content->txt_size; ++i) {
-        message_content->msg_text[i] = static_cast<char>(pdu[i+2]);             // copy message from pdu
+        message_content->msg_text[i] = static_cast<char>(pdu[3+i]);             // copy message from pdu
     };
 
     return message_content;                                                     // return message_content-pointer
