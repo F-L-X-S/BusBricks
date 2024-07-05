@@ -6,7 +6,7 @@ int main(){
     // initialize message-service with instance-id 0xF
     Message_service msg_service(INSTANCE_ID);       
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    char sample_pdu[] = {0x1, INSTANCE_ID, 'H', 'e', 'l', 'l', 'o', '?'};
+    char sample_pdu[] = {0x1, INSTANCE_ID, ':', 'H', 'e', 'l', 'l', 'o'};
     uint8_t pdu_size = 8; // Size of PDU
 
     // Impart PDU to Service till rec-stack is full

@@ -14,10 +14,14 @@
 template<typename content_class, int MaxSize>
 class Content_stack{
 private:
-    content_class elements[MaxSize];                                     // Array for saving elements of the template                                                 
+    content_class elements[MaxSize];                                    // Array for saving elements of the template                                                 
     int size;                                                           // Current number of stored elements
 public: 
-    Content_stack(): size(0) {}                                         // Construct Content_stack-class with zero elements
+    // Construct Content_stack-class with zero elements
+    Content_stack(): size(0) {}                                         
+
+    // Destroy Content-stack
+    ~Content_stack() {} 
 
     // Add element to stack
     // True if successful

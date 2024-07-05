@@ -40,6 +40,9 @@ class Message: public Content<Message_content_t>
         // Default Constructor 
         Message();
 
+        // Destrucor
+        ~Message();
+
         // Constructor for creating Message from boolean expression
         // Message is constructed using the default constructor of Message_Content_t:
         // Sender: 0x0; Receiver: 0x0; Text: \0
@@ -60,6 +63,9 @@ class Message: public Content<Message_content_t>
     private:
         // Create Message from frame
         Message_content_t* pdu_to_content(char* pdu, uint8_t* pdu_size);
+
+        //string-representation
+        char* string_rep=nullptr;
 
 };
 
