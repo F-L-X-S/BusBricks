@@ -2,12 +2,13 @@
 #include "Message.h"
 
 #define STACKSIZE 3
-#define FUNCTIONCODE 0x6D // ASCII: "m"
+#define SERVICEID 0x6D // ASCII: "m"
 #define INSTANCE_ID 0xF
 
 int main() {
     // Instantiate  simple Service for "Message"-content  
-    Service<Message, STACKSIZE> message_service(FUNCTIONCODE, INSTANCE_ID);
+    Service<Message, STACKSIZE> message_service(SERVICEID, INSTANCE_ID);
+    std::cout<<"Created Service with\nService-ID:\t" <<static_cast<char>(*message_service.get_ServiceID())<<"\nInstance-ID:\t"<<static_cast<char>(*message_service.get_InstanceID())<<std::endl;
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
     char sample_pdu[] = {0x1, 0xF, 'H', 'e', 'l', 'l', 'o', '?'};

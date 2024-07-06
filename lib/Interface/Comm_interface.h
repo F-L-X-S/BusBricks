@@ -1,5 +1,5 @@
-#ifndef HARDWARE_INTERFACE_H
-#define HARDWARE_INTERFACE_H
+#ifndef COMM_INTERFACE_H
+#define COMM_INTERFACE_H
 #ifdef ARDUINO
     #include <Arduino.h>    // include Arduino-Library for platformIO-build 
     #include "Arduino_std.h"// import std-namesace for Arduino-build
@@ -9,11 +9,11 @@
     using namespace std;
 #endif
 
-// Template for generic hardware-interface
-// The derived class defines the associations of a hardware-interface (e.g. SoftwareSerial, Wire, Serial) 
+// Template for generic communication-interface
+// The derived class defines the associations of a communication-interface (e.g. SoftwareSerial, Wire, Serial) 
 // to the abstracted functions, the generic Interface-class is using
 template<typename interface_type>                                       
-class Hardware_interface{
+class Comm_interface{
     private:
         interface_type interface;
         uint32_t baudrate;
@@ -22,6 +22,6 @@ class Hardware_interface{
         virtual bool write_interface();
         virtual bool read_interface();
     public:
-        Hardware_interface(interface_type interface, uint32_t baudrate): interface(interface), baudrate(baudrate){} 
+        Comm_interface(interface_type interface, uint32_t baudrate): interface(interface), baudrate(baudrate){} 
 };
-#endif // HARDWARE_INTERFACE_H
+#endif // COMM_INTERFACE_H
