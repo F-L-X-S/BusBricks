@@ -19,7 +19,7 @@ class ServiceClusterBase{
 
 // The ServiceCluster provides functions to manage multiple services 
 template<uint8_t number_of_services>         
-class ServiceCluster{
+class ServiceCluster: public ServiceClusterBase{
     private:
         ServiceBase* services[number_of_services];
     public:
@@ -33,7 +33,7 @@ class ServiceCluster{
         // Get a Pointer to the Service with the given ID 
         ServiceBase* getService_byID(uint8_t ServiceID) override {
             for (int i = 0; i < number_of_services; ++i) {
-                if (services[i] && services[i]->getServiceID() == ServiceID) {
+                if (services[i] && *services[i]->get_ServiceID() == ServiceID) {
                     return services[i];
                 }
             }
