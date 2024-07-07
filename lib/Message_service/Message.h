@@ -61,10 +61,10 @@ class Message: public Content<Message_content_t>
         
     private:
         // Create Message from byte-representation (PDU)
-        Message_content_t* rep_to_content(char* byte_rep, uint8_t* rep_size) override;
+        Message_content_t* rep_to_content(byte_representation* representation) override;
 
         // Create byte-representation (PDU) from Message
-        char* content_to_rep(Message_content_t* content) override;
+        byte_representation* content_to_rep(Message_content_t* content) override;
 
         //string-representation
         char* string_rep=nullptr;
