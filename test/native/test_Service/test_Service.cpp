@@ -1,11 +1,17 @@
+#include<Message.h>
 #include<Content_stack.h>
 #include<Service.h>
-#include<Message.h>
+#include<ServiceCluster.h>
 #include<unity.h>
 
 #define STACKSIZE 3
-#define FUNCTIONCODE 0x6D // ASCII: "m"
-#define INSTANCE_ID 0xF
+#define SERVICEID_1 0x41    // ASCII "A"
+#define SERVICEID_2 0x42    // ASCII "B"
+#define SERVICEID_3 0x43    // ASCII "C"
+
+#define INSTANCEID_1 0x61   // ASCII "a"
+#define INSTANCEID_2 0x62   // ASCII "b"
+#define INSTANCEID_3 0x63   // ASCII "c"
 
 // ---------------------------------------Test example instance of abstract Content_stack-class---------------------------------------
 void test_content_stack(void) {
@@ -59,7 +65,7 @@ void test_content_stack(void) {
 // ---------------------------------------Test example instance of abstract Service-class---------------------------------------
 void test_Service(void) {
     // Instantiate  simple Service for "Message"-content  
-    Service<Message, STACKSIZE> message_service(FUNCTIONCODE, INSTANCE_ID);
+    Service<Message, STACKSIZE> message_service(SERVICEID_1, INSTANCEID_1);
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
     char sample_pdu[] = {0x1, 0xF, 'i', 'n', 'd', 'e', 'x', '!'};
@@ -86,11 +92,35 @@ void test_Service(void) {
     TEST_ASSERT_EQUAL_MESSAGE(STACKSIZE, size, message);        // Check stacksize (should be max)
 }
 
+// ---------------------------------------Test example instance of abstract ServiceCluster-class---------------------------------------
+void test_ServiceCluster(void) {
+    Service<Message, STACKSIZE> service_1(SERVICEID_1, INSTANCEID_1);       // Service 1 as general Message-Service
+    Service<Message, STACKSIZE> service_2(SERVICEID_2, INSTANCEID_2);       // Service 2 as general 32-bit-Int-Service
+    Service<Message, STACKSIZE> service_3(SERVICEID_3, INSTANCEID_3);       // Service 3 as general char-Service
+
+    ServiceBase* serviceList[3] = {&service_1, &service_2, &service_3};     // Array of ptr to the services 
+
+    ServiceCluster<3> services(serviceList);                                // Create a Service-Cluster from ptr-list to the associated services 
+
+    ServiceBase* ret_service_1 = services.getService_byID(SERVICEID_1);
+    TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_1,*ret_service_1->get_ServiceID(),
+    "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
+
+    ServiceBase* ret_service_2 = services.getService_byID(SERVICEID_2);
+    TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_2,*ret_service_2->get_ServiceID(),
+    "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
+
+    ServiceBase* ret_service_3 = services.getService_byID(SERVICEID_3);
+    TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_3,*ret_service_3->get_ServiceID(),
+    "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
+}
+
 // ---------------------------------------Run Tests---------------------------------------
 int main(int argc, char **argv) {
     UNITY_BEGIN();
     RUN_TEST(test_content_stack);
     RUN_TEST(test_Service);
+    RUN_TEST(test_ServiceCluster);
     UNITY_END();
 
     return 0;
