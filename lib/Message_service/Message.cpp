@@ -17,13 +17,13 @@ Message::~Message() {
 Message::Message(bool boolean_expression) : Content<Message_content_t>(new Message_content_t()) {}
 
 // Constructor for creating Message from PDU
-Message::Message(char* pdu, uint8_t* pdu_size) : Content(pdu_to_content(pdu, pdu_size)){}
+Message::Message(char* byte_rep, uint8_t* rep_size) : Content(){}
 
 // Constructor for creating Message from msg-content
 Message::Message(Message_content_t* message_content) : Content(message_content){}
 
 // Create Message from byte-formatted PDU 
-Message_content_t* Message::pdu_to_content(char* pdu, uint8_t* pdu_size) {
+Message_content_t* Message::rep_to_content(char* byte_rep, uint8_t* rep_size) {
     Message_content_t* message_content = new Message_content_t();               // store new message-content and safe pointer
     message_content->sender_id = static_cast<uint8_t>(pdu[0]);                  // get sender-ID from PDU 
     message_content->receiver_id = static_cast<uint8_t>(pdu[1]);                // get receiver-ID from PDU
@@ -37,7 +37,7 @@ Message_content_t* Message::pdu_to_content(char* pdu, uint8_t* pdu_size) {
 };
 
 // Create PDU from Message-Object, return ptr to pdu
-char* Message::get_pdu() {
+char* Message::content_to_rep() {
     unsigned int txt_size = static_cast<uint8_t>(content->txt_size);            // get message-size
     uint8_t pdu_size = txt_size+4;
     pdu = new char[pdu_size];                                                   // allocate storage for pdu-array 

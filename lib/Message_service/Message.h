@@ -13,6 +13,8 @@
 
 #include "Content.h"        // include Content-template
 
+#define MAXPDUSIZE 252
+
 struct Message_content_t{
     uint8_t sender_id;              // Src-ID[1 Byte]
     uint8_t receiver_id;            // Rec-ID[1 Byte]
@@ -54,15 +56,15 @@ class Message: public Content<Message_content_t>
         // Constructor for creating Message from msg-content
         Message(Message_content_t* message_content);
 
-        // Create pdu for frame-embedding from Message-structure
-        char* get_pdu();
-
         // String-representation
         char* to_string();
         
     private:
-        // Create Message from frame
-        Message_content_t* pdu_to_content(char* pdu, uint8_t* pdu_size);
+        // Create Message from byte-representation (PDU)
+        Message_content_t* rep_to_content(char* byte_rep, uint8_t* rep_size) override;
+
+        // Create byte-representation (PDU) from Message
+        char* content_to_rep(Message_content_t* content) override;
 
         //string-representation
         char* string_rep=nullptr;
