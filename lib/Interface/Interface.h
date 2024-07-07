@@ -13,19 +13,25 @@
 #include <Service.h>
 #include <ServiceCluster.h>
 
+#define MAXFRAMESIZE 256 //Max number of Bytes a frame can contain
+
 // Template for generic Interface
 // The derived class defines the handling of incoming frames from communication-interface to the services (associated by service-id)
 // and the conversion from PDU provided by Services to frames getting sent by the communication-interface
 template<typename comm_interface_type>                                       
 class Interface{
     private:
-        Comm_interface<comm_interface_type> comm_interface;
-        ServiceClusterBase services;
+        Comm_interface<comm_interface_type> comm_interface;             // Communication-Interface 
+        ServiceClusterBase services;                                    // ServiceCluster containing the Services associated with the Interface 
+        bool send(){
+
+        };
+        
     protected:
-        virtual bool getPDU_from_services();
-        virtual bool addPDU_to_service();
-        virtual bool pdu_to_frame();
-        virtual bool frame_to_pdu();
+        virtual bool getPDU_from_services()=0;
+        virtual bool addPDU_to_service()=0;
+        virtual bool pdu_to_frame()=0;
+        virtual bool frame_to_pdu()=0;
     public:
         Interface(comm_interface_type communication_interface, ServiceCluster* services):comm_interface(communication_interface), services(services) {} 
 };

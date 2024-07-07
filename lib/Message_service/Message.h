@@ -54,7 +54,7 @@ class Message: public Content<Message_content_t>
         // Constructor for creating Message from msg-content
         Message(Message_content_t* message_content);
 
-        // Create frame from Message-structure
+        // Create pdu for frame-embedding from Message-structure
         char* get_pdu();
 
         // String-representation
