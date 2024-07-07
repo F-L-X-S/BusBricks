@@ -105,14 +105,21 @@ void test_ServiceCluster(void) {
     ServiceBase* ret_service_1 = services.getService_byID(SERVICEID_1);
     TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_1,*ret_service_1->get_ServiceID(),
     "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
+    TEST_ASSERT_EQUAL_HEX8_MESSAGE(INSTANCEID_1,*ret_service_1->get_InstanceID(),
+    "The InstanceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
 
     ServiceBase* ret_service_2 = services.getService_byID(SERVICEID_2);
     TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_2,*ret_service_2->get_ServiceID(),
     "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
+    TEST_ASSERT_EQUAL_HEX8_MESSAGE(INSTANCEID_2,*ret_service_2->get_InstanceID(),
+    "The InstanceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
 
     ServiceBase* ret_service_3 = services.getService_byID(SERVICEID_3);
     TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_3,*ret_service_3->get_ServiceID(),
     "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
+    TEST_ASSERT_EQUAL_HEX8_MESSAGE(INSTANCEID_3,*ret_service_3->get_InstanceID(),
+    "The InstanceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
+
 }
 
 // ---------------------------------------Run Tests---------------------------------------
