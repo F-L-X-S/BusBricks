@@ -68,16 +68,14 @@ void test_Service(void) {
     Service<Message, STACKSIZE> message_service(SERVICEID_1, INSTANCEID_1);
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    char sample_pdu[] = {0x1, 0xF, 'i', 'n', 'd', 'e', 'x', '!'};
-    uint8_t pdu_size = 8; // Size of PDU
-
+    std::string sample_pdu = "\x01\x0F:" "index!";
 
     // Add Message-instances to receive-stack (Increase Stacksize)
     int8_t size = 0;                                           // initialize size-counter for added elements
     for (size_t i = 0; i <= STACKSIZE+3; i++)                  // try to add more elements than possible 
     {
-        sample_pdu[7] = i;                                     // change msg-text to "index<i>"
-        if (message_service.impart_pdu(sample_pdu, &pdu_size)) // add Messages with text "index<i>"
+        sample_pdu[7] = static_cast<char>(i);                                     // change msg-text to "index<i>"
+        if (message_service.impart_pdu(&sample_pdu)) // add Messages with text "index<i>"
         {
             size++;                                            // increase size-counter if message added successful to receive stack
         }
@@ -85,7 +83,7 @@ void test_Service(void) {
         // Check response-PDU after each impart
         char empty_pdu[MAXPDUSIZE];
         Message empty_msg;
-        TEST_ASSERT_EQUAL_STRING_MESSAGE(empty_msg.get_pdu(), message_service.get_response(), "Expected default-PDU as response-PDu for abstract Service");       
+        TEST_ASSERT_EQUAL_STRING_MESSAGE(empty_msg.get_representation()->c_str(), message_service.get_response().c_str(), "Expected default-PDU as response-PDu for abstract Service");       
     }
     char message[100];
     sprintf(message, "Added %d elements to rec-stack, but initialized stack with max-size %d", size, STACKSIZE);

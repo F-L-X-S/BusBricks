@@ -18,12 +18,12 @@ void test_Message_from_content(void) {
     Message msg_from_content(&msg_content);
 
     // Check String-representation of created object
-    TEST_ASSERT_EQUAL_STRING_MESSAGE("Sender: 01\x09\x09Receiver: 0F\nHello\n", msg_from_content.to_string(),\
+    TEST_ASSERT_EQUAL_STRING_MESSAGE("Sender: 0x01\x09\x09Receiver: 0x0F\nHello\n", msg_from_content.to_string().c_str(),\
     "Message-Object created with msg_from_pdu-constructor \
     returns incorrect string-representation ");     
 
     // Check PDU of created object
-    TEST_ASSERT_EQUAL_STRING_MESSAGE("\x01\x0F:Hello", msg_from_content.get_pdu(),\
+    TEST_ASSERT_EQUAL_STRING_MESSAGE("\x01\x0F:Hello", msg_from_content.get_representation()->c_str(),\
     "Message-Object created with msg_from_pdu-constructor \
     returns incorrect pdu");     
 }
@@ -32,18 +32,17 @@ void test_Message_from_content(void) {
 void test_Message_from_pdu(void) {
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    char sample_pdu[] = {0x1, 0xF, ':', 'H', 'e', 'l', 'l', 'o'};
-    uint8_t pdu_size = sizeof(sample_pdu); // Size of PDU
-    Message msg_from_pdu(sample_pdu, &pdu_size);
+    std::string sample_pdu = "\x01\x0F:" "Hello";
+    Message msg_from_pdu(&sample_pdu);
 
 
     // Check String-representation of created object
-    TEST_ASSERT_EQUAL_STRING_MESSAGE("Sender: 01\x09\x09Receiver: 0F\nHello\n", msg_from_pdu.to_string(),\
+    TEST_ASSERT_EQUAL_STRING_MESSAGE("Sender: 0x01\x09\x09Receiver: 0x0F\nHello\n", msg_from_pdu.to_string().c_str(),\
     "Message-Object created with msg_from_pdu-constructor \
     returns incorrect string-representation ");     
 
     // Check PDU of created object
-    TEST_ASSERT_EQUAL_STRING_MESSAGE("\x01\x0F:Hello", msg_from_pdu.get_pdu(),\
+    TEST_ASSERT_EQUAL_STRING_MESSAGE("\x01\x0F:Hello", msg_from_pdu.get_representation()->c_str(),\
     "Message-Object created with msg_from_pdu-constructor \
     returns incorrect pdu");     
 }
