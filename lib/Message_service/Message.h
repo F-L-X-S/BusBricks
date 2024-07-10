@@ -35,8 +35,8 @@ struct Message_content_t{
     }
 };
 
-// Defines the mapping of Byte formatted PDU to a text-message with information for sender and receiver
-class Message: public Content<Message_content_t>
+// Defines the mapping of string-formatted PDU to a text-message with information for sender and receiver
+class Message: public Content<Message_content_t, std::string>
 {
     public:
         // Default Constructor 
@@ -51,7 +51,7 @@ class Message: public Content<Message_content_t>
         Message(bool boolean_expression);
 
         // Constructor for creating Message from pdu
-        Message(char* pdu, uint8_t* pdu_size);
+        Message(std::string* representation);
 
         // Constructor for creating Message from msg-content
         Message(Message_content_t* message_content);
@@ -61,10 +61,10 @@ class Message: public Content<Message_content_t>
         
     private:
         // Create Message from byte-representation (PDU)
-        Message_content_t* rep_to_content(byte_representation* representation) override;
+        void rep_to_content() override;
 
         // Create byte-representation (PDU) from Message
-        byte_representation* content_to_rep(Message_content_t* content) override;
+        void content_to_rep() override;
 
         //string-representation
         char* string_rep=nullptr;

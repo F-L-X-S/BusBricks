@@ -31,7 +31,7 @@ protected:
     uint8_t serviceID;                                                                                // service-id
     uint8_t instanceID;                                                                               // service-instance-id                                
     Content_stack<content_class, stackSize> rec_stack;                                                // stack for received content-elements
-    char response_pdu[MAXPDUSIZE];                                                                    // PDU with response 
+    std::string response_pdu[MAXPDUSIZE];                                                                    // PDU with response 
     
     // write the response-PDU to the reserved memory of the service-instance 
     void write_response_pdu(content_class response_object){

@@ -1,12 +1,11 @@
 #include "Message.h"
 
 // Default Constructor
-Message::Message() : Content<Message_content_t>(new Message_content_t()) {}
+Message::Message() : Content<Message_content_t, std::string>(new Message_content_t()) {}
 
 // Destructor
 Message::~Message() {
-    if (string_rep!=nullptr)
-    {
+    if (string_rep!=nullptr){
         delete[] string_rep;
     }
 }
@@ -14,41 +13,32 @@ Message::~Message() {
 // Constructor for creating Message from boolean expression
 // Message is constructed using the default constructor of Message_Content_t:
 // Sender: 0x0; Receiver: 0x0; Text: \0
-Message::Message(bool boolean_expression) : Content<Message_content_t>(new Message_content_t()) {}
+Message::Message(bool boolean_expression) : Content<Message_content_t, std::string>(new Message_content_t()) {}
 
 // Constructor for creating Message from PDU
-Message::Message(byte_representation* representation) : Content(representation){}
+Message::Message(std::string* representation) : Content<Message_content_t, std::string>(representation){}
 
-// Constructor for creating Message from msg-content
+// Constructor for creating Message from msg-contents
 Message::Message(Message_content_t* message_content) : Content(message_content){}
 
-// Create Message from byte-formatted PDU 
-Message_content_t* Message::rep_to_content(byte_representation* byte_rep) {
-    Message_content_t* message_content = new Message_content_t();                                         // store new message-content and safe pointer
-    message_content->sender_id = static_cast<uint8_t>(*byte_rep->representation_arr[0]);                  // get sender-ID from PDU 
-    message_content->receiver_id = static_cast<uint8_t>(*byte_rep->representation_arr[1]);                // get receiver-ID from PDU
-    message_content->txt_size = static_cast<uint8_t>(*byte_rep->size)-3;
-    
-    for (int i = 0; i < message_content->txt_size; ++i) {
-        message_content->msg_text[i] = static_cast<char>(*byte_rep->representation_arr[3+i]);             // copy message from pdu
-    };
+// Allocate  Message-content from byte-formatted representation (PDU)
+void Message::rep_to_content() {    
+    content.sender_id = static_cast<uint8_t>(representation[0]);                                      // get sender-ID from PDU 
+    content.receiver_id = static_cast<uint8_t>(representation[1]);                                    // get receiver-ID from PDU
+    content.txt_size = static_cast<uint8_t>(representation.length()) - 3;                               // calculate txt_size
 
-    return message_content;                                                                               // return message_content-pointer
+    for (size_t i = 0; i < content.txt_size; ++i) {
+        content.msg_text[i] = representation[3 + i];                                                  // copy message from PDU
+    }                                                                                                        // return message_content-pointer
 };
 
-// Create PDU from Message-Object, return ptr to pdu
-char* Message::content_to_rep(Message_content_t* content_obj) {
-    unsigned int txt_size = static_cast<uint8_t>(content_obj->txt_size);            // get message-size
-    uint8_t pdu_size = txt_size+4;
-    char pdu[pdu_size];                                                           
-    memset(pdu, '\0', pdu_size);                                                    // initialize pdu-array with zeros
-    pdu[0]=static_cast<char>(content_obj->sender_id);                               // add receiver-ID to PDU 
-    pdu[1]=static_cast<char>(content_obj->receiver_id);                             // add sender-ID to PDU 
-    pdu[2]=static_cast<char>(0x3A);                                                 // add delimeter to PDU 
-    for (int i = 0; i < txt_size; ++i) {
-        pdu[3+i] = content_obj->msg_text[i];                                        // copy message to pdu
-    };
-    return pdu;                                                                     // return pdu-ptr
+// Allocate byte-values for representation from Message-Object
+void Message::content_to_rep() {
+    unsigned int txt_size = static_cast<uint8_t>(content.txt_size);                                     // get message-size
+    representation[0]=static_cast<char>(content.sender_id);                                             // Add Sender-ID
+    representation[1]=static_cast<char>(content.receiver_id);                                           // Add Receiver-ID
+    representation[2]=static_cast<char>(0x3A);                                                               // Add ASCII ":"
+    representation += String(content.msg_text);                                                         // Append message text 
 };
 
 // String Represenation of the Message-Object 
@@ -58,17 +48,17 @@ char* Message::to_string(){
 
     //append sender-ID
     strcpy(string_rep, "Sender: ");
-    snprintf(temp, sizeof(temp), "%02X", content->sender_id);
+    snprintf(temp, sizeof(temp), "%02X", content.sender_id);
     strcat(string_rep, temp);
 
     // append receiver-ID
     strcat(string_rep, "\t\tReceiver: ");
-    snprintf(temp, sizeof(temp), "%02X", content->receiver_id);
+    snprintf(temp, sizeof(temp), "%02X", content.receiver_id);
     strcat(string_rep, temp);
 
     //append message-text
     strcat(string_rep, "\n");
-    strcat(string_rep, content->msg_text);
+    strcat(string_rep, content.msg_text);
     strcat(string_rep, "\n");
 
     return string_rep;
