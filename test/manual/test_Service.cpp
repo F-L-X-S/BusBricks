@@ -11,14 +11,13 @@ int main() {
     std::cout<<"Created Service with\nService-ID:\t" <<static_cast<char>(*message_service.get_ServiceID())<<"\nInstance-ID:\t"<<static_cast<char>(*message_service.get_InstanceID())<<std::endl;
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    char sample_pdu[] = {0x1, 0xF, 'H', 'e', 'l', 'l', 'o', '?'};
-    uint8_t pdu_size = 8; // Size of PDU
+    std::string sample_pdu = "\x01\x0F:" "Hello";
 
     // Impart PDU to Service till rec-stack is full
     bool recStack_not_full = true;
     while (recStack_not_full)
     {
-        recStack_not_full = message_service.impart_pdu(sample_pdu, &pdu_size);
+        recStack_not_full = message_service.impart_pdu(&sample_pdu);
         if (recStack_not_full)
         {
             std::cout<<"Added new PDU to Service Rec-Stack"<<std::endl;
