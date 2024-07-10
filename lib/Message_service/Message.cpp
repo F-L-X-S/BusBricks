@@ -1,25 +1,29 @@
 #include "Message.h"
 
 // Default Constructor
-Message::Message() : Content<Message_content_t, std::string>(new Message_content_t()) {}
+Message::Message() : Content<Message_content_t, std::string>(*new Message_content_t()) {
+    Message::content_to_rep();
+}
 
 // Destructor
-Message::~Message() {
-    if (string_rep!=nullptr){
-        delete[] string_rep;
-    }
-}
+Message::~Message() {}
 
 // Constructor for creating Message from boolean expression
 // Message is constructed using the default constructor of Message_Content_t:
 // Sender: 0x0; Receiver: 0x0; Text: \0
-Message::Message(bool boolean_expression) : Content<Message_content_t, std::string>(new Message_content_t()) {}
+Message::Message(bool boolean_expression) : Content<Message_content_t, std::string>(*new Message_content_t()) {
+    Message::content_to_rep();
+}
 
 // Constructor for creating Message from PDU
-Message::Message(std::string* representation) : Content<Message_content_t, std::string>(representation){}
+Message::Message(std::string* representation) : Content<Message_content_t, std::string>(*representation){
+    Message::rep_to_content();
+}
 
 // Constructor for creating Message from msg-contents
-Message::Message(Message_content_t* message_content) : Content(message_content){}
+Message::Message(Message_content_t* message_content) : Content(*message_content){
+    Message::content_to_rep();
+}
 
 // Allocate  Message-content from byte-formatted representation (PDU)
 void Message::rep_to_content() {    
@@ -34,32 +38,33 @@ void Message::rep_to_content() {
 
 // Allocate byte-values for representation from Message-Object
 void Message::content_to_rep() {
-    unsigned int txt_size = static_cast<uint8_t>(content.txt_size);                                     // get message-size
-    representation[0]=static_cast<char>(content.sender_id);                                             // Add Sender-ID
-    representation[1]=static_cast<char>(content.receiver_id);                                           // Add Receiver-ID
-    representation[2]=static_cast<char>(0x3A);                                                               // Add ASCII ":"
-    representation += String(content.msg_text);                                                         // Append message text 
+    representation = "";
+    representation += static_cast<char>(content.sender_id);                                                 // Add Sender-ID
+    representation += static_cast<char>(content.receiver_id);                                               // Add Receiver-ID
+    representation += static_cast<char>(0x3A);                                                              // Add ASCII ":"
+    representation += std::string(content.msg_text);                                                        // Append message text 
 };
 
 // String Represenation of the Message-Object 
-char* Message::to_string(){
-    string_rep = new char[MAXPDUSIZE];
-    char temp[3];
+std::string Message::to_string(){
+    std::string string_rep;
+    char hex_buffer[5]; // Buffer für die Hexadezimaldarstellung
 
-    //append sender-ID
-    strcpy(string_rep, "Sender: ");
-    snprintf(temp, sizeof(temp), "%02X", content.sender_id);
-    strcat(string_rep, temp);
+    
+    // Sender-ID 
+    string_rep = "Sender: ";
+    sprintf(hex_buffer, "0x%02X", content.sender_id); 
+    string_rep += hex_buffer;
 
-    // append receiver-ID
-    strcat(string_rep, "\t\tReceiver: ");
-    snprintf(temp, sizeof(temp), "%02X", content.receiver_id);
-    strcat(string_rep, temp);
+    // Receiver-ID 
+    string_rep += "\t\tReceiver: ";
+    sprintf(hex_buffer, "0x%02X", content.receiver_id); 
+    string_rep += hex_buffer;
 
-    //append message-text
-    strcat(string_rep, "\n");
-    strcat(string_rep, content.msg_text);
-    strcat(string_rep, "\n");
+    // Message-text
+    string_rep += "\n";
+    string_rep += content.msg_text;
+    string_rep += "\n";
 
     return string_rep;
 };

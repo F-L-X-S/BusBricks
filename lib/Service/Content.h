@@ -15,14 +15,10 @@ template<typename content_type, typename representation_type>
 class Content {
 public: 
     // Construct Content-class from an instance from unspecific type
-    Content(content_type* content) : content(content) {
-        content_to_rep();
-    }         
+    Content(content_type content) : content(content) {}         
 
     // Construct Content-class from byte-representation
-    Content(representation_type* representation) : representation(representation) {
-        rep_to_content();
-    }    
+    Content(representation_type representation) : representation(representation) {}    
 
     // Destroy Content-element
     virtual ~Content() {
@@ -30,12 +26,12 @@ public:
     
     // Get the representation as a the representation-type
     representation_type* get_representation() {
-        return representation;
+        return &representation;
     }                               
 
     // Get the Content formatted as content_type from the Object 
     content_type* get_content() {                                          
-        return content;
+        return &content;
     }
 
 protected:

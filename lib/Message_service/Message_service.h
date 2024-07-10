@@ -24,7 +24,7 @@ public:
     Message_service(uint8_t instance_id);
 
     // get the response PDU 
-    char* get_response() override;
+    std::string get_response() override;
 };
 
 #endif // MESSAGE_SERVICE_H

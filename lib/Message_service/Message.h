@@ -8,6 +8,7 @@
 #else
     #include <iostream>     // include iostream for local testing 
     #include <cstring>
+    #include <cstdio>
     using namespace std;
 #endif
 
@@ -56,18 +57,17 @@ class Message: public Content<Message_content_t, std::string>
         // Constructor for creating Message from msg-content
         Message(Message_content_t* message_content);
 
-        // String-representation
-        char* to_string();
+        //string-representation
+        std::string to_string();
         
     private:
         // Create Message from byte-representation (PDU)
-        void rep_to_content() override;
+        virtual void rep_to_content() override;
 
         // Create byte-representation (PDU) from Message
-        void content_to_rep() override;
+        virtual void content_to_rep() override;
 
-        //string-representation
-        char* string_rep=nullptr;
+
 
 };
 

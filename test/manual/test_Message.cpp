@@ -9,19 +9,21 @@ int main() {
     msg_content.txt_size = 5;
     Message msg_from_content(&msg_content);
     std::cout<<"\nMessage from Content:\n"<<msg_from_content.to_string()<<std::endl;
-    std::cout<<msg_from_content.get_representation()<<std::endl;
+    std::cout<<"\nPDU:\n"<<std::endl;
+    std::cout<<*msg_from_content.get_representation()<<std::endl;
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    char sample_pdu[] = {0x1, 0xF, ':','H', 'e', 'l', 'l', 'o'};
-    uint8_t pdu_size = sizeof(sample_pdu); // Size of PDU
-    Message msg_from_pdu(sample_pdu, &pdu_size);
+    std::string sample_pdu = "\x01\x0F:" "Hello";
+    Message msg_from_pdu(&sample_pdu);
     std::cout<<"\nMessage from PDU:\n"<<msg_from_pdu.to_string()<<std::endl;
-    std::cout<<msg_from_pdu.get_representation()<<std::endl;
+    std::cout<<"\nPDU:\n"<<std::endl;
+    std::cout<<*msg_from_pdu.get_representation()<<std::endl;
 
     // Test destructor 
     Message* msg_ptr= new Message();
     std::cout<<"\nContent Message from Default-Constructor:\n"<<msg_ptr->to_string()<<std::endl;
-    std::cout<<"\nPDU of Message from Default-Constructor:\n"<<msg_ptr->get_representation()<<std::endl;
+    std::cout<<"\nPDU:\n"<<std::endl;
+    std::cout<<*msg_ptr->get_representation()<<std::endl;
     delete msg_ptr;
     std::cout<<"\nDeleted Message-Instance\n"<<std::endl;
 
