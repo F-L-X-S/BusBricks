@@ -1,7 +1,7 @@
 #include "Message.h"
 
 // Default Constructor
-Message::Message() : Content<Message_content_t, std::string>(*new Message_content_t()) {
+Message::Message() : Content<Message_content_t, std::string>(Message_content_t()) {
     Message::content_to_rep();
 }
 
@@ -11,7 +11,7 @@ Message::~Message() {}
 // Constructor for creating Message from boolean expression
 // Message is constructed using the default constructor of Message_Content_t:
 // Sender: 0x0; Receiver: 0x0; Text: \0
-Message::Message(bool boolean_expression) : Content<Message_content_t, std::string>(*new Message_content_t()) {
+Message::Message(bool boolean_expression) : Content<Message_content_t, std::string>(Message_content_t()) {
     Message::content_to_rep();
 }
 

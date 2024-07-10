@@ -3,12 +3,16 @@
 
 #define MAXFRAMESIZE 256
 
+// Example Frame: 256 bytes containing 0xFF
+// Example PDU: starting from 50 containing "Hallo!\t" 10 times 
+
 class msg_Frame: protected Frame{
     private:
-        char* pdu_to_frame(char* pdu){
+        void pdu_to_frame(){
             
         };
-        char* frame_to_pdu(char* frame){
+
+        void frame_to_pdu(){
 
         };
 };

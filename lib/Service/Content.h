@@ -39,9 +39,11 @@ protected:
     representation_type representation;     // Representation
 
     // Convert the representation-attribute to the content-attribute, has to be defined in derived class (=0)
+    // the function has to be called in the constructor of the derived class 
     virtual void rep_to_content() = 0;
 
     // Convert the content-attribute to a representation-attribute, has to be defined in derived class (=0)
+    // the function has to be called in the constructor of the derived class 
     virtual void content_to_rep() = 0;  
 };
 
