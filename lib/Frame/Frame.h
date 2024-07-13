@@ -13,13 +13,13 @@
 
 // Typedefinitions for Constructor-parameters
 using pduString = std::string;
-using frameString = std::string;
+using frameString = const char*;
 
 
 // Frame-Class as derived class from Content
 // In the abstract concept of "Content" the byte-Frame itself is interpreted as the Content-Representation
 // The "Content"-Object represents the PDU transmitted to the services 
-class Frame: protected Content<pduString, frameString>{
+class Frame: public Content<pduString, frameString>{
     public:
         // Default Constructor 
         Frame();
@@ -38,24 +38,5 @@ class Frame: protected Content<pduString, frameString>{
 
         // get the byte-frame from the frame-object  
         frameString getFrame();
-
-    protected:
-        std::string* pdu;
-        std::string* frame;
-
-        // Convert PDU to Frame
-        // Create Frame (byte-representation) from PDU (Content)
-        virtual void pdu_to_frame()=0;
-
-        // Convert Frame to PDU
-        // Create PDU (Content) from Frame (byte-representation)
-        virtual void frame_to_pdu()=0;
-
-    private:
-        // Create PDU (Content) from Frame (byte-representation)
-        virtual void rep_to_content() override;
-
-        // Create Frame (byte-representation) from PDU (Content)
-        virtual void content_to_rep() override;
 };
 #endif // FRAME_H
