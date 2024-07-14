@@ -27,8 +27,8 @@ Message::Message(Message_content_t* message_content) : Content(*message_content)
 
 // Allocate  Message-content from byte-formatted representation (PDU)
 void Message::rep_to_content() {    
-    content.sender_id = static_cast<uint8_t>(representation[0]);                                      // get sender-ID from PDU 
-    content.receiver_id = static_cast<uint8_t>(representation[1]);                                    // get receiver-ID from PDU
+    content.sender_id = static_cast<char>(representation[0]);                                      // get sender-ID from PDU 
+    content.receiver_id = static_cast<char>(representation[1]);                                    // get receiver-ID from PDU
     content.txt_size = static_cast<uint8_t>(representation.length()) - 3;                               // calculate txt_size
 
     for (size_t i = 0; i < content.txt_size; ++i) {

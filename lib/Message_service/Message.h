@@ -17,8 +17,8 @@
 #define MAXPDUSIZE 252
 
 struct Message_content_t{
-    uint8_t sender_id;              // Src-ID[1 Byte]
-    uint8_t receiver_id;            // Rec-ID[1 Byte]
+    char sender_id;              // Src-ID[1 Byte]
+    char receiver_id;            // Rec-ID[1 Byte]
     char msg_text[MAXPDUSIZE-3];    // Message-Text[249 Byte]
     uint8_t txt_size;               // Size of Message-Text in Bytes
 
@@ -28,7 +28,7 @@ struct Message_content_t{
     }
 
     // Constructor with std::string parameter
-    Message_content_t(uint8_t sender_id, uint8_t receiver_id, const std::string& msg_txt, uint8_t txt_size) : 
+    Message_content_t(char sender_id, char receiver_id, const std::string& msg_txt, uint8_t txt_size) : 
         sender_id(sender_id), receiver_id(receiver_id), txt_size(txt_size) {
         // Kopieren der Zeichenkette und Sicherstellen der Null-Terminierung
         strncpy(msg_text, msg_txt.c_str(), sizeof(msg_text) - 1);
