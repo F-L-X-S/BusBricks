@@ -12,28 +12,13 @@ class Msg_Frame: public Frame{
     }
 
     Msg_Frame(frameString* frame) : Frame(frame) {
-        copy_to_framebuffer();
+        //copy_to_framebuffer();
         rep_to_content();
     }
 
-    ~Msg_Frame(){
-        if (representation) {
-            delete[] representation;
-        }
-    }
+    ~Msg_Frame(){}
 
     private:
-        // Copy the representation pointing to an outside defined char-array to dynamically allocated memory
-        void copy_to_framebuffer() {
-            size_t len = strlen(representation);
-            char* buffer = new char[len];
-            for (size_t i = 0; i < len; ++i) {
-                buffer[i] = representation[i];
-            }
-            buffer[len] = '\0';
-            representation = buffer;
-        }
-
         // Convert the given Content (PDU) to Representation (Frame)
         void content_to_rep()  override {
             size_t content_length = content.length();
@@ -84,9 +69,9 @@ int main() {
     Msg_Frame msg_frame_from_pdu(&msg_pdu);
 
     // Print Frame created from PDU (Content)
-    std::cout<<"Frame from PDU\n"<<std::endl;
-    std::cout<<"Frame-PDU:\n"<<msg_frame_from_pdu.getPDU()<<std::endl;
-    std::cout<<"Frame:\n"<<msg_frame_from_pdu.getFrame()<<std::endl;
+    std::cout<<"Frame from PDU:"<<std::endl;
+    std::cout<<"Frame-PDU:\t"<<msg_frame_from_pdu.getPDU()<<std::endl;
+    std::cout<<"Frame:\t\t"<<msg_frame_from_pdu.getFrame()<<std::endl;
 
     // Create a new Frame-Object from Frame above
     std::string frame = msg_frame_from_pdu.getFrame();
@@ -94,9 +79,9 @@ int main() {
     Msg_Frame msg_frame_from_frame(&frame_ptr);
 
     // Print Frame created from Frame (Representation)
-    std::cout<<"Frame from Representation\n"<<std::endl;
-    std::cout<<"Frame-PDU:\n"<<msg_frame_from_frame.getPDU()<<std::endl;
-    std::cout<<"Frame:\n"<<msg_frame_from_frame.getFrame()<<std::endl;
+    std::cout<<"Frame from Representation:"<<std::endl;
+    std::cout<<"Frame-PDU:\t"<<msg_frame_from_frame.getPDU()<<std::endl;
+    std::cout<<"Frame:\t\t"<<msg_frame_from_frame.getFrame()<<std::endl;
 
     return 0;
 }
