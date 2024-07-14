@@ -34,9 +34,9 @@ class Frame: public Content<pduString, frameString>{
         Frame(frameString* frame);
 
         // get the pdu from the frame-object
-        pduString getPDU();
+        std::string getPDU();
 
         // get the byte-frame from the frame-object  
-        frameString getFrame();
+        std::string getFrame();
 };
 #endif // FRAME_H

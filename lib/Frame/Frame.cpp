@@ -13,13 +13,13 @@ Frame::Frame(frameString* frame) : Content<pduString, frameString>(*frame) {}
 Frame::~Frame() {}
 
 // Get PDU from Frame-Object as wrapper-function
-pduString Frame::getPDU(){
-    pduString pdu = *get_content();
-    return pdu;
+std::string Frame::getPDU(){
+    pduString p = *get_content();
+    return std::string(p);
 }
 
 // Get byte-Frame from Frame-Object as wrapper-function
-frameString Frame::getFrame(){
-    frameString frame = *get_representation();
-    return frame;
+std::string Frame::getFrame(){
+    frameString* str = get_representation();
+    return std::string(*str);
 }
