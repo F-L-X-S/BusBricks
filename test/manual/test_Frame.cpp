@@ -12,7 +12,7 @@ class Msg_Frame: public Frame{
     }
 
     Msg_Frame(frameString* frame) : Frame(frame) {
-        //copy_to_framebuffer();
+        copy_to_heap(&representation);
         rep_to_content();
     }
 
@@ -50,6 +50,18 @@ class Msg_Frame: public Frame{
             for (size_t i = PREFIXSIZE; i < len-SUFFIXSIZE; ++i) {
                 content += representation[i];
             }
+        };
+
+        // Copy the representation pointing to an outside defined char-array to heap-memory
+        // has to be called to ensure, that destructor is deleting from heap and not from stack
+        void copy_to_heap(const char** str_ptr) {
+            size_t len = strlen(*str_ptr);
+            char* buffer = new char[len+1];
+            for (size_t i = 0; i < len; ++i) {
+                buffer[i] = (*str_ptr)[i];
+            }
+            buffer[len] = '\0';
+            *str_ptr = buffer;
         };
     };
 
