@@ -16,7 +16,11 @@ class Msg_Frame: public Frame{
         rep_to_content();
     }
 
-    ~Msg_Frame(){}
+    ~Msg_Frame(){
+        if (representation) {
+            delete[] representation;
+        }        
+    }
 
     private:
         // Convert the given Content (PDU) to Representation (Frame)

@@ -30,6 +30,9 @@ class Frame_modbusRTU: public Frame{
         // Check the CRC16-value for teh given buffer 
         bool checkCRC16(unsigned char* buffer ,short CRC);
 
+        // Get the Modbus-RTU-function-code of the frame-instance 
+        short getFunctionCode();
+
     private:
         // Convert the given Content (PDU) to Representation (Frame)
         void content_to_rep()  override;

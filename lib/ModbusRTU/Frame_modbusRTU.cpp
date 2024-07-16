@@ -7,11 +7,16 @@ Frame_modbusRTU::Frame_modbusRTU(pduString* pdu) : Frame(pdu) {
 
 // Construct Modbus-RRU-Frame from given Byte-Frame (Representation)
 Frame_modbusRTU::Frame_modbusRTU(frameString* frame) : Frame(frame) {
+    copy_to_heap(&representation);
     rep_to_content();
 };
 
 // Deconstructor 
-Frame_modbusRTU::~Frame_modbusRTU(){};
+Frame_modbusRTU::~Frame_modbusRTU(){
+    if (representation) {
+        delete[] representation;
+    }
+};
 
 // Convert the given Content (PDU) to Representation (Frame)
 void Frame_modbusRTU::content_to_rep(){};
