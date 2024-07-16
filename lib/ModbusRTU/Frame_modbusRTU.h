@@ -19,7 +19,7 @@
 class Frame_modbusRTU: public Frame{
     public:
         // Construct Modbus-RRU-Frame from given PDU (Content)
-        Frame_modbusRTU(pduString* pdu);
+        Frame_modbusRTU(pduString* pdu, char* slaveId, char* functionCode);
 
         // Construct Modbus-RRU-Frame from given Byte-Frame (Representation)
         Frame_modbusRTU(frameString* frame);
@@ -28,12 +28,15 @@ class Frame_modbusRTU: public Frame{
         ~Frame_modbusRTU();
 
         // Check the CRC16-value for teh given buffer 
-        bool checkCRC16(unsigned char* buffer ,short CRC);
+        bool checkCRC16(char* buffer, uint8_t size);
 
         // Get the Modbus-RTU-function-code of the frame-instance 
-        short getFunctionCode();
+        char* getFunctionCode();
 
     private:
+        char* slaveId;
+        char* functionCode;
+
         // Convert the given Content (PDU) to Representation (Frame)
         void content_to_rep()  override;
 
@@ -41,7 +44,7 @@ class Frame_modbusRTU: public Frame{
         void rep_to_content() override;
 
         // Calculate the CRC16-value of the given buffer 
-        short calcCRC16(unsigned char* buffer , uint8_t size );
+        short calcCRC16(char* buffer , uint8_t size );
 
         // Copy the representation pointing to an outside defined char-array to heap-memory
         // has to be called to ensure, that destructor is deleting from heap and not from stack

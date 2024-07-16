@@ -1,12 +1,14 @@
 #include "Frame_modbusRTU.h"
 
 // Construct Modbus-RRU-Frame from given PDU (Content)
-Frame_modbusRTU::Frame_modbusRTU(pduString* pdu) : Frame(pdu) {
+Frame_modbusRTU::Frame_modbusRTU(pduString* pdu, char* slaveId, char* functionCode) : 
+    Frame(pdu), slaveId(slaveId), functionCode(functionCode) {
     content_to_rep();
 };
 
 // Construct Modbus-RRU-Frame from given Byte-Frame (Representation)
-Frame_modbusRTU::Frame_modbusRTU(frameString* frame) : Frame(frame) {
+Frame_modbusRTU::Frame_modbusRTU(frameString* frame) : 
+    Frame(frame) {
     copy_to_heap(&representation);
     rep_to_content();
 };
@@ -19,14 +21,48 @@ Frame_modbusRTU::~Frame_modbusRTU(){
 };
 
 // Convert the given Content (PDU) to Representation (Frame)
-void Frame_modbusRTU::content_to_rep(){};
+void Frame_modbusRTU::content_to_rep(){
+        size_t pduLength = content.length();                                // get the length of the Content (PDU)
+        size_t buffersize = PREFIXSIZE+SUFFIXSIZE+pduLength + 1;            // Calculate the necessary size for the buffer + null-termination
+        char* buffer = new char[buffersize];                                // Create representation-buffer 
+
+        // Prefix
+        buffer[0] = *slaveId;                                               // Byte 0:  Slave-Address
+        buffer[1] = *functionCode;                                          // Byte 1:  Modbus-RTU function-code 
+        
+        // Content
+        for (size_t i = 0; i < pduLength; ++i) {                       
+            buffer[i+PREFIXSIZE] = content[i];                              // Byte 2 to end of PDU:  Content (PDU)
+        }
+
+        // CRC
+        uint16_t crc = calcCRC16(buffer, pduLength+1);
+        buffer[pduLength + PREFIXSIZE] = crc & 0xFF;                        // Last 2 Bytes: Append CRC (Little Endian: Low Byte first, then High Byte)
+        buffer[pduLength + PREFIXSIZE + 1] = (crc >> 8) & 0xFF;
+
+        // Null terminator
+        buffer[buffersize] = '\0';                                          // Append null-termination to the buffer
+        representation = buffer;                                            // Set representation to point to the buffer
+};
 
 // Convert the given Representation (Frame) to Content (PDU) 
 void Frame_modbusRTU::rep_to_content(){
-    size_t len = strlen(representation);
-    for (size_t i = PREFIXSIZE; i < len-SUFFIXSIZE; ++i) {
-        content += representation[i];
+    // PDU (Content)
+    size_t len = strlen(representation);                                    // Get the length of the representation (frame) 
+    for (size_t i = PREFIXSIZE; i < len-SUFFIXSIZE; ++i) {                  
+        content += representation[i];                                       // Write PDU form representation (frame) to Content 
     }
+
+    // Slave-ID 
+    *slaveId = representation[0];                                           // Set Slave-ID to Byte 0 of the frame 
+
+    // Function-Code
+    *functionCode = representation[1];                                      // Set the function-Code to Byte 1 of the frame 
+};
+
+// Get the Modbus-RTU-function-code of the frame-instance 
+char* Frame_modbusRTU::getFunctionCode(){
+    return functionCode;
 };
 
 
@@ -43,7 +79,22 @@ void Frame_modbusRTU::copy_to_heap(const char** str_ptr) {
     };
 
 // Calculate the CRC16-value of the given buffer 
-short Frame_modbusRTU::calcCRC16(unsigned char* buffer , uint8_t size ){};
+short Frame_modbusRTU::calcCRC16(char* buffer, uint8_t size){
+    short crc16 = CRC16VALUE;
+    for (uint8_t i = 0; i < size; i++) {
+        crc16 ^= (short)buffer[i];                  // bitwise XOR of each byte in buffer with the CRC16VALUE
+        for (uint8_t j = 0; j < 8; j++) {           // iterate through bits of the current byte 
+            if (crc16 & 0x0001) {                   // if lsb of crc16 is true, devide by 2 (shift right by 1 bit) ands XOR with CRC16-Poly
+                crc16 = (crc16 >> 1) ^ CRC16MASK;   
+            } else {
+                crc16 >>= 1;                        // if lsb is false, devide by 2 (shift right by 1 bit)
+            }
+        }
+    }
+    return crc16;
+};
 
-// Check the CRC16-value for teh given buffer 
-bool Frame_modbusRTU::checkCRC16(unsigned char* buffer ,short CRC){};
+// Check the CRC16-value for the given buffer 
+bool Frame_modbusRTU::checkCRC16(char* buffer, uint8_t size){
+    return calcCRC16(buffer, size) == 0;
+};
