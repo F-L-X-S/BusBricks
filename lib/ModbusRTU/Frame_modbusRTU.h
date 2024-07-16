@@ -13,7 +13,7 @@
 
 #define PREFIXSIZE 2    // two bytes Prefix (Device-adress, modbus-functioncode)
 #define SUFFIXSIZE 2    // two bytes Suffix (CRC HighByte / LowByte)
-#define CRC16MASK 0xA001  
+#define CRC16MASK 0xA001
 #define CRC16VALUE 0xFFFF
 
 class Frame_modbusRTU: public Frame{
@@ -28,14 +28,14 @@ class Frame_modbusRTU: public Frame{
         ~Frame_modbusRTU();
 
         // Check the CRC16-value for teh given buffer 
-        bool checkCRC16(char* buffer, uint8_t size);
+        bool checkCRC16();
 
         // Get the Modbus-RTU-function-code of the frame-instance 
-        char* getFunctionCode();
+        char getFunctionCode();
 
     private:
-        char* slaveId;
-        char* functionCode;
+        char slaveId = '\0';
+        char functionCode = '\0';
 
         // Convert the given Content (PDU) to Representation (Frame)
         void content_to_rep()  override;
@@ -44,7 +44,7 @@ class Frame_modbusRTU: public Frame{
         void rep_to_content() override;
 
         // Calculate the CRC16-value of the given buffer 
-        short calcCRC16(char* buffer , uint8_t size );
+        short calcCRC16(char* buffer, uint8_t size);
 
         // Copy the representation pointing to an outside defined char-array to heap-memory
         // has to be called to ensure, that destructor is deleting from heap and not from stack
