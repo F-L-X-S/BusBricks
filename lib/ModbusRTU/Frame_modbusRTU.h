@@ -44,7 +44,7 @@ class Frame_modbusRTU: public Frame{
         void rep_to_content() override;
 
         // Calculate the CRC16-value of the given buffer 
-        short calcCRC16(char* buffer, uint8_t size);
+        unsigned short calcCRC16(char* buffer, uint8_t size);
 
         // Copy the representation pointing to an outside defined char-array to heap-memory
         // has to be called to ensure, that destructor is deleting from heap and not from stack

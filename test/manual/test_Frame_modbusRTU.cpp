@@ -1,7 +1,7 @@
 #include <Frame_modbusRTU.h>
 
-#define SLAVEID '1'
-#define FUNCTIONCODE '1'
+#define SLAVEID '9'
+#define FUNCTIONCODE 'm'
 
 int main() {
     // Devicesettings 
@@ -9,7 +9,7 @@ int main() {
     char functionCode = FUNCTIONCODE;
 
     // Create a Modbus-RTU Frame from the Message-PDU 
-    pduString msg_pdu = "1";
+    pduString msg_pdu = "123 Hello to the World!";
     Frame_modbusRTU frame_from_pdu(&msg_pdu, &slaveId, &functionCode);
 
     // Print Frame created from PDU (Content)
