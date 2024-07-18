@@ -22,51 +22,37 @@
 
 template<typename interface_type>                                       
 class CommInterface{
-    private:
-        interface_type* interface;
-        uint32_t* baudrate;
+    protected:
+        interface_type interface;
+        uint32_t baudrate;
         std::string* sendBuffer = nullptr;                              // set to nullptr if Frame was sent 
         std::string* receiveBuffer = nullptr;                           // set to nullptr if Frame was copied to destination
 
-    protected:
         // Send a Frame 
         // True, if a frame was send successfully 
-        virtual bool send(){                                            // implementation of sending a Frame has to be done in the derived class
-            if (sendBuffer!=nullptr){
-                // example implementation for sending 
-                std::cout<<"Sending:\t"<<sendBuffer<<std::endl;        
-                return true;
-            }
-            else{
-                return false;
-            }
-        };
+        virtual bool send() = 0;                                        // implementation of sending a Frame has to be done in the derived class
+        
 
         // Receive a Frame 
         // True, if a new Frame was received
-        virtual bool receive(){                                         // implementation of receiving a Frame has to be done in the derived class
-            // example implementation for receiving 
-            std::cout<<"Receiving:\tExampleframe"<<std::endl;           
-            *receiveBuffer = "Exampleframe";
-            return true;
-        };
+        virtual bool receive() = 0;                                     // implementation of receiving a Frame has to be done in the derived class
 
         // Execution-order for a single send-receive-cycle
         virtual void CommunicationCycle(){                                     
             // Receiving
-            if receive() {
+            if (receive()) {
                 receiveBuffer = nullptr;                                // set the receive-buffer to nullptr after a new frame was received 
             };
 
             // Sending
-            if send(){
+            if (send()){
                 sendBuffer = nullptr;                                   // set the send-buffer to nullptr after the frame, pointed to, was send 
             }; 
         };
 
     public:
         // Construct Communication-Interface 
-        CommInterface(interface_type* interface, uint32_t* baudrate): interface(interface), baudrate(baudrate){} 
+        CommInterface(interface_type interface, uint32_t baudrate): interface(interface), baudrate(baudrate){} 
 
         // Setup the Interface, has to be called in Setup-function
         virtual void setup_interface()=0;
