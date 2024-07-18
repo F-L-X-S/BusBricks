@@ -11,6 +11,7 @@
 #endif
 
 // Template for defining a Class for mapping a generic (byte-formatted) representation to a processable data-structure
+// class-attributes are a copy of the arguments passed to the constructor (call-by-value)
 template<typename content_type, typename representation_type>
 class Content {
 public: 

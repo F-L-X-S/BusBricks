@@ -9,7 +9,7 @@
     using namespace std;
 #endif
 
-#include <Comm_interface.h>
+#include <CommInterface.h>
 #include <Service.h>
 #include <ServiceCluster.h>
 
@@ -18,10 +18,10 @@
 // Template for generic Interface
 // The derived class defines the handling of incoming frames from communication-interface to the services (associated by service-id)
 // and the conversion from PDU provided by Services to frames getting sent by the communication-interface
-template<typename comm_interface_type>                                       
+template<typename commInterface_type>                                       
 class Interface{
     private:
-        Comm_interface<comm_interface_type> comm_interface;             // Communication-Interface 
+        CommInterface<commInterface_type> comm_interface;               // Communication-Interface 
         ServiceClusterBase services;                                    // ServiceCluster containing the Services associated with the Interface 
         bool send(){
 
