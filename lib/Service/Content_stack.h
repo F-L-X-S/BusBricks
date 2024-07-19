@@ -25,7 +25,7 @@ public:
 
     // Add element to stack
     // True if successful
-    bool addElement(const content_class& element){                                          
+    bool addElement(content_class element){                                          
         if (size >= MaxSize) {
             return false;}                                              // return false, if stacksize has reached maximum 
         elements[size] = element;
@@ -59,7 +59,15 @@ public:
             return elements[size+index];                                // neg. index: return element indexed from end of stack (size)
         }
         return elements[index];                                         // pos. index: return element indexed from beginning of stack (0)
-    };                      
+    };
+
+    // Check if the Stack is empty 
+    bool empty(){
+        if (size == 0){
+            return true;
+        }
+        return false;
+    }                      
 };
 
 #endif // CONTENT_STACK_H

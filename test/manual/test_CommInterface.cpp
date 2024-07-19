@@ -1,6 +1,8 @@
 #include <CommInterface.h>
 #include <Content_stack.h>
 
+#define STACKSIZE 3
+
 class ExmplCommInterface: public CommInterface<uint8_t>{
     private:
         // initialize the interface counter as example for setup
@@ -12,7 +14,8 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
         // Send the Frame from Send-buffer
         bool send() override {
             if (sendBuffer!=nullptr){
-                std::cout<<"Sending:\t"<<sendBuffer<<std::endl;        
+                outgoingFrame = *sendBuffer;
+                std::cout<<"Sending:\t"<<outgoingFrame<<std::endl;        
                 return true;
             }
             else{
@@ -25,6 +28,7 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
             if (incomingFrame != ""){
                 std::cout<<"Receiving:\t"<<incomingFrame<<std::endl;           
                 *receiveBuffer = incomingFrame;
+                incomingFrame = "";
                 return true;
             }else{
                 return false;
@@ -43,10 +47,10 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
 // Simulate an Answering Frame from the Bus
 std::string simulateAnswer(std::string outgoingFrame){
     std::string incomingFrame = "";
-    if (outgoingFrame=="first outgoing frame")
+    if (outgoingFrame == "1nd outgoing Frame")
     {
         incomingFrame = "first incoming Answer";
-    }else if (outgoingFrame=="second outgoing frame")
+    }else if (outgoingFrame=="2nd outgoing Frame")
     {
             incomingFrame = "second incoming Answer";
     };
@@ -54,18 +58,27 @@ std::string simulateAnswer(std::string outgoingFrame){
 };
 
 int main() {
-    // Example Sendstack with 3 elements
-    Content_stack<std::string, 3> sendStack;
-    sendStack.addElement("first outgoing frame");
-    sendStack.addElement("seconde outgoing frame");
-
+    // Example Sendstack
+    Content_stack<std::string, STACKSIZE> sendStack;
+    for (size_t i = 0; i < STACKSIZE; i++)
+    {
+        std::string frame = std::to_string(i) + "nd outgoing Frame";
+        sendStack.addElement(frame);
+    }
 
     // Example Rec-Stack with 3 elements
-    std::string* rec_element;
-    Content_stack<std::string, 3> recStack;
+    Content_stack<std::string, STACKSIZE> recStack;
 
     // instantiate the Communication-Interface 
     ExmplCommInterface comm_interface; 
+
+    // initialize Sending
+    std::string element = sendStack.getElement();
+    comm_interface.sendNewFrame(&element);
+
+    // initialize Receiving
+    std::string rec_element;
+    comm_interface.getReceivedFrame(&rec_element);
 
     // Simulate Communication-Cycles
     for (int i = 0; i < 10; i++)
@@ -76,15 +89,17 @@ int main() {
         {
             if (comm_interface.finishedSending()){
                 sendStack.deleteElement();
-                std::string element = sendStack.getElement();
+                if (!sendStack.empty())
+                {
+                    element = sendStack.getElement();
+                };
                 comm_interface.sendNewFrame(&element);
             };
 
             if (comm_interface.receivedNewFrame())
             {
-                recStack.addElement(*rec_element);          // Add the received element to the stack 
-                rec_element = new std::string;              // create new memory for next element 
-                comm_interface.getReceivedFrame(rec_element);
+                recStack.addElement(rec_element);          // Add the received element to the stack 
+                comm_interface.getReceivedFrame(&rec_element);
             }
             
             comm_interface.incomingFrame = simulateAnswer(comm_interface.outgoingFrame);
