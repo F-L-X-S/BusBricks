@@ -11,6 +11,7 @@
                 "-I${workspaceFolder}/lib/Message_service",
                 "-I${workspaceFolder}/lib/Frame",  
                 "-I${workspaceFolder}/lib/ModbusRTU",  
+                "-I${workspaceFolder}/lib/Interface",  
                 "-g",
                 "${file}", 
                 "${workspaceFolder}/lib/**/*.cpp", 
