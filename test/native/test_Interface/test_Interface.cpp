@@ -1,7 +1,8 @@
-#include <CommInterface.h>
-#include <Content_stack.h>
+#include<CommInterface.h>
+#include<Content_stack.h>
+#include<unity.h>
 
-#define STACKSIZE 3
+// ---------------------------------------Test CommInterface---------------------------------------
 
 // ExmplCommInterface-Class as an exemple implementation of an CommInterface-Template Based Instance 
 // with interface-type is an integer (instead of e.g. SoftwareSerial)
@@ -17,8 +18,7 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
         // Send the Frame from Send-buffer
         bool send() override {
             if (sendBuffer!=nullptr){
-                outgoingFrame = *sendBuffer;                        // set the outgoing frame to the value stored in the sendbuffer
-                std::cout<<"Sending:\t"<<outgoingFrame<<std::endl;        
+                outgoingFrame = *sendBuffer;                            // set the outgoing frame to the value stored in the sendbuffer     
                 return true;
             }
             else{
@@ -28,9 +28,8 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
 
         // Receive a Frame and write it to Receive-buffer
         bool receive() override {                                         
-            if (incomingFrame != ""){
-                std::cout<<"Receiving:\t"<<incomingFrame<<std::endl;           
-                *receiveBuffer = incomingFrame;                     // copy the value of the incoming frame to the receivebuffer                               
+            if (incomingFrame != ""){       
+                *receiveBuffer = incomingFrame;                         // copy the value of the incoming frame to the receivebuffer                               
                 return true;
             }else{
                 return false;
@@ -43,32 +42,16 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
         std::string outgoingFrame = "";                                 // Simulation for an outgoing Frame
 };
 
-
-
-// Simulate an Answering Frame from the Bus
-std::string simulateAnswer(std::string outgoingFrame){
-    std::string incomingFrame = "";                                     // initialize the simulated incoming frame
-    if (outgoingFrame == "1nd outgoing Frame")
-    {
-        incomingFrame = "first incoming Answer";                        // Respond to the first frame sent
-    }else if (outgoingFrame=="2nd outgoing Frame")
-    {
-            incomingFrame = "second incoming Answer";                   // Respond to the second frame sent
-    };
-    return incomingFrame;                                               // return the simulated response 
-};
-
-int main() {
+void test_CommInterface_sending(void) {
+    #define STACKSIZE 3
+    std::string frame;
     // Example Sendstack
     Content_stack<std::string, STACKSIZE> sendStack;
     for (size_t i = 0; i < STACKSIZE; i++)
     {
-        std::string frame = std::to_string(i) + "nd outgoing Frame";
+        frame = "outgoing Frame no. "+std::to_string(i);    // initialize Sendstack with 3 exampleframes 
         sendStack.addElement(frame);
     }
-
-    // Example Rec-Stack with 3 elements
-    Content_stack<std::string, STACKSIZE> recStack;
 
     // instantiate the Communication-Interface 
     ExmplCommInterface comm_interface; 
@@ -77,16 +60,9 @@ int main() {
     std::string send_element = sendStack.getElement();
     comm_interface.sendNewFrame(&send_element);
 
-    // initialize Receiving
-    std::string rec_element;
-    comm_interface.getReceivedFrame(&rec_element);
-
     // Simulate Communication-Cycles
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 5; i++)
     {
-        // Print Cycle-count
-        std::cout<<"\nCycle:"<<i<<std::endl;
-
         // Handle Sendbuffer
         if (comm_interface.finishedSending()){
             sendStack.deleteElement();                          // Delete the sent element from stack
@@ -97,23 +73,31 @@ int main() {
             };
             
         };
-
-        // Handle receivebuffer
-        if (comm_interface.receivedNewFrame())
-        {
-            recStack.addElement(rec_element);               // Add the received element to the stack 
-            comm_interface.getReceivedFrame(&rec_element);  // Impart memory the received item has to be stored at 
-        }
         
         // Communicate
         comm_interface.execCommunicationCycle();            // Execute the Communication-Interfaces Comm-Cycle (Send-Receive-Cycle)
 
-        // Simulate the Response 
-        comm_interface.incomingFrame = simulateAnswer(comm_interface.outgoingFrame);
-
-        // Delete the sent Frame
-        comm_interface.outgoingFrame = "";              
+        // Check for the excepted outgoing Frame
+        if (i<STACKSIZE){
+        frame = "outgoing Frame no. "+std::to_string(i);    // Frames from Sendstack-initialization
+        TEST_ASSERT_EQUAL_STRING_MESSAGE(frame.c_str(), comm_interface.outgoingFrame.c_str(),      
+        "Outgoing Frame not as excepted");   
+        }else{
+        frame = "";                                         // Empty Frames 
+        TEST_ASSERT_EQUAL_STRING_MESSAGE(frame.c_str(), comm_interface.outgoingFrame.c_str(),      
+        "Outgoing Frame not as excepted");   
+        }
         
+        // Delete the sent Frame
+        comm_interface.outgoingFrame = "";                      
     }
+}
+
+// ---------------------------------------Run Tests---------------------------------------
+int main(int argc, char **argv) {
+    UNITY_BEGIN();
+    RUN_TEST(test_CommInterface_sending);
+    UNITY_END();
+
     return 0;
 }
