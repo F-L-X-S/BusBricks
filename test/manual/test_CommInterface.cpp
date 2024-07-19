@@ -10,11 +10,10 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
             interface = 0; 
         };
 
-
         // Send the Frame from Send-buffer
         bool send() override {
             if (sendBuffer!=nullptr){
-                outgoingFrame = *sendBuffer;
+                outgoingFrame = *sendBuffer;                        // set the outgoing frame to the value stored in the sendbuffer
                 std::cout<<"Sending:\t"<<outgoingFrame<<std::endl;        
                 return true;
             }
@@ -27,8 +26,7 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
         bool receive() override {                                         
             if (incomingFrame != ""){
                 std::cout<<"Receiving:\t"<<incomingFrame<<std::endl;           
-                *receiveBuffer = incomingFrame;
-                incomingFrame = "";
+                *receiveBuffer = incomingFrame;                     // copy the value of the incoming frame to the receivebuffer                               
                 return true;
             }else{
                 return false;
@@ -37,24 +35,23 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
 
     public:
         ExmplCommInterface(): CommInterface(0, 9600){}                  // Example Interface with value 0 (only used for cycle counting), Example Baudrate of 9600 bps
-        std::string incomingFrame = "";                                     // Simulation for an incoming Frame
-        std::string outgoingFrame = "";                                     // Simulation for an outgoing Frame
-
+        std::string incomingFrame = "";                                 // Simulation for an incoming Frame
+        std::string outgoingFrame = "";                                 // Simulation for an outgoing Frame
 };
 
 
 
 // Simulate an Answering Frame from the Bus
 std::string simulateAnswer(std::string outgoingFrame){
-    std::string incomingFrame = "";
+    std::string incomingFrame = "";                                     // initialize the simulated incoming frame
     if (outgoingFrame == "1nd outgoing Frame")
     {
-        incomingFrame = "first incoming Answer";
+        incomingFrame = "first incoming Answer";                        // Respond to the first frame sent
     }else if (outgoingFrame=="2nd outgoing Frame")
     {
-            incomingFrame = "second incoming Answer";
+            incomingFrame = "second incoming Answer";                   // Respond to the second frame sent
     };
-    return incomingFrame;
+    return incomingFrame;                                               // return the simulated response 
 };
 
 int main() {
@@ -83,35 +80,35 @@ int main() {
     // Simulate Communication-Cycles
     for (int i = 0; i < 10; i++)
     {
+        // Print Cycle-count
         std::cout<<"\nCycle:"<<i<<std::endl;
-        // only in even cycles
-        if (i%2 == 0)
-        {
-            if (comm_interface.finishedSending()){
-                sendStack.deleteElement();
-                if (!sendStack.empty())
-                {
-                    element = sendStack.getElement();
-                };
-                comm_interface.sendNewFrame(&element);
-            };
 
-            if (comm_interface.receivedNewFrame())
+        // Handle Sendbuffer
+        if (comm_interface.finishedSending()){
+            sendStack.deleteElement();                      // Delete the sent element from stack
+            if (!sendStack.empty())
             {
-                recStack.addElement(rec_element);          // Add the received element to the stack 
-                comm_interface.getReceivedFrame(&rec_element);
-            }
+                element = sendStack.getElement();           // Get the next Element to be sent 
+                comm_interface.sendNewFrame(&element);      // Impart Frame that has to be sent next 
+            };
             
-            comm_interface.incomingFrame = simulateAnswer(comm_interface.outgoingFrame);
         };
 
-
-        // Communicate
-        comm_interface.execCommunicationCycle();
-        if (comm_interface.outgoingFrame != "")
+        // Handle receivebuffer
+        if (comm_interface.receivedNewFrame())
         {
-            std::cout<<"Outgoing Frame:"<<comm_interface.outgoingFrame<<std::endl;
-        };    
+            recStack.addElement(rec_element);               // Add the received element to the stack 
+            comm_interface.getReceivedFrame(&rec_element);  // Impart memory the received item has to be stored at 
+        }
+        
+        // Communicate
+        comm_interface.execCommunicationCycle();            // Execute the Communication-Interfaces Comm-Cycle (Send-Receive-Cycle)
+
+        // Simulate the Response 
+        comm_interface.incomingFrame = simulateAnswer(comm_interface.outgoingFrame);
+
+        // Delete the sent Frame
+        comm_interface.outgoingFrame = "";              
         
     }
     return 0;
