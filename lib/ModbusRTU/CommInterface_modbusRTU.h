@@ -13,6 +13,10 @@
 
 #define MAXFRAMESIZE 256
 
+// The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSeria as interface-type
+// Monitors modbus-specific timeouts 
+// Ensures correct data-transfer between standardized Frame-Objects in the Interface-Stack and SoftwareSerial
+// Does NOT inspect any frame-Content (task of the Frame-class) 
 class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
     public:
         // Construct Communication-Interface 
@@ -40,7 +44,8 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
         unsigned long _frameTimeout;                    // min time between two Frames
         unsigned long _recTimeout = 100;                // time to wait for response during the receive-cycle
 
-        void _calculateTimeouts(unsigned long baud);
+        void _calculateTimeouts(unsigned long baud);    // Calculate all timeouts based on the specified baudrate
+        void _clearRxBuffer();                          // Clear the receive-buffer 
 
 };
 

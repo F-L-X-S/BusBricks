@@ -22,10 +22,20 @@ void CommInterface_modbusRTU::setup_interface(){
 
 // Sending
 bool CommInterface_modbusRTU::send(){
-
+    if (sendBuffer!=nullptr){                                       // check, if the sendbuffer-ptr is set to a valid memory
+        interface.write(*sendBuffer->c_str());                      // write the byte-converted string to the interface  
+        interface.flush();                                          // ensure, interfaces sending-buffer is completely empty before returning
+        return true;
+    }
+    else{
+        return false;
+    }
 };
 
-// Receiving
+// Receiving 
+// the received Frame is directly written to the specified receive-buffer
+// after a frame was received within the receive-timeout, the function returns true
+// the Comm-Interfece is not checking any Content of the frame 
 bool CommInterface_modbusRTU::receive(){
     unsigned long startTime = millis();                             // Time, the function gets called
     uint16_t numBytes = 0;                                          // Received number of bytes
@@ -58,9 +68,20 @@ bool CommInterface_modbusRTU::receive(){
     return true;
 };
 
+// Clear the Receive-buffer 
+void CommInterface_modbusRTU::_clearRxBuffer() {
+  unsigned long startTime = micros();
+   while (micros() - startTime < _frameTimeout) {                   // Check for a frame-timeout
+    if (interface.available() > 0) {                                
+      startTime = micros();                                         // update start-timestamp
+      interface.read();                                             // delete one byte from rec-buffer
+    }
+  };
+}
+
 // Calculate the Timeouts
 void CommInterface_modbusRTU::_calculateTimeouts(unsigned long baudrate) {
-  unsigned long bitsPerChar = 11;                                       // Bits per character defined in specification
+  unsigned long bitsPerChar = 11;                                   // Bits per character defined in specification
   unsigned long timePerChar = (bitsPerChar * 1000000) / baudrate;
   if (baudrate <= 19200) {
     // Set charTimeout to 1.5 times the time to send one character
