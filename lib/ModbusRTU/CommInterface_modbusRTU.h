@@ -11,13 +11,12 @@
 #include <CommInterface.h>
 #include <SoftwareSerial.h>
 
-#define SILENCE = 1750;                     // Silence-Time predefined as 1750 microseconds (for baudrates over 19500 bps)
-#define TIMEOUT=750;                        // Timeout defined as 750 microseconds (for baudrates over 19500 bps)
+#define MAXFRAMESIZE 256
 
 class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
     public:
         // Construct Communication-Interface 
-        CommInterface_modbusRTU(byte rxPin, byte txPin, uint8_t baudrate);
+        CommInterface_modbusRTU(byte rxPin, byte txPin, uint8_t baudrate, char deviceId = '\0');
 
         // Destroy Communication-Interface
         ~CommInterface_modbusRTU();
@@ -33,9 +32,15 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
         bool receive() override;
 
     private:
-        byte rxPin;
-        byte txPin;
-        uint8_t baudrate;
+        byte rxPin;                                     // Receive-Pin 
+        byte txPin;                                     // Transmit-Pin
+        char deviceId;                                  // Modbus-RTU Slave ID, default nullterminator for mastermode
+        unsigned long baudrate;                         // Baudrate 
+        unsigned long _charTimeout;                     // Timeout between two chars received 
+        unsigned long _frameTimeout;                    // min time between two Frames
+        unsigned long _recTimeout = 100;                // time to wait for response during the receive-cycle
+
+        void _calculateTimeouts(unsigned long baud);
 
 };
 
