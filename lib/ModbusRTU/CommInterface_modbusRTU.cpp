@@ -41,7 +41,7 @@ bool CommInterface_modbusRTU::receive(){
     uint16_t numBytes = 0;                                          // Received number of bytes
     bool receivingFlag = (deviceId = '\0');                         // interface started receiving a frame (Slavemode: only if adressed to the device-ID, Mastermode: each frame) 
 
-    // Wait fo a relevant Frame 
+    // Wait for a relevant Frame 
     while (!interface.available()) {
     if (millis() - startTime >= _recTimeout) {
       return false;                                                 // No Frame received in specified timespan
@@ -67,6 +67,13 @@ bool CommInterface_modbusRTU::receive(){
     // Frame received and written to specified rec-buffer
     return true;
 };
+
+
+// Execute the Communication-Cycle
+void CommInterface_modbusRTU::execCommunicationCycle(){
+    communicationCycle();                                       // one-time execution of the Send-Rec-Cycle 
+    _clearRxBuffer();                                           // Clear the softwareSerial Rec-buffer
+}
 
 // Clear the Receive-buffer 
 void CommInterface_modbusRTU::_clearRxBuffer() {

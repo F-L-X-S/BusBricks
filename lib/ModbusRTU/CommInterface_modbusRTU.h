@@ -25,10 +25,13 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
         // Destroy Communication-Interface
         ~CommInterface_modbusRTU();
 
+        // Execute the Communication-Cycle
+        void execCommunicationCycle();
+
+    protected:
         // initialize the interface counter as example for setup
         void setup_interface() override;
-    
-    protected:
+
         // Send the Frame from Send-buffer
         bool send() override;
 

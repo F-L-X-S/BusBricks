@@ -38,7 +38,7 @@ class CommInterface{
         virtual bool receive() = 0;                                     // implementation of receiving a Frame has to be done in the derived class
 
         // Execution-order for a single send-receive-cycle
-        virtual void CommunicationCycle(){                                     
+        virtual void communicationCycle(){                                     
             // Receiving
             if (receive()) {
                 receiveBuffer = nullptr;                                // set the receive-buffer to nullptr after a new frame was received 
@@ -82,7 +82,7 @@ class CommInterface{
 
         // Execute the Communication-Cycle
         void execCommunicationCycle(){
-            CommunicationCycle();
+            communicationCycle();
         }
 };
 #endif // COMMINTERFACE_H
