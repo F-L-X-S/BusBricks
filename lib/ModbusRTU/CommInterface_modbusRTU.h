@@ -11,7 +11,7 @@
 #include <CommInterface.h>
 #include <SoftwareSerial.h>
 
-#define MAXFRAMESIZE 256
+#define MAXFRAMESIZE 256 //Max number of Bytes a frame can contain
 
 // The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSeria as interface-type
 // Monitors modbus-specific timeouts 
@@ -28,7 +28,6 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
         // Execute the Communication-Cycle
         void execCommunicationCycle();
 
-    protected:
         // initialize the interface counter as example for setup
         void setup_interface() override;
 
