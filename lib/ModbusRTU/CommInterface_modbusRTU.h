@@ -13,7 +13,7 @@
 
 #define MAXFRAMESIZE 256 //Max number of Bytes a frame can contain
 
-// The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSeria as interface-type
+// The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interface-type
 // Monitors modbus-specific timeouts 
 // Ensures correct data-transfer between standardized Frame-Objects in the Interface-Stack and SoftwareSerial
 // Does NOT inspect any frame-Content (task of the Frame-class) 

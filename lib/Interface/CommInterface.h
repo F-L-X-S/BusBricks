@@ -52,7 +52,7 @@ class CommInterface{
 
     public:
         // Construct Communication-Interface 
-        CommInterface(interface_type interface, uint32_t baudrate): interface(interface), baudrate(baudrate){} 
+        CommInterface(interface_type interface, uint32_t baudrate): interface(interface), baudrate(baudrate){}; 
 
         // Setup the Interface, has to be called in Setup-function
         virtual void setup_interface()=0;

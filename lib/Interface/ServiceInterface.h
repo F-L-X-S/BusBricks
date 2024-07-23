@@ -23,9 +23,9 @@
 //  -type of the Communication-Interface (e.g. SoftwareSerial, Wire...)
 //  -type of the frames to be send as a derived Class of the Frame-Class (e.g. Frame_modbusRTU)
 template<typename commInterface_type, typename frameType>                                       
-class Interface{
+class ServiceInterface{
     private:
-        CommInterface<commInterface_type> comm_interface;               // Communication-Interface 
+        commInterface_type comm_interface;                              // Communication-Interface 
         ServiceClusterBase services;                                    // ServiceCluster containing the Services associated with the Interface 
         Content_stack<frameType, STACKSIZE> recStack;                   // stack for received frames
         Content_stack<frameType, STACKSIZE> sendStack;                  // stack for frames to send next
@@ -41,16 +41,11 @@ class Interface{
         // Implemented in derived Class, depending on frametype
         virtual void addPDU_to_services()=0;
 
-    public:
-        Interface(comm_interface_type communication_interface, ServiceCluster* services):
-                comm_interface(communication_interface), 
-                services(services) {} 
-
-        void communicate(){
-            // Execute the Communication-interfaces Send-Rec-Cycle
-            comm_interface.execCommunicationCycle();
-
-            // Handle sendbuffer
+        // Update stacks interacting with Communication-Interface:
+        // Add the last item from the sendstack to the Comminterface, delete it after sending
+        // Add items received by the CommInterface to the Receivestack
+        void updateCommStacks(){
+            // Handle sendstack
             if (comm_interface.finishedSending()){
                 if (sendItem == sendStack.getElement())
                 {
@@ -71,12 +66,22 @@ class Interface{
                 }
                 comm_interface.getReceivedFrame(&recItem);          // Impart memory the received item has to be stored at 
             }
-            
-            // Add all PDUs from Rec-stack to the services
-            addPDU_to_services();
-
-            // Refill the sendstack with PDUs from the services 
-            getPDU_from_services();
         };
+
+
+    public:
+        // Constructor 
+        Interface(comm_interface_type communication_interface, ServiceCluster* services):
+                comm_interface(communication_interface), 
+                services(services) {};
+
+        // Execute all relevant tasks for transferring data between CommInterface and Services:
+        // - Get PDU from Services
+        // - Add PDU to Services
+        // - Update communication-stacks
+        // - Execute the CommInterfaces Comm-cycle 
+        //
+        // Has to be implemented in the derived class
+        virtual void communicate() = 0;        
 };
 #endif // INTERFACE_H
