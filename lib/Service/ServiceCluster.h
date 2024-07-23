@@ -39,6 +39,11 @@ class ServiceCluster: public ServiceClusterBase{
             }
             return nullptr;     // no Service with given ID 
         }
+
+        // Function to return the number of services
+        uint8_t getNumberOfServices() const {
+            return number_of_services;
+        }
 };
 
 #endif // SERVICECLUSTER_H

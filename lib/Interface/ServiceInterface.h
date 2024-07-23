@@ -24,15 +24,29 @@
 //  -type of the frames to be send as a derived Class of the Frame-Class (e.g. Frame_modbusRTU)
 template<typename commInterface_type, typename frameType>                                       
 class ServiceInterface{
-    private:
-        commInterface_type comm_interface;                              // Communication-Interface 
-        ServiceClusterBase services;                                    // ServiceCluster containing the Services associated with the Interface 
+    public:
+        // Constructor for Service-Interface 
+        ServiceInterface(comm_interface_type* comm_interface, ServiceClusterBase* services):
+                comm_interface(comm_interface), 
+                services(services) {};
+
+        // Execute all relevant tasks for transferring data between CommInterface and Services:
+        // - Get PDU from Services
+        // - Add PDU to Services
+        // - Update communication-stacks
+        // - Execute the CommInterfaces Comm-cycle 
+        //
+        // Has to be implemented in the derived class
+        virtual void communicate() = 0;        
+
+    protected:
+        commInterface_type* comm_interface;                              // Communication-Interface 
+        ServiceClusterBase* services;                                    // ServiceCluster containing the Services associated with the Interface 
         Content_stack<frameType, STACKSIZE> recStack;                   // stack for received frames
         Content_stack<frameType, STACKSIZE> sendStack;                  // stack for frames to send next
         frameType sendItem;                                             // Item to be sent next
         frameType recItem;                                              // Item received last
 
-    protected:
         // Add all PDUs provided by the services to the sendstack
         // Implemented in derived Class, depending on frametype
         virtual void getPDU_from_services()=0;
@@ -67,21 +81,5 @@ class ServiceInterface{
                 comm_interface.getReceivedFrame(&recItem);          // Impart memory the received item has to be stored at 
             }
         };
-
-
-    public:
-        // Constructor 
-        Interface(comm_interface_type communication_interface, ServiceCluster* services):
-                comm_interface(communication_interface), 
-                services(services) {};
-
-        // Execute all relevant tasks for transferring data between CommInterface and Services:
-        // - Get PDU from Services
-        // - Add PDU to Services
-        // - Update communication-stacks
-        // - Execute the CommInterfaces Comm-cycle 
-        //
-        // Has to be implemented in the derived class
-        virtual void communicate() = 0;        
 };
 #endif // INTERFACE_H

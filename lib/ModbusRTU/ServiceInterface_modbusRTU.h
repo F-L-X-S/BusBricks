@@ -15,7 +15,7 @@
 class ServiceInterface_modbusRTU: public ServiceInterface<CommInterface_modbusRTU, Frame_modbusRTU>{
     public:
         // Construct Service-Interface 
-        ServiceInterface_modbusRTU(ServiceClusterBase* services, CommInterface_modbusRTU comm_interface);
+        ServiceInterface_modbusRTU(ServiceClusterBase* services, CommInterface_modbusRTU* comm_interface);
 
         // Destroy Service-Interface 
         ~ServiceInterface_modbusRTU();
