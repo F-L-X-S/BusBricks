@@ -14,6 +14,8 @@
 class ServiceClusterBase{
     public:
         virtual ServiceBase* getService_byID(uint8_t ServiceID)=0;
+        virtual ServiceBase* getService_byPos(uint8_t ServicePosition)=0;
+        virtual uint8_t getNumberOfServices() const =0;
         virtual ~ServiceClusterBase(){};
 };
 
@@ -40,8 +42,16 @@ class ServiceCluster: public ServiceClusterBase{
             return nullptr;     // no Service with given ID 
         }
 
+        // Get a Pointer to the Service at the given position in cluster (0-based)
+        ServiceBase* getService_byPos(uint8_t ServicePosition) override {
+            if (services[ServicePosition]) {
+                return services[ServicePosition];
+            }
+            return nullptr;     // no Service with given ID 
+        }
+
         // Function to return the number of services
-        uint8_t getNumberOfServices() const {
+        uint8_t getNumberOfServices() const override {
             return number_of_services;
         }
 };
