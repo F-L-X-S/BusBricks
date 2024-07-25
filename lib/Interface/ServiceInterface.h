@@ -44,8 +44,8 @@ class ServiceInterface{
         ServiceClusterBase* services;                                    // ServiceCluster containing the Services associated with the Interface 
         Content_stack<frameType, STACKSIZE> recStack;                   // stack for received frames
         Content_stack<frameType, STACKSIZE> sendStack;                  // stack for frames to send next
-        frameType sendItem;                                             // Item to be sent next
-        frameType recItem;                                              // Item received last
+        frameString sendItem;                                             // Item to be sent next
+        frameString recItem;                                              // Item received last
 
         // Add all PDUs provided by the services to the sendstack
         // Implemented in derived Class, depending on frametype
