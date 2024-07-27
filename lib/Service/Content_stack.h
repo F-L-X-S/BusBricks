@@ -51,23 +51,27 @@ public:
     // neg. index: return element indexed from end of stack (size)
     // pos. index: return element indexed from beginning of stack (0)
     // True if successful
-    content_class getElement(int index = 0){                             
+    content_class* getElement(int index = 0){                             
         if (index >= size || size+index<0) {                            
-            return false;}  
+            return nullptr;}  
 
         if (index<0){
-            return elements[size+index];                                // neg. index: return element indexed from end of stack (size)
+            return &elements[size+index];                                // neg. index: return element indexed from end of stack (size)
         }
-        return elements[index];                                         // pos. index: return element indexed from beginning of stack (0)
+        return &elements[index];                                         // pos. index: return element indexed from beginning of stack (0)
     };
 
     // Check if the Stack is empty 
     bool empty(){
-        if (size == 0){
-            return true;
-        }
-        return false;
-    }                      
+        bool retVal = (size == 0) ? true:false;
+        return retVal;
+    }          
+
+    // Check if the Stack is full 
+    bool full(){
+        bool retVal = (size == MaxSize) ? true:false;
+        return retVal;
+    }            
 };
 
 #endif // CONTENT_STACK_H
