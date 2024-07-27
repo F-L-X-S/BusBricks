@@ -16,13 +16,20 @@
 #define CRC16MASK 0xA001
 #define CRC16VALUE 0xFFFF
 
+// Class for defining the structure of the Modbus-RTU-Frame
+// Constructors:
+// Frame_modbusRTU(pduString* pdu, char* slaveId, char* functionCode)
+// Frame_modbusRTU(frameString* frame)
 class Frame_modbusRTU: public Frame{
     public:
         // Construct Modbus-RRU-Frame from given PDU (Content)
         Frame_modbusRTU(pduString* pdu, char* slaveId, char* functionCode);
 
-        // Construct Modbus-RRU-Frame from given Byte-Frame (Representation)
+        // Construct Modbus-RTU-Frame from given Byte-Frame (Representation)
         Frame_modbusRTU(frameString* frame);
+
+        // Construct empty Modbus-RTU-Frame 
+        Frame_modbusRTU();
 
         // Deconstructor 
         ~Frame_modbusRTU();

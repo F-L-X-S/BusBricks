@@ -6,12 +6,16 @@ Frame_modbusRTU::Frame_modbusRTU(pduString* pdu, char* slaveId, char* functionCo
     content_to_rep();
 };
 
-// Construct Modbus-RRU-Frame from given Byte-Frame (Representation)
+// Construct Modbus-RTU-Frame from given Byte-Frame (Representation)
 Frame_modbusRTU::Frame_modbusRTU(frameString* frame) : 
     Frame(frame) {
     copy_to_heap(&representation);
     rep_to_content();
 };
+
+// Construct empty Modbus-RTU-Frame 
+Frame_modbusRTU::Frame_modbusRTU() : 
+    Frame() {};
 
 // Deconstructor 
 Frame_modbusRTU::~Frame_modbusRTU(){
