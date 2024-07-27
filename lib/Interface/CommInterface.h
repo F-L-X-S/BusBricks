@@ -11,6 +11,32 @@
 
 #include<Frame.h>
 
+class CommInterfaceBase
+{
+public:
+    // Setup the Interface, has to be called in Setup-function
+    void setup_interface(){};
+
+    // Add a new Frame to the send-buffer
+    void sendNewFrame(std::string* sendFrame){};
+
+    // Check, if the Frame was sent and the CommInterface is ready to send the next Frame 
+    bool finishedSending(){};
+
+    // Define the destination, the next received Frame should be copied to 
+    void getReceivedFrame(std::string* destFrameBuffer){};
+
+    // Check, if a new Frame was received 
+    bool receivedNewFrame(){};
+
+    // Execute the Communication-Cycle
+    void execCommunicationCycle(){};
+
+    CommInterfaceBase(/* args */){};
+    ~CommInterfaceBase(){};
+};
+
+
 // Template for generic communication-interface
 // the template ensures the correct handling of send- and receive-buffers of the interface:
 //
@@ -21,7 +47,7 @@
 // recBuffer not set to nullptr:    the interface is waiting to receive a new frame to write ist to the destination, recBuffer is pointing to 
 
 template<typename interface_type>                                       
-class CommInterface{
+class CommInterface: public CommInterfaceBase{
     protected:
         interface_type interface;
         uint32_t baudrate;
