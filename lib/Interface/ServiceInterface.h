@@ -1,12 +1,10 @@
-#ifndef INTERFACE_H
-#define INTERFACE_H
+#ifndef SERVICEINTERFACE_H
+#define SERVICEINTERFACE_H
 #ifdef ARDUINO
     #include <Arduino.h>    // include Arduino-Library for platformIO-build 
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
 #else
-    #include <iostream>     // include iostream for local testing 
-    using namespace std;
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
 #endif
 
 #include <CommInterface.h>
@@ -26,7 +24,7 @@ template<typename commInterface_type, typename frameType>
 class ServiceInterface{
     public:
         // Constructor for Service-Interface 
-        ServiceInterface(comm_interface_type* comm_interface, ServiceClusterBase* services):
+        ServiceInterface(commInterface_type* comm_interface, ServiceClusterBase* services):
                 comm_interface(comm_interface), 
                 services(services) {};
 
@@ -40,12 +38,12 @@ class ServiceInterface{
         virtual void communicate() = 0;        
 
     protected:
-        commInterface_type* comm_interface;                              // Communication-Interface 
-        ServiceClusterBase* services;                                    // ServiceCluster containing the Services associated with the Interface 
-        Content_stack<frameType, STACKSIZE> recStack;                   // stack for received frames
-        Content_stack<frameType, STACKSIZE> sendStack;                  // stack for frames to send next
-        frameString sendItem;                                             // Item to be sent next
-        frameString recItem;                                              // Item received last
+        CommInterfaceBase* comm_interface;                          // Communication-Interface 
+        ServiceClusterBase* services;                               // ServiceCluster containing the Services associated with the Interface 
+        Content_stack<frameType, STACKSIZE> recStack;               // stack for received frames
+        Content_stack<frameType, STACKSIZE> sendStack;              // stack for frames to send next
+        String sendItem;                                            // Item to be sent next
+        String recItem;                                        // Item received last
 
         // Add all PDUs provided by the services to the sendstack
         // Implemented in derived Class, depending on frametype
@@ -60,26 +58,30 @@ class ServiceInterface{
         // Add items received by the CommInterface to the Receivestack
         void updateCommStacks(){
             // Handle sendstack
-            if (comm_interface.finishedSending()){
-                if (sendItem == sendStack.getElement())
+            if (comm_interface->finishedSending()){
+                Frame* frameToSend = sendStack.getElement();
+                if (sendItem == frameToSend->getFrame())
                 {
-                    sendStack.deleteElement();                      // Delete the sent element from stack (if it matches the last one sent)
+                    sendStack.deleteElement();                         // Delete the sent element from stack (if it matches the last one sent)
                 }
                 if (!sendStack.empty())
                 {
-                    sendItem = sendStack.getElement();              // Get the next Element to be sent 
-                    comm_interface.sendNewFrame(&sendItem);         // Impart Frame that has to be sent next 
+                    sendItem = frameToSend->getFrame();                // Get the next Element to be sent 
+                    String* sendItemAdr = &sendItem;
+                    comm_interface->sendNewFrame(sendItemAdr);         // Impart Frame that has to be sent next 
                 };
             };
 
             // Handle receivebuffer
-            if (comm_interface.receivedNewFrame())
+            if (comm_interface->receivedNewFrame())
             {
-                if (recItem != frameType()){                        // Item not empty 
-                    recStack.addElement(recItem);                   // Add the received element to the stack 
+                if (recItem != ""){                                 // Item not empty 
+                    frameString frameStr = recItem.c_str();         // conversion for identification as framestring in Frame-Class-Constructor
+                    frameType recItemFrame(&frameStr);              // Construct Frame-Class derived Object
+                    recStack.addElement(recItemFrame);              // Add the received element to the stack 
                 }
-                comm_interface.getReceivedFrame(&recItem);          // Impart memory the received item has to be stored at 
+                comm_interface->getReceivedFrame(&recItem);         // Impart memory the received item has to be stored at 
             }
         };
 };
-#endif // INTERFACE_H
+#endif // SERVICEINTERFACE_H

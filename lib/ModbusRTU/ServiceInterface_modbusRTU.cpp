@@ -45,7 +45,7 @@ void ServiceInterface_modbusRTU::addPDU_to_services()
 void ServiceInterface_modbusRTU::communicate()
 {
     // interact with Comm-interface
-    //updateCommStacks();   
+    updateCommStacks();   
 
     // interact with Services          
     addPDU_to_services();
