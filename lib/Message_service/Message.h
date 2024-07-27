@@ -3,13 +3,12 @@
 
 #ifdef ARDUINO
     #include <Arduino.h>    // include Arduino-Library for platformIO-build 
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
 #else
     #include <iostream>     // include iostream for local testing 
     #include <cstring>
     #include <cstdio>
-    using namespace std;
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
 #endif
 
 #include "Content.h"        // include Content-template
@@ -27,8 +26,8 @@ struct Message_content_t{
         memset(msg_text, 0, sizeof(msg_text));
     }
 
-    // Constructor with std::string parameter
-    Message_content_t(char sender_id, char receiver_id, const std::string& msg_txt, uint8_t txt_size) : 
+    // Constructor with String parameter
+    Message_content_t(char sender_id, char receiver_id, const String& msg_txt, uint8_t txt_size) : 
         sender_id(sender_id), receiver_id(receiver_id), txt_size(txt_size) {
         // Kopieren der Zeichenkette und Sicherstellen der Null-Terminierung
         strncpy(msg_text, msg_txt.c_str(), sizeof(msg_text) - 1);
@@ -37,7 +36,7 @@ struct Message_content_t{
 };
 
 // Defines the mapping of string-formatted PDU to a text-message with information for sender and receiver
-class Message: public Content<Message_content_t, std::string>
+class Message: public Content<Message_content_t, String>
 {
     public:
         // Default Constructor 
@@ -52,13 +51,13 @@ class Message: public Content<Message_content_t, std::string>
         Message(bool boolean_expression);
 
         // Constructor for creating Message from pdu
-        Message(std::string* representation);
+        Message(String* representation);
 
         // Constructor for creating Message from msg-content
         Message(Message_content_t* message_content);
 
         //string-representation
-        std::string to_string();
+        String to_string();
         
     private:
         // Create Message from byte-representation (PDU)

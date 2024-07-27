@@ -2,11 +2,9 @@
 #define COMMINTERFACE_H
 #ifdef ARDUINO
     #include <Arduino.h>    // include Arduino-Library for platformIO-build 
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
 #else
-    #include <iostream>     // include iostream for local testing 
-    using namespace std;
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
 #endif
 
 #include<Frame.h>
@@ -18,13 +16,13 @@ public:
     void setup_interface(){};
 
     // Add a new Frame to the send-buffer
-    void sendNewFrame(std::string* sendFrame){};
+    void sendNewFrame(String* sendFrame){};
 
     // Check, if the Frame was sent and the CommInterface is ready to send the next Frame 
     bool finishedSending(){};
 
     // Define the destination, the next received Frame should be copied to 
-    void getReceivedFrame(std::string* destFrameBuffer){};
+    void getReceivedFrame(String* destFrameBuffer){};
 
     // Check, if a new Frame was received 
     bool receivedNewFrame(){};
@@ -51,8 +49,8 @@ class CommInterface: public CommInterfaceBase{
     protected:
         interface_type interface;
         uint32_t baudrate;
-        std::string* sendBuffer = nullptr;                              // set to nullptr if Frame was sent 
-        std::string* receiveBuffer = nullptr;                           // set to nullptr if Frame was copied to destination
+        String* sendBuffer = nullptr;                              // set to nullptr if Frame was sent 
+        String* receiveBuffer = nullptr;                           // set to nullptr if Frame was copied to destination
 
         // Send a Frame 
         // True, if a frame was send successfully 
@@ -84,7 +82,7 @@ class CommInterface: public CommInterfaceBase{
         virtual void setup_interface()=0;
 
         // Add a new Frame to the send-buffer
-        void sendNewFrame(std::string* sendFrame){
+        void sendNewFrame(String* sendFrame){
             if (sendBuffer == nullptr)
             {
                 sendBuffer = sendFrame;                                 // set the send-buffer-ptr to the Frame, that has to be sent 
@@ -97,7 +95,7 @@ class CommInterface: public CommInterfaceBase{
         };
 
         // Define the destination, the next received Frame should be copied to 
-        void getReceivedFrame(std::string* destFrameBuffer){
+        void getReceivedFrame(String* destFrameBuffer){
             receiveBuffer = destFrameBuffer;                            // set the receive-buffer-ptr to the destination, the next received Frame should be stored at 
         };
 

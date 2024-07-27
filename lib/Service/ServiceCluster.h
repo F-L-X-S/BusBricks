@@ -2,11 +2,9 @@
 #define SERVICECLUSTER_H
 #ifdef ARDUINO
     #include <Arduino.h>    // include Arduino-Library for platformIO-build 
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
 #else
-    #include <iostream>     // include iostream for local testing 
-    using namespace std;
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
 #endif
 
 #include <Service.h>

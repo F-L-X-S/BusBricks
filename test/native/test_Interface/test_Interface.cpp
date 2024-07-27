@@ -58,7 +58,7 @@ void test_CommInterface_sending(void) {
     ExmplCommInterface comm_interface; 
 
     // initialize Sending
-    std::string send_element = sendStack.getElement();
+    std::string send_element = *(sendStack.getElement());
     comm_interface.sendNewFrame(&send_element);
 
     // Simulate Communication-Cycles
@@ -69,7 +69,7 @@ void test_CommInterface_sending(void) {
             sendStack.deleteElement();                          // Delete the sent element from stack
             if (!sendStack.empty())
             {
-                send_element = sendStack.getElement();          // Get the next Element to be sent 
+                send_element = *(sendStack.getElement());          // Get the next Element to be sent 
                 comm_interface.sendNewFrame(&send_element);     // Impart Frame that has to be sent next 
             };
             
@@ -80,7 +80,7 @@ void test_CommInterface_sending(void) {
 
         //Check for the excepted outgoing Frame
         if (i<STACKSIZE){
-        TEST_ASSERT_EQUAL_STRING_MESSAGE(sendStack.getElement().c_str(), comm_interface.outgoingFrame.c_str(),      
+        TEST_ASSERT_EQUAL_STRING_MESSAGE((*(sendStack.getElement())).c_str(), comm_interface.outgoingFrame.c_str(),      
         "Outgoing Frame not as excepted");   
         }else{
         frame = "";                                         // Empty Frames 
@@ -121,7 +121,7 @@ void test_CommInterface_receiving(void) {
         // Impart the simulated received Frame
         if (!exmplFrameStack.empty())
         {
-        comm_interface.incomingFrame = exmplFrameStack.getElement();
+        comm_interface.incomingFrame = *(exmplFrameStack.getElement());
         exmplFrameStack.deleteElement();
         };   
    
@@ -141,11 +141,11 @@ void test_CommInterface_receiving(void) {
         // Check for the excepted received Frame
         if (i<STACKSIZE){
             frame = "outgoing Frame no. "+std::to_string(i);          // Frames from ExmplFramestack-initialization 
-            TEST_ASSERT_EQUAL_STRING_MESSAGE(frame.c_str(), recStack.getElement(i).c_str(),     // Check the Position of the added Frames in the Receive-Stack (oldest Frame on Pos 0) 
+            TEST_ASSERT_EQUAL_STRING_MESSAGE(frame.c_str(), (*(recStack.getElement(i))).c_str(),     // Check the Position of the added Frames in the Receive-Stack (oldest Frame on Pos 0) 
             "Received Frame not as excepted");   
         }else{    
             frame = "outgoing Frame no. "+std::to_string(0);          // First Frame received is on top of stack
-            TEST_ASSERT_EQUAL_STRING_MESSAGE(frame.c_str(), recStack.getElement().c_str(),      
+            TEST_ASSERT_EQUAL_STRING_MESSAGE(frame.c_str(), (*(recStack.getElement())).c_str(),      
             "Last Frame in Receive-Stack not as excepted after Stack is full and no Frames were received");   
         }
     }

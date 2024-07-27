@@ -1,11 +1,10 @@
 #ifndef SERVICEINTERFACE_MODBUSRTU
 #define SERVICEINTERFACE_MODBUSRTU
 #ifdef ARDUINO
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
+    #include <Arduino.h>
 #else
-    #include <iostream>     // include iostream for local testing 
-    using namespace std;
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
 #endif
 
 #include <ServiceInterface.h>
@@ -28,6 +27,8 @@ class ServiceInterface_modbusRTU: public ServiceInterface<CommInterface_modbusRT
         void communicate() override;
 
     private:
+        CommInterface_modbusRTU* comm_interface;                          // specified Communication-Interface 
+
         // Add all PDUs provided by the services to the sendstack
         void getPDU_from_services() override;
 

@@ -2,12 +2,10 @@
 #define MESSAGE_SERVICE_H
 #ifdef ARDUINO
     #include <Arduino.h>    // include Arduino-Library for platformIO-build 
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
 #else
-    #include <iostream>     // include iostream for local testing 
+    #include <mockArduino.h>
     #include <cstring>
-    using namespace std;
+    using namespace arduinoMocking;    
 #endif
 
 #include "Service.h"
@@ -24,7 +22,7 @@ public:
     Message_service(uint8_t instance_id);
 
     // get the response PDU 
-    std::string get_response() override;
+    String get_response() override;
 };
 
 #endif // MESSAGE_SERVICE_H

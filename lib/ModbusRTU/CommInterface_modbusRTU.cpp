@@ -1,7 +1,7 @@
 #include "CommInterface_modbusRTU.h"
 
 // Construct Modbus-RTU-Communication-Interface 
-CommInterface_modbusRTU::CommInterface_modbusRTU(byte rxPin, byte txPin, uint8_t baudrate, char deviceId = '\0') : 
+CommInterface_modbusRTU::CommInterface_modbusRTU(uint8_t rxPin, uint8_t txPin, uint8_t baudrate, char deviceId) : 
     rxPin(rxPin),
     txPin(txPin),
     baudrate(baudrate),

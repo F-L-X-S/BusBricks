@@ -6,11 +6,11 @@ void arduinoMocking::SoftwareSerial::begin(long baud) {
 
 };
 
-void arduinoMocking::SoftwareSerial::println(const std::string &message) {
+void arduinoMocking::SoftwareSerial::println(const String &message) {
 
 };
 
-void arduinoMocking::SoftwareSerial::print(const std::string &message) {
+void arduinoMocking::SoftwareSerial::print(const String &message) {
 
 };
 
@@ -20,7 +20,7 @@ void arduinoMocking::SoftwareSerial::write(char data) {
 }
 
 void arduinoMocking::SoftwareSerial::flush(){
-    std::string result;
+    String result;
     while (!dataQueue.empty()) {
         result += *(dataQueue.getElement());
         dataQueue.deleteElement();

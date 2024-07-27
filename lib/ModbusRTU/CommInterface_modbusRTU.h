@@ -1,14 +1,14 @@
 #ifndef COMMINTERFACE_MODBUSRTU
 #define COMMINTERFACE_MODBUSRTU
 #ifdef ARDUINO
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
+    #include <Arduino.h>
+    #include <SoftwareSerial.h> 
 #else
-    #include <iostream>     // include iostream for local testing 
-    using namespace std;
+    #include <mockSoftwareSerial.h>     // include Library to support testing with SoftwareSerial in native-environment 
+    #include <mockArduino.h>            // include Library to support testing with Arduino-specific functions in native-environment 
+    using namespace arduinoMocking;
 #endif
 
-#include <SoftwareSerial.h>
 #include <CommInterface.h>
 
 #define MAXFRAMESIZE 256 //Max number of Bytes a frame can contain
@@ -20,7 +20,7 @@
 class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
     public:
         // Construct Communication-Interface 
-        CommInterface_modbusRTU(byte rxPin, byte txPin, uint8_t baudrate, char deviceId = '\0');
+        CommInterface_modbusRTU(uint8_t rxPin, uint8_t txPin, uint8_t baudrate, char deviceId = '\0');
 
         // Destroy Communication-Interface
         ~CommInterface_modbusRTU();
@@ -41,9 +41,9 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
         char getDeviceId();
 
     private:
-        byte rxPin;                                     // Receive-Pin 
-        byte txPin;                                     // Transmit-Pin
-        const char deviceId;                                  // Modbus-RTU Slave ID, default nullterminator for mastermode
+        uint8_t rxPin;                                  // Receive-Pin 
+        uint8_t txPin;                                  // Transmit-Pin
+        const char deviceId;                            // Modbus-RTU Slave ID, default nullterminator for mastermode
         unsigned long baudrate;                         // Baudrate 
         unsigned long _charTimeout;                     // Timeout between two chars received 
         unsigned long _frameTimeout;                    // min time between two Frames

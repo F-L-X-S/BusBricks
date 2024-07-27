@@ -2,12 +2,10 @@
 #define CONTENT_H
 #ifdef ARDUINO
     #include <Arduino.h>    // include Arduino-Library for platformIO-build 
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
 #else
-    #include <iostream>     // include iostream for local testing 
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
     #include <cstring>
-    using namespace std;
 #endif
 
 // Template for defining a Class for mapping a generic (byte-formatted) representation to a processable data-structure

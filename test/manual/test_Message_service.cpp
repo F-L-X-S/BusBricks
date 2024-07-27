@@ -7,7 +7,7 @@ int main(){
     Message_service msg_service(INSTANCE_ID);       
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    std::string sample_pdu = "\x01\x0F:" "Hello";
+    std::string sample_pdu = "\x01\x0F:Hello";
 
     // Impart PDU to Service till rec-stack is full
     bool recStack_not_full = true;

@@ -3,27 +3,28 @@
 
 
 #ifdef ARDUINO
-    #include "Arduino_std.h"    // import std-namesace for Arduino-build
-    using namespace std;        // use std-namespace from Arduino_std
+    #include <Arduino.h>
 #else
-    #include <iostream>
-    #include <string> 
-    using namespace std;
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
 #endif
 
 #include <Content_stack.h>
 
+// Namespace to redefine Arduino-Framework specific functions for native-build
 namespace arduinoMocking{
 
+// Class to redefine Arduino-Framework specific functions 
+// of the SoftwareSerial-Libraray for native-build
 class SoftwareSerial {
 public:
     SoftwareSerial(int rx, int tx);
 
     void begin(long baud);
 
-    void println(const std::string &message);
+    void println(const String &message);
 
-    void print(const std::string &message);
+    void print(const String &message);
 
     void write(char data);
 

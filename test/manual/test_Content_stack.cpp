@@ -30,15 +30,12 @@ int main() {
     std::cout<<"Reached max number of elements"<<std::endl;
 
     // delete elements till 0 (stack empty)
-    bool reached_min = false;                               // stack not empty
-    while (reached_min == false)                            // delete elements as long as the stack is not full 
+    bool reached_min = false;                                   // stack not empty
+    while (!msg_stack.empty())                                  // delete elements as long as the stack is not full 
     {
-        Message element_to_del = *(msg_stack.getElement(0));   // save element that should be deleted 
-        reached_min = !msg_stack.deleteElement(0);          // delete element on index 0 
-        if (!reached_min)
-        {
+        Message element_to_del = *(msg_stack.getElement(0));    // save element that should be deleted 
+        msg_stack.deleteElement(0);                             // delete element on index 0 
             std::cout<<"deleted element:\n"<<element_to_del.to_string()<<std::endl;
-        }
     }
     std::cout<<"Stack empty"<<std::endl;
 

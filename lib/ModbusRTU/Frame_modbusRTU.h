@@ -1,11 +1,10 @@
 #ifndef FRAME_MODBUSRTU_H
 #define FRAME_MODBUSRTU_H
 #ifdef ARDUINO
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
+    #include <Arduino.h>
 #else
-    #include <iostream>     // include iostream for local testing 
-    using namespace std;
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
 #endif
 
 #include<Frame.h>

@@ -2,17 +2,15 @@
 #define FRAME_H
 #ifdef ARDUINO
     #include <Arduino.h>    // include Arduino-Library for platformIO-build 
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
 #else
-    #include <iostream>     // include iostream for local testing 
-    using namespace std;
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
 #endif
 
 #include<Content.h>
 
 // Typedefinitions for Constructor-parameters
-using pduString = std::string;
+using pduString = String;
 using frameString = const char*;
 
 
@@ -34,9 +32,9 @@ class Frame: public Content<pduString, frameString>{
         Frame(frameString* frame);
 
         // get the pdu from the frame-object
-        std::string getPDU();
+        String getPDU();
 
         // get the byte-frame from the frame-object  
-        std::string getFrame();
+        String getFrame();
 };
 #endif // FRAME_H

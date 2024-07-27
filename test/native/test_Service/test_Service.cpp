@@ -37,12 +37,12 @@ void test_content_stack(void) {
     {
         if (i<STACKSIZE)
         {
-            TEST_ASSERT_EQUAL_MESSAGE(i, int_stack.getElement(i), "indexed element should contain the same value as positive index");    
-            TEST_ASSERT_EQUAL_MESSAGE(int_stack.getElement(i), int_stack.getElement(i-STACKSIZE), "pos. indexed element should be the same one as neg. indexed"); 
+            TEST_ASSERT_EQUAL_MESSAGE(i, *(int_stack.getElement(i)), "indexed element should contain the same value as positive index");    
+            TEST_ASSERT_EQUAL_MESSAGE(*(int_stack.getElement(i)), *(int_stack.getElement(i-STACKSIZE)), "pos. indexed element should be the same one as neg. indexed"); 
         }
         if (i>=STACKSIZE)
         {
-            TEST_ASSERT_EQUAL_MESSAGE(false, int_stack.getElement(i), "indexing out-of-bounds should return false"); 
+            TEST_ASSERT_EQUAL_MESSAGE(nullptr, int_stack.getElement(i), "indexing out-of-bounds should return false"); 
         }
     }
     

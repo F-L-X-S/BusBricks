@@ -2,12 +2,10 @@
 #define SERVICE_H
 #ifdef ARDUINO
     #include <Arduino.h>    // include Arduino-Library for platformIO-build 
-    #include "Arduino_std.h"// import std-namesace for Arduino-build
-    using namespace std;    // use std-namespace from Arduino_std
 #else
-    #include <iostream>     // include iostream for local testing 
+    #include <mockArduino.h>
+    using namespace arduinoMocking;
     #include <cstring>
-    using namespace std;
 #endif
 
 #include "Content.h"
@@ -16,8 +14,8 @@
 // Service-Base-Class 
 class ServiceBase {
 public:
-    virtual std::string get_response()=0;
-    virtual bool impart_pdu(std::string* pdu)=0;
+    virtual String get_response()=0;
+    virtual bool impart_pdu(String* pdu)=0;
     virtual uint8_t* get_ServiceID()=0;
     virtual uint8_t* get_InstanceID()=0;
     virtual ~ServiceBase(){};
@@ -31,7 +29,7 @@ protected:
     uint8_t serviceID;                                                                                // service-id
     uint8_t instanceID;                                                                               // service-instance-id                                
     Content_stack<content_class, stackSize> rec_stack;                                                // stack for received content-elements
-    std::string response_pdu;                                                                         // PDU with response 
+    String response_pdu;                                                                         // PDU with response 
     
     // write the response-PDU to the reserved memory of the service-instance 
     void write_response_pdu(content_class response_object){
@@ -52,13 +50,13 @@ public:
     }
 
     // Add a new Content-Object created from PDU to the services receive-Stack
-    virtual bool impart_pdu(std::string* pdu) override {                                                     
+    virtual bool impart_pdu(String* pdu) override {                                                     
         content_class content(pdu);                                                          // create Content-object from PDU
         return rec_stack.addElement(content);                                                // add Content-Object to Rec-Stack
     };
 
     // get the response-pdu stored at the reserved memory of the service instance  
-    virtual std::string get_response() override {                                                                      
+    virtual String get_response() override {                                                                      
         // generic response element 
         content_class response_element;
         // write pdu from this element to response-pdu-memory of service-instance 
