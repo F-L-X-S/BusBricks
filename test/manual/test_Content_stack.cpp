@@ -23,7 +23,7 @@ int main() {
         reached_max = !msg_stack.addElement(msg);
         if (!reached_max)
         {
-            std::cout<<"Added element:\n"<<msg_stack.getElement(-1).to_string()<<std::endl;
+            std::cout<<"Added element:\n"<<(*(msg_stack.getElement(-1))).to_string()<<std::endl;
             i ++;
         }
     }
@@ -33,7 +33,7 @@ int main() {
     bool reached_min = false;                               // stack not empty
     while (reached_min == false)                            // delete elements as long as the stack is not full 
     {
-        Message element_to_del = msg_stack.getElement(0);   // save element that should be deleted 
+        Message element_to_del = *(msg_stack.getElement(0));   // save element that should be deleted 
         reached_min = !msg_stack.deleteElement(0);          // delete element on index 0 
         if (!reached_min)
         {

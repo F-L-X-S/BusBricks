@@ -74,7 +74,7 @@ int main() {
     ExmplCommInterface comm_interface; 
 
     // initialize Sending
-    std::string send_element = sendStack.getElement();
+    std::string send_element = *(sendStack.getElement());
     comm_interface.sendNewFrame(&send_element);
 
     // initialize Receiving
@@ -92,7 +92,7 @@ int main() {
             sendStack.deleteElement();                          // Delete the sent element from stack
             if (!sendStack.empty())
             {
-                send_element = sendStack.getElement();          // Get the next Element to be sent 
+                send_element = *(sendStack.getElement());          // Get the next Element to be sent 
                 comm_interface.sendNewFrame(&send_element);     // Impart Frame that has to be sent next 
             };
             
