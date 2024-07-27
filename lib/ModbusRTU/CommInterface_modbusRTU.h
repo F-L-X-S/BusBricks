@@ -8,8 +8,8 @@
     using namespace std;
 #endif
 
-#include <CommInterface.h>
 #include <SoftwareSerial.h>
+#include <CommInterface.h>
 
 #define MAXFRAMESIZE 256 //Max number of Bytes a frame can contain
 
@@ -37,10 +37,13 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
         // Receive a Frame and write it to Receive-buffer
         bool receive() override;
 
+        // Get the Modbus-Device-ID 
+        char getDeviceId();
+
     private:
         byte rxPin;                                     // Receive-Pin 
         byte txPin;                                     // Transmit-Pin
-        char deviceId;                                  // Modbus-RTU Slave ID, default nullterminator for mastermode
+        const char deviceId;                                  // Modbus-RTU Slave ID, default nullterminator for mastermode
         unsigned long baudrate;                         // Baudrate 
         unsigned long _charTimeout;                     // Timeout between two chars received 
         unsigned long _frameTimeout;                    // min time between two Frames

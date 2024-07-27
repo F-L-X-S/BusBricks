@@ -39,7 +39,7 @@ bool CommInterface_modbusRTU::send(){
 bool CommInterface_modbusRTU::receive(){
     unsigned long startTime = millis();                             // Time, the function gets called
     uint16_t numBytes = 0;                                          // Received number of bytes
-    bool receivingFlag = (deviceId = '\0');                         // interface started receiving a frame (Slavemode: only if adressed to the device-ID, Mastermode: each frame) 
+    bool receivingFlag = (deviceId == '\0') ? true:false;                        // interface started receiving a frame (Slavemode: only if adressed to the device-ID, Mastermode: each frame) 
 
     // Wait for a relevant Frame 
     while (!interface.available()) {
@@ -73,7 +73,7 @@ bool CommInterface_modbusRTU::receive(){
 void CommInterface_modbusRTU::execCommunicationCycle(){
     communicationCycle();                                       // one-time execution of the Send-Rec-Cycle 
     _clearRxBuffer();                                           // Clear the softwareSerial Rec-buffer
-}
+};
 
 // Clear the Receive-buffer 
 void CommInterface_modbusRTU::_clearRxBuffer() {
@@ -84,7 +84,7 @@ void CommInterface_modbusRTU::_clearRxBuffer() {
       interface.read();                                             // delete one byte from rec-buffer
     }
   };
-}
+};
 
 // Calculate the Timeouts
 void CommInterface_modbusRTU::_calculateTimeouts(unsigned long baudrate) {
@@ -101,5 +101,10 @@ void CommInterface_modbusRTU::_calculateTimeouts(unsigned long baudrate) {
     _charTimeout = 1700;
     _frameTimeout = 4000;
   }
-}
+};
 
+
+// Get the Modbus-RTU-Device-ID 
+char CommInterface_modbusRTU::getDeviceId(){
+  return deviceId;
+};
