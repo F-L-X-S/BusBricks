@@ -7,10 +7,8 @@
 #include <Service.h>
 
 #define DEVICE_ID 0x1           // Modbus-RTU specific Device-ID
-#define INSTANCE_ID_A 0xA       // Service-identifier 
-#define INSTANCE_ID_B 0xB       // Service-identifier
-
-using namespace arduinoMocking;
+#define INSTANCE_ID_A 'm'       // Service-identifier 
+#define INSTANCE_ID_B 'n'       // Service-identifier
 
 int main(){
 
@@ -28,12 +26,28 @@ int main(){
     // instantiate communication-interface
     uint8_t rxPin = 1;
     uint8_t txPin = 2;
-    arduinoMocking::SoftwareSerial sim_serial(rxPin, txPin);
+    arduinoMocking::SoftwareSerial sim_serial(rxPin, txPin);              // initialize a mocked Software-Serial 
     CommInterface_modbusRTU comminterface(sim_serial, 9600, DEVICE_ID);   // Softwareserial, baudrate, Modbus-device-id 
 
     // instantiate the service-interface 
     ServiceInterface_modbusRTU serviceinterface(&services, &comminterface); // construct from ref. to associated service-cluster and communication-interface
-
-    //---------------------------- Simulate an incoming Frame -----------------
     
-}
+    //---------------------------- Simulate Arduino Setup -------------
+    comminterface.setup_interface();                                      // Call setup-function of Comm Interface
+
+    //---------------------------- Simulate Arduino Loop -------------
+    // Devicesettings 
+    char senderDeviceId = 0x2;
+    char functionCodeA = INSTANCE_ID_A;
+    char functionCodeB = INSTANCE_ID_B;
+
+    // incoming frame example
+    pduString incomingFramePdu = "Incoming Frame No. 1";
+    Frame_modbusRTU incomingFrame(&incomingFramePdu, &senderDeviceId, &functionCodeA);
+    String frame = *incomingFrame.get_representation();
+    sim_serial.simulateInput(frame);
+    serviceinterface.communicate();
+    sim_serial.read();
+    sim_serial.flush();
+    
+};

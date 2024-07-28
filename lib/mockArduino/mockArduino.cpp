@@ -9,7 +9,7 @@ void pinMode(int pin, int mode) {
 };
 
 // --------------------------- Arduino-specific time-functions ---------------------------
-// Mock Ardiuino-time-functions
+// Mock Arduino-time-functions
 MockTime::MockTime()
     : startTime(std::chrono::steady_clock::now()), 
       simulatedMillis(0), 

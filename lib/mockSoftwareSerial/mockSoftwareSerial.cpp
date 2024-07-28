@@ -2,26 +2,26 @@
 
 namespace arduinoMocking{
 
-    arduinoMocking::SoftwareSerial::SoftwareSerial(int rx, int tx) : rxPin(rx), txPin(tx){};
+    SoftwareSerial::SoftwareSerial(int rx, int tx) : rxPin(rx), txPin(tx){};
 
-    void arduinoMocking::SoftwareSerial::begin(long baud) {
-
-    };
-
-    void arduinoMocking::SoftwareSerial::println(const String &message) {
+    void SoftwareSerial::begin(long baud) {
 
     };
 
-    void arduinoMocking::SoftwareSerial::print(const String &message) {
+    void SoftwareSerial::println(const String &message) {
+
+    };
+
+    void SoftwareSerial::print(const String &message) {
 
     };
 
 
-    void arduinoMocking::SoftwareSerial::write(char data) {
+    void SoftwareSerial::write(char data) {
         dataQueue.addElement(data);
     }
 
-    void arduinoMocking::SoftwareSerial::flush(){
+    void SoftwareSerial::flush(){
         String result;
         while (!dataQueue.empty()) {
             result += *(dataQueue.getElement());
@@ -32,7 +32,7 @@ namespace arduinoMocking{
     }
 
 
-    int arduinoMocking::SoftwareSerial::read() {
+    int SoftwareSerial::read() {
         if (dataQueue.empty()) {
             return -1; 
         }
@@ -42,7 +42,7 @@ namespace arduinoMocking{
     }
 
 
-    int arduinoMocking::SoftwareSerial::peek() {
+    int SoftwareSerial::peek() {
         if (dataQueue.empty()) {
             return -1; 
         }
@@ -50,8 +50,27 @@ namespace arduinoMocking{
     }
 
 
-    int arduinoMocking::SoftwareSerial::available() {
+    int SoftwareSerial::available() {
         return (dataQueue.empty())?0:1;
+    };
+
+    // Simulate a string input by waiting for user inputs (for testing purposes)
+    void SoftwareSerial::simulateInput() {
+        std::string input;
+        std::cout << "Enter input: ";
+        std::getline(std::cin, input);
+
+        for (char c : input) {
+            dataQueue.addElement(static_cast<uint8_t>(c));
+        }
     }
 
-}
+    // Simulate a string input (for testing purposes)
+    void SoftwareSerial::simulateInput(std::string input) {
+        for (char c : input) {
+            dataQueue.addElement(static_cast<uint8_t>(c));
+        }
+    }
+};
+
+
