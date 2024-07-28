@@ -17,13 +17,3 @@ void setup() {
 void loop() {
     Serial.print("loop...");
  };
-
-
-// run main-file in native environment 
- #ifndef ARDUINO
-     int main(){
-        setup();
-        loop();
-        return 0;
-    };
-#endif
