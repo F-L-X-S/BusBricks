@@ -1,6 +1,6 @@
 #include "CommInterface_modbusRTU.h"
 
-// Construct Modbus-RTU-Communication-Interface 
+// Construct Modbus-RTU-Communication-Interface by Pins
 CommInterface_modbusRTU::CommInterface_modbusRTU(uint8_t rxPin, uint8_t txPin, uint8_t baudrate, char deviceId) : 
     rxPin(rxPin),
     txPin(txPin),
@@ -10,11 +10,26 @@ CommInterface_modbusRTU::CommInterface_modbusRTU(uint8_t rxPin, uint8_t txPin, u
         _calculateTimeouts(baudrate);
 };
 
+// Construct Modbus-RTU-Communication-Interface predefined SoftwareSerial-Inetrface
+CommInterface_modbusRTU::CommInterface_modbusRTU(SoftwareSerial softwareserial, uint8_t baudrate, char deviceId) : 
+    baudrate(baudrate),
+    deviceId(deviceId),
+    CommInterface<SoftwareSerial>(softwareserial, baudrate) {
+        _calculateTimeouts(baudrate);
+};
+
+// Destructor
+CommInterface_modbusRTU::~CommInterface_modbusRTU() {
+}
+
 // Setup-function
 void CommInterface_modbusRTU::setup_interface(){
-    // Define pin modes for TX and RX
-    pinMode(rxPin, INPUT);
-    pinMode(txPin, OUTPUT);
+    if (rxPin != txPin && rxPin != 0 && txPin != 0)
+    {
+      // Define pin modes for TX and RX
+      pinMode(rxPin, INPUT);
+      pinMode(txPin, OUTPUT);
+    }
 
     // Set the baud rate for the SoftwareSerial object
     interface.begin(baudrate);
