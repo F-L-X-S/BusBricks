@@ -2,10 +2,28 @@
 #include <Frame_modbusRTU.h>
 #include <CommInterface_modbusRTU.h>
 
-void setup() {
+#ifdef ARDUINO
+    #include <Arduino.h>
+#else
+    #include <mockSoftwareSerial.h>     // include Library to support testing with SoftwareSerial in native-environment 
+    #include <mockArduino.h>            // include Library to support testing with Arduino-specific functions in native-environment 
+    using namespace arduinoMocking;
+#endif
 
-}
+void setup() {
+    Serial.println("Setup...");
+};
 
 void loop() {
+    Serial.print("loop...");
+ };
 
- }
+
+// run main-file in native environment 
+ #ifndef ARDUINO
+     int main(){
+        setup();
+        loop();
+        return 0;
+    };
+#endif
