@@ -3,7 +3,8 @@
 #define SLAVEID '9'
 #define FUNCTIONCODE 'm'
 
-int main() {
+void checkDestructor(){
+
     // Devicesettings 
     char slaveId = SLAVEID;
     char functionCode = FUNCTIONCODE;
@@ -25,10 +26,14 @@ int main() {
     }
     
 
+
     // Create a new Frame-Object from Frame above
     std::string frame = frame_from_pdu.getFrame();
     frameString frame_ptr = frame.c_str();
     Frame_modbusRTU frame_from_frame(&frame_ptr);
+
+    // destroy frame
+    frame_from_pdu.~Frame_modbusRTU();
 
     // Print Frame created from Frame (Representation)
     std::cout<<"Frame from Representation:"<<std::endl;
@@ -41,5 +46,12 @@ int main() {
     }else{
         std::cout<<"CRC incorrect"<<std::endl;
     }
+
+};
+
+int main() {
+    // Check the Destructor
+    checkDestructor();
+
     return 0;
 }

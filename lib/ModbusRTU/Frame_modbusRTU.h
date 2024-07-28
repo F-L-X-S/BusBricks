@@ -42,6 +42,7 @@ class Frame_modbusRTU: public Frame{
     private:
         char slaveId = '\0';
         char functionCode = '\0';
+        char* buffer = new char[1];
 
         // Convert the given Content (PDU) to Representation (Frame)
         void content_to_rep()  override;

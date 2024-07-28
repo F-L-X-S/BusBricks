@@ -18,10 +18,6 @@ public:
 
     // Construct Content-class from byte-representation
     Content(representation_type representation) : representation(representation) {}    
-
-    // Destroy Content-element
-    virtual ~Content() {
-    }
     
     // Get the representation as a the representation-type
     representation_type* get_representation() {

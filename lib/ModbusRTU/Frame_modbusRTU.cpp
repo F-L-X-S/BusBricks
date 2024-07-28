@@ -16,20 +16,21 @@ Frame_modbusRTU::Frame_modbusRTU(frameString* frame) :
 // Construct empty Modbus-RTU-Frame 
 Frame_modbusRTU::Frame_modbusRTU() : 
     Frame() {
+        content_to_rep();
     };
 
 // Deconstructor 
 Frame_modbusRTU::~Frame_modbusRTU(){
-    if (representation) {
-        delete[] representation;
-    }
+    if (buffer!=nullptr) delete[] buffer;
+    buffer = nullptr;
 };
 
 // Convert the given Content (PDU) to Representation (Frame)
 void Frame_modbusRTU::content_to_rep(){
         size_t pduLength = content.length();                                // get the length of the Content (PDU)
         size_t buffersize = PREFIXSIZE+SUFFIXSIZE+pduLength + 1;            // Calculate the necessary size for the buffer + null-termination
-        char* buffer = new char[buffersize];                                // Create representation-buffer 
+        delete[] buffer;
+        buffer = new char[buffersize];                                      // Create representation-buffer 
 
         // Prefix
         buffer[0] = slaveId;                                               // Byte 0:  Slave-Address
@@ -79,7 +80,8 @@ char Frame_modbusRTU::getFunctionCode(){
 // has to be called to ensure, that destructor is deleting from heap and not from stack
 void Frame_modbusRTU::copy_to_heap(const char** str_ptr) {
         size_t len = strlen(*str_ptr);              // Get the length of the referenced string 
-        char* buffer = new char[len+1];             // create new char-array on heap 
+        delete[] buffer;
+        buffer = new char[len+1];                   // create new char-array on heap 
         for (size_t i = 0; i < len; ++i) {          
             buffer[i] = (*str_ptr)[i];              // copy each character to heap
         }
@@ -88,10 +90,10 @@ void Frame_modbusRTU::copy_to_heap(const char** str_ptr) {
     };
 
 // Calculate the CRC16-value of the given buffer 
-unsigned short Frame_modbusRTU::calcCRC16(char* buffer, uint8_t size){   
+unsigned short Frame_modbusRTU::calcCRC16(char* crcBuffer, uint8_t size){   
     unsigned short crc16 = CRC16VALUE;
     for (int i = 0; i < size; i++) {
-        crc16 ^= static_cast<unsigned char>(buffer[i]);
+        crc16 ^= static_cast<unsigned char>(crcBuffer[i]);
         for (int j = 0; j < 8; j++) {
             if (crc16 & 0x0001) {
                 crc16 = (crc16 >> 1) ^ CRC16MASK;
@@ -106,9 +108,9 @@ unsigned short Frame_modbusRTU::calcCRC16(char* buffer, uint8_t size){
 // Check the CRC16-value for the given buffer 
 bool Frame_modbusRTU::checkCRC16(){
     uint8_t size = strlen(representation);           // Get the length of the representation 
-    char* buffer = new char[size];              
-    memcpy(buffer, representation, size);         // copy representation + null-termination to temp-buffer
-    bool result = calcCRC16(buffer, size) == 0;     // if rest is 0 crc was correct 
-    delete[] buffer;                                
+    char* crcBuffer = new char[size];              
+    memcpy(crcBuffer, representation, size);           // copy representation + null-termination to temp-buffer
+    bool result = calcCRC16(crcBuffer, size) == 0;     // if rest is 0 crc was correct 
+    delete[] crcBuffer;                                
     return result;
 };
