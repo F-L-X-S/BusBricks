@@ -1,7 +1,7 @@
 #include "Frame.h"
 
 // Default Constructor
-Frame::Frame() : Content<pduString, frameString>(pduString()) {}
+Frame::Frame() : Content<pduString, frameString>(frameString()) {}
 
 // Constructor for creating Frame from PDU
 Frame::Frame(pduString* pdu) : Content<pduString, frameString>(*pdu) {}
