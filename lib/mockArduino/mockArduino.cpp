@@ -119,15 +119,16 @@ void MockSerial::println() {
 
 // Read functions
 int MockSerial::available() {
-    // In a real scenario, you would return the number of bytes available for reading
-    // For the mock, we return a fixed number or you could implement a buffer
-    return 0;
+    return inputBuffer.size();
 }
 
 int MockSerial::read() {
-    // In a real scenario, you would return the next byte from the buffer
-    // For the mock, we return a fixed value or could simulate input
-    return -1; // -1 indicates no data available
+    if (inputBuffer.empty()) {
+        return -1; // No data available
+    }
+    uint8_t byte = inputBuffer.front();
+    inputBuffer.pop();
+    return byte;
 }
 
 // Write functions
@@ -136,14 +137,26 @@ size_t MockSerial::write(uint8_t byte) {
     return 1; // Indicate that one byte was written
 }
 
+// Simulate a string input by waiting for user inputs (for testing purposes)
+void MockSerial::simulateInput() {
+    std::string input;
+    std::cout << "Enter input: ";
+    std::getline(std::cin, input);
+
+    for (char c : input) {
+        inputBuffer.push(static_cast<uint8_t>(c));
+    }
+    // Simulate the Enter key (newline character)
+    inputBuffer.push('\n');
+}
+
 // Simulate a string input (for testing purposes)
-void MockSerial::simulateInput(const std::string& input) {
-    std::istringstream inputStream(input);
-    std::string line;
-    while (std::getline(inputStream, line)) {
-        std::cout << "Received: " << line << std::endl;
+void MockSerial::simulateInput(std::string input) {
+    for (char c : input) {
+        inputBuffer.push(static_cast<uint8_t>(c));
     }
 }
+
 
 // Instantiate the mocked Serial object
 MockSerial Serial;

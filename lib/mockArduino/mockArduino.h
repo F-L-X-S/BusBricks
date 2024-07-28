@@ -8,6 +8,8 @@
     #include <string>
     #include <sstream>
     #include <chrono>
+    #include <queue>
+    #include <functional>
     #define OUTPUT 1
     #define INPUT 0
 
@@ -96,8 +98,14 @@
                 // Write functions
                 size_t write(uint8_t byte);
 
-                // Simulate a string input (for testing purposes)
-                void simulateInput(const std::string& input);
+                // Simulate a string input defined by user (for testing purposes)
+                void simulateInput();
+
+                // Simulate a string input  defined by parameter (for testing purposes)
+                void simulateInput(std::string input);
+
+            private:
+                std::queue<uint8_t> inputBuffer;
         };
 
         // Global instance to mimic the Arduino environment
