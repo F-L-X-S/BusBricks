@@ -16,8 +16,6 @@ Frame_modbusRTU::Frame_modbusRTU(frameString* frame) :
 // Construct empty Modbus-RTU-Frame 
 Frame_modbusRTU::Frame_modbusRTU() : 
     Frame() {
-    copy_to_heap(&representation);
-    rep_to_content();
     };
 
 // Deconstructor 
