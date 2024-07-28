@@ -6,7 +6,7 @@
 #include <Message_service.h>
 #include <Service.h>
 
-#define DEVICE_ID 0x1           // Modbus-RTU specific Device-ID
+#define DEVICE_ID '1'           // Modbus-RTU specific Device-ID
 #define INSTANCE_ID_A 'm'       // Service-identifier 
 #define INSTANCE_ID_B 'n'       // Service-identifier
 
