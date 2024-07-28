@@ -4,6 +4,10 @@
 ServiceInterface_modbusRTU::ServiceInterface_modbusRTU(ServiceClusterBase* services, CommInterface_modbusRTU* comm_interface):
 ServiceInterface<CommInterface_modbusRTU, Frame_modbusRTU>(comm_interface, services){};
 
+// Destructor for ServiceInterface_modbusRTU
+ServiceInterface_modbusRTU::~ServiceInterface_modbusRTU() {
+}
+
 
 // Add all PDUs provided by the services to the sendstack
 void ServiceInterface_modbusRTU::getPDU_from_services()
