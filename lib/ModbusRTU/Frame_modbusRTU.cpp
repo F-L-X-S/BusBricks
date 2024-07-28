@@ -15,7 +15,10 @@ Frame_modbusRTU::Frame_modbusRTU(frameString* frame) :
 
 // Construct empty Modbus-RTU-Frame 
 Frame_modbusRTU::Frame_modbusRTU() : 
-    Frame() {};
+    Frame() {
+    copy_to_heap(&representation);
+    rep_to_content();
+    };
 
 // Deconstructor 
 Frame_modbusRTU::~Frame_modbusRTU(){
@@ -50,18 +53,22 @@ void Frame_modbusRTU::content_to_rep(){
 };
 
 // Convert the given Representation (Frame) to Content (PDU) 
+// leaves Content empty, if Frames is shorter than expected
 void Frame_modbusRTU::rep_to_content(){
-    // PDU (Content)
     size_t len = strlen(representation);                                    // Get the length of the representation (frame) 
-    for (size_t i = PREFIXSIZE; i < len-SUFFIXSIZE; ++i) {                  
-        content += representation[i];                                       // Write PDU from representation (frame) to Content 
+    if (len > (PREFIXSIZE + SUFFIXSIZE))
+    {
+        // PDU (Content)
+        for (size_t i = PREFIXSIZE; i < len-SUFFIXSIZE; ++i) {                  
+            content += representation[i];                                       // Write PDU from representation (frame) to Content 
+        }
+
+        // Slave-ID 
+        slaveId = representation[0];                                           // Set Slave-ID to Byte 0 of the frame 
+
+        // Function-Code
+        functionCode = representation[1];                                      // Set the function-Code to Byte 1 of the frame 
     }
-
-    // Slave-ID 
-    slaveId = representation[0];                                           // Set Slave-ID to Byte 0 of the frame 
-
-    // Function-Code
-    functionCode = representation[1];                                      // Set the function-Code to Byte 1 of the frame 
 };
 
 // Get the Modbus-RTU-function-code of the frame-instance 
