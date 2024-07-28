@@ -20,11 +20,11 @@
 // Template-parameters: 
 //  -type of the Communication-Interface (e.g. SoftwareSerial, Wire...)
 //  -type of the frames to be send as a derived Class of the Frame-Class (e.g. Frame_modbusRTU)
-template<typename commInterface_type, typename frameType>                                       
+template<typename CommInterfaceBase, typename frameType>                                       
 class ServiceInterface{
     public:
         // Constructor for Service-Interface 
-        ServiceInterface(commInterface_type* comm_interface, ServiceClusterBase* services):
+        ServiceInterface(CommInterfaceBase* comm_interface, ServiceClusterBase* services):
                 comm_interface(comm_interface), 
                 services(services) {};
 
@@ -43,7 +43,7 @@ class ServiceInterface{
         Content_stack<frameType, STACKSIZE> recStack;               // stack for received frames
         Content_stack<frameType, STACKSIZE> sendStack;              // stack for frames to send next
         String sendItem;                                            // Item to be sent next
-        String recItem;                                        // Item received last
+        String recItem;                                             // Item received last
 
         // Add all PDUs provided by the services to the sendstack
         // Implemented in derived Class, depending on frametype
@@ -58,7 +58,7 @@ class ServiceInterface{
         // Add items received by the CommInterface to the Receivestack
         void updateCommStacks(){
             // Handle sendstack
-            if (comm_interface->finishedSending()){
+            if (comm_interface->finishedSending() && !sendStack.empty()){
                 Frame* frameToSend = sendStack.getElement();
                 if (sendItem == frameToSend->getFrame())
                 {

@@ -27,8 +27,6 @@ class ServiceInterface_modbusRTU: public ServiceInterface<CommInterface_modbusRT
         void communicate() override;
 
     private:
-        CommInterface_modbusRTU* comm_interface;                          // specified Communication-Interface 
-
         // Add all PDUs provided by the services to the sendstack
         void getPDU_from_services() override;
 

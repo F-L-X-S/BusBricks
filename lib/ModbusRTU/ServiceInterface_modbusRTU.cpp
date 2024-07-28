@@ -18,7 +18,7 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
         ServiceBase* destinationService = services->getService_byPos(i);            // Pointer to the destination-Service 
         pduString servicePdu = destinationService->get_response();                  // get the response-PDU provided by the service
         if (servicePdu == "") continue;                                             // skip iteration if the services response is empty 
-        char deviceId = comm_interface->getDeviceId();                              // Get the Device ID
+        char deviceId = (comm_interface->getDeviceId());                            // Get the Destination-Device ID
         char functionCode = *(destinationService->get_ServiceID());                 // Get the Function Code
         Frame_modbusRTU frame(&servicePdu, &deviceId, &functionCode);               // Construct the modbus-frame                           
         sendStack.addElement(frame);                                                // Add the Frame to the Interface-send-stack
