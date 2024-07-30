@@ -12,15 +12,23 @@ void test_Frame_modbusRTU(void) {
     char slaveId = SLAVEID;
     char functionCode = FUNCTIONCODE;
 
+    // Check empty Frame 
+    Frame_modbusRTU* framePtr = new  Frame_modbusRTU();
+    TEST_ASSERT_EQUAL_STRING_MESSAGE("", (framePtr->getPDU()).c_str(),                  // Check empty Frame  
+    "PDU returned from empty Frame-Obj is not empty");   
+
+    TEST_ASSERT_EQUAL_STRING_MESSAGE("", (framePtr->getFrame()).c_str(),                // Check Frame-Byte-Representation
+    "Byte-Representation (Frame) returned from empty Frame-Obj is not empty");    
+
     // Create a Modbus-RTU Frame from the Message-PDU 
     pduString msg_pdu = EXMPL_PDU;
     Frame_modbusRTU frame_from_pdu(&msg_pdu, &slaveId, &functionCode);
     
     TEST_ASSERT_EQUAL_STRING_MESSAGE(EXMPL_PDU, frame_from_pdu.getPDU().c_str(),                // Check Frame PDU 
-    "PDU returned from Frame-Obj does not match PDU the Frame was initialized with");    
+    "PDU returned from Frame-Obj created by frame-representation does not match PDU the Frame was initialized with");    
 
     TEST_ASSERT_EQUAL_STRING_MESSAGE(EXMPL_FRAME, frame_from_pdu.getFrame().c_str(),            // Check Frame-Byte-Representation
-    "Byte-Representation (Frame) returned from Frame-Obj does not match the expected Frame");    
+    "Byte-Representation (Frame) returned from Frame-Obj created by PDU does not match the expected Frame");    
 
     TEST_ASSERT_TRUE_MESSAGE(frame_from_pdu.checkCRC16(),                                       // Check, if the CRC-calculation for the whole Frame returns zero as CRC
     "CRC16 Rest fo whole Frame is not zero");                                                   // otherwise the CRC in the Frame is incorrect 
@@ -31,15 +39,14 @@ void test_Frame_modbusRTU(void) {
     Frame_modbusRTU frame_from_frame(&frame_ptr);
 
     TEST_ASSERT_EQUAL_STRING_MESSAGE(EXMPL_PDU, frame_from_frame.getPDU().c_str(),              // Check Frame PDU 
-    "PDU returned from Frame-Obj does not match PDU the Frame was initialized with");    
+    "PDU returned from Frame-Obj created by frame-representation does not match PDU the Frame was initialized with");    
 
     TEST_ASSERT_EQUAL_STRING_MESSAGE(EXMPL_FRAME, frame_from_frame.getFrame().c_str(),          // Check Frame-Byte-Representation
-    "Byte-Representation (Frame) returned from Frame-Obj does not match the expected Frame");    
+    "Byte-Representation (Frame) returned from Frame-Obj created by frame-representation does not match the expected Frame");    
 
     TEST_ASSERT_TRUE_MESSAGE(frame_from_frame.checkCRC16(),                                     // Check, if the CRC-calculation for the whole Frame returns zero as CRC
-    "CRC16 Rest fo whole Frame is not zero");                                                   // otherwise the CRC in the Frame is incorrect 
+    "CRC16 Rest fo whole Frame created by frame-representation is not zero");                                                   // otherwise the CRC in the Frame is incorrect 
 
-    
 }
 
 

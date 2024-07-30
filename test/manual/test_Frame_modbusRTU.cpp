@@ -38,8 +38,12 @@ void checkDestructor(){
     std::cout<<"Frame from Representation:"<<std::endl;
     printFrame(&frame_from_frame);
 
-    // Create a new Frame by assignment 
+    // Create a new empty Frame 
     Frame_modbusRTU assignedFrame;
+    std::cout<<"empty Frame:"<<std::endl;
+    printFrame(&assignedFrame);
+
+    // Check assignment
     assignedFrame = frame_from_pdu;
     std::cout<<"Frame from Assignment:"<<std::endl;
     printFrame(&assignedFrame);
