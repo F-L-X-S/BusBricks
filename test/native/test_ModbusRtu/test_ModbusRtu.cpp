@@ -20,6 +20,8 @@ void test_Frame_modbusRTU(void) {
     TEST_ASSERT_EQUAL_STRING_MESSAGE("", (framePtr->getFrame()).c_str(),                // Check Frame-Byte-Representation
     "Byte-Representation (Frame) returned from empty Frame-Obj is not empty");    
 
+    delete framePtr;                                                                    // Call Destructor (test-error if failed)
+
     // Create a Modbus-RTU Frame from the Message-PDU 
     pduString msg_pdu = EXMPL_PDU;
     Frame_modbusRTU frame_from_pdu(&msg_pdu, &slaveId, &functionCode);
