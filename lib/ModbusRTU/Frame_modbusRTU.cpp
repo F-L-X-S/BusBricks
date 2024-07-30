@@ -33,8 +33,8 @@ void Frame_modbusRTU::content_to_rep(){
         buffer = new char[buffersize];                                      // Create representation-buffer 
 
         // Prefix
-        buffer[0] = slaveId;                                               // Byte 0:  Slave-Address
-        buffer[1] = functionCode;                                          // Byte 1:  Modbus-RTU function-code 
+        buffer[0] = slaveId;                                                // Byte 0:  Slave-Address
+        buffer[1] = functionCode;                                           // Byte 1:  Modbus-RTU function-code 
         
         // Content
         for (size_t i = 0; i < pduLength; ++i) {                       
@@ -59,14 +59,14 @@ void Frame_modbusRTU::rep_to_content(){
     {
         // PDU (Content)
         for (size_t i = PREFIXSIZE; i < len-SUFFIXSIZE; ++i) {                  
-            content += representation[i];                                       // Write PDU from representation (frame) to Content 
+            content += representation[i];                                   // Write PDU from representation (frame) to Content 
         }
 
         // Slave-ID 
-        slaveId = representation[0];                                           // Set Slave-ID to Byte 0 of the frame 
+        slaveId = representation[0];                                        // Set Slave-ID to Byte 0 of the frame 
 
         // Function-Code
-        functionCode = representation[1];                                      // Set the function-Code to Byte 1 of the frame 
+        functionCode = representation[1];                                   // Set the function-Code to Byte 1 of the frame 
     }
 };
 
@@ -107,10 +107,41 @@ unsigned short Frame_modbusRTU::calcCRC16(char* crcBuffer, uint8_t size){
 
 // Check the CRC16-value for the given buffer 
 bool Frame_modbusRTU::checkCRC16(){
-    uint8_t size = strlen(representation);           // Get the length of the representation 
+    uint8_t size = strlen(representation);              // Get the length of the representation 
     char* crcBuffer = new char[size];              
-    memcpy(crcBuffer, representation, size);           // copy representation + null-termination to temp-buffer
-    bool result = calcCRC16(crcBuffer, size) == 0;     // if rest is 0 crc was correct 
+    memcpy(crcBuffer, representation, size);            // copy representation + null-termination to temp-buffer
+    bool result = calcCRC16(crcBuffer, size) == 0;      // if rest is 0 crc was correct 
     delete[] crcBuffer;                                
     return result;
 };
+
+// Copy constructor
+Frame_modbusRTU::Frame_modbusRTU(const Frame_modbusRTU& other) : Frame(other) {
+    // Copy the derived-class-specific attributes
+    slaveId = other.slaveId;
+    functionCode = other.functionCode;
+    Frame::operator=(other);                            // Call base class assignment operator
+
+    // Copy dynamically allocated memory
+    if (!buffer) buffer = new char[1];                  // initialize buffer 
+    copy_to_heap(&representation);                      // copy buffer from assigned instance and re-allocate representation-ptr to prevent double-free
+    
+}
+
+// Assignment operator
+Frame_modbusRTU& Frame_modbusRTU::operator=(const Frame_modbusRTU& other) {
+    if (this == &other) {
+        return *this;                                   // handle self-assignment
+    }
+
+    // Copy the derived-class-specific attributes
+    slaveId = other.slaveId;
+    functionCode = other.functionCode;
+    Frame::operator=(other);                            // Call base class assignment operator
+
+    // Copy dynamically allocated memory
+    if (!buffer) buffer = new char[1];                  // initialize buffer 
+    copy_to_heap(&representation);                      // copy buffer from assigned instance and re-allocate representation-ptr to prevent double-free
+    
+    return *this;
+}

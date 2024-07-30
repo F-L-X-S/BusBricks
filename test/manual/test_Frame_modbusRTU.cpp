@@ -3,6 +3,18 @@
 #define SLAVEID '9'
 #define FUNCTIONCODE 'm'
 
+void printFrame(Frame_modbusRTU* frame){
+    std::cout<<"Frame:\t\t"<<frame->getFrame()<<std::endl;
+    std::cout<<"Frame-PDU:\t"<<frame->getPDU()<<std::endl;
+    std::cout<<"Modbus-RTU Function-Code:\t\t"<<frame->getFunctionCode()<<std::endl;
+    if (frame->checkCRC16()==true)
+    {
+        std::cout<<"CRC correct"<<std::endl;
+    }else{
+        std::cout<<"CRC incorrect"<<std::endl;
+    }
+};
+
 void checkDestructor(){
 
     // Devicesettings 
@@ -15,37 +27,27 @@ void checkDestructor(){
 
     // Print Frame created from PDU (Content)
     std::cout<<"Frame from PDU:"<<std::endl;
-    std::cout<<"Frame:\t\t"<<frame_from_pdu.getFrame()<<std::endl;
-    std::cout<<"Frame-PDU:\t"<<frame_from_pdu.getPDU()<<std::endl;
-    std::cout<<"Modbus-RTU Function-Code:\t\t"<<frame_from_pdu.getFunctionCode()<<std::endl;
-    if (frame_from_pdu.checkCRC16()==true)
-    {
-        std::cout<<"CRC correct"<<std::endl;
-    }else{
-        std::cout<<"CRC incorrect"<<std::endl;
-    }
+    printFrame(&frame_from_pdu);
     
-
-
     // Create a new Frame-Object from Frame above
     std::string frame = frame_from_pdu.getFrame();
     frameString frame_ptr = frame.c_str();
     Frame_modbusRTU frame_from_frame(&frame_ptr);
 
-    // destroy frame
-    frame_from_pdu.~Frame_modbusRTU();
-
     // Print Frame created from Frame (Representation)
     std::cout<<"Frame from Representation:"<<std::endl;
-    std::cout<<"Frame:\t\t"<<frame_from_frame.getFrame()<<std::endl;
-    std::cout<<"Frame-PDU:\t"<<frame_from_frame.getPDU()<<std::endl;
-    std::cout<<"Modbus-RTU Function-Code:\t\t"<<frame_from_frame.getFunctionCode()<<std::endl;
-    if (frame_from_frame.checkCRC16()==true)
-    {
-        std::cout<<"CRC correct"<<std::endl;
-    }else{
-        std::cout<<"CRC incorrect"<<std::endl;
-    }
+    printFrame(&frame_from_frame);
+
+    // Create a new Frame by assignment 
+    Frame_modbusRTU assignedFrame;
+    assignedFrame = frame_from_pdu;
+    std::cout<<"Frame from Assignment:"<<std::endl;
+    printFrame(&assignedFrame);
+
+    // Create a new Frame by copying 
+    Frame_modbusRTU copiedFrame = frame_from_pdu;
+    std::cout<<"Frame from Copy:"<<std::endl;
+    printFrame(&copiedFrame);
 
 };
 

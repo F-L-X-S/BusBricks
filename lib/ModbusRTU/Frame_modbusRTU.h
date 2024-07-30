@@ -33,6 +33,12 @@ class Frame_modbusRTU: public Frame{
         // Deconstructor 
         ~Frame_modbusRTU();
 
+        // Copy constructor
+        Frame_modbusRTU(const Frame_modbusRTU& other); 
+
+        // Assignment operator
+        Frame_modbusRTU& operator=(const Frame_modbusRTU& other);
+
         // Check the CRC16-value for teh given buffer 
         bool checkCRC16();
 
