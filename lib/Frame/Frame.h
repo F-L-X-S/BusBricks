@@ -15,6 +15,13 @@ using frameString = const char*;
 
 
 // Frame-Class as derived class from Content
+// The derived classes define:
+//      -the conversion from a given payload plus protocol-specific parameters (e.g. function-code, addresses...)
+//      to the frame-representation (override of content_to_rep from Content-Class)
+//
+//      - the extraction of protocol-specific parameters from the byte-representation (frame) 
+//      with eventually checking their validity (e.g. CRC) (override of rep_to_content from Content-Class)
+//
 // In the abstract concept of "Content" the byte-Frame itself is interpreted as the Content-Representation
 // The "Content"-Object represents the PDU transmitted to the services 
 class Frame: public Content<pduString, frameString>{
