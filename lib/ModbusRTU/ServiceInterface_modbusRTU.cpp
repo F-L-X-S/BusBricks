@@ -16,11 +16,20 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
     {
         if (sendStack.full()) break;                                                // exit the loop if no space left in send stack
         ServiceBase* destinationService = services->getService_byPos(i);            // Pointer to the destination-Service 
+        if (!destinationService->responseAvailable()) continue;                     // skip iteration if the services response is empty 
         pduString servicePdu = destinationService->get_response();                  // get the response-PDU provided by the service
-        if (servicePdu == "") continue;                                             // skip iteration if the services response is empty 
-        char deviceId = (comm_interface->getDeviceId());                            // Get the Destination-Device ID
-        char functionCode = *(destinationService->get_ServiceID());                 // Get the Function Code
-        Frame_modbusRTU frame(&servicePdu, &deviceId, &functionCode);               // Construct the modbus-frame                           
+        char deviceId = *destinationService->get_InstanceID();                   // initialize the device-id by instance-id 
+
+        // Handle service-types
+        Message_service* messageService = dynamic_cast<Message_service*>(destinationService);   // cast as Message-service for specific functions
+        if (messageService) {
+            uint8_t destId = messageService->get_destinationId();                   // Get the Destination-Device ID
+            deviceId = destId;
+        }
+
+        // Build Frame
+        char functionCode = *(messageService->get_ServiceID());                     // Get the Function Code
+        Frame_modbusRTU frame(&servicePdu, &deviceId, &functionCode);               // Construct the modbus-frame
         sendStack.addElement(frame);                                                // Add the Frame to the Interface-send-stack
     }
     
@@ -29,6 +38,8 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
 // Add all PDUs provided by the services to the sendstack
 void ServiceInterface_modbusRTU::addPDU_to_services()
 {
+    // abort, if no new PDU available
+    if (recStack.empty()) return;
     // Add all received PDUs to the Services 
     while (!recStack.empty())
     {

@@ -10,6 +10,7 @@
 #include <ServiceInterface.h>
 #include <CommInterface_modbusRTU.h>
 #include <Frame_modbusRTU.h>
+#include <Message_service.h>
 
 class ServiceInterface_modbusRTU: public ServiceInterface<CommInterface_modbusRTU, Frame_modbusRTU>{
     public:

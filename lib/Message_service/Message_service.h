@@ -21,8 +21,12 @@ public:
     // Constructor for creating Message-service 
     Message_service(uint8_t instance_id);
 
-    // get the response PDU 
-    String get_response() override;
+    // process all messages from the receive-stack, till the stack is empty
+    // add all necessary messages to the send-stack 
+    void stackProcessing() override;
+
+    // get the destination Instance-ID for the current response PDU
+    uint8_t get_destinationId();
 };
 
 #endif // MESSAGE_SERVICE_H
