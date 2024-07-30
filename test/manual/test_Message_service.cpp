@@ -1,10 +1,10 @@
 #include "Message_service.h"
 
-#define INSTANCE_ID 0xF
+#define SERVICE_ID 0xF
 
 int main(){
     // initialize message-service with instance-id 0xF
-    Message_service msg_service(INSTANCE_ID);       
+    Message_service msg_service(SERVICE_ID);       
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
     std::string sample_pdu = "\x01\x0F:Hello";

@@ -3,12 +3,11 @@
 
 #define STACKSIZE 3
 #define SERVICEID 0x6D // ASCII: "m"
-#define INSTANCE_ID 0xF
 
 int main() {
     // Instantiate  simple Service for "Message"-content  
-    Service<Message, STACKSIZE> message_service(SERVICEID, INSTANCE_ID);
-    std::cout<<"Created Service with\nService-ID:\t" <<static_cast<char>(*message_service.get_ServiceID())<<"\nInstance-ID:\t"<<static_cast<char>(*message_service.get_InstanceID())<<std::endl;
+    Service<Message, STACKSIZE> message_service(SERVICEID);
+    std::cout<<"Created Service with\nService-ID:\t" <<static_cast<char>(*message_service.get_ServiceID())<<std::endl;
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
     std::string sample_pdu = "\x01\x0F:" "Hello";

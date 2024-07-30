@@ -9,10 +9,6 @@
 #define SERVICEID_2 0x42    // ASCII "B"
 #define SERVICEID_3 0x43    // ASCII "C"
 
-#define INSTANCEID_1 0x61   // ASCII "a"
-#define INSTANCEID_2 0x62   // ASCII "b"
-#define INSTANCEID_3 0x63   // ASCII "c"
-
 // ---------------------------------------Test example instance of abstract Content_stack-class---------------------------------------
 void test_content_stack(void) {
     Content_stack<int, STACKSIZE> int_stack;                    // initialize int-stack for max 3 elements                                      
@@ -65,7 +61,7 @@ void test_content_stack(void) {
 // ---------------------------------------Test example instance of abstract Service-class---------------------------------------
 void test_Service(void) {
     // Instantiate  simple Service for "Message"-content  
-    Service<Message, STACKSIZE> message_service(SERVICEID_1, INSTANCEID_1);
+    Service<Message, STACKSIZE> message_service(SERVICEID_1);
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
     std::string sample_pdu = "\x01\x0F:" "index!";
@@ -92,9 +88,9 @@ void test_Service(void) {
 
 // ---------------------------------------Test example instance of abstract ServiceCluster-class---------------------------------------
 void test_ServiceCluster(void) {
-    Service<Message, STACKSIZE> service_1(SERVICEID_1, INSTANCEID_1);       // Service 1 as general Message-Service
-    Service<Message, STACKSIZE> service_2(SERVICEID_2, INSTANCEID_2);       // Service 2 as general 32-bit-Int-Service
-    Service<Message, STACKSIZE> service_3(SERVICEID_3, INSTANCEID_3);       // Service 3 as general char-Service
+    Service<Message, STACKSIZE> service_1(SERVICEID_1);       // Service 1 as general Message-Service
+    Service<Message, STACKSIZE> service_2(SERVICEID_2);       // Service 2 as general 32-bit-Int-Service
+    Service<Message, STACKSIZE> service_3(SERVICEID_3);       // Service 3 as general char-Service
 
     ServiceBase* serviceList[3] = {&service_1, &service_2, &service_3};     // Array of ptr to the services 
 
@@ -104,39 +100,27 @@ void test_ServiceCluster(void) {
     ServiceBase* ret_service_1 = services.getService_byID(SERVICEID_1);
     TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_1,*ret_service_1->get_ServiceID(),
     "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
-    TEST_ASSERT_EQUAL_HEX8_MESSAGE(INSTANCEID_1,*ret_service_1->get_InstanceID(),
-    "The InstanceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
 
     ServiceBase* ret_service_2 = services.getService_byID(SERVICEID_2);
     TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_2,*ret_service_2->get_ServiceID(),
     "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
-    TEST_ASSERT_EQUAL_HEX8_MESSAGE(INSTANCEID_2,*ret_service_2->get_InstanceID(),
-    "The InstanceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
 
     ServiceBase* ret_service_3 = services.getService_byID(SERVICEID_3);
     TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_3,*ret_service_3->get_ServiceID(),
     "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
-    TEST_ASSERT_EQUAL_HEX8_MESSAGE(INSTANCEID_3,*ret_service_3->get_InstanceID(),
-    "The InstanceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
 
     // Test Get Service by Position
     ret_service_1 = services.getService_byPos(0);
     TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_1,*ret_service_1->get_ServiceID(),
     "The ServiceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
-    TEST_ASSERT_EQUAL_HEX8_MESSAGE(INSTANCEID_1,*ret_service_1->get_InstanceID(),
-    "The InstanceID of the Service returned by ServiceClusters getService_byID-function does not match the searched ID");
 
     ret_service_2 = services.getService_byPos(1);
     TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_2,*ret_service_2->get_ServiceID(),
     "The ServiceID of the Service returned by ServiceClusters getService_byPos-function does not match the searched ID");
-    TEST_ASSERT_EQUAL_HEX8_MESSAGE(INSTANCEID_2,*ret_service_2->get_InstanceID(),
-    "The InstanceID of the Service returned by ServiceClusters getService_byPos-function does not match the searched ID");
 
     ret_service_3 = services.getService_byPos(2);
     TEST_ASSERT_EQUAL_HEX8_MESSAGE(SERVICEID_3,*ret_service_3->get_ServiceID(),
     "The ServiceID of the Service returned by ServiceClusters getService_byPos-function does not match the searched ID");
-    TEST_ASSERT_EQUAL_HEX8_MESSAGE(INSTANCEID_3,*ret_service_3->get_InstanceID(),
-    "The InstanceID of the Service returned by ServiceClusters getService_byPos-function does not match the searched ID");
 
 }
 

@@ -17,7 +17,6 @@ public:
     virtual String get_response()=0;
     virtual bool impart_pdu(String* pdu)=0;
     virtual uint8_t* get_ServiceID()=0;
-    virtual uint8_t* get_InstanceID()=0;
     virtual ~ServiceBase(){};
 };
 
@@ -26,8 +25,7 @@ public:
 template<typename content_class, int stackSize>                                       
 class Service: public ServiceBase{
 protected: 
-    uint8_t serviceID;                                                                                // service-id
-    uint8_t instanceID;                                                                               // service-instance-id                                
+    uint8_t serviceID;                                                                                // service-id                           
     Content_stack<content_class, stackSize> rec_stack;                                                // stack for received content-elements
     String response_pdu;                                                                         // PDU with response 
     
@@ -37,16 +35,11 @@ protected:
     }
 
 public: 
-    Service(uint8_t serviceID, uint8_t instanceID): serviceID(serviceID), instanceID(instanceID){}  
+    Service(uint8_t serviceID): serviceID(serviceID){}  
 
     // Get a Ptr to the Service-ID
     uint8_t* get_ServiceID() override {
         return &serviceID;
-    }
-
-    // Get a Ptr to the Instance-ID
-    uint8_t* get_InstanceID() override {
-        return &instanceID;
     }
 
     // Add a new Content-Object created from PDU to the services receive-Stack
