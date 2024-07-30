@@ -17,8 +17,17 @@
 
 // Class for defining the structure of the Modbus-RTU-Frame
 // Constructors:
+// Construction by PDU: 
 // Frame_modbusRTU(pduString* pdu, char* slaveId, char* functionCode)
+// Object calculates and adds the CRC16, 
+// the Modbus-Slave-ID and the Modbus-Function-Code and adds them to the Frame-representation. 
+// Construction by Frame-representation:
 // Frame_modbusRTU(frameString* frame)
+// Object extracts Payload, Slave-ID and Function-Code and checks the CRC16 for plausibility by checking rest = 0. 
+// 
+// because the frame-representation is stored as a reference, the representation has to be allocated on the heap-memory (buffer)
+// The allocation is done during the conversion from "Content" (construction by PDU) within the content_to_rep-function
+// or it has to be initiated by calling the function "copy_to_heap" (e.g. in copy-constructor or during construction by frame-representation)
 class Frame_modbusRTU: public Frame{
     public:
         // Construct Modbus-RRU-Frame from given PDU (Content)
