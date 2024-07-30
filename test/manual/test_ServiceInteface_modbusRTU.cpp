@@ -6,9 +6,10 @@
 #include <Message_service.h>
 #include <Service.h>
 
-#define DEVICE_ID '1'           // Modbus-RTU specific Device-ID
-#define INSTANCE_ID_A 'm'       // Service-identifier 
-#define INSTANCE_ID_B 'n'       // Service-identifier
+#define DEVICE_ID_ONE 'A'         // Modbus-RTU specific Device-ID of the simulated device 
+#define DEVICE_ID_TWO 'B'         // Modbus-RTU specific Device-ID of the simulated device 
+#define INSTANCE_ID_A 'm'       // Service-identifier of Service-Instance one
+#define INSTANCE_ID_B 'n'       // Service-identifier of Service-Instance two
 
 int main(){
 
@@ -27,7 +28,7 @@ int main(){
     uint8_t rxPin = 1;
     uint8_t txPin = 2;
     arduinoMocking::SoftwareSerial sim_serial(rxPin, txPin);              // initialize a mocked Software-Serial 
-    CommInterface_modbusRTU comminterface(sim_serial, 9600, DEVICE_ID);   // Softwareserial, baudrate, Modbus-device-id 
+    CommInterface_modbusRTU comminterface(&sim_serial, 9600, DEVICE_ID_ONE);   // Softwareserial, baudrate, Modbus-device-id 
 
     // instantiate the service-interface 
     ServiceInterface_modbusRTU serviceinterface(&services, &comminterface); // construct from ref. to associated service-cluster and communication-interface
@@ -37,16 +38,30 @@ int main(){
 
     //---------------------------- Simulate Arduino Loop -------------
     // Devicesettings 
-    char senderDeviceId = 0x2;
+    char DeviceIdOne = DEVICE_ID_ONE;
+    char DeviceIdTwo = DEVICE_ID_TWO;
     char functionCodeA = INSTANCE_ID_A;
     char functionCodeB = INSTANCE_ID_B;
 
-    // incoming frame example
-    pduString incomingFramePdu = "Incoming Frame No. 1";
-    Frame_modbusRTU incomingFrame(&incomingFramePdu, &senderDeviceId, &functionCodeA);
-    String frame = *incomingFrame.get_representation();
-    sim_serial.simulateInput(frame);
+    // simulate an incoming frame from device two to device one for service m (Modbus-function-code = service-id)
+    // simulated PDU 
+    Message_content_t content_msgNoOne;
+    content_msgNoOne.sender_id = DeviceIdTwo;
+    content_msgNoOne.receiver_id = DeviceIdOne;
+    strcpy(content_msgNoOne.msg_text, "Incoming Message No. 1");   
+    Message msgNoOne(&content_msgNoOne);
+
+    // PDU to Modbus-Frame
+    Frame_modbusRTU frameNoOne(msgNoOne.get_representation(), &DeviceIdOne, &functionCodeA);
+    String frameNoOne_rep = *frameNoOne.get_representation();
+
+    // simulate an incoming frame fro mocked serial-interface 
+    sim_serial.simulateInput(frameNoOne_rep);
+
+    // execute the communication-cycle 
     serviceinterface.communicate();
+
+    // get the output of the mocked interface
     sim_serial.read();
     sim_serial.flush();
     

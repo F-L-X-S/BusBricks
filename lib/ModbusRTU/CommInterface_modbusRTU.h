@@ -21,11 +21,8 @@
 // Does NOT inspect any frame-Content (task of the Frame-class) 
 class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
     public:
-        // Construct Communication-Interface by Pins
-        CommInterface_modbusRTU(uint8_t rxPin, uint8_t txPin, uint8_t baudrate, char deviceId = '\0');
-
         // Construct Communication-Interface with predefined SoftwareSerial
-        CommInterface_modbusRTU(SoftwareSerial softwareserial ,uint8_t baudrate, char deviceId = '\0');
+        CommInterface_modbusRTU(SoftwareSerial* softwareserial ,uint8_t baudrate, char deviceId = '\0');
 
         // Destroy Communication-Interface
         ~CommInterface_modbusRTU();
@@ -46,8 +43,6 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
         char getDeviceId();
 
     private:
-        uint8_t rxPin = 0;                              // Receive-Pin 
-        uint8_t txPin = 0;                              // Transmit-Pin
         const char deviceId;                            // Modbus-RTU Slave ID, default nullterminator for mastermode
         unsigned long baudrate;                         // Baudrate 
         unsigned long _charTimeout;                     // Timeout between two chars received 

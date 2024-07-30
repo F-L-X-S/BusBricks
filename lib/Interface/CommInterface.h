@@ -47,7 +47,7 @@ public:
 template<typename interface_type>                                       
 class CommInterface: public CommInterfaceBase{
     protected:
-        interface_type interface;
+        interface_type* interface;
         uint32_t baudrate;
         String* sendBuffer = nullptr;                              // set to nullptr if Frame was sent 
         String* receiveBuffer = nullptr;                           // set to nullptr if Frame was copied to destination
@@ -76,7 +76,7 @@ class CommInterface: public CommInterfaceBase{
 
     public:
         // Construct Communication-Interface 
-        CommInterface(interface_type interface, uint32_t baudrate): interface(interface), baudrate(baudrate){}; 
+        CommInterface(interface_type* interface, uint32_t baudrate): interface(interface), baudrate(baudrate){}; 
 
         // Setup the Interface, has to be called in Setup-function
         virtual void setup_interface()=0;

@@ -1,17 +1,7 @@
 #include "CommInterface_modbusRTU.h"
 
-// Construct Modbus-RTU-Communication-Interface by Pins
-CommInterface_modbusRTU::CommInterface_modbusRTU(uint8_t rxPin, uint8_t txPin, uint8_t baudrate, char deviceId) : 
-    rxPin(rxPin),
-    txPin(txPin),
-    baudrate(baudrate),
-    deviceId(deviceId),
-    CommInterface<SoftwareSerial>(SoftwareSerial(rxPin, txPin), baudrate) {
-        _calculateTimeouts(baudrate);
-};
-
 // Construct Modbus-RTU-Communication-Interface predefined SoftwareSerial-Inetrface
-CommInterface_modbusRTU::CommInterface_modbusRTU(SoftwareSerial softwareserial, uint8_t baudrate, char deviceId) : 
+CommInterface_modbusRTU::CommInterface_modbusRTU(SoftwareSerial* softwareserial, uint8_t baudrate, char deviceId) : 
     baudrate(baudrate),
     deviceId(deviceId),
     CommInterface<SoftwareSerial>(softwareserial, baudrate) {
@@ -24,22 +14,15 @@ CommInterface_modbusRTU::~CommInterface_modbusRTU() {
 
 // Setup-function
 void CommInterface_modbusRTU::setup_interface(){
-    if (rxPin != txPin && rxPin != 0 && txPin != 0)
-    {
-      // Define pin modes for TX and RX
-      pinMode(rxPin, INPUT);
-      pinMode(txPin, OUTPUT);
-    }
-
     // Set the baud rate for the SoftwareSerial object
-    interface.begin(baudrate);
+    interface->begin(baudrate);
 };
 
 // Sending
 bool CommInterface_modbusRTU::send(){
     if (sendBuffer!=nullptr){                                       // check, if the sendbuffer-ptr is set to a valid memory
-        interface.write(*sendBuffer->c_str());                      // write the byte-converted string to the interface  
-        interface.flush();                                          // ensure, interfaces sending-buffer is completely empty before returning
+        interface->write(*sendBuffer->c_str());                      // write the byte-converted string to the interface  
+        interface->flush();                                          // ensure, interfaces sending-buffer is completely empty before returning
         return true;
     }
     else{
@@ -57,7 +40,7 @@ bool CommInterface_modbusRTU::receive(){
     bool receivingFlag = (deviceId == '\0') ? true:false;                        // interface started receiving a frame (Slavemode: only if adressed to the device-ID, Mastermode: each frame) 
 
     // Wait for a relevant Frame 
-    while (!interface.available()) {
+    while (!interface->available()) {
     if (millis() - startTime >= _recTimeout) {
       return false;                                                 // No Frame received in specified timespan
     }
@@ -65,12 +48,12 @@ bool CommInterface_modbusRTU::receive(){
 
     // Receive a relevant frame as long as timeout and framelength are ok
     while (micros() - startTime <= _charTimeout && numBytes < MAXFRAMESIZE) {
-        if (interface.available()) {
-            if (receivingFlag || (deviceId==interface.peek()))      // check if the char in buffer is the device-ID or receiving started already
+        if (interface->available()) {
+            if (receivingFlag || (deviceId==interface->peek()))      // check if the char in buffer is the device-ID or receiving started already
             {
                 receivingFlag = true;                               // Set the receive-flag 
                 startTime = micros();                               // redefine the time for measuring timeouts
-                (*receiveBuffer)[numBytes] = interface.read();      // Write the received char to the specified buffer
+                (*receiveBuffer)[numBytes] = interface->read();      // Write the received char to the specified buffer
                 numBytes++;                                         // increase frame-length-counter 
             }
         }
@@ -94,9 +77,9 @@ void CommInterface_modbusRTU::execCommunicationCycle(){
 void CommInterface_modbusRTU::_clearRxBuffer() {
   unsigned long startTime = micros();
    while (micros() - startTime < _frameTimeout) {                   // Check for a frame-timeout
-    if (interface.available() > 0) {                                
+    if (interface->available() > 0) {                                
       startTime = micros();                                         // update start-timestamp
-      interface.read();                                             // delete one byte from rec-buffer
+      interface->read();                                             // delete one byte from rec-buffer
     }
   };
 };
