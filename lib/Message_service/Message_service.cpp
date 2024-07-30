@@ -1,7 +1,7 @@
 #include "Message_service.h"
 
 // Constructor for creating Message-service 
-Message_service::Message_service(uint8_t serviceId): Service<Message, STACKSIZE>(serviceId){}
+Message_service::Message_service(uint8_t instance_id): Service<Message, STACKSIZE>(FUNCTIONCODE, instance_id){}
 
 // Overwrite default response-PDU by response PDU written by Service-Functions
 String Message_service::get_response() {
@@ -10,7 +10,7 @@ String Message_service::get_response() {
     Message_content_t* last_content = last_msg.get_content();
     // generate the ACK-Response to the last element
     Message_content_t response_content;
-    response_content.sender_id = serviceID;
+    response_content.sender_id = instanceID;
     if (static_cast<String>(last_content->msg_text)!="\0"){  
         response_content.receiver_id = last_content->sender_id;
         String message_text = "ACK";

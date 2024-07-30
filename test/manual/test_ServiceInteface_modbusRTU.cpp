@@ -8,15 +8,15 @@
 
 #define DEVICE_ID_ONE 'A'         // Modbus-RTU specific Device-ID of the simulated device 
 #define DEVICE_ID_TWO 'B'         // Modbus-RTU specific Device-ID of the simulated device 
-#define SERVICE_ID_A 'm'       // Service-identifier of Service-Instance one
-#define SERVICE_ID_B 'n'       // Service-identifier of Service-Instance two
+#define INSTANCE_ID_A 'm'       // Service-identifier of Service-Instance one
+#define INSTANCE_ID_B 'n'       // Service-identifier of Service-Instance two
 
 int main(){
 
     //---------------------------- Service-Layer ----------------------------
     // instantiate services
-    Message_service msg_service_a(SERVICE_ID_A);   
-    Message_service msg_service_b(SERVICE_ID_B);   
+    Message_service msg_service_a(INSTANCE_ID_A);   
+    Message_service msg_service_b(INSTANCE_ID_B);   
 
     // register the services in a service-cluster
     ServiceBase* serviceList[2] = {&msg_service_b, &msg_service_b};         // Array of service-references
@@ -40,8 +40,8 @@ int main(){
     // Devicesettings 
     char DeviceIdOne = DEVICE_ID_ONE;
     char DeviceIdTwo = DEVICE_ID_TWO;
-    char functionCodeA = SERVICE_ID_A;
-    char functionCodeB = SERVICE_ID_B;
+    char functionCodeA = INSTANCE_ID_A;
+    char functionCodeB = INSTANCE_ID_B;
 
     // simulate an incoming frame from device two to device one for service m (Modbus-function-code = service-id)
     // simulated PDU 
