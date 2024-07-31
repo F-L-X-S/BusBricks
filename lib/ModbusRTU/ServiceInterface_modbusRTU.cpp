@@ -61,10 +61,13 @@ void ServiceInterface_modbusRTU::addPDU_to_services()
 // - Execute the CommInterfaces Comm-cycle 
 void ServiceInterface_modbusRTU::communicate()
 {
-    // interact with Comm-interface
-    updateCommStacks();   
+    // get incoming frames from the Communication-Interface 
+    processRecStack();
 
     // interact with Services          
     addPDU_to_services();
     getPDU_from_services();
+    
+    // impart the new Frame sto the Communication-Interface 
+    processSendStack();
 };

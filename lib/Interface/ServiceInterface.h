@@ -53,28 +53,27 @@ class ServiceInterface{
         // Implemented in derived Class, depending on frametype
         virtual void addPDU_to_services()=0;
 
-        // Update stacks interacting with Communication-Interface:
-        // Add the last item from the sendstack to the Comminterface, delete it after sending
-        // Add items received by the CommInterface to the Receivestack
-        void updateCommStacks(){
+        // Add the last item from the sendstack to the Comminterface
+        // delete it after sending
+        virtual void processSendStack(){
             // Handle sendstack
-            if (comm_interface->finishedSending() && !sendStack.empty()){
-                Frame* frameToSend = sendStack.getElement();
-                if (sendItem == frameToSend->getFrame())
-                {
-                    sendStack.deleteElement();                         // Delete the sent element from stack (if it matches the last one sent)
-                }
-                if (!sendStack.empty())
-                {
-                    sendItem = frameToSend->getFrame();                // Get the next Element to be sent 
-                    String* sendItemAdr = &sendItem;
-                    comm_interface->sendNewFrame(sendItemAdr);         // Impart Frame that has to be sent next 
-                };
-            };
-
-            // Handle receivebuffer
-            if (comm_interface->receivedNewFrame())
+            while (!sendStack.empty())
             {
+                if (comm_interface->finishedSending()){
+                    Frame* frameToSend = sendStack.getElement();        // Get next item from the send-stack
+                    sendItem = frameToSend->getFrame();                 // Extract Frame from Item
+                    String* sendItemAdr = &sendItem;
+                    comm_interface->sendNewFrame(sendItemAdr);          // Impart Frame that has to be sent next 
+                    sendStack.deleteElement();
+                };
+            };        
+        }
+
+
+        // Add items received by the CommInterface to the Receivestack
+        virtual void processRecStack() {
+            // Handle receivebuffer
+            while (comm_interface->receivedNewFrame() && !recStack.full()){
                 if (recItem != ""){                                 // Item not empty 
                     frameString frameStr = recItem.c_str();         // conversion for identification as framestring in Frame-Class-Constructor
                     frameType recItemFrame(&frameStr);              // Construct Frame-Class derived Object
@@ -82,6 +81,6 @@ class ServiceInterface{
                 }
                 comm_interface->getReceivedFrame(&recItem);         // Impart memory the received item has to be stored at 
             }
-        };
+        }
 };
 #endif // SERVICEINTERFACE_H
