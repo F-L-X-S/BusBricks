@@ -24,7 +24,7 @@
 
         void print(const String &message);
 
-        void write(char data);
+        void write(const char* data, size_t size);
 
         void flush();
 

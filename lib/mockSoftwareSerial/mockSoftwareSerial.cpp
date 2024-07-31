@@ -17,8 +17,10 @@ namespace arduinoMocking{
     };
 
 
-    void SoftwareSerial::write(char data) {
-        dataQueue.addElement(data);
+    void SoftwareSerial::write(const char* data, size_t size) {
+        for (size_t i = 0; i < size; i++) {
+            dataQueue.addElement(data[i]); // Add each character individually
+        }
     }
 
     void SoftwareSerial::flush(){
@@ -29,6 +31,7 @@ namespace arduinoMocking{
         }
         Serial.print("Flushed data:\t");
         Serial.print(result);
+        Serial.println();
     }
 
 
