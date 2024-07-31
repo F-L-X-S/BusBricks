@@ -36,6 +36,10 @@ struct Message_content_t{
 };
 
 // Defines the mapping of string-formatted PDU to a text-message with information for sender and receiver
+// Constructor for creating Message from pdu:
+//        Message(String* representation)
+// Constructor for creating Message from msg-content
+//        Message(Message_content_t* message_content)
 class Message: public Content<Message_content_t, String>
 {
     public:
