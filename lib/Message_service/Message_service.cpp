@@ -35,6 +35,5 @@ void Message_service::stackProcessing() {
 
 // get the destination Instance-ID for the current response PDU in the send-stack
 uint8_t Message_service::get_destinationId(){
-    Message sendMsg = rec_stack.getElement();
-    return sendMsg.get_content()->receiver_id; 
+    return send_stack.getElement()->get_content()->receiver_id; 
 };
