@@ -53,6 +53,15 @@ class ServiceInterface{
         // Implemented in derived Class, depending on frametype
         virtual void addPDU_to_services()=0;
 
+        // start the processing of the registered services 
+        virtual void processServices(){
+            for (size_t i = 0; i < services->getNumberOfServices(); i++)
+                {
+                    ServiceBase* destinationService = services->getService_byPos(i);            // Pointer to the destination-Service 
+                    destinationService->stackProcessing();
+                }
+        }
+
         // Add the last item from the sendstack to the Comminterface
         // delete it after sending
         virtual void processSendStack(){

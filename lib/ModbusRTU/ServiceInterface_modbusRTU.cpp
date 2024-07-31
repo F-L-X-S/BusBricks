@@ -66,6 +66,7 @@ void ServiceInterface_modbusRTU::communicate()
 
     // interact with Services          
     addPDU_to_services();
+    processServices();
     getPDU_from_services();
     
     // impart the new Frame sto the Communication-Interface 
