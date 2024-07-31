@@ -47,10 +47,10 @@ public:
         return true;                                                    // return true, if deleted successful
     };
 
-    // Get the element in the stack by index: 
+    // Get Pointer to element in the stack
+    // indexing:
     // neg. index: return element indexed from end of stack (size)
     // pos. index: return element indexed from beginning of stack (0)
-    // True if successful
     content_class* getElement(int index = 0){                             
         if (index >= size || size+index<0) {                            
             return nullptr;}  

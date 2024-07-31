@@ -65,7 +65,7 @@ public:
         // generic response element 
         content_class response_element;
         // copy the response element from send-stack
-        response_element = send_stack.getElement();
+        response_element = *send_stack.getElement();
         // write pdu from this element to response-pdu-memory of service-instance 
         write_response_pdu(response_element);
         // return the response-pdu of the service-instance
@@ -88,8 +88,9 @@ public:
     virtual void stackProcessing() override {
         if (rec_stack.empty()) return;
         while(!rec_stack.empty()){
-            content_class recItem = rec_stack.getElement(); // example implementation: adding received items back to send-stack
+            content_class recItem = *rec_stack.getElement(); // example implementation: adding received items back to send-stack
             send_stack.addElement(recItem);
+            rec_stack.deleteElement();
         }        
     }                   
 };
