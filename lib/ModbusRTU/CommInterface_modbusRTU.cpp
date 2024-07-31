@@ -43,7 +43,7 @@ bool CommInterface_modbusRTU::receive(){
   }
 
     // Receive a relevant frame as long as timeout and framelength are ok
-    while ((true | millis() - startTime <= _charTimeout) && interface->available() && numBytes < MAXFRAMESIZE) {
+    while (millis() - startTime <= _charTimeout && interface->available() && numBytes < MAXFRAMESIZE) {
           if (receivingFlag || (deviceId==interface->peek()))      // check if the char in buffer is the device-ID or receiving started already
           {
               receivingFlag = true;                               // Set the receive-flag 
