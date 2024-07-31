@@ -61,11 +61,9 @@ public:
     };
 
     // get the response-pdu stored at the reserved memory of the service instance  
-    virtual String get_response() override {                                                                      
-        // generic response element 
-        content_class response_element;
+    virtual String get_response() override {                                                                     
         // copy the response element from send-stack
-        response_element = *send_stack.getElement();
+        content_class response_element = (send_stack.empty())? content_class():*send_stack.getElement();
         // write pdu from this element to response-pdu-memory of service-instance 
         write_response_pdu(response_element);
         // return the response-pdu of the service-instance
