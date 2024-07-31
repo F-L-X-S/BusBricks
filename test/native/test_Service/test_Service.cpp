@@ -68,26 +68,38 @@ void test_Service(void) {
     Service<Message, STACKSIZE> message_service(SERVICEID_1, INSTANCEID_1);
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    std::string sample_pdu = "\x01\x0F:" "index!";
+    String sample_pdu = "\x01\x0F: PDU!";
 
     // Add Message-instances to receive-stack (Increase Stacksize)
-    int8_t size = 0;                                           // initialize size-counter for added elements
-    for (size_t i = 0; i <= STACKSIZE+3; i++)                  // try to add more elements than possible 
+    uint8_t size = 0;                                            // initialize size-counter for added elements
+    for (size_t i = 0; i <= STACKSIZE+3; i++)                   // try to add more elements than possible 
     {
-        sample_pdu[7] = static_cast<char>(i);                                     // change msg-text to "index<i>"
-        if (message_service.impart_pdu(&sample_pdu)) // add Messages with text "index<i>"
-        {
-            size++;                                            // increase size-counter if message added successful to receive stack
-        }
-        
-        // Check response-PDU after each impart
-        char empty_pdu[MAXPDUSIZE];
-        Message empty_msg;
-        TEST_ASSERT_EQUAL_STRING_MESSAGE(empty_msg.get_representation()->c_str(), message_service.get_response().c_str(), "Expected default-PDU as response-PDu for abstract Service");       
+        // impart PDU to Service
+        if (message_service.impart_pdu(&sample_pdu)) size ++;   // add Messages with text "index<i>", increase size-count
     }
+
+    // Check number of imparted PDU
     char message[100];
     sprintf(message, "Added %d elements to rec-stack, but initialized stack with max-size %d", size, STACKSIZE);
     TEST_ASSERT_EQUAL_MESSAGE(STACKSIZE, size, message);        // Check stacksize (should be max)
+
+    // Process Comm-stacks
+    message_service.stackProcessing();
+
+
+    // Add Message-instances to receive-stack (Increase Stacksize)
+    Message expectedMsg;
+    for (size_t i = 0; i <= STACKSIZE+3; i++)                   // try to add more elements than possible 
+    {
+        // impart PDU to Service
+        message_service.impart_pdu(&sample_pdu);                // add Messages with text "index<i>"
+    
+        // Check response-PDUs
+        expectedMsg=(i<STACKSIZE)? Message(&sample_pdu):Message();
+        TEST_ASSERT_EQUAL_STRING_MESSAGE(expectedMsg.get_representation()->c_str(), message_service.get_response().c_str(), "Expected default-PDU as response-PDu for abstract Service");       
+        message_service.clearResponse();
+    }
+
 }
 
 // ---------------------------------------Test example instance of abstract ServiceCluster-class---------------------------------------
