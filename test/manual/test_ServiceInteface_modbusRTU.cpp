@@ -60,9 +60,5 @@ int main(){
 
     // execute the communication-cycle 
     serviceinterface.communicate();
-
-    // get the output of the mocked interface
-    sim_serial.read();
-    sim_serial.flush();
     
 };
