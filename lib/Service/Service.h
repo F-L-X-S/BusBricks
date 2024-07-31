@@ -26,7 +26,7 @@ public:
 
 // Template to create a Service class by defining the Content (derived Class of "Content") to handle and the size of the service-stacks
 // A Service has to be instanciated with a unique service-id and an instance-id, the service-instance should use for it's communication
-
+// The derived classes have to define the stack-processing to handle the payload at the rec-stack and add payload to the send-stack 
 template<typename content_class, int stackSize>                                       
 class Service: public ServiceBase{
 protected: 

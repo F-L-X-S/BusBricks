@@ -14,7 +14,9 @@
 #define STACKSIZE 3         // Number of elements the services stacks can store 
 #define FUNCTIONCODE 0x6D   // ASCII: "m"
 
-// Service-class for handling Content from type "Message"                                  
+// Service-class for handling Content from type "Message"   
+// the service prints the messages from the receive-stack
+// and adds an Acknowledgement-PDU to the Send-Stack                              
 class Message_service: public Service<Message, STACKSIZE>
 {
 public:
@@ -23,6 +25,8 @@ public:
 
     // process all messages from the receive-stack, till the stack is empty
     // add all necessary messages to the send-stack 
+    // prints the messages from the receive-stack
+    // and adds an Acknowledgement-PDU to the Send-Stack  
     void stackProcessing() override;
 
     // get the destination Instance-ID for the current response PDU

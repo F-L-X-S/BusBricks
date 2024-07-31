@@ -9,7 +9,9 @@ ServiceInterface_modbusRTU::~ServiceInterface_modbusRTU() {
 }
 
 
-// Add all PDUs provided by the services to the sendstack
+// Add all PDUs provided by the services to the sendstack:
+// - iterate through services of the service-cluster 
+// - create frame from payload provided by service (service-/payload-specific)
 void ServiceInterface_modbusRTU::getPDU_from_services()
 {
     for (size_t i = 0; i < services->getNumberOfServices(); i++)
@@ -18,7 +20,7 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
         ServiceBase* destinationService = services->getService_byPos(i);            // Pointer to the destination-Service 
         if (!destinationService->responseAvailable()) continue;                     // skip iteration if the services response is empty 
         pduString servicePdu = destinationService->get_response();                  // get the response-PDU provided by the service
-        char deviceId = *destinationService->get_InstanceID();                   // initialize the device-id by instance-id 
+        char deviceId = *destinationService->get_InstanceID();                      // initialize the device-id by instance-id 
 
         // Handle service-types
         Message_service* messageService = dynamic_cast<Message_service*>(destinationService);   // cast as Message-service for specific functions
@@ -35,7 +37,7 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
     
 };
 
-// Add all PDUs provided by the services to the sendstack
+// Add all PDUs provided by the services to the sendstack:
 void ServiceInterface_modbusRTU::addPDU_to_services()
 {
     // abort, if no new PDU available

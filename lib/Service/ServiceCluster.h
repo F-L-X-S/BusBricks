@@ -18,6 +18,8 @@ class ServiceClusterBase{
 };
 
 // The ServiceCluster provides functions to manage multiple services 
+// the service-cluster is added as to the service-interface and contains 
+// the references to all services, associated with the interface 
 template<uint8_t number_of_services>         
 class ServiceCluster: public ServiceClusterBase{
     private:

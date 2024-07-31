@@ -12,6 +12,15 @@
 #include <Frame_modbusRTU.h>
 #include <Message_service.h>
 
+// Service-Interface-Instance for Modbus-RTU:
+// Incoming information:
+// Impart incoming frames from the Communication-Interface 
+// to the designated service of the service-cluster 
+//
+// Outgoing information: 
+// Build outgoing modbus-RTU-frames from the payload provided 
+// by the services and impart them to the Communication-Interface
+//
 class ServiceInterface_modbusRTU: public ServiceInterface<CommInterface_modbusRTU, Frame_modbusRTU>{
     public:
         // Construct Service-Interface 

@@ -9,6 +9,7 @@
 
 #include<Frame.h>
 
+// Communcation-Interface-Base-Class 
 class CommInterfaceBase
 {
 public:
@@ -36,7 +37,9 @@ public:
 
 
 // Template for generic communication-interface
-// the template ensures the correct handling of send- and receive-buffers of the interface:
+// specifies a standardized interface to use for integrating 
+// any hardware-interface (e.g. SoftwareSerial, OneWire...)into a Service Interface 
+// The template ensures the correct handling of send- and receive-buffers of the interface:
 //
 // sendBuffer set to nullptr:       the Interface is ready to send another frame
 // sendBuffer not set to nullptr:   the frame, sendBuffer is pointing to, has to be send next 
