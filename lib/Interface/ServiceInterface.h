@@ -66,6 +66,7 @@ class ServiceInterface{
                     comm_interface->sendNewFrame(sendItemAdr);          // Impart Frame that has to be sent next 
                     sendStack.deleteElement();
                 };
+                comm_interface->execCommunicationCycle();
             };        
         }
 
@@ -80,6 +81,7 @@ class ServiceInterface{
                     recStack.addElement(recItemFrame);              // Add the received element to the stack 
                 }
                 comm_interface->getReceivedFrame(&recItem);         // Impart memory the received item has to be stored at 
+                comm_interface->execCommunicationCycle();
             }
         }
 };
