@@ -20,14 +20,10 @@ void CommInterface_modbusRTU::setup_interface(){
 
 // Sending
 bool CommInterface_modbusRTU::send(){
-    if (sendBuffer!=nullptr){                                       // check, if the sendbuffer-ptr is set to a valid memory
-        interface->write(*sendBuffer->c_str());                      // write the byte-converted string to the interface  
-        interface->flush();                                          // ensure, interfaces sending-buffer is completely empty before returning
-        return true;
-    }
-    else{
-        return false;
-    }
+    if (sendBuffer==nullptr) return false;                        // check, if the sendbuffer-ptr is set to a valid memory
+    interface->write(sendBuffer->c_str(), sendBuffer->length());  // write the byte-converted string to the interface  
+    interface->flush();                                           // ensure, interfaces sending-buffer is completely empty before returning
+    return true;
 };
 
 // Receiving 
