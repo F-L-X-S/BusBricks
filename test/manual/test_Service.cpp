@@ -10,19 +10,21 @@ int main() {
     Service<Message, STACKSIZE> message_service(SERVICEID, INSTANCE_ID);
     std::cout<<"Created Service with\nService-ID:\t" <<static_cast<char>(*message_service.get_ServiceID())<<"\nInstance-ID:\t"<<static_cast<char>(*message_service.get_InstanceID())<<std::endl;
 
-    // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    std::string sample_pdu = "\x01\x0F:" "Hello";
+    
 
     // Impart PDU to Service till rec-stack is full
-    bool recStack_not_full = true;
-    while (recStack_not_full)
+    String sample_pdu = "\x01\x0F:" "Hello";
+    while (message_service.impart_pdu(&sample_pdu))
     {
-        recStack_not_full = message_service.impart_pdu(&sample_pdu);
-        if (recStack_not_full)
-        {
-            std::cout<<"Added new PDU to Service Rec-Stack"<<std::endl;
-        }
-        std::cout<<"Response PDU:\t"<<message_service.get_response()<<std::endl;
+        std::cout<<"Added new PDU to Service Rec-Stack"<<std::endl;
     }
-    std::cout<<"Rec-Stack full"<<std::endl;
+    // Process the incoming messages 
+    message_service.stackProcessing();
+
+    // Print the Payload provided by the service (default: same as incoming payload)
+    while (message_service.responseAvailable())
+    {
+        std::cout<<"Response PDU:\t"<<message_service.get_response()<<std::endl;
+        message_service.clearResponse();
+    }
 }
