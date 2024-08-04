@@ -12,7 +12,7 @@
 #include <Frame.h>
 #include <Content_stack.h>
 
-#define STACKSIZE 3         // Size of Send- / Rec-Stack
+#define STACKSIZE 2         // Size of Send- / Rec-Stack
 
 // Template for generic Service-Interface
 // The derived class defines the handling of incoming frames from communication-interface to the services (associated by service-id)
