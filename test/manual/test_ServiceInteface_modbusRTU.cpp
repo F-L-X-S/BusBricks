@@ -8,15 +8,15 @@
 
 #define DEVICE_ID_ONE 'A'         // Modbus-RTU specific Device-ID of the simulated device 
 #define DEVICE_ID_TWO 'B'         // Modbus-RTU specific Device-ID of the simulated device 
-#define SERVICE_ID_A 'm'       // Service-identifier of Service-Instance one
-#define SERVICE_ID_B 'n'       // Service-identifier of Service-Instance two
 
 int main(){
 
     //---------------------------- Service-Layer ----------------------------
-    // instantiate services
-    Message_service msg_service_a(SERVICE_ID_A);   
-    Message_service msg_service_b(SERVICE_ID_B);   
+    // instantiate  Message Service with default Service-ID "m"
+    Message_service msg_service_a(DEVICE_ID_ONE); 
+
+    // instantiate  Message Service with custom Service-ID "n"
+    Message_service msg_service_b(DEVICE_ID_ONE, 'n');   
 
     // register the services in a service-cluster
     ServiceBase* serviceList[2] = {&msg_service_a, &msg_service_b};         // Array of service-references
@@ -40,8 +40,6 @@ int main(){
     // Devicesettings 
     char DeviceIdOne = DEVICE_ID_ONE;
     char DeviceIdTwo = DEVICE_ID_TWO;
-    char functionCodeA = SERVICE_ID_A;
-    char functionCodeB = SERVICE_ID_B;
 
     // simulate an incoming frame from device two to device one for service m (Modbus-function-code = service-id)
     // simulated PDU 
@@ -52,7 +50,8 @@ int main(){
     Message msgNoOne(&content_msgNoOne);
 
     // PDU to Modbus-Frame
-    Frame_modbusRTU frameNoOne(msgNoOne.get_representation(), &DeviceIdOne, &functionCodeA);
+    char functionCode = 'm';
+    Frame_modbusRTU frameNoOne(msgNoOne.get_representation(), &DeviceIdOne, &functionCode);
     String frameNoOne_rep = *frameNoOne.get_representation();
 
     // simulate an incoming frame fro mocked serial-interface 
