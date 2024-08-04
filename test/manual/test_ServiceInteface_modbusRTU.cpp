@@ -54,8 +54,11 @@ int main(){
     Frame_modbusRTU frameNoOne(msgNoOne.get_representation(), &DeviceIdOne, &functionCode);
     String frameNoOne_rep = *frameNoOne.get_representation();
 
-    // simulate an incoming frame fro mocked serial-interface 
+    // simulate an incoming frame from mocked serial-interface 
     sim_serial.simulateInput(frameNoOne_rep);
+
+    // Add an additional new message to be sent by the service "n"
+    msg_service_b.sendMessage(DEVICE_ID_TWO, "New Message for other Device");
 
     // execute the communication-cycle and print the Output from serial Bus (cout interface)
     // Output should contain two ACK for Service-ID "m"
