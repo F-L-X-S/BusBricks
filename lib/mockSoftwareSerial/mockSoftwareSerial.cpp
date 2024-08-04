@@ -1,7 +1,7 @@
 #include "mockSoftwareSerial.h"
 
+#ifndef ARDUINO
 namespace arduinoMocking{
-
     SoftwareSerial::SoftwareSerial(int rx, int tx) : rxPin(rx), txPin(tx){};
 
     void SoftwareSerial::begin(long baud) {
@@ -75,5 +75,7 @@ namespace arduinoMocking{
         }
     }
 };
+#endif // ARDUINO
+
 
 
