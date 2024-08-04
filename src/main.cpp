@@ -42,9 +42,11 @@ ServiceCluster<1> services(serviceList);
 
 void setup() {
     Serial.begin(9600);
+    serialInterface.begin(BAUDRATE);
     Serial.println("Setup...");
 };
 
 void loop() {
     Serial.println("Alive!"); 
+    serviceinterface.communicate();
  };
