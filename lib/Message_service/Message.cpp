@@ -29,11 +29,7 @@ Message::Message(Message_content_t* message_content) : Content(*message_content)
 void Message::rep_to_content() {    
     content.sender_id = static_cast<char>(representation[0]);                                      // get sender-ID from PDU 
     content.receiver_id = static_cast<char>(representation[1]);                                    // get receiver-ID from PDU
-    content.txt_size = static_cast<uint8_t>(representation.length()) - 3;                          // calculate txt_size
-
-    for (size_t i = 0; i < content.txt_size; ++i) {
-        content.msg_text[i] = representation[3 + i];                                               // copy message from PDU
-    }                                                                                              // return message_content-pointer
+    content.msg_text = representation; 
 };
 
 // Allocate byte-values for representation from Message-Object
@@ -42,7 +38,7 @@ void Message::content_to_rep() {
     representation += static_cast<char>(content.sender_id);                                         // Add Sender-ID
     representation += static_cast<char>(content.receiver_id);                                       // Add Receiver-ID
     representation += static_cast<char>(0x3A);                                                      // Add ASCII ":"
-    representation += String(content.msg_text);                                                     // Append message text 
+    representation += content.msg_text;                                                     // Append message text 
 };
 
 // String Represenation of the Message-Object 
@@ -68,4 +64,3 @@ String Message::to_string(){
 
     return string_rep;
 };
-

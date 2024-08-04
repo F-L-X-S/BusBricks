@@ -46,7 +46,7 @@ int main(){
     Message_content_t content_msgNoOne;
     content_msgNoOne.sender_id = DeviceIdTwo;
     content_msgNoOne.receiver_id = DeviceIdOne;
-    strcpy(content_msgNoOne.msg_text, "Incoming Message No. 1");   
+    content_msgNoOne.msg_text = "Incoming Message No. 1";   
     Message msgNoOne(&content_msgNoOne);
 
     // PDU to Modbus-Frame
@@ -58,7 +58,7 @@ int main(){
     sim_serial.simulateInput(frameNoOne_rep);
 
     // Add an additional new message to be sent by the service "n"
-    msg_service_b.sendMessage(DEVICE_ID_TWO, "New Message for other Device");
+    msg_service_b.sendMessage(DEVICE_ID_TWO, "New Message for Device B");
 
     // execute the communication-cycle and print the Output from serial Bus (cout interface)
     // Output should contain two ACK for Service-ID "m"

@@ -39,9 +39,7 @@ void Message_service::sendAck(Message* message){
     response_content.sender_id = instanceID;                                           // own instance-id as sender                     
     if (static_cast<String>(content->msg_text)!="\0"){  
         response_content.receiver_id = content->sender_id;                             // receiver is the sender of the received message
-        String message_text = "ACK";                                                   // Acknowledgement 
-        strncpy(response_content.msg_text, message_text.c_str(), sizeof(message_text));     
-        response_content.txt_size = 3;
+        response_content.msg_text = "ACK";                                             // Acknowledgement-text
     }    
     // initialize response-message-Object 
     Message response_msg(&response_content);
@@ -54,9 +52,7 @@ void Message_service::sendMessage(char receiverId, String messagetext){
     Message_content_t response_content;
     response_content.sender_id = instanceID;                                           // own instance-id as sender                     
     response_content.receiver_id = receiverId;                           
-    String message_text = messagetext;                                           
-    strncpy(response_content.msg_text, message_text.c_str(), sizeof(message_text));     
-    response_content.txt_size = messagetext.length();
+    response_content.msg_text = messagetext;                                           
 
     // initialize response-message-Object 
     Message response_msg(&response_content);

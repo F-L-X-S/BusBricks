@@ -13,8 +13,7 @@ void test_Message_from_content(void) {
     Message_content_t msg_content;
     msg_content.sender_id = 0x1;
     msg_content.receiver_id = 0xF;
-    strcpy(msg_content.msg_text, "Hello");  
-    msg_content.txt_size = sizeof(msg_content.msg_text); 
+    msg_content.msg_text= "Hello";  
     Message msg_from_content(&msg_content);
 
     // Check String-representation of created object
