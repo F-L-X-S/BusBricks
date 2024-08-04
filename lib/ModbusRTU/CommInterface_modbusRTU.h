@@ -22,16 +22,13 @@
 class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
     public:
         // Construct Communication-Interface with predefined SoftwareSerial
-        CommInterface_modbusRTU(SoftwareSerial* softwareserial ,uint8_t baudrate, char deviceId = '\0');
+        CommInterface_modbusRTU(SoftwareSerial* softwareserial ,uint16_t baudrate, char deviceId = '\0');
 
         // Destroy Communication-Interface
         ~CommInterface_modbusRTU();
 
         // Execute the Communication-Cycle
         void execCommunicationCycle();
-
-        // initialize the interface counter as example for setup
-        void setup_interface() override;
 
         // Send the Frame from Send-buffer
         bool send() override;
@@ -44,12 +41,11 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
 
     private:
         const char deviceId;                            // Modbus-RTU Slave ID, default nullterminator for mastermode
-        unsigned long baudrate;                         // Baudrate 
-        unsigned long _charTimeout;                     // Timeout between two chars received 
-        unsigned long _frameTimeout;                    // min time between two Frames
-        unsigned long _recTimeout = 100;                // time to wait for response during the receive-cycle
+        uint16_t _charTimeout;                          // Timeout between two chars received 
+        uint16_t _frameTimeout;                         // min time between two Frames
+        uint16_t _recTimeout = 100;                     // time to wait for response during the receive-cycle
 
-        void _calculateTimeouts(unsigned long baud);    // Calculate all timeouts based on the specified baudrate
+        void _calculateTimeouts(uint16_t baud);         // Calculate all timeouts based on the specified baudrate
         void _clearRxBuffer();                          // Clear the receive-buffer 
 
 };

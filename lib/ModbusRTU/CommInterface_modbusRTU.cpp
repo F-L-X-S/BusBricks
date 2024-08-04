@@ -1,8 +1,7 @@
 #include "CommInterface_modbusRTU.h"
 
 // Construct Modbus-RTU-Communication-Interface predefined SoftwareSerial-Inetrface
-CommInterface_modbusRTU::CommInterface_modbusRTU(SoftwareSerial* softwareserial, uint8_t baudrate, char deviceId) : 
-    baudrate(baudrate),
+CommInterface_modbusRTU::CommInterface_modbusRTU(SoftwareSerial* softwareserial, uint16_t baudrate, char deviceId) : 
     deviceId(deviceId),
     CommInterface<SoftwareSerial>(softwareserial, baudrate) {
         _calculateTimeouts(baudrate);
@@ -11,12 +10,6 @@ CommInterface_modbusRTU::CommInterface_modbusRTU(SoftwareSerial* softwareserial,
 // Destructor
 CommInterface_modbusRTU::~CommInterface_modbusRTU() {
 }
-
-// Setup-function
-void CommInterface_modbusRTU::setup_interface(){
-    // Set the baud rate for the SoftwareSerial object
-    interface->begin(baudrate);
-};
 
 // Sending
 bool CommInterface_modbusRTU::send(){
@@ -79,9 +72,9 @@ void CommInterface_modbusRTU::_clearRxBuffer() {
 };
 
 // Calculate the Timeouts
-void CommInterface_modbusRTU::_calculateTimeouts(unsigned long baudrate) {
-  unsigned long bitsPerChar = 11;                                   // Bits per character defined in specification
-  unsigned long timePerChar = (bitsPerChar * 1000000) / baudrate;
+void CommInterface_modbusRTU::_calculateTimeouts(uint16_t baudrate) {
+  uint8_t bitsPerChar = 11;                                   // Bits per character defined in specification
+  uint16_t timePerChar = (bitsPerChar * 1000000) / baudrate;
   if (baudrate <= 19200) {
     // Set charTimeout to 1.5 times the time to send one character
     _charTimeout = timePerChar * 1.5;
@@ -90,8 +83,8 @@ void CommInterface_modbusRTU::_calculateTimeouts(unsigned long baudrate) {
     _frameTimeout = timePerChar * 3.5;
   }
   else {
-    _charTimeout = 1700;
-    _frameTimeout = 4000;
+    _charTimeout = 1700000;
+    _frameTimeout = 4000000;
   }
 };
 
