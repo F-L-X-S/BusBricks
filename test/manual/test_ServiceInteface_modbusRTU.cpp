@@ -58,7 +58,8 @@ int main(){
     // simulate an incoming frame fro mocked serial-interface 
     sim_serial.simulateInput(frameNoOne_rep);
 
-    // execute the communication-cycle 
+    // execute the communication-cycle and print the Output from serial Bus (cout interface)
+    // Output should contain two ACK for Service-ID "m"
     serviceinterface.communicate();
     
 };
