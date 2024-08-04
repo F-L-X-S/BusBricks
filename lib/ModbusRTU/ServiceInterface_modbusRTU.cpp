@@ -22,15 +22,16 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
         pduString servicePdu = destinationService->get_response();                  // get the response-PDU provided by the service
         char deviceId = *destinationService->get_InstanceID();                      // initialize the device-id by instance-id 
 
-        // Handle service-types
-        Message_service* messageService = dynamic_cast<Message_service*>(destinationService);   // cast as Message-service for specific functions
-        if (messageService) {
+        // Handle service-type specific conversions
+        if (*destinationService->get_ServiceID() == static_cast<uint8_t>('m'))
+        {
+            Message_service* messageService = static_cast<Message_service*>(destinationService);   // cast as Message-service for specific functions
             uint8_t destId = messageService->get_destinationId();                   // Get the Destination-Device ID (depending on forwarding flag)
             deviceId = destId;
         }
 
         // Build Frame
-        char functionCode = *(messageService->get_ServiceID());                     // Get the Function Code
+        char functionCode = *(destinationService->get_ServiceID());                 // Get the Function Code
         Frame_modbusRTU frame(&servicePdu, &deviceId, &functionCode);               // Construct the modbus-frame
         sendStack.addElement(frame);                                                // Add the Frame to the Interface-send-stack
     }
