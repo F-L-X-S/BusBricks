@@ -11,7 +11,7 @@
 #include "Service.h"
 #include "Message.h"
 
-#define STACKSIZE 3         // Number of elements the services stacks can store 
+#define STACKSIZE 2         // Number of elements the services stacks can store 
 #define FUNCTIONCODE 0x6D   // ASCII: "m"
 
 // Service-class for handling Content from type "Message"   
