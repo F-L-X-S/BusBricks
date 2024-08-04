@@ -10,11 +10,6 @@
 // and is receiving Frames with reading the public variable "incoming Frame" each Communicationcycle
 class ExmplCommInterface: public CommInterface<uint8_t>{
     private:
-        // initialize the interface counter as example for setup
-        void setup_interface() override {
-            interface = 0; 
-        };
-
         // Send the Frame from Send-buffer
         bool send() override {
             if (sendBuffer!=nullptr){
