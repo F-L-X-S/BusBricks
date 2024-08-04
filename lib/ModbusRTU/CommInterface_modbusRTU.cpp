@@ -31,24 +31,24 @@ bool CommInterface_modbusRTU::send(){
 // after a frame was received within the receive-timeout, the function returns true
 // the Comm-Interfece is not checking any Content of the frame 
 bool CommInterface_modbusRTU::receive(){
-    unsigned long startTime = millis();                             // Time, the function gets called
+    unsigned long startTime = micros();                             // Time, the function gets called
     uint16_t numBytes = 0;                                          // Received number of bytes
-    bool receivingFlag = (deviceId == '\0') ? true:false;                        // interface started receiving a frame (Slavemode: only if adressed to the device-ID, Mastermode: each frame) 
+    bool receivingFlag = (deviceId == '\0') ? true:false;           // interface started receiving a frame (Slavemode: only if adressed to the device-ID, Mastermode: each frame) 
 
     // Wait for a relevant Frame 
     while (!interface->available()) {
-    if (millis() - startTime >= _recTimeout) {
+    if (micros() - startTime >= _recTimeout) {
       return false;                                                 // No Frame received in specified timespan
     }
   }
 
     // Receive a relevant frame as long as timeout and framelength are ok
-    while (millis() - startTime <= _charTimeout && interface->available() && numBytes < MAXFRAMESIZE) {
-          if (receivingFlag || (deviceId==interface->peek()))      // check if the char in buffer is the device-ID or receiving started already
+    while (micros() - startTime <= _charTimeout && interface->available() && numBytes < MAXFRAMESIZE) {
+          if (receivingFlag || (deviceId==interface->peek()))     // check if the char in buffer is the device-ID or receiving started already
           {
               receivingFlag = true;                               // Set the receive-flag 
               startTime = micros();                               // redefine the time for measuring timeouts
-              *receiveBuffer+= interface->read();      // Write the received char to the specified buffer
+              *receiveBuffer+= interface->read();                 // Write the received char to the specified buffer
               numBytes++;                                         // increase frame-length-counter 
           }
     };
