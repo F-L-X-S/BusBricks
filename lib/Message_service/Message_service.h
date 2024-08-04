@@ -20,8 +20,11 @@
 class Message_service: public Service<Message, STACKSIZE>
 {
 public:
-    // Constructor for creating Message-service 
+    // Constructor for creating Message-service with deafult Service-ID "m"
     Message_service(uint8_t instance_id);
+
+    // Constructor for creating Message-service with custom Service-ID 
+    Message_service(uint8_t instance_id, uint8_t service_id);
 
     // process all messages from the receive-stack, till the stack is empty
     // add all necessary messages to the send-stack 
