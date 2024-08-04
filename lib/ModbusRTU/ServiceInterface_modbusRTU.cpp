@@ -48,6 +48,10 @@ void ServiceInterface_modbusRTU::addPDU_to_services()
         Frame_modbusRTU* receivedFrame = recStack.getElement();
         char ServiceID = receivedFrame->getFunctionCode();                          // Get the Modbus-RTU-Function-Code as Service-ID 
         ServiceBase* destinationService = services->getService_byID(ServiceID);     // Pointer to the destination-Service 
+        if (!destinationService){
+            recStack.deleteElement();                                               // discard invalid Frame (no Service found)
+            continue;
+        }
         String pdu = receivedFrame->getPDU();                                       // Get the Frames payload 
         destinationService->impart_pdu(&pdu);                                       // Add a Content-Object created from PDU to the Services receive-stack 
         recStack.deleteElement();                                                   // Delete the item added to services rec-stack from the interface-rec-stack
