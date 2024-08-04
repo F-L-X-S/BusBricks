@@ -25,7 +25,7 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
         // Handle service-types
         Message_service* messageService = dynamic_cast<Message_service*>(destinationService);   // cast as Message-service for specific functions
         if (messageService) {
-            uint8_t destId = messageService->get_destinationId();                   // Get the Destination-Device ID
+            uint8_t destId = messageService->get_destinationId();                   // Get the Destination-Device ID (depending on forwarding flag)
             deviceId = destId;
         }
 
