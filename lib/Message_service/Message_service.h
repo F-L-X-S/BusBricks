@@ -41,6 +41,9 @@ public:
 private:
     // Add the Ack for the message to the send-stack
     void sendAck(Message* message);
+
+    // Print the Received Messages
+    void printMessage(Message* message);
 };
 
 #endif // MESSAGE_SERVICE_H

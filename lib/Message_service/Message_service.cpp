@@ -17,6 +17,9 @@ void Message_service::stackProcessing() {
         // get last element from receive stack
         Message* last_msg = rec_stack.getElement();
         
+        // Print received Message to terminal
+        printMessage(last_msg);
+
         // Ack the received Message
         sendAck(last_msg);
 
@@ -58,4 +61,9 @@ void Message_service::sendMessage(char receiverId, String messagetext){
     Message response_msg(&response_content);
     // add the ACK-Message to the Send-Stack
     send_stack.addElement(response_msg);
+};
+
+// Print the Received Messages
+void Message_service::printMessage(Message* message){
+    Serial.println(message->to_string());
 };
