@@ -34,6 +34,13 @@ public:
 
     // get the destination Instance-ID for the current response PDU
     uint8_t get_destinationId();
+
+    // Send a new Message 
+    void sendMessage(char receiverId, String messagetext);
+
+private:
+    // Add the Ack for the message to the send-stack
+    void sendAck(Message* message);
 };
 
 #endif // MESSAGE_SERVICE_H
