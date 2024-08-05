@@ -42,7 +42,7 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
         const char deviceId;                            // Modbus-RTU Slave ID, default nullterminator for mastermode
         uint16_t _charTimeout;                          // Timeout between two chars received 
         uint16_t _frameTimeout;                         // min time between two Frames
-        uint16_t _recTimeout = 100;                     // time to wait for response during the receive-cycle
+        uint16_t _recTimeout = 1000000;                 // time to wait for response during the receive-cycle
 
         void _calculateTimeouts(uint16_t baud);         // Calculate all timeouts based on the specified baudrate
         void _clearRxBuffer();                          // Clear the receive-buffer 
