@@ -4,6 +4,8 @@
     #include <mockArduino.h>
 #endif
 
+#define DEBUG
+
 #include <ServiceInterface_modbusRTU.h>
 #include <CommInterface_modbusRTU.h>
 #include <Message_service.h>
@@ -47,6 +49,5 @@ void setup() {
 };
 
 void loop() {
-    Serial.println("Alive!"); 
     serviceinterface.communicate();
  };

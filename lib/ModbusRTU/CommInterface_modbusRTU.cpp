@@ -13,9 +13,19 @@ CommInterface_modbusRTU::~CommInterface_modbusRTU() {
 
 // Sending
 bool CommInterface_modbusRTU::send(){
+    // Serial debugging
+    #ifdef DEBUG
+        Serila.println("Interface started sending:");
+    #endif
+    
     if (sendBuffer==nullptr) return false;                        // check, if the sendbuffer-ptr is set to a valid memory
     interface->write(sendBuffer->c_str(), sendBuffer->length());  // write the byte-converted string to the interface  
     interface->flush();                                           // ensure, interfaces sending-buffer is completely empty before returning
+    
+    // Serial debugging
+    #ifdef DEBUG
+        Serial.println(sendBuffer);
+    #endif 
     return true;
 };
 
@@ -24,6 +34,10 @@ bool CommInterface_modbusRTU::send(){
 // after a frame was received within the receive-timeout, the function returns true
 // the Comm-Interfece is not checking any Content of the frame 
 bool CommInterface_modbusRTU::receive(){
+    // Serial debugging
+    #ifdef DEBUG
+        Serila.println("Interface is receiving...");
+    #endif
     unsigned long startTime = micros();                             // Time, the function gets called
     uint16_t numBytes = 0;                                          // Received number of bytes
     bool receivingFlag = (deviceId == '\0') ? true:false;           // interface started receiving a frame (Slavemode: only if adressed to the device-ID, Mastermode: each frame) 
@@ -49,6 +63,12 @@ bool CommInterface_modbusRTU::receive(){
     // wait for Frame-timeout to ensure frame is complete
     while (micros() - startTime < _frameTimeout);
     _clearRxBuffer();                                             // Clear the softwareSerial Rec-buffer
+    
+    // Serial debugging
+    #ifdef DEBUG
+        Serila.println("Interface has stopped receiving...");
+    #endif
+    
     // Frame received and written to specified rec-buffer
     return true;
 };
