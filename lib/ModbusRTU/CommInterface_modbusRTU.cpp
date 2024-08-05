@@ -15,7 +15,7 @@ CommInterface_modbusRTU::~CommInterface_modbusRTU() {
 bool CommInterface_modbusRTU::send(){
     // Serial debugging
     #ifdef DEBUG
-        Serila.println("Interface started sending:");
+        Serial.println("Interface started sending:");
     #endif
     
     if (sendBuffer==nullptr) return false;                        // check, if the sendbuffer-ptr is set to a valid memory
@@ -24,7 +24,7 @@ bool CommInterface_modbusRTU::send(){
     
     // Serial debugging
     #ifdef DEBUG
-        Serial.println(sendBuffer);
+        Serial.println(*sendBuffer);
     #endif 
     return true;
 };
@@ -36,7 +36,7 @@ bool CommInterface_modbusRTU::send(){
 bool CommInterface_modbusRTU::receive(){
     // Serial debugging
     #ifdef DEBUG
-        Serila.println("Interface is receiving...");
+        Serial.println("Interface is receiving...");
     #endif
     unsigned long startTime = micros();                             // Time, the function gets called
     uint16_t numBytes = 0;                                          // Received number of bytes
@@ -66,7 +66,7 @@ bool CommInterface_modbusRTU::receive(){
     
     // Serial debugging
     #ifdef DEBUG
-        Serila.println("Interface has stopped receiving...");
+        Serial.println("Interface has stopped receiving...");
     #endif
     
     // Frame received and written to specified rec-buffer
