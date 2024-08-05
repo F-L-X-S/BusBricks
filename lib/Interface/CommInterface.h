@@ -63,19 +63,6 @@ class CommInterface: public CommInterfaceBase{
         // True, if a new Frame was received
         virtual bool receive() = 0;                                     // implementation of receiving a Frame has to be done in the derived class
 
-        // Execution-order for a single send-receive-cycle
-        virtual void communicationCycle(){                                     
-            // Receiving
-            if (receive()) {
-                receiveBuffer = nullptr;                                // set the receive-buffer to nullptr after a new frame was received 
-            };
-
-            // Sending
-            if (send()){
-                sendBuffer = nullptr;                                   // set the send-buffer to nullptr after the frame, pointed to, was send 
-            }; 
-        };
-
     public:
         // Construct Communication-Interface 
         CommInterface(interface_type* interface, uint32_t baudrate): interface(interface){}; 
@@ -103,9 +90,20 @@ class CommInterface: public CommInterfaceBase{
             return receiveBuffer==nullptr;
         };
 
-        // Execute the Communication-Cycle
-        void execCommunicationCycle(){
-            communicationCycle();
-        }
+        // Execution of receive-cycle
+        virtual void receiveCycle(){                                     
+            // Receiving
+            if (receive()) {
+                receiveBuffer = nullptr;                                // set the receive-buffer to nullptr after a new frame was received 
+            };
+        };
+        
+        // Execution of send-cycle
+        virtual void sendCycle(){   
+            // Sending
+            if (send()){
+                sendBuffer = nullptr;                                   // set the send-buffer to nullptr after the frame, pointed to, was send 
+            }; 
+        };
 };
 #endif // COMMINTERFACE_H

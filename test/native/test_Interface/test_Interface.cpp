@@ -71,7 +71,7 @@ void test_CommInterface_sending(void) {
         };
         
         // Communicate
-        comm_interface.execCommunicationCycle();            // Execute the Communication-Interfaces Comm-Cycle (Send-Receive-Cycle)
+        comm_interface.sendCycle();            // Execute the Communication-Interfaces Comm-Cycle (Send-Receive-Cycle)
 
         //Check for the excepted outgoing Frame
         if (i<STACKSIZE){
@@ -101,13 +101,13 @@ void test_CommInterface_receiving(void) {
     }
 
     // Example Rec-Stack with 3 elements
-    Content_stack<std::string, STACKSIZE> recStack;
+    Content_stack<String, STACKSIZE> recStack;
 
     // instantiate the Communication-Interface 
     ExmplCommInterface comm_interface; 
 
     // initialize Receiving
-    std::string rec_element;
+    String rec_element;
     comm_interface.getReceivedFrame(&rec_element);
 
     // Simulate Communication-Cycles
@@ -121,7 +121,7 @@ void test_CommInterface_receiving(void) {
         };   
    
         // Communicate
-        comm_interface.execCommunicationCycle();            // Execute the Communication-Interfaces Comm-Cycle (Send-Receive-Cycle)
+        comm_interface.receiveCycle();            // Execute the Communication-Interfaces Comm-Cycle (Send-Receive-Cycle)
 
         // Handle receivebuffer
         if (comm_interface.receivedNewFrame())

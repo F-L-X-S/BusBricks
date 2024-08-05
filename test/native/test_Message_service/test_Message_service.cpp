@@ -31,7 +31,7 @@ void test_Message_from_content(void) {
 void test_Message_from_pdu(void) {
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    std::string sample_pdu = "\x01\x0F:" "Hello";
+    String sample_pdu = "\x01\x0F:Hello";
     Message msg_from_pdu(&sample_pdu);
 
 

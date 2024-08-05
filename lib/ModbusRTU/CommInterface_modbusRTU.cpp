@@ -48,16 +48,9 @@ bool CommInterface_modbusRTU::receive(){
 
     // wait for Frame-timeout to ensure frame is complete
     while (micros() - startTime < _frameTimeout);
-    
+    _clearRxBuffer();                                             // Clear the softwareSerial Rec-buffer
     // Frame received and written to specified rec-buffer
     return true;
-};
-
-
-// Execute the Communication-Cycle
-void CommInterface_modbusRTU::execCommunicationCycle(){
-    communicationCycle();                                       // one-time execution of the Send-Rec-Cycle 
-    _clearRxBuffer();                                           // Clear the softwareSerial Rec-buffer
 };
 
 // Clear the Receive-buffer 
@@ -66,7 +59,7 @@ void CommInterface_modbusRTU::_clearRxBuffer() {
    while (micros() - startTime < _frameTimeout) {                   // Check for a frame-timeout
     if (interface->available() > 0) {                                
       startTime = micros();                                         // update start-timestamp
-      interface->read();                                             // delete one byte from rec-buffer
+      interface->read();                                            // delete one byte from rec-buffer
     }
   };
 };

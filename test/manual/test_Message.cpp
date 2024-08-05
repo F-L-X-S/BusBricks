@@ -12,7 +12,7 @@ int main() {
     std::cout<<*msg_from_content.get_representation()<<std::endl;
 
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    std::string sample_pdu = "\x01\x0F:" "Hello";
+    std::string sample_pdu = "\x01\x0F:Hello";
     Message msg_from_pdu(&sample_pdu);
     std::cout<<"\nMessage from PDU:\n"<<msg_from_pdu.to_string().c_str()<<std::endl;
     std::cout<<"\nPDU:\n"<<std::endl;

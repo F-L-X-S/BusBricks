@@ -27,9 +27,6 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
         // Destroy Communication-Interface
         ~CommInterface_modbusRTU();
 
-        // Execute the Communication-Cycle
-        void execCommunicationCycle();
-
         // Send the Frame from Send-buffer
         bool send() override;
 

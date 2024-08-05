@@ -29,7 +29,11 @@ Message::Message(Message_content_t* message_content) : Content(*message_content)
 void Message::rep_to_content() {    
     content.sender_id = static_cast<char>(representation[0]);                                      // get sender-ID from PDU 
     content.receiver_id = static_cast<char>(representation[1]);                                    // get receiver-ID from PDU
-    content.msg_text = representation; 
+    #ifdef ARDUINO
+        content.msg_text = representation.substring(3); 
+    #else
+        content.msg_text = representation.substr(3); 
+    #endif
 };
 
 // Allocate byte-values for representation from Message-Object
