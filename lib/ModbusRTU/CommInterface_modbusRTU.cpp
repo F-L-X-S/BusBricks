@@ -65,14 +65,18 @@ bool CommInterface_modbusRTU::receive(){
               startTime = micros();                               // redefine the time for measuring timeouts
               *receiveBuffer+= interface->read();                 // Write the received char to the specified buffer
               numBytes++;                                         // increase frame-length-counter 
-          }
+          }else{
+            interface->read();
+          };
     };
 
     // wait for Frame-timeout to ensure frame is complete
     while (micros() - startTime < _frameTimeout);
     // Serial debugging
     #ifdef DEBUG
-        Serial.println("Clearing Receivebuffer...");
+        Serial.println("Received:\t");
+        Serial.print(*receiveBuffer);
+        Serial.print("\n");
     #endif
     _clearRxBuffer();                                             // Clear the softwareSerial Rec-buffer
     
