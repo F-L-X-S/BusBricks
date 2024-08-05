@@ -13,6 +13,8 @@
 #include <Content_stack.h>
 
 #define STACKSIZE 2         // Size of Send- / Rec-Stack
+#define DEBUG
+
 
 // Template for generic Service-Interface
 // The derived class defines the handling of incoming frames from communication-interface to the services (associated by service-id)
@@ -65,6 +67,10 @@ class ServiceInterface{
         // Add the last item from the sendstack to the Comminterface
         // delete it after sending
         virtual void processSendStack(){
+            // Serial debugging
+            #ifdef DEBUG
+                Serial.println("Processing Send-Stack...");
+            #endif
             // Handle sendstack
             while (!sendStack.empty())
             {
@@ -82,6 +88,12 @@ class ServiceInterface{
 
         // Add items received by the CommInterface to the Receivestack
         virtual void processRecStack() {
+            // Serial debugging
+            #ifdef DEBUG
+                Serial.println("Processing Receive-Stack...");
+            #endif
+            // Receive new frames from comm-interface
+            comm_interface->receiveCycle();                     
             // Handle receivebuffer
             while (comm_interface->receivedNewFrame() && !recStack.full()){
                 if (recItem != ""){                                 // Item not empty 
