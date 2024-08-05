@@ -45,12 +45,20 @@ bool CommInterface_modbusRTU::receive(){
     // Wait for a relevant Frame 
     while (!interface->available()) {
     if (micros() - startTime >= _recTimeout) {
+      // Serial debugging
+      #ifdef DEBUG
+          Serial.println("Timeout: No Frame received in specified timespan...");
+      #endif
       return false;                                                 // No Frame received in specified timespan
     }
   }
 
     // Receive a relevant frame as long as timeout and framelength are ok
     while (micros() - startTime <= _charTimeout && interface->available() && numBytes < MAXFRAMESIZE) {
+          // Serial debugging
+          #ifdef DEBUG
+              Serial.println("Waiting for relevant frame...");
+          #endif
           if (receivingFlag || (deviceId==interface->peek()))     // check if the char in buffer is the device-ID or receiving started already
           {
               receivingFlag = true;                               // Set the receive-flag 
@@ -62,6 +70,10 @@ bool CommInterface_modbusRTU::receive(){
 
     // wait for Frame-timeout to ensure frame is complete
     while (micros() - startTime < _frameTimeout);
+    // Serial debugging
+    #ifdef DEBUG
+        Serial.println("Clearing Receivebuffer...");
+    #endif
     _clearRxBuffer();                                             // Clear the softwareSerial Rec-buffer
     
     // Serial debugging
