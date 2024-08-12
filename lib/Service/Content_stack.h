@@ -40,7 +40,7 @@ public:
         if (index < 0 || index >= size) {
             return false;}                                              // return false, if index of element to delete is out of range 
         // delete element, slice remaining elements, reduce size by 1
-        for (int i = index; i < size - 1; ++i) {
+        for (int i = index; i < size; ++i) {
             elements[i] = elements[i + 1];
         }
         size--;
