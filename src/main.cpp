@@ -46,6 +46,7 @@ void setup() {
     Serial.begin(9600);
     serialInterface.begin(BAUDRATE);
     Serial.println("Setup...");
+    msg_service.sendMessage('B', "Hello");
 };
 
 void loop() {
