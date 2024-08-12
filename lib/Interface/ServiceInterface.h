@@ -92,7 +92,7 @@ class ServiceInterface{
             #ifdef DEBUG
                 Serial.println("Processing Receive-Stack...");
             #endif                  
-            // Handle receivebuffer
+            // Handle receivebuffer 
             while (comm_interface->receivedNewFrame() && !recStack.full()){
                 if (recItem != ""){                                 // Item not empty 
                     frameString frameStr = recItem.c_str();         // conversion for identification as framestring in Frame-Class-Constructor
@@ -100,8 +100,9 @@ class ServiceInterface{
                     recStack.addElement(recItemFrame);              // Add the received element to the stack 
                 }
                 comm_interface->getReceivedFrame(&recItem);         // Impart memory the received item has to be stored at 
-                comm_interface->receiveCycle();                     // Receive new frames from comm-interface
+                comm_interface->receiveCycle();                     // Receive new frames from comm-interface 
             }
+            comm_interface->receiveCycle();                         // Receive new frames from comm-interface
         }
 };
 #endif // SERVICEINTERFACE_H

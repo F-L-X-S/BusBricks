@@ -67,6 +67,9 @@ int main(){
     serviceinterface.communicate();
     serviceinterface.communicate();
     serviceinterface.communicate();
+    
+    // simulate another incoming frame from mocked serial-interface 
+    sim_serial.simulateInput(frameNoOne_rep);
     serviceinterface.communicate();
     
 };
