@@ -63,7 +63,7 @@ bool CommInterface_modbusRTU::receive(){
           {
               receivingFlag = true;                               // Set the receive-flag 
               startTime = micros();                               // redefine the time for measuring timeouts
-              *receiveBuffer+= interface->read();                 // Write the received char to the specified buffer
+              *receiveBuffer+= char(interface->read());                 // Write the received char to the specified buffer
               numBytes++;                                         // increase frame-length-counter 
           }else{
             interface->read();
