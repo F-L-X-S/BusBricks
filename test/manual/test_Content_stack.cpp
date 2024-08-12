@@ -13,8 +13,8 @@ int main() {
         // create Message-content 
         msg_content[i].sender_id = 0x11;
         msg_content[i].receiver_id = 0xFF;
-        std::string message_text = "This is Message Number " + std::to_string(i+1);
-        strncpy(msg_content[i].msg_text, message_text.c_str(), sizeof(message_text));
+        String message_text = "This is Message Number " + std::to_string(i+1);
+        msg_content->msg_text = message_text;
 
         // create Message-element from Message-content 
         Message msg(&msg_content[i]);
