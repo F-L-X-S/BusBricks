@@ -63,5 +63,10 @@ int main(){
     // execute the communication-cycle and print the Output from serial Bus (cout interface)
     // Output should contain two ACK for Service-ID "m"
     serviceinterface.communicate();
+    serviceinterface.communicate();
+    serviceinterface.communicate();
+    serviceinterface.communicate();
+    serviceinterface.communicate();
+    serviceinterface.communicate();
     
 };
