@@ -91,9 +91,7 @@ class ServiceInterface{
             // Serial debugging
             #ifdef DEBUG
                 Serial.println("Processing Receive-Stack...");
-            #endif
-            // Receive new frames from comm-interface
-            comm_interface->receiveCycle();                     
+            #endif                  
             // Handle receivebuffer
             while (comm_interface->receivedNewFrame() && !recStack.full()){
                 if (recItem != ""){                                 // Item not empty 
