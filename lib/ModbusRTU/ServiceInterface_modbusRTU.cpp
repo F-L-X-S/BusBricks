@@ -18,22 +18,24 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
     {
         if (sendStack.full()) break;                                                // exit the loop if no space left in send stack
         ServiceBase* destinationService = services->getService_byPos(i);            // Pointer to the destination-Service 
-        if (!destinationService->responseAvailable()) continue;                     // skip iteration if the services response is empty 
-        pduString servicePdu = destinationService->get_response();                  // get the response-PDU provided by the service
-        char deviceId = *destinationService->get_InstanceID();                      // initialize the device-id by instance-id 
+        while (destinationService->responseAvailable()){                            // skip iteration if the services response is empty 
+            pduString servicePdu = destinationService->get_response();              // get the response-PDU provided by the service
+            char deviceId = *destinationService->get_InstanceID();                  // initialize the device-id by instance-id 
 
-        // Handle service-type specific conversions
-        if (*destinationService->get_ServiceID() == static_cast<uint8_t>('m'))
-        {
-            Message_service* messageService = static_cast<Message_service*>(destinationService);   // cast as Message-service for specific functions
-            uint8_t destId = messageService->get_destinationId();                   // Get the Destination-Device ID (depending on forwarding flag)
-            deviceId = destId;
-        }
+            // Handle service-type specific conversions
+            if (*destinationService->get_ServiceID() == static_cast<uint8_t>('m'))
+            {
+                Message_service* messageService = static_cast<Message_service*>(destinationService);   // cast as Message-service for specific functions
+                uint8_t destId = messageService->get_destinationId();                   // Get the Destination-Device ID (depending on forwarding flag)
+                deviceId = destId;
+            }
 
-        // Build Frame
-        char functionCode = *(destinationService->get_ServiceID());                 // Get the Function Code
-        Frame_modbusRTU frame(&servicePdu, &deviceId, &functionCode);               // Construct the modbus-frame
-        sendStack.addElement(frame);                                                // Add the Frame to the Interface-send-stack
+            // Build Frame
+            char functionCode = *(destinationService->get_ServiceID());                 // Get the Function Code
+            Frame_modbusRTU frame(&servicePdu, &deviceId, &functionCode);               // Construct the modbus-frame
+            sendStack.addElement(frame);                                                // Add the Frame to the Interface-send-stack
+            destinationService->clearResponse();                                
+         };
     }
     
 };
