@@ -1,5 +1,14 @@
 \doxysection{Service\texorpdfstring{$<$}{<} content\+\_\+class, stack\+Size \texorpdfstring{$>$}{>} Class Template Reference}
 \hypertarget{class_service}{}\label{class_service}\index{Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}}
+
+
+Service-\/\+Template to create a \doxylink{class_service}{Service} class by defining the \doxylink{class_content}{Content} (derived Class of "{}\+Content"{}) to handle and the size of the service-\/stacks A \doxylink{class_service}{Service} has to be instanciated with a unique service-\/id and an instance-\/id, the service-\/instance should use for it\textquotesingle{}s communication The derived classes have to define the stack-\/processing to handle the payload at the rec-\/stack and add payload to the send-\/stack.  
+
+
+
+
+{\ttfamily \#include $<$Service.\+h$>$}
+
 Inheritance diagram for Service\texorpdfstring{$<$}{<} content\+\_\+class, stack\+Size \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -51,6 +60,23 @@ uint8\+\_\+t {\bfseries instance\+ID}
 \Hypertarget{class_service_a01d2b42d0a3e01bb2435af5b4071dc56}\label{class_service_a01d2b42d0a3e01bb2435af5b4071dc56} 
 String {\bfseries response\+\_\+pdu}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename content\+\_\+class, int stack\+Size$>$\newline
+class Service$<$ content\+\_\+class, stack\+Size $>$}
+Service-\/\+Template to create a \doxylink{class_service}{Service} class by defining the \doxylink{class_content}{Content} (derived Class of "{}\+Content"{}) to handle and the size of the service-\/stacks A \doxylink{class_service}{Service} has to be instanciated with a unique service-\/id and an instance-\/id, the service-\/instance should use for it\textquotesingle{}s communication The derived classes have to define the stack-\/processing to handle the payload at the rec-\/stack and add payload to the send-\/stack. 
+
+\begin{DoxyAuthor}{Author}
+Felix Schuelke 
+\end{DoxyAuthor}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em content\+\_\+class} & type of the items stored in the stack \\
+\hline
+{\em stack\+Size} & type of the items stored in the stack \\
+\hline
+\end{DoxyTemplParams}
 
 
 \doxysubsection{Member Function Documentation}

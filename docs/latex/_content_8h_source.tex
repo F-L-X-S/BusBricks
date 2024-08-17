@@ -12,40 +12,38 @@
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ <cstring>}}
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{comment}{//\ Template\ for\ defining\ a\ Class\ for\ mapping\ a\ generic\ (byte-\/formatted)\ representation\ to\ a\ processable\ data-\/structure}}
-\DoxyCodeLine{00012\ \textcolor{comment}{//\ class-\/attributes\ are\ a\ copy\ of\ the\ arguments\ passed\ to\ the\ constructor\ (call-\/by-\/value)}}
-\DoxyCodeLine{00013\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ content\_type,\ \textcolor{keyword}{typename}\ representation\_type>}
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_content}{Content}}\ \{}
-\DoxyCodeLine{00015\ \textcolor{keyword}{public}:\ }
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Construct\ Content-\/class\ from\ an\ instance\ from\ unspecific\ type}}
-\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_content}{Content}}(content\_type\ content)\ :\ content(content)\ \{\}\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Construct\ Content-\/class\ from\ byte-\/representation}}
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_content}{Content}}(representation\_type\ representation)\ :\ representation(representation)\ \{\}\ \ \ \ }
-\DoxyCodeLine{00021\ \ \ \ \ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ representation\ as\ a\ the\ representation-\/type}}
-\DoxyCodeLine{00023\ \ \ \ \ representation\_type*\ get\_representation()\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&representation;}
-\DoxyCodeLine{00025\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ content\_type,\ \textcolor{keyword}{typename}\ representation\_type>}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_content}{Content}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Construct\ Content-\/class\ from\ an\ instance\ from\ unspecific\ type}}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_content}{Content}}(content\_type\ content)\ :\ content(content)\ \{\}\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ Content\ formatted\ as\ content\_type\ from\ the\ Object\ }}
-\DoxyCodeLine{00028\ \ \ \ \ content\_type*\ get\_content()\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&content;}
-\DoxyCodeLine{00030\ \ \ \ \ \}}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00033\ \ \ \ \ content\_type\ content;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Content}}
-\DoxyCodeLine{00034\ \ \ \ \ representation\_type\ representation;\ \ \ \ \ \textcolor{comment}{//\ Representation}}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ representation-\/attribute\ to\ the\ content-\/attribute,\ has\ to\ be\ defined\ in\ derived\ class\ (=0)}}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ the\ function\ has\ to\ be\ called\ in\ the\ constructor\ of\ the\ derived\ class\ }}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ rep\_to\_content()\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Construct\ Content-\/class\ from\ byte-\/representation}}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_content}{Content}}(representation\_type\ representation)\ :\ representation(representation)\ \{\}\ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ representation\ as\ a\ the\ representation-\/type}}
+\DoxyCodeLine{00031\ \ \ \ \ representation\_type*\ get\_representation()\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&representation;}
+\DoxyCodeLine{00033\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ Content\ formatted\ as\ content\_type\ from\ the\ Object\ }}
+\DoxyCodeLine{00036\ \ \ \ \ content\_type*\ get\_content()\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&content;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ content-\/attribute\ to\ a\ representation-\/attribute,\ has\ to\ be\ defined\ in\ derived\ class\ (=0)}}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ the\ function\ has\ to\ be\ called\ in\ the\ constructor\ of\ the\ derived\ class\ }}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ content\_to\_rep()\ =\ 0;\ \ }
-\DoxyCodeLine{00043\ \};}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTENT\_H}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00041\ \ \ \ \ content\_type\ content;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Content}}
+\DoxyCodeLine{00042\ \ \ \ \ representation\_type\ representation;\ \ \ \ \ \textcolor{comment}{//\ Representation}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ representation-\/attribute\ to\ the\ content-\/attribute,\ has\ to\ be\ defined\ in\ derived\ class\ (=0)}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ the\ function\ has\ to\ be\ called\ in\ the\ constructor\ of\ the\ derived\ class\ }}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ rep\_to\_content()\ =\ 0;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ content-\/attribute\ to\ a\ representation-\/attribute,\ has\ to\ be\ defined\ in\ derived\ class\ (=0)}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ the\ function\ has\ to\ be\ called\ in\ the\ constructor\ of\ the\ derived\ class\ }}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ content\_to\_rep()\ =\ 0;\ \ }
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTENT\_H}}
 
 \end{DoxyCode}

@@ -24,9 +24,17 @@ public:
     virtual ~ServiceBase(){};
 };
 
-// Template to create a Service class by defining the Content (derived Class of "Content") to handle and the size of the service-stacks
-// A Service has to be instanciated with a unique service-id and an instance-id, the service-instance should use for it's communication
-// The derived classes have to define the stack-processing to handle the payload at the rec-stack and add payload to the send-stack 
+/**
+ * 
+ * @author Felix Schuelke 
+ * @brief Service-Template to derive a Service class by defining the Content (derived Class of "Content") to handle and the size of the stacks (send and receive).
+A Service has to be instantiated with a unique service-ID and an instance-ID, the service-instance should use for it's communication.
+E.g.: Messenger-service with service-id "m" (specified in derived class, same on every host) is instantiated with a host-specific ID to identify the instances.
+The derived classes have to define the stack-processing to handle the payload at the rec-stack and add payload to the send-stack.
+ * 
+ * @tparam content_class type of the items stored in the stack 
+ * @tparam stackSize type of the items stored in the stack 
+ */
 template<typename content_class, int stackSize>                                       
 class Service: public ServiceBase{
 protected: 

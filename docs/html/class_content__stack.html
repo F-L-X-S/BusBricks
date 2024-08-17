@@ -91,6 +91,11 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Content_stack&lt; content_class, MaxSize &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Content-Stack-Template the content-stack stores the added items (call-by-value / copy) on internal array the item added last is stacked on top (highest index), the one added first is stored on index "0".  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_content__stack_8h_source.html">Content_stack.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -110,7 +115,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>empty</b> ()</td></tr
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>full</b> ()</td></tr>
 <tr class="separator:a200a86b0f3bdfa24e4a56b5e02efb02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename content_class, int MaxSize&gt;<br />
+class Content_stack&lt; content_class, MaxSize &gt;</div><p>Content-Stack-Template the content-stack stores the added items (call-by-value / copy) on internal array the item added last is stacked on top (highest index), the one added first is stored on index "0". </p>
+<dl class="section author"><dt>Author</dt><dd>Felix Schuelke </dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">content_class</td><td>type of the items stored in the stack </td></tr>
+    <tr><td class="paramname">MaxSize</td><td>maximum number of items to be stored in the stack </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/felixschulke/Developement/Arduino/Modbus_RTU/Modbus_RTU/Modbus-RTU/lib/Service/<a class="el" href="_content__stack_8h_source.html">Content_stack.h</a></li>
 </ul>
 </div><!-- contents -->

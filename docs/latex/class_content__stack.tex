@@ -1,5 +1,14 @@
 \doxysection{Content\+\_\+stack\texorpdfstring{$<$}{<} content\+\_\+class, Max\+Size \texorpdfstring{$>$}{>} Class Template Reference}
 \hypertarget{class_content__stack}{}\label{class_content__stack}\index{Content\_stack$<$ content\_class, MaxSize $>$@{Content\_stack$<$ content\_class, MaxSize $>$}}
+
+
+Content-\/\+Stack-\/\+Template the content-\/stack stores the added items (call-\/by-\/value / copy) on internal array the item added last is stacked on top (highest index), the one added first is stored on index "{}0"{}.  
+
+
+
+
+{\ttfamily \#include $<$Content\+\_\+stack.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,6 +27,23 @@ bool {\bfseries empty} ()
 \Hypertarget{class_content__stack_a200a86b0f3bdfa24e4a56b5e02efb02a}\label{class_content__stack_a200a86b0f3bdfa24e4a56b5e02efb02a} 
 bool {\bfseries full} ()
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename content\+\_\+class, int Max\+Size$>$\newline
+class Content\+\_\+stack$<$ content\+\_\+class, Max\+Size $>$}
+Content-\/\+Stack-\/\+Template the content-\/stack stores the added items (call-\/by-\/value / copy) on internal array the item added last is stacked on top (highest index), the one added first is stored on index "{}0"{}. 
+
+\begin{DoxyAuthor}{Author}
+Felix Schuelke 
+\end{DoxyAuthor}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em content\+\_\+class} & type of the items stored in the stack \\
+\hline
+{\em Max\+Size} & maximum number of items to be stored in the stack \\
+\hline
+\end{DoxyTemplParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

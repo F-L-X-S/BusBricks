@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['modbus_20rtu_0',['Modbus RTU',['../index.html',1,'']]]
+  ['busbricks_0',['BusBricks',['../index.html',1,'']]]
 ];

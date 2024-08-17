@@ -12,72 +12,70 @@
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ <cstring>}}
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{comment}{//\ Content-\/Steck-\/Template}}
-\DoxyCodeLine{00012\ \textcolor{comment}{//\ the\ content-\/stack\ stores\ the\ added\ items\ (call-\/by-\/value\ /\ copy)\ on\ internal\ array}}
-\DoxyCodeLine{00013\ \textcolor{comment}{//\ the\ item\ added\ last\ is\ stacked\ on\ top\ (highest\ index),\ the\ one\ added\ first\ is\ stored\ on\ index\ "{}0"{}}}
-\DoxyCodeLine{00014\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ content\_\textcolor{keyword}{class},\ \textcolor{keywordtype}{int}\ MaxSize>}
-\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_content__stack}{Content\_stack}}\{}
-\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00017\ \ \ \ \ content\_class\ elements[MaxSize];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Array\ for\ saving\ elements\ of\ the\ template\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Current\ number\ of\ stored\ elements}}
-\DoxyCodeLine{00019\ \textcolor{keyword}{public}:\ }
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Construct\ Content\_stack-\/class\ with\ zero\ elements}}
-\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack}}():\ size(0)\ \{\}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Destroy\ Content-\/stack}}
-\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_content__stack}{\string~Content\_stack}}()\ \{\}\ }
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Add\ element\ to\ stack}}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ True\ if\ successful}}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ addElement(content\_class\ element)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ >=\ MaxSize)\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ false,\ if\ stacksize\ has\ reached\ maximum\ }}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ elements[size]\ =\ element;}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ size++;}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ true,\ if\ added\ successful\ }}
-\DoxyCodeLine{00034\ \ \ \ \ \};}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Delete\ element\ on\ index-\/position\ from\ stack\ }}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ only\ positive\ index-\/positions}}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ True\ if\ successful}}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ deleteElement(\textcolor{keywordtype}{int}\ index=0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ <\ 0\ ||\ index\ >=\ size)\ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ false,\ if\ index\ of\ element\ to\ delete\ is\ out\ of\ range\ }}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ element,\ slice\ remaining\ elements,\ reduce\ size\ by\ 1}}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ index;\ i\ <\ size;\ ++i)\ \{}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ elements[i]\ =\ elements[i\ +\ 1];}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ size-\/-\/;}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ true,\ if\ deleted\ successful}}
-\DoxyCodeLine{00048\ \ \ \ \ \};}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Get\ Pointer\ to\ element\ in\ the\ stack}}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ indexing:}}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ neg.\ index:\ return\ element\ indexed\ from\ end\ of\ stack\ (size)}}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ pos.\ index:\ return\ element\ indexed\ from\ beginning\ of\ stack\ (0)}}
-\DoxyCodeLine{00054\ \ \ \ \ content\_class*\ getElement(\textcolor{keywordtype}{int}\ index\ =\ 0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ size\ ||\ size+index<0)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\}\ \ }
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index<0)\{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&elements[size+index];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ neg.\ index:\ return\ element\ indexed\ from\ end\ of\ stack\ (size)}}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&elements[index];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pos.\ index:\ return\ element\ indexed\ from\ beginning\ of\ stack\ (0)}}
-\DoxyCodeLine{00062\ \ \ \ \ \};}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ Stack\ is\ empty\ }}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ empty()\{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ retVal\ =\ (size\ ==\ 0)\ ?\ \textcolor{keyword}{true}:\textcolor{keyword}{false};}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ retVal;}
-\DoxyCodeLine{00068\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ Stack\ is\ full\ }}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ full()\{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ retVal\ =\ (size\ ==\ MaxSize)\ ?\ \textcolor{keyword}{true}:\textcolor{keyword}{false};}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ retVal;}
-\DoxyCodeLine{00074\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ content\_\textcolor{keyword}{class},\ \textcolor{keywordtype}{int}\ MaxSize>}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_content__stack}{Content\_stack}}\{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ content\_class\ elements[MaxSize];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Array\ for\ saving\ elements\ of\ the\ template\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Current\ number\ of\ stored\ elements}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Construct\ Content\_stack-\/class\ with\ zero\ elements}}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack}}():\ size(0)\ \{\}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Destroy\ Content-\/stack}}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_content__stack}{\string~Content\_stack}}()\ \{\}\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Add\ element\ to\ stack}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ True\ if\ successful}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ addElement(content\_class\ element)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ >=\ MaxSize)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ false,\ if\ stacksize\ has\ reached\ maximum\ }}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ elements[size]\ =\ element;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ size++;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ true,\ if\ added\ successful\ }}
+\DoxyCodeLine{00041\ \ \ \ \ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ Delete\ element\ on\ index-\/position\ from\ stack\ }}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ only\ positive\ index-\/positions}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ True\ if\ successful}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ deleteElement(\textcolor{keywordtype}{int}\ index=0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ <\ 0\ ||\ index\ >=\ size)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ false,\ if\ index\ of\ element\ to\ delete\ is\ out\ of\ range\ }}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ element,\ slice\ remaining\ elements,\ reduce\ size\ by\ 1}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ index;\ i\ <\ size;\ ++i)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ elements[i]\ =\ elements[i\ +\ 1];}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ size-\/-\/;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ true,\ if\ deleted\ successful}}
+\DoxyCodeLine{00055\ \ \ \ \ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ Get\ Pointer\ to\ element\ in\ the\ stack}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ indexing:}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ neg.\ index:\ return\ element\ indexed\ from\ end\ of\ stack\ (size)}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ pos.\ index:\ return\ element\ indexed\ from\ beginning\ of\ stack\ (0)}}
+\DoxyCodeLine{00061\ \ \ \ \ content\_class*\ getElement(\textcolor{keywordtype}{int}\ index\ =\ 0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ size\ ||\ size+index<0)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\}\ \ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index<0)\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&elements[size+index];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ neg.\ index:\ return\ element\ indexed\ from\ end\ of\ stack\ (size)}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&elements[index];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pos.\ index:\ return\ element\ indexed\ from\ beginning\ of\ stack\ (0)}}
+\DoxyCodeLine{00069\ \ \ \ \ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ Stack\ is\ empty\ }}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ empty()\{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ retVal\ =\ (size\ ==\ 0)\ ?\ \textcolor{keyword}{true}:\textcolor{keyword}{false};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ retVal;}
+\DoxyCodeLine{00075\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTENT\_STACK\_H}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ Stack\ is\ full\ }}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ full()\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ retVal\ =\ (size\ ==\ MaxSize)\ ?\ \textcolor{keyword}{true}:\textcolor{keyword}{false};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ retVal;}
+\DoxyCodeLine{00081\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTENT\_STACK\_H}}
 
 \end{DoxyCode}

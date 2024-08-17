@@ -192,18 +192,19 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                <span class="keywordflow">if</span> (recItem != <span class="stringliteral">&quot;&quot;</span>){                                 <span class="comment">// Item not empty </span></div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                    frameString frameStr = recItem.c_str();         <span class="comment">// conversion for identification as framestring in Frame-Class-Constructor</span></div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                    frameType recItemFrame(&amp;frameStr);              <span class="comment">// Construct Frame-Class derived Object</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                    recStack.addElement(recItemFrame);              <span class="comment">// Add the received element to the stack </span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                }</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                comm_interface-&gt;getReceivedFrame(&amp;recItem);         <span class="comment">// Impart memory the received item has to be stored at </span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                comm_interface-&gt;receiveCycle();                     <span class="comment">// Receive new frames from comm-interface </span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            }</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            comm_interface-&gt;receiveCycle();                         <span class="comment">// Receive new frames from comm-interface</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>};</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                    recStack.addElement(recItemFrame);              <span class="comment">// Add the received element to the stack</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                    recItem = <span class="stringliteral">&quot;&quot;</span>;                                   <span class="comment">// Clear rec-Item </span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                comm_interface-&gt;getReceivedFrame(&amp;recItem);         <span class="comment">// Impart memory the received item has to be stored at </span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                comm_interface-&gt;receiveCycle();                     <span class="comment">// Receive new frames from comm-interface </span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            comm_interface-&gt;receiveCycle();                         <span class="comment">// Receive new frames from comm-interface</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>};</div>
 </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#endif </span><span class="comment">// SERVICEINTERFACE_H</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">// SERVICEINTERFACE_H</span></div>
 <div class="ttc" id="aclass_comm_interface_base_html"><div class="ttname"><a href="class_comm_interface_base.html">CommInterfaceBase</a></div><div class="ttdef"><b>Definition</b> CommInterface.h:14</div></div>
-<div class="ttc" id="aclass_content__stack_html"><div class="ttname"><a href="class_content__stack.html">Content_stack</a></div><div class="ttdef"><b>Definition</b> Content_stack.h:15</div></div>
+<div class="ttc" id="aclass_content__stack_html"><div class="ttname"><a href="class_content__stack.html">Content_stack</a></div><div class="ttdoc">Content-Stack-Template the content-stack stores the added items (call-by-value / copy) on internal ar...</div><div class="ttdef"><b>Definition</b> Content_stack.h:22</div></div>
 <div class="ttc" id="aclass_frame_html"><div class="ttname"><a href="class_frame.html">Frame</a></div><div class="ttdef"><b>Definition</b> Frame.h:27</div></div>
 <div class="ttc" id="aclass_service_base_html"><div class="ttname"><a href="class_service_base.html">ServiceBase</a></div><div class="ttdef"><b>Definition</b> Service.h:15</div></div>
 <div class="ttc" id="aclass_service_cluster_base_html"><div class="ttname"><a href="class_service_cluster_base.html">ServiceClusterBase</a></div><div class="ttdef"><b>Definition</b> ServiceCluster.h:12</div></div>

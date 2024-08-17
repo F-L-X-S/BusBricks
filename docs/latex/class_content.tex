@@ -1,5 +1,14 @@
 \doxysection{Content\texorpdfstring{$<$}{<} content\+\_\+type, representation\+\_\+type \texorpdfstring{$>$}{>} Class Template Reference}
 \hypertarget{class_content}{}\label{class_content}\index{Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}}
+
+
+\doxylink{class_content}{Content} and representation The cascading of processing information and the rules applied to it lead to the concept of content-\/ and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called \doxylink{class_content}{Content}. Conversely, the format, the information has after applying the rules of the next level closer to "{}\+Layer-\/0"{} is called representation.  
+
+
+
+
+{\ttfamily \#include $<$Content.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -33,6 +42,23 @@ content\+\_\+type {\bfseries content}
 \Hypertarget{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8}\label{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8} 
 representation\+\_\+type {\bfseries representation}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename content\+\_\+type, typename representation\+\_\+type$>$\newline
+class Content$<$ content\+\_\+type, representation\+\_\+type $>$}
+\doxylink{class_content}{Content} and representation The cascading of processing information and the rules applied to it lead to the concept of content-\/ and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called \doxylink{class_content}{Content}. Conversely, the format, the information has after applying the rules of the next level closer to "{}\+Layer-\/0"{} is called representation. 
+
+\begin{DoxyAuthor}{Author}
+Felix Schuelke 
+\end{DoxyAuthor}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em content\+\_\+type} & defines the type for storing the information (content) itself \\
+\hline
+{\em representation\+\_\+type} & defines the type the information (content) is represented for the next processing-\/level \\
+\hline
+\end{DoxyTemplParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

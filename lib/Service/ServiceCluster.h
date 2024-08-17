@@ -17,9 +17,15 @@ class ServiceClusterBase{
         virtual ~ServiceClusterBase(){};
 };
 
-// The ServiceCluster provides functions to manage multiple services 
-// the service-cluster is added as to the service-interface and contains 
-// the references to all services, associated with the interface 
+
+/**
+ * @author Felix Schuelke 
+ * @brief The ServiceCluster provides functions to manage multiple services 
+ the service-cluster is added to the service-interface and contains 
+ the references to all services, associated with the interface 
+ * 
+ * @tparam number_of_services number of service-instances, the cluster contains
+ */
 template<uint8_t number_of_services>         
 class ServiceCluster: public ServiceClusterBase{
     private:

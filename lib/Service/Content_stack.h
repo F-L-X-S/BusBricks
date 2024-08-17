@@ -8,9 +8,16 @@
     #include <cstring>
 #endif
 
-// Content-Steck-Template
-// the content-stack stores the added items (call-by-value / copy) on internal array
-// the item added last is stacked on top (highest index), the one added first is stored on index "0"
+
+/**
+ * @author Felix Schuelke 
+ * @brief Content-Stack-Template
+ the content-stack stores the added items (call-by-value / copy) on internal array
+ the item added last is stacked on top (highest index), the one added first is stored on index "0"
+ * 
+ * @tparam content_class type of the items stored in the stack 
+ * @tparam MaxSize maximum number of items to be stored in the stack
+ */
 template<typename content_class, int MaxSize>
 class Content_stack{
 private:

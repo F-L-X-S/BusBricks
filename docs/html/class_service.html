@@ -93,6 +93,11 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Service&lt; content_class, stackSize &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Service-Template to create a <a class="el" href="class_service.html" title="Service-Template to create a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> class by defining the <a class="el" href="class_content.html" title="Content and representation The cascading of processing information and the rules applied to it lead t...">Content</a> (derived Class of "Content") to handle and the size of the service-stacks A <a class="el" href="class_service.html" title="Service-Template to create a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> has to be instanciated with a unique service-id and an instance-id, the service-instance should use for it's communication The derived classes have to define the stack-processing to handle the payload at the rec-stack and add payload to the send-stack.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_service_8h_source.html">Service.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Service&lt; content_class, stackSize &gt;:</div>
 <div class="dyncontent">
@@ -148,7 +153,18 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>instanceID</b></td
 String&#160;</td><td class="memItemRight" valign="bottom"><b>response_pdu</b></td></tr>
 <tr class="separator:a01d2b42d0a3e01bb2435af5b4071dc56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename content_class, int stackSize&gt;<br />
+class Service&lt; content_class, stackSize &gt;</div><p>Service-Template to create a <a class="el" href="class_service.html" title="Service-Template to create a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> class by defining the <a class="el" href="class_content.html" title="Content and representation The cascading of processing information and the rules applied to it lead t...">Content</a> (derived Class of "Content") to handle and the size of the service-stacks A <a class="el" href="class_service.html" title="Service-Template to create a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> has to be instanciated with a unique service-id and an instance-id, the service-instance should use for it's communication The derived classes have to define the stack-processing to handle the payload at the rec-stack and add payload to the send-stack. </p>
+<dl class="section author"><dt>Author</dt><dd>Felix Schuelke </dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">content_class</td><td>type of the items stored in the stack </td></tr>
+    <tr><td class="paramname">stackSize</td><td>type of the items stored in the stack </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a75817b19f202f1696c3609a3f9578cb9" name="a75817b19f202f1696c3609a3f9578cb9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a75817b19f202f1696c3609a3f9578cb9">&#9670;&#160;</a></span>clearResponse()</h2>
 
