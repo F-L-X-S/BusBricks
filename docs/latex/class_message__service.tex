@@ -1,0 +1,85 @@
+\doxysection{Message\+\_\+service Class Reference}
+\hypertarget{class_message__service}{}\label{class_message__service}\index{Message\_service@{Message\_service}}
+Inheritance diagram for Message\+\_\+service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_message__service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_message__service_affc45896c13fb1ccf7af8708621d7568}\label{class_message__service_affc45896c13fb1ccf7af8708621d7568} 
+{\bfseries Message\+\_\+service} (uint8\+\_\+t instance\+\_\+id)
+\item 
+\Hypertarget{class_message__service_a97d86af31342a27f39e16268df59f832}\label{class_message__service_a97d86af31342a27f39e16268df59f832} 
+{\bfseries Message\+\_\+service} (uint8\+\_\+t instance\+\_\+id, uint8\+\_\+t service\+\_\+id)
+\item 
+void \mbox{\hyperlink{class_message__service_a605f6a9ed4900558b52a80abd1144791}{stack\+Processing}} () override
+\item 
+\Hypertarget{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691}\label{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691} 
+uint8\+\_\+t {\bfseries get\+\_\+destination\+Id} ()
+\item 
+\Hypertarget{class_message__service_aa8d198ccf700400339e3240e1c9c86e4}\label{class_message__service_aa8d198ccf700400339e3240e1c9c86e4} 
+void {\bfseries send\+Message} (char receiver\+Id, String messagetext)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_service}{Service$<$ Message, STACKSIZE $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Service} (uint8\+\_\+t service\+ID, uint8\+\_\+t instance\+ID)
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_a4d0e8aca49451e363888ca46c2742b2e}{get\+\_\+\+Service\+ID}} () override
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_abd1295896aca84e6dd85c0973885b279}{get\+\_\+\+Instance\+ID}} () override
+\item 
+virtual bool {\bfseries impart\+\_\+pdu} (String \texorpdfstring{$\ast$}{*}pdu) override
+\item 
+virtual String \mbox{\hyperlink{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}{get\+\_\+response}} () override
+\item 
+virtual bool \mbox{\hyperlink{class_service_ad0a6407e13cd84f81393d96273212822}{response\+Available}} () override
+\item 
+virtual void \mbox{\hyperlink{class_service_a75817b19f202f1696c3609a3f9578cb9}{clear\+Response}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_service_base}{Service\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries impart\+\_\+pdu} (String \texorpdfstring{$\ast$}{*}pdu)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_service}{Service$<$ Message, STACKSIZE $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries write\+\_\+response\+\_\+pdu} (\mbox{\hyperlink{class_message}{Message}} response\+\_\+object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_service}{Service$<$ Message, STACKSIZE $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t {\bfseries service\+ID}
+\item 
+uint8\+\_\+t {\bfseries instance\+ID}
+\item 
+\mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ \mbox{\hyperlink{class_message}{Message}}, stack\+Size $>$ {\bfseries rec\+\_\+stack}
+\item 
+\mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ \mbox{\hyperlink{class_message}{Message}}, stack\+Size $>$ {\bfseries send\+\_\+stack}
+\item 
+String {\bfseries response\+\_\+pdu}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_message__service_a605f6a9ed4900558b52a80abd1144791}\index{Message\_service@{Message\_service}!stackProcessing@{stackProcessing}}
+\index{stackProcessing@{stackProcessing}!Message\_service@{Message\_service}}
+\doxysubsubsection{\texorpdfstring{stackProcessing()}{stackProcessing()}}
+{\footnotesize\ttfamily \label{class_message__service_a605f6a9ed4900558b52a80abd1144791} 
+void Message\+\_\+service\+::stack\+Processing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_service}{Service$<$ Message, STACKSIZE $>$}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Message\+\_\+service/Message\+\_\+service.\+h\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Message\+\_\+service/Message\+\_\+service.\+cpp\end{DoxyCompactItemize}

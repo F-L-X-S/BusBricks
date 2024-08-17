@@ -1,0 +1,93 @@
+\doxysection{Comm\+Interface\+\_\+modbus\+RTU Class Reference}
+\hypertarget{class_comm_interface__modbus_r_t_u}{}\label{class_comm_interface__modbus_r_t_u}\index{CommInterface\_modbusRTU@{CommInterface\_modbusRTU}}
+Inheritance diagram for Comm\+Interface\+\_\+modbus\+RTU\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_comm_interface__modbus_r_t_u}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_comm_interface__modbus_r_t_u_ac349c7e4dafa46ea96d89ed808a67b07}\label{class_comm_interface__modbus_r_t_u_ac349c7e4dafa46ea96d89ed808a67b07} 
+{\bfseries Comm\+Interface\+\_\+modbus\+RTU} (\mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{Software\+Serial}} \texorpdfstring{$\ast$}{*}softwareserial, uint16\+\_\+t baudrate, char device\+Id)
+\item 
+bool \mbox{\hyperlink{class_comm_interface__modbus_r_t_u_a0e78a2a6e3b5b029609c2b16c21bd85b}{send}} () override
+\item 
+bool \mbox{\hyperlink{class_comm_interface__modbus_r_t_u_a50b42ad0a40a82ebe5a7749313ca2283}{receive}} () override
+\item 
+\Hypertarget{class_comm_interface__modbus_r_t_u_acced18055fd7b7157e66155b1346d20f}\label{class_comm_interface__modbus_r_t_u_acced18055fd7b7157e66155b1346d20f} 
+char {\bfseries get\+Device\+Id} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_comm_interface}{Comm\+Interface$<$ Software\+Serial $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Comm\+Interface} (\mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{Software\+Serial}} \texorpdfstring{$\ast$}{*}interface, uint32\+\_\+t baudrate)
+\item 
+void {\bfseries send\+New\+Frame} (String \texorpdfstring{$\ast$}{*}send\+Frame)
+\item 
+bool {\bfseries finished\+Sending} ()
+\item 
+void {\bfseries get\+Received\+Frame} (String \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
+\item 
+bool {\bfseries received\+New\+Frame} ()
+\item 
+virtual void {\bfseries receive\+Cycle} ()
+\item 
+virtual void {\bfseries send\+Cycle} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_comm_interface_base}{Comm\+Interface\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries setup\+\_\+interface} ()
+\item 
+void {\bfseries send\+New\+Frame} (String \texorpdfstring{$\ast$}{*}send\+Frame)
+\item 
+bool {\bfseries finished\+Sending} ()
+\item 
+void {\bfseries get\+Received\+Frame} (String \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
+\item 
+bool {\bfseries received\+New\+Frame} ()
+\item 
+void {\bfseries exec\+Communication\+Cycle} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_comm_interface}{Comm\+Interface$<$ Software\+Serial $>$}}}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_comm_interface}{Comm\+Interface$<$ Software\+Serial $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{Software\+Serial}} \texorpdfstring{$\ast$}{*} {\bfseries interface}
+\item 
+String \texorpdfstring{$\ast$}{*} {\bfseries send\+Buffer}
+\item 
+String \texorpdfstring{$\ast$}{*} {\bfseries receive\+Buffer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_comm_interface__modbus_r_t_u_a50b42ad0a40a82ebe5a7749313ca2283}\index{CommInterface\_modbusRTU@{CommInterface\_modbusRTU}!receive@{receive}}
+\index{receive@{receive}!CommInterface\_modbusRTU@{CommInterface\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily \label{class_comm_interface__modbus_r_t_u_a50b42ad0a40a82ebe5a7749313ca2283} 
+bool Comm\+Interface\+\_\+modbus\+RTU\+::receive (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_comm_interface}{Comm\+Interface$<$ Software\+Serial $>$}}.
+
+\Hypertarget{class_comm_interface__modbus_r_t_u_a0e78a2a6e3b5b029609c2b16c21bd85b}\index{CommInterface\_modbusRTU@{CommInterface\_modbusRTU}!send@{send}}
+\index{send@{send}!CommInterface\_modbusRTU@{CommInterface\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily \label{class_comm_interface__modbus_r_t_u_a0e78a2a6e3b5b029609c2b16c21bd85b} 
+bool Comm\+Interface\+\_\+modbus\+RTU\+::send (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_comm_interface}{Comm\+Interface$<$ Software\+Serial $>$}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/Comm\+Interface\+\_\+modbus\+RTU.\+h\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/Comm\+Interface\+\_\+modbus\+RTU.\+cpp\end{DoxyCompactItemize}

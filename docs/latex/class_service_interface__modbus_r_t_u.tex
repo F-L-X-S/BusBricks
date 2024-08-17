@@ -1,0 +1,65 @@
+\doxysection{Service\+Interface\+\_\+modbus\+RTU Class Reference}
+\hypertarget{class_service_interface__modbus_r_t_u}{}\label{class_service_interface__modbus_r_t_u}\index{ServiceInterface\_modbusRTU@{ServiceInterface\_modbusRTU}}
+Inheritance diagram for Service\+Interface\+\_\+modbus\+RTU\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_service_interface__modbus_r_t_u}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_service_interface__modbus_r_t_u_aa8ce2b3a043c2ed435c84e1b4a2c1cba}\label{class_service_interface__modbus_r_t_u_aa8ce2b3a043c2ed435c84e1b4a2c1cba} 
+{\bfseries Service\+Interface\+\_\+modbus\+RTU} (\mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*}services, \mbox{\hyperlink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU}} \texorpdfstring{$\ast$}{*}comm\+\_\+interface)
+\item 
+void \mbox{\hyperlink{class_service_interface__modbus_r_t_u_ad1afd9540b980f8d4d8f2c947ce10a65}{communicate}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_service_interface}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Service\+Interface} (\mbox{\hyperlink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU}} \texorpdfstring{$\ast$}{*}comm\+\_\+interface, \mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*}services)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_service_interface}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries process\+Services} ()
+\item 
+virtual void {\bfseries process\+Send\+Stack} ()
+\item 
+virtual void {\bfseries process\+Rec\+Stack} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_service_interface}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU}} \texorpdfstring{$\ast$}{*} {\bfseries comm\+\_\+interface}
+\item 
+\mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*} {\bfseries services}
+\item 
+\mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}}, STACKSIZE $>$ {\bfseries rec\+Stack}
+\item 
+\mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}}, STACKSIZE $>$ {\bfseries send\+Stack}
+\item 
+String {\bfseries send\+Item}
+\item 
+String {\bfseries rec\+Item}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_service_interface__modbus_r_t_u_ad1afd9540b980f8d4d8f2c947ce10a65}\index{ServiceInterface\_modbusRTU@{ServiceInterface\_modbusRTU}!communicate@{communicate}}
+\index{communicate@{communicate}!ServiceInterface\_modbusRTU@{ServiceInterface\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{communicate()}{communicate()}}
+{\footnotesize\ttfamily \label{class_service_interface__modbus_r_t_u_ad1afd9540b980f8d4d8f2c947ce10a65} 
+void Service\+Interface\+\_\+modbus\+RTU\+::communicate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_service_interface}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/Service\+Interface\+\_\+modbus\+RTU.\+h\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/Service\+Interface\+\_\+modbus\+RTU.\+cpp\end{DoxyCompactItemize}

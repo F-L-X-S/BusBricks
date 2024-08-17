@@ -1,0 +1,73 @@
+\doxysection{Comm\+Interface\texorpdfstring{$<$}{<} interface\+\_\+type \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_comm_interface}{}\label{class_comm_interface}\index{CommInterface$<$ interface\_type $>$@{CommInterface$<$ interface\_type $>$}}
+Inheritance diagram for Comm\+Interface\texorpdfstring{$<$}{<} interface\+\_\+type \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_comm_interface}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_comm_interface_a036d6ee859c4aa352083626e3d852da2}\label{class_comm_interface_a036d6ee859c4aa352083626e3d852da2} 
+{\bfseries Comm\+Interface} (interface\+\_\+type \texorpdfstring{$\ast$}{*}interface, uint32\+\_\+t baudrate)
+\item 
+\Hypertarget{class_comm_interface_a21c8ee8eddb3011e89b950f1b5264664}\label{class_comm_interface_a21c8ee8eddb3011e89b950f1b5264664} 
+void {\bfseries send\+New\+Frame} (String \texorpdfstring{$\ast$}{*}send\+Frame)
+\item 
+\Hypertarget{class_comm_interface_a9a27c7221b188bde1632a7c44f79b493}\label{class_comm_interface_a9a27c7221b188bde1632a7c44f79b493} 
+bool {\bfseries finished\+Sending} ()
+\item 
+\Hypertarget{class_comm_interface_a446d6dfeb4dd695c061f1ff1c926fb51}\label{class_comm_interface_a446d6dfeb4dd695c061f1ff1c926fb51} 
+void {\bfseries get\+Received\+Frame} (String \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
+\item 
+\Hypertarget{class_comm_interface_aea53cf3e71460f3a662c175958acb643}\label{class_comm_interface_aea53cf3e71460f3a662c175958acb643} 
+bool {\bfseries received\+New\+Frame} ()
+\item 
+\Hypertarget{class_comm_interface_a86287d0a0ecad690b5182bbe01b7f63f}\label{class_comm_interface_a86287d0a0ecad690b5182bbe01b7f63f} 
+virtual void {\bfseries receive\+Cycle} ()
+\item 
+\Hypertarget{class_comm_interface_a8670e37fdefcfeca579e99b6051fe3da}\label{class_comm_interface_a8670e37fdefcfeca579e99b6051fe3da} 
+virtual void {\bfseries send\+Cycle} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_comm_interface_base}{Comm\+Interface\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries setup\+\_\+interface} ()
+\item 
+void {\bfseries send\+New\+Frame} (String \texorpdfstring{$\ast$}{*}send\+Frame)
+\item 
+bool {\bfseries finished\+Sending} ()
+\item 
+void {\bfseries get\+Received\+Frame} (String \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
+\item 
+bool {\bfseries received\+New\+Frame} ()
+\item 
+void {\bfseries exec\+Communication\+Cycle} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_comm_interface_a458e3da4ff47bdf6cc9f0a5f956c80dd}\label{class_comm_interface_a458e3da4ff47bdf6cc9f0a5f956c80dd} 
+virtual bool {\bfseries send} ()=0
+\item 
+\Hypertarget{class_comm_interface_a81c74dee239a10522d30900943f64eb2}\label{class_comm_interface_a81c74dee239a10522d30900943f64eb2} 
+virtual bool {\bfseries receive} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_comm_interface_a500d5da6b485fc7450fbd8c9afd79374}\label{class_comm_interface_a500d5da6b485fc7450fbd8c9afd79374} 
+interface\+\_\+type \texorpdfstring{$\ast$}{*} {\bfseries interface}
+\item 
+\Hypertarget{class_comm_interface_a158b6fec22811cd97732ca9bada05873}\label{class_comm_interface_a158b6fec22811cd97732ca9bada05873} 
+String \texorpdfstring{$\ast$}{*} {\bfseries send\+Buffer} = nullptr
+\item 
+\Hypertarget{class_comm_interface_aa2cedf4d8d25ab2a0a04278c976383d9}\label{class_comm_interface_aa2cedf4d8d25ab2a0a04278c976383d9} 
+String \texorpdfstring{$\ast$}{*} {\bfseries receive\+Buffer} = nullptr
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Interface/Comm\+Interface.\+h\end{DoxyCompactItemize}

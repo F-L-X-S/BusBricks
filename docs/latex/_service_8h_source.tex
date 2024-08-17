@@ -1,0 +1,102 @@
+\doxysection{Service.\+h}
+\hypertarget{_service_8h_source}{}\label{_service_8h_source}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Service/Service.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Service/Service.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SERVICE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SERVICE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ <cstring>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Content.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Content\_stack.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ Service-\/Base-\/Class\ }}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_service_base}{ServiceBase}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ String\ get\_response()=0;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ responseAvailable()=0;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ clearResponse()=0;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ stackProcessing()=0;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ impart\_pdu(String*\ pdu)=0;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ uint8\_t*\ get\_ServiceID()=0;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ uint8\_t*\ get\_InstanceID()=0;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_service_base}{\string~ServiceBase}}()\{\};}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ Template\ to\ create\ a\ Service\ class\ by\ defining\ the\ Content\ (derived\ Class\ of\ "{}Content"{})\ to\ handle\ and\ the\ size\ of\ the\ service-\/stacks}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ A\ Service\ has\ to\ be\ instanciated\ with\ a\ unique\ service-\/id\ and\ an\ instance-\/id,\ the\ service-\/instance\ should\ use\ for\ it's\ communication}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ The\ derived\ classes\ have\ to\ define\ the\ stack-\/processing\ to\ handle\ the\ payload\ at\ the\ rec-\/stack\ and\ add\ payload\ to\ the\ send-\/stack\ }}
+\DoxyCodeLine{00030\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ content\_\textcolor{keyword}{class},\ \textcolor{keywordtype}{int}\ stackSize>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_service}{Service}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_service_base}{ServiceBase}}\{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{protected}:\ }
+\DoxyCodeLine{00033\ \ \ \ \ uint8\_t\ serviceID;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ service-\/id}}
+\DoxyCodeLine{00034\ \ \ \ \ uint8\_t\ instanceID;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ service-\/instance-\/id\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<content\_class,\ stackSize>}}\ rec\_stack;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stack\ for\ received\ content-\/elements}}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<content\_class,\ stackSize>}}\ send\_stack;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stack\ for\ received\ content-\/elements}}
+\DoxyCodeLine{00037\ \ \ \ \ String\ response\_pdu;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PDU\ with\ response\ }}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ write\ the\ response-\/PDU\ to\ the\ reserved\ memory\ of\ the\ service-\/instance\ }}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ write\_response\_pdu(content\_class\ response\_object)\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ response\_pdu\ =\ *response\_object.get\_representation();}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_service}{Service}}(uint8\_t\ serviceID,\ uint8\_t\ instanceID):\ serviceID(serviceID),\ instanceID(instanceID)\{\}\ \ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Get\ a\ Ptr\ to\ the\ Service-\/ID}}
+\DoxyCodeLine{00048\ \ \ \ \ uint8\_t*\ get\_ServiceID()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&serviceID;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Get\ a\ Ptr\ to\ the\ Instance-\/ID}}
+\DoxyCodeLine{00053\ \ \ \ \ uint8\_t*\ get\_InstanceID()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&instanceID;}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ Add\ a\ new\ Content-\/Object\ created\ from\ PDU\ to\ the\ services\ receive-\/Stack}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ impart\_pdu(String*\ pdu)\textcolor{keyword}{\ override\ }\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ content\_class\ content(pdu);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ Content-\/object\ from\ PDU}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rec\_stack.addElement(content);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ Content-\/Object\ to\ Rec-\/Stack}}
+\DoxyCodeLine{00061\ \ \ \ \ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ get\ the\ response-\/pdu\ stored\ at\ the\ reserved\ memory\ of\ the\ service\ instance\ \ }}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ String\ get\_response()\textcolor{keyword}{\ override\ }\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ copy\ the\ response\ element\ from\ send-\/stack}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ content\_class\ response\_element\ =\ (send\_stack.empty())?\ content\_class():*send\_stack.getElement();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ write\ pdu\ from\ this\ element\ to\ response-\/pdu-\/memory\ of\ service-\/instance\ }}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ write\_response\_pdu(response\_element);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ the\ response-\/pdu\ of\ the\ service-\/instance}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ response\_pdu;}
+\DoxyCodeLine{00071\ \ \ \ \ \};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ check,\ if\ a\ response\ is\ available\ }}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ responseAvailable()\textcolor{keyword}{\ override\ }\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !send\_stack.empty();}
+\DoxyCodeLine{00076\ \ \ \ \ \};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ Clear\ the\ response-\/buffer\ }}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ clearResponse()\textcolor{keyword}{\ override\ }\{\ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ send\_stack.deleteElement();\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ last\ element\ from\ sendstack}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ response\_pdu\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00082\ \ \ \ \ \};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ process\ all\ messages\ from\ the\ receive-\/stack,\ till\ the\ stack\ is\ empty}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ add\ all\ necessary\ messages\ to\ the\ send-\/stack\ }}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ stackProcessing()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rec\_stack.empty())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(!rec\_stack.empty())\{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ content\_class\ recItem\ =\ *rec\_stack.getElement();\ \textcolor{comment}{//\ example\ implementation:\ adding\ received\ items\ back\ to\ send-\/stack}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ send\_stack.addElement(recItem);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ rec\_stack.deleteElement();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SERVICE\_H}}
+
+\end{DoxyCode}

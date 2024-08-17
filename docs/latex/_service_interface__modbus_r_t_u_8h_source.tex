@@ -1,0 +1,53 @@
+\doxysection{Service\+Interface\+\_\+modbus\+RTU.\+h}
+\hypertarget{_service_interface__modbus_r_t_u_8h_source}{}\label{_service_interface__modbus_r_t_u_8h_source}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/ModbusRTU/ServiceInterface\_modbusRTU.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/ModbusRTU/ServiceInterface\_modbusRTU.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SERVICEINTERFACE\_MODBUSRTU}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SERVICEINTERFACE\_MODBUSRTU}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <ServiceInterface.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <CommInterface\_modbusRTU.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Frame\_modbusRTU.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <Message\_service.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Service-\/Interface-\/Instance\ for\ Modbus-\/RTU:}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Incoming\ information:}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Impart\ incoming\ frames\ from\ the\ Communication-\/Interface\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ to\ the\ designated\ service\ of\ the\ service-\/cluster\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ Outgoing\ information:\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Build\ outgoing\ modbus-\/RTU-\/frames\ from\ the\ payload\ provided\ }}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ by\ the\ services\ and\ impart\ them\ to\ the\ Communication-\/Interface}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_service_interface__modbus_r_t_u}{ServiceInterface\_modbusRTU}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_service_interface}{ServiceInterface}}<CommInterface\_modbusRTU,\ Frame\_modbusRTU>\{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ Service-\/Interface\ }}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface__modbus_r_t_u}{ServiceInterface\_modbusRTU}}(\mbox{\hyperlink{class_service_cluster_base}{ServiceClusterBase}}*\ services,\ \mbox{\hyperlink{class_comm_interface__modbus_r_t_u}{CommInterface\_modbusRTU}}*\ comm\_interface);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ Service-\/Interface\ }}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface__modbus_r_t_u}{\string~ServiceInterface\_modbusRTU}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Execute\ all\ relevant\ tasks\ for\ transferring\ data\ between\ CommInterface\ and\ Services:}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ Get\ PDU\ from\ Services}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ Add\ PDU\ to\ Services}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ Update\ communication-\/stacks}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ Execute\ the\ CommInterfaces\ Comm-\/cycle\ }}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ communicate()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ all\ PDUs\ provided\ by\ the\ services\ to\ the\ sendstack}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ getPDU\_from\_services()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Impart\ all\ received\ PDUs\ from\ the\ receivestack\ to\ the\ associated\ services\ }}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ addPDU\_to\_services()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SERVICEINTERFACE\_MODBUSRTU}}
+
+\end{DoxyCode}

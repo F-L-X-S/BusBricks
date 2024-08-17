@@ -1,0 +1,53 @@
+\doxysection{Frame.\+h}
+\hypertarget{_frame_8h_source}{}\label{_frame_8h_source}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Frame/Frame.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Frame/Frame.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FRAME\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FRAME\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include<Content.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Typedefinitions\ for\ Constructor-\/parameters}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ }pduString\ =\ String;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{using\ }frameString\ =\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Frame-\/Class\ as\ derived\ class\ from\ Content}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ The\ derived\ classes\ define:}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ \ \ \ \ \ -\/the\ conversion\ from\ a\ given\ payload\ plus\ protocol-\/specific\ parameters\ (e.g.\ function-\/code,\ addresses...)}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ \ \ \ \ \ to\ the\ frame-\/representation\ (override\ of\ content\_to\_rep\ from\ Content-\/Class)}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ \ \ \ \ \ -\/\ the\ extraction\ of\ protocol-\/specific\ parameters\ from\ the\ byte-\/representation\ (frame)\ }}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ \ \ \ \ \ with\ eventually\ checking\ their\ validity\ (e.g.\ CRC)\ (override\ of\ rep\_to\_content\ from\ Content-\/Class)}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ In\ the\ abstract\ concept\ of\ "{}Content"{}\ the\ byte-\/Frame\ itself\ is\ interpreted\ as\ the\ Content-\/Representation}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ The\ "{}Content"{}-\/Object\ represents\ the\ PDU\ transmitted\ to\ the\ services\ }}
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_frame}{Frame}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_content}{Content}}<pduString,\ frameString>\{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Default\ Constructor\ }}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_frame}{Frame}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destrucor}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_frame}{\string~Frame}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ creating\ Frame\ from\ pdu}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_frame}{Frame}}(pduString*\ pdu);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ creating\ Frame-\/Object\ from\ byte-\/frame\ }}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_frame}{Frame}}(frameString*\ frame);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ the\ pdu\ from\ the\ frame-\/object}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ String\ getPDU();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ the\ byte-\/frame\ from\ the\ frame-\/object\ \ }}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ String\ getFrame();}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FRAME\_H}}
+
+\end{DoxyCode}

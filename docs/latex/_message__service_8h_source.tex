@@ -1,0 +1,55 @@
+\doxysection{Message\+\_\+service.\+h}
+\hypertarget{_message__service_8h_source}{}\label{_message__service_8h_source}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Message\_service/Message\_service.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Message\_service/Message\_service.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MESSAGE\_SERVICE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MESSAGE\_SERVICE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#include\ <cstring>}}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;\ \ \ \ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Service.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Message.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ STACKSIZE\ 2\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Number\ of\ elements\ the\ services\ stacks\ can\ store\ }}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ FUNCTIONCODE\ 0x6D\ \ \ }\textcolor{comment}{//\ ASCII:\ "{}m"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Service-\/class\ for\ handling\ Content\ from\ type\ "{}Message"{}\ \ \ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ the\ service\ prints\ the\ messages\ from\ the\ receive-\/stack}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ and\ adds\ an\ Acknowledgement-\/PDU\ to\ the\ Send-\/Stack\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_message__service}{Message\_service}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_service}{Service}}<Message,\ STACKSIZE>}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ creating\ Message-\/service\ with\ deafult\ Service-\/ID\ "{}m"{}}}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_message__service}{Message\_service}}(uint8\_t\ instance\_id);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ creating\ Message-\/service\ with\ custom\ Service-\/ID\ }}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_message__service}{Message\_service}}(uint8\_t\ instance\_id,\ uint8\_t\ service\_id);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ process\ all\ messages\ from\ the\ receive-\/stack,\ till\ the\ stack\ is\ empty}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ add\ all\ necessary\ messages\ to\ the\ send-\/stack\ }}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ prints\ the\ messages\ from\ the\ receive-\/stack}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ and\ adds\ an\ Acknowledgement-\/PDU\ to\ the\ Send-\/Stack\ \ }}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ stackProcessing()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ get\ the\ destination\ Instance-\/ID\ for\ the\ current\ response\ PDU}}
+\DoxyCodeLine{00036\ \ \ \ \ uint8\_t\ get\_destinationId();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Send\ a\ new\ Message\ }}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ sendMessage(\textcolor{keywordtype}{char}\ receiverId,\ String\ messagetext);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ Ack\ for\ the\ message\ to\ the\ send-\/stack}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ sendAck(\mbox{\hyperlink{class_message}{Message}}*\ message);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Print\ the\ Received\ Messages}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ printMessage(\mbox{\hyperlink{class_message}{Message}}*\ message);}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MESSAGE\_SERVICE\_H}}
+
+\end{DoxyCode}

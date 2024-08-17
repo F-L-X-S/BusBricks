@@ -1,0 +1,79 @@
+\doxysection{Message.\+h}
+\hypertarget{_message_8h_source}{}\label{_message_8h_source}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Message\_service/Message.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Message\_service/Message.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MESSAGE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MESSAGE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#include\ <iostream>}\ \ \ \ \ \textcolor{comment}{//\ include\ iostream\ for\ local\ testing\ }}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ <cstring>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#include\ <cstdio>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Content.h"{}}\ \ \ \ \ \ \ \ \textcolor{comment}{//\ include\ Content-\/template}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ MAXPDUSIZE\ 252}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_message__content__t}{Message\_content\_t}}\{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{char}\ sender\_id;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Src-\/ID[1\ Byte]}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{char}\ receiver\_id;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rec-\/ID[1\ Byte]}}
+\DoxyCodeLine{00021\ \ \ \ \ String\ msg\_text;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Message-\/Text}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Default\ Constructor}}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{struct_message__content__t}{Message\_content\_t}}()\ :\ sender\_id(0x0),\ receiver\_id(0x0)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Constructor\ with\ String\ parameter}}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{struct_message__content__t}{Message\_content\_t}}(\textcolor{keywordtype}{char}\ sender\_id,\ \textcolor{keywordtype}{char}\ receiver\_id,\ String\ msg\_txt,\ uint8\_t\ txt\_size)\ :\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ sender\_id(sender\_id),\ receiver\_id(receiver\_id),\ msg\_text(msg\_text)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ msg\_text\ +=\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Defines\ the\ mapping\ of\ string-\/formatted\ PDU\ to\ a\ text-\/message\ with\ information\ for\ sender\ and\ receiver}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ Constructor\ for\ creating\ Message\ from\ pdu:}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ \ \ \ \ \ \ \ Message(String*\ representation)}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Constructor\ for\ creating\ Message\ from\ msg-\/content}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ \ \ \ \ \ \ \ Message(Message\_content\_t*\ message\_content)}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_message}{Message}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_content}{Content}}<Message\_content\_t,\ String>}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Default\ Constructor\ }}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_message}{Message}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destrucor}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_message}{\string~Message}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ creating\ Message\ from\ boolean\ expression}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Message\ is\ constructed\ using\ the\ default\ constructor\ of\ Message\_Content\_t:}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sender:\ 0x0;\ Receiver:\ 0x0;\ Text:\ \(\backslash\)0}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_message}{Message}}(\textcolor{keywordtype}{bool}\ boolean\_expression);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ creating\ Message\ from\ pdu}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_message}{Message}}(String*\ representation);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ creating\ Message\ from\ msg-\/content}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_message}{Message}}(\mbox{\hyperlink{struct_message__content__t}{Message\_content\_t}}*\ message\_content);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//string-\/representation}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ String\ to\_string();}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ Message\ from\ byte-\/representation\ (PDU)}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ rep\_to\_content()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ byte-\/representation\ (PDU)\ from\ Message}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ content\_to\_rep()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MESSAGE\_H}}
+
+\end{DoxyCode}

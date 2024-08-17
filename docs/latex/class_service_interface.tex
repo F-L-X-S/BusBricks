@@ -1,0 +1,55 @@
+\doxysection{Service\+Interface\texorpdfstring{$<$}{<} Comm\+Interface\+Base, frame\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_service_interface}{}\label{class_service_interface}\index{ServiceInterface$<$ CommInterfaceBase, frameType $>$@{ServiceInterface$<$ CommInterfaceBase, frameType $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_service_interface_acc70c85786fa2e133f90683f60ebf67f}\label{class_service_interface_acc70c85786fa2e133f90683f60ebf67f} 
+{\bfseries Service\+Interface} (\mbox{\hyperlink{class_comm_interface_base}{Comm\+Interface\+Base}} \texorpdfstring{$\ast$}{*}comm\+\_\+interface, \mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*}services)
+\item 
+\Hypertarget{class_service_interface_aeaebdad7101c0a66bee56edc4e6a19c1}\label{class_service_interface_aeaebdad7101c0a66bee56edc4e6a19c1} 
+virtual void {\bfseries communicate} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_service_interface_ab4112c2b2eb29d1e0ade95e4f3c07030}\label{class_service_interface_ab4112c2b2eb29d1e0ade95e4f3c07030} 
+virtual void {\bfseries get\+PDU\+\_\+from\+\_\+services} ()=0
+\item 
+\Hypertarget{class_service_interface_ac740850d1a24a1d8a96f7a7bbf4eb784}\label{class_service_interface_ac740850d1a24a1d8a96f7a7bbf4eb784} 
+virtual void {\bfseries add\+PDU\+\_\+to\+\_\+services} ()=0
+\item 
+\Hypertarget{class_service_interface_a4dffc7c3e366b470e1075db65333b67e}\label{class_service_interface_a4dffc7c3e366b470e1075db65333b67e} 
+virtual void {\bfseries process\+Services} ()
+\item 
+\Hypertarget{class_service_interface_a23feb243ed1748e04dd757aa5f788b3e}\label{class_service_interface_a23feb243ed1748e04dd757aa5f788b3e} 
+virtual void {\bfseries process\+Send\+Stack} ()
+\item 
+\Hypertarget{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214}\label{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214} 
+virtual void {\bfseries process\+Rec\+Stack} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_service_interface_a899b6f3e042682b285dca2588b833ae6}\label{class_service_interface_a899b6f3e042682b285dca2588b833ae6} 
+\mbox{\hyperlink{class_comm_interface_base}{Comm\+Interface\+Base}} \texorpdfstring{$\ast$}{*} {\bfseries comm\+\_\+interface}
+\item 
+\Hypertarget{class_service_interface_ad1f915c1a536af5c73aa1315fd035535}\label{class_service_interface_ad1f915c1a536af5c73aa1315fd035535} 
+\mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*} {\bfseries services}
+\item 
+\Hypertarget{class_service_interface_a7793efd070a56f021ce56a372b13c2fa}\label{class_service_interface_a7793efd070a56f021ce56a372b13c2fa} 
+\mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ frame\+Type, STACKSIZE $>$ {\bfseries rec\+Stack}
+\item 
+\Hypertarget{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a}\label{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a} 
+\mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ frame\+Type, STACKSIZE $>$ {\bfseries send\+Stack}
+\item 
+\Hypertarget{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1}\label{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1} 
+String {\bfseries send\+Item}
+\item 
+\Hypertarget{class_service_interface_ac69502c2d78c4a046c5d3219d637f1b3}\label{class_service_interface_ac69502c2d78c4a046c5d3219d637f1b3} 
+String {\bfseries rec\+Item}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Interface/Service\+Interface.\+h\end{DoxyCompactItemize}

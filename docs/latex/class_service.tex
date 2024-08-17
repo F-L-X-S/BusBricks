@@ -1,0 +1,138 @@
+\doxysection{Service\texorpdfstring{$<$}{<} content\+\_\+class, stack\+Size \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_service}{}\label{class_service}\index{Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}}
+Inheritance diagram for Service\texorpdfstring{$<$}{<} content\+\_\+class, stack\+Size \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_service_a546e00166c119fae55bd9f29eaee9114}\label{class_service_a546e00166c119fae55bd9f29eaee9114} 
+{\bfseries Service} (uint8\+\_\+t service\+ID, uint8\+\_\+t instance\+ID)
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_a4d0e8aca49451e363888ca46c2742b2e}{get\+\_\+\+Service\+ID}} () override
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_abd1295896aca84e6dd85c0973885b279}{get\+\_\+\+Instance\+ID}} () override
+\item 
+virtual bool \mbox{\hyperlink{class_service_ac0c60bc735c64547dee269c6c3a62767}{impart\+\_\+pdu}} (String \texorpdfstring{$\ast$}{*}pdu) override
+\item 
+virtual String \mbox{\hyperlink{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}{get\+\_\+response}} () override
+\item 
+virtual bool \mbox{\hyperlink{class_service_ad0a6407e13cd84f81393d96273212822}{response\+Available}} () override
+\item 
+virtual void \mbox{\hyperlink{class_service_a75817b19f202f1696c3609a3f9578cb9}{clear\+Response}} () override
+\item 
+virtual void \mbox{\hyperlink{class_service_a3eafa52c7f4bfe29698ba4a91c75dc75}{stack\+Processing}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_service_base}{Service\+Base}}}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_service_ac117245b9dc3ca3ade8ef1722c33f2e7}\label{class_service_ac117245b9dc3ca3ade8ef1722c33f2e7} 
+void {\bfseries write\+\_\+response\+\_\+pdu} (content\+\_\+class response\+\_\+object)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_service_aa054e726c3df8b665656caabeed02eef}\label{class_service_aa054e726c3df8b665656caabeed02eef} 
+uint8\+\_\+t {\bfseries service\+ID}
+\item 
+\Hypertarget{class_service_a7cc9d370ea7a4b52699f875458bc8a7f}\label{class_service_a7cc9d370ea7a4b52699f875458bc8a7f} 
+uint8\+\_\+t {\bfseries instance\+ID}
+\item 
+\Hypertarget{class_service_a2c119d5ab8c5b8f3dbf4070f8035d14c}\label{class_service_a2c119d5ab8c5b8f3dbf4070f8035d14c} 
+\mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ content\+\_\+class, stack\+Size $>$ {\bfseries rec\+\_\+stack}
+\item 
+\Hypertarget{class_service_a4dbf987b550b6f63031129d1f24f57ec}\label{class_service_a4dbf987b550b6f63031129d1f24f57ec} 
+\mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ content\+\_\+class, stack\+Size $>$ {\bfseries send\+\_\+stack}
+\item 
+\Hypertarget{class_service_a01d2b42d0a3e01bb2435af5b4071dc56}\label{class_service_a01d2b42d0a3e01bb2435af5b4071dc56} 
+String {\bfseries response\+\_\+pdu}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_service_a75817b19f202f1696c3609a3f9578cb9}\index{Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}!clearResponse@{clearResponse}}
+\index{clearResponse@{clearResponse}!Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}}
+\doxysubsubsection{\texorpdfstring{clearResponse()}{clearResponse()}}
+{\footnotesize\ttfamily \label{class_service_a75817b19f202f1696c3609a3f9578cb9} 
+template$<$typename content\+\_\+class , int stack\+Size$>$ \\
+virtual void \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::clear\+Response (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_service_base}{Service\+Base}}.
+
+\Hypertarget{class_service_abd1295896aca84e6dd85c0973885b279}\index{Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}!get\_InstanceID@{get\_InstanceID}}
+\index{get\_InstanceID@{get\_InstanceID}!Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}}
+\doxysubsubsection{\texorpdfstring{get\_InstanceID()}{get\_InstanceID()}}
+{\footnotesize\ttfamily \label{class_service_abd1295896aca84e6dd85c0973885b279} 
+template$<$typename content\+\_\+class , int stack\+Size$>$ \\
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::get\+\_\+\+Instance\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_service_base}{Service\+Base}}.
+
+\Hypertarget{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}\index{Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}!get\_response@{get\_response}}
+\index{get\_response@{get\_response}!Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}}
+\doxysubsubsection{\texorpdfstring{get\_response()}{get\_response()}}
+{\footnotesize\ttfamily \label{class_service_a601e6d2878ce2b292a3b7c6428f0d51f} 
+template$<$typename content\+\_\+class , int stack\+Size$>$ \\
+virtual String \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::get\+\_\+response (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_service_base}{Service\+Base}}.
+
+\Hypertarget{class_service_a4d0e8aca49451e363888ca46c2742b2e}\index{Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}!get\_ServiceID@{get\_ServiceID}}
+\index{get\_ServiceID@{get\_ServiceID}!Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}}
+\doxysubsubsection{\texorpdfstring{get\_ServiceID()}{get\_ServiceID()}}
+{\footnotesize\ttfamily \label{class_service_a4d0e8aca49451e363888ca46c2742b2e} 
+template$<$typename content\+\_\+class , int stack\+Size$>$ \\
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::get\+\_\+\+Service\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_service_base}{Service\+Base}}.
+
+\Hypertarget{class_service_ac0c60bc735c64547dee269c6c3a62767}\index{Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}!impart\_pdu@{impart\_pdu}}
+\index{impart\_pdu@{impart\_pdu}!Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}}
+\doxysubsubsection{\texorpdfstring{impart\_pdu()}{impart\_pdu()}}
+{\footnotesize\ttfamily \label{class_service_ac0c60bc735c64547dee269c6c3a62767} 
+template$<$typename content\+\_\+class , int stack\+Size$>$ \\
+virtual bool \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::impart\+\_\+pdu (\begin{DoxyParamCaption}\item[{String \texorpdfstring{$\ast$}{*}}]{pdu}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_service_base}{Service\+Base}}.
+
+\Hypertarget{class_service_ad0a6407e13cd84f81393d96273212822}\index{Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}!responseAvailable@{responseAvailable}}
+\index{responseAvailable@{responseAvailable}!Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}}
+\doxysubsubsection{\texorpdfstring{responseAvailable()}{responseAvailable()}}
+{\footnotesize\ttfamily \label{class_service_ad0a6407e13cd84f81393d96273212822} 
+template$<$typename content\+\_\+class , int stack\+Size$>$ \\
+virtual bool \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::response\+Available (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_service_base}{Service\+Base}}.
+
+\Hypertarget{class_service_a3eafa52c7f4bfe29698ba4a91c75dc75}\index{Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}!stackProcessing@{stackProcessing}}
+\index{stackProcessing@{stackProcessing}!Service$<$ content\_class, stackSize $>$@{Service$<$ content\_class, stackSize $>$}}
+\doxysubsubsection{\texorpdfstring{stackProcessing()}{stackProcessing()}}
+{\footnotesize\ttfamily \label{class_service_a3eafa52c7f4bfe29698ba4a91c75dc75} 
+template$<$typename content\+\_\+class , int stack\+Size$>$ \\
+virtual void \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::stack\+Processing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_service_base}{Service\+Base}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Service/Service.\+h\end{DoxyCompactItemize}
