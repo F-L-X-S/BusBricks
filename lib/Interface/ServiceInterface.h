@@ -97,7 +97,8 @@ class ServiceInterface{
                 if (recItem != ""){                                 // Item not empty 
                     frameString frameStr = recItem.c_str();         // conversion for identification as framestring in Frame-Class-Constructor
                     frameType recItemFrame(&frameStr);              // Construct Frame-Class derived Object
-                    recStack.addElement(recItemFrame);              // Add the received element to the stack 
+                    recStack.addElement(recItemFrame);              // Add the received element to the stack
+                    recItem = "";                                   // Clear rec-Item 
                 }
                 comm_interface->getReceivedFrame(&recItem);         // Impart memory the received item has to be stored at 
                 comm_interface->receiveCycle();                     // Receive new frames from comm-interface 

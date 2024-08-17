@@ -53,22 +53,24 @@ bool CommInterface_modbusRTU::receive(){
     }
   }
 
-    // Receive a relevant frame as long as timeout and framelength are ok
-    while (micros() - startTime <= _charTimeout && interface->available() && numBytes < MAXFRAMESIZE) {
-          // Serial debugging
-          #ifdef DEBUG
-              Serial.println("Waiting for relevant frame...");
-          #endif
-          if (receivingFlag || (deviceId==interface->peek()))     // check if the char in buffer is the device-ID or receiving started already
-          {
-              receivingFlag = true;                               // Set the receive-flag 
-              startTime = micros();                               // redefine the time for measuring timeouts
-              *receiveBuffer+= char(interface->read());                 // Write the received char to the specified buffer
-              numBytes++;                                         // increase frame-length-counter 
-          }else{
-            interface->read();
-          };
-    };
+  startTime = micros();                                             // redefine the time for measuring timeouts
+
+  // Receive a relevant frame as long as timeout and framelength are ok
+  while (micros() - startTime <= _charTimeout && interface->available() && numBytes < MAXFRAMESIZE) {
+        // Serial debugging
+        #ifdef DEBUG
+            Serial.println("Waiting for relevant frame...");
+        #endif
+        if (receivingFlag || (deviceId==interface->peek()))     // check if the char in buffer is the device-ID or receiving started already
+        {
+            receivingFlag = true;                               // Set the receive-flag 
+            startTime = micros();                               // redefine the time for measuring timeouts
+            *receiveBuffer+= char(interface->read());           // Write the received char to the specified buffer
+            numBytes++;                                         // increase frame-length-counter 
+        }else{
+          interface->read();
+        };
+  };
 
     // wait for Frame-timeout to ensure frame is complete
     while (micros() - startTime < _frameTimeout);

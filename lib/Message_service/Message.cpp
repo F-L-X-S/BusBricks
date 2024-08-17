@@ -48,18 +48,14 @@ void Message::content_to_rep() {
 // String Represenation of the Message-Object 
 String Message::to_string(){
     String string_rep;
-    char hex_buffer[5]; // Buffer for hex-representation
-
     
     // Sender-ID 
-    string_rep = "Sender: ";
-    sprintf(hex_buffer, "0x%02X", content.sender_id); 
-    string_rep += hex_buffer;
+    string_rep = "Sender: "; 
+    string_rep += content.sender_id;
 
     // Receiver-ID 
-    string_rep += "\t\tReceiver: ";
-    sprintf(hex_buffer, "0x%02X", content.receiver_id); 
-    string_rep += hex_buffer;
+    string_rep += "\t\tReceiver: "; 
+    string_rep += content.receiver_id;
 
     // Message-text
     string_rep += "\n";

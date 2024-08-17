@@ -46,9 +46,15 @@ void setup() {
     Serial.begin(9600);
     serialInterface.begin(BAUDRATE);
     Serial.println("Setup...");
-    msg_service.sendMessage('B', "Hello");
+    msg_service.sendMessage('B', "Setup...");
 };
 
 void loop() {
+    String s = "";
+    while (Serial.available() != 0) {      // data available
+        s = Serial.readString();           //read until timeout
+        s.trim();  
+    };
+    if (s!="") msg_service.sendMessage('B',s);
     serviceinterface.communicate();
  };
