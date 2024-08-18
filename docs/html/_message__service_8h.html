@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>BusBricks: /Users/felixschulke/Developement/Arduino/Modbus_RTU/Modbus_RTU/Modbus-RTU/lib/ModbusRTU/ServiceInterface_modbusRTU.h File Reference</title>
+<title>BusBricks: /Users/felixschulke/Developement/Arduino/Modbus_RTU/Modbus_RTU/Modbus-RTU/lib/Message_service/Message_service.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,29 +84,40 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_af54e730ac025cc6f7f4762292367803.html">ModbusRTU</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_a226032e50a419ec3f7bf2d54d95d169.html">Message_service</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
-  <div class="headertitle"><div class="title">ServiceInterface_modbusRTU.h File Reference</div></div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a>  </div>
+  <div class="headertitle"><div class="title">Message_service.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;mockArduino.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="_service_interface_8h_source.html">ServiceInterface.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_comm_interface__modbus_r_t_u_8h_source.html">CommInterface_modbusRTU.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_frame__modbus_r_t_u_8h_source.html">Frame_modbusRTU.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_message__service_8h_source.html">Message_service.h</a>&gt;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
+<code>#include &quot;<a class="el" href="_service_8h_source.html">Service.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_message_8h_source.html">Message.h</a>&quot;</code><br />
 </div>
-<p><a href="_service_interface__modbus_r_t_u_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_message__service_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service_interface__modbus_r_t_u.html">ServiceInterface_modbusRTU</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Service-Interface-class for Modbus-RTU: Impart incoming frames from the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the designated service of the service-cluster. Build outgoing modbus-RTU-frames from the payload provided by the services and impart them to the Communication-Interface. The service-IDs of the associated services are mapped to the modbus-rtu-function-code. If a <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> is sent by a modbus-slave device, the frame's slave-id is the same as the sender-id (and the local device-id). If a <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> is sent by a modbus-device in mastermode, the frame's slave-id is the receiver-id provided by the service, that provided the payload for the frame.  <a href="class_service_interface__modbus_r_t_u.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message__service.html">Message_service</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> class for handling messages and acknowledgments.  <a href="class_message__service.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a21d9543c516fffee84a7963224271f95" id="r_a21d9543c516fffee84a7963224271f95"><td class="memItemLeft" align="right" valign="top"><a id="a21d9543c516fffee84a7963224271f95" name="a21d9543c516fffee84a7963224271f95"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STACKSIZE</b>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a21d9543c516fffee84a7963224271f95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of elements the services stacks can store. <br /></td></tr>
+<tr class="separator:a21d9543c516fffee84a7963224271f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a428b1269124366b9d248386f0de255a4" id="r_a428b1269124366b9d248386f0de255a4"><td class="memItemLeft" align="right" valign="top"><a id="a428b1269124366b9d248386f0de255a4" name="a428b1269124366b9d248386f0de255a4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FUNCTIONCODE</b>&#160;&#160;&#160;0x6D</td></tr>
+<tr class="memdesc:a428b1269124366b9d248386f0de255a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Service-id ASCII: "m". <br /></td></tr>
+<tr class="separator:a428b1269124366b9d248386f0de255a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Felix Schuelke (<a href="#" onclick="location.href='mai'+'lto:'+'flx'+'sc'+'ode'+'@g'+'mai'+'l.'+'com'; return false;">flxsc<span class="obfuscator">.nosp@m.</span>ode@<span class="obfuscator">.nosp@m.</span>gmail<span class="obfuscator">.nosp@m.</span>.com</a>) </dd></dl>

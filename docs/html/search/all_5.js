@@ -5,5 +5,6 @@ var searchData=
   ['frame_2eh_2',['Frame.h',['../_frame_8h.html',1,'']]],
   ['frame_5fmodbusrtu_3',['Frame_modbusRTU',['../class_frame__modbus_r_t_u.html',1,'Frame_modbusRTU'],['../class_frame__modbus_r_t_u.html#a6009ce4dda11184e6e0055baf09b280a',1,'Frame_modbusRTU::Frame_modbusRTU(pduString *pdu, char *slaveId, char *functionCode)'],['../class_frame__modbus_r_t_u.html#a591ed00bcf27673a8534bfdb07dfa121',1,'Frame_modbusRTU::Frame_modbusRTU(frameString *frame)'],['../class_frame__modbus_r_t_u.html#ac8bde306d324d44d9d6adc6bc718e3a5',1,'Frame_modbusRTU::Frame_modbusRTU()'],['../class_frame__modbus_r_t_u.html#aeefc27c92fbcc096f4181869e918712e',1,'Frame_modbusRTU::Frame_modbusRTU(const Frame_modbusRTU &amp;other)']]],
   ['frame_5fmodbusrtu_2eh_4',['Frame_modbusRTU.h',['../_frame__modbus_r_t_u_8h.html',1,'']]],
-  ['full_5',['full',['../class_content__stack.html#a200a86b0f3bdfa24e4a56b5e02efb02a',1,'Content_stack']]]
+  ['full_5',['full',['../class_content__stack.html#a200a86b0f3bdfa24e4a56b5e02efb02a',1,'Content_stack']]],
+  ['functioncode_6',['FUNCTIONCODE',['../_message__service_8h.html#a428b1269124366b9d248386f0de255a4',1,'Message_service.h']]]
 ];

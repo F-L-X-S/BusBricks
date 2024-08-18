@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['sendbuffer_0',['sendBuffer',['../class_comm_interface.html#a158b6fec22811cd97732ca9bada05873',1,'CommInterface']]],
-  ['senditem_1',['sendItem',['../class_service_interface.html#a1e08cf764cea2084e1f425e32f44d2c1',1,'ServiceInterface']]],
-  ['sendstack_2',['sendStack',['../class_service_interface.html#a38bd169d6286c4ddbda050b7f28d093a',1,'ServiceInterface']]],
-  ['services_3',['services',['../class_service_interface.html#ad1f915c1a536af5c73aa1315fd035535',1,'ServiceInterface']]]
+  ['receivebuffer_0',['receiveBuffer',['../class_comm_interface.html#aa2cedf4d8d25ab2a0a04278c976383d9',1,'CommInterface']]],
+  ['receiver_5fid_1',['receiver_id',['../struct_message__content__t.html#a0c1e2ca71214ff401635a9cd21c65cee',1,'Message_content_t']]],
+  ['recitem_2',['recItem',['../class_service_interface.html#ac69502c2d78c4a046c5d3219d637f1b3',1,'ServiceInterface']]],
+  ['recstack_3',['recStack',['../class_service_interface.html#a7793efd070a56f021ce56a372b13c2fa',1,'ServiceInterface']]],
+  ['representation_4',['representation',['../class_content.html#aa667f2d6f2ec335fb5ac1204f4cdc0b8',1,'Content']]]
 ];

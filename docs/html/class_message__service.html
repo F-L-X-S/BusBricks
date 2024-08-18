@@ -91,6 +91,9 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Message_service Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> class for handling messages and acknowledgments.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Message_service:</div>
 <div class="dyncontent">
@@ -104,20 +107,20 @@ Inheritance diagram for Message_service:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:affc45896c13fb1ccf7af8708621d7568" id="r_affc45896c13fb1ccf7af8708621d7568"><td class="memItemLeft" align="right" valign="top"><a id="affc45896c13fb1ccf7af8708621d7568" name="affc45896c13fb1ccf7af8708621d7568"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Message_service</b> (uint8_t instance_id)</td></tr>
+<tr class="memitem:affc45896c13fb1ccf7af8708621d7568" id="r_affc45896c13fb1ccf7af8708621d7568"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affc45896c13fb1ccf7af8708621d7568">Message_service</a> (uint8_t instance_id)</td></tr>
+<tr class="memdesc:affc45896c13fb1ccf7af8708621d7568"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <code><a class="el" href="class_message__service.html" title="Service class for handling messages and acknowledgments.">Message_service</a></code> with default <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> ID "m".  <br /></td></tr>
 <tr class="separator:affc45896c13fb1ccf7af8708621d7568"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97d86af31342a27f39e16268df59f832" id="r_a97d86af31342a27f39e16268df59f832"><td class="memItemLeft" align="right" valign="top"><a id="a97d86af31342a27f39e16268df59f832" name="a97d86af31342a27f39e16268df59f832"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Message_service</b> (uint8_t instance_id, uint8_t service_id)</td></tr>
+<tr class="memitem:a97d86af31342a27f39e16268df59f832" id="r_a97d86af31342a27f39e16268df59f832"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97d86af31342a27f39e16268df59f832">Message_service</a> (uint8_t instance_id, uint8_t service_id)</td></tr>
+<tr class="memdesc:a97d86af31342a27f39e16268df59f832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <code><a class="el" href="class_message__service.html" title="Service class for handling messages and acknowledgments.">Message_service</a></code> with a custom <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> ID.  <br /></td></tr>
 <tr class="separator:a97d86af31342a27f39e16268df59f832"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a605f6a9ed4900558b52a80abd1144791" id="r_a605f6a9ed4900558b52a80abd1144791"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a605f6a9ed4900558b52a80abd1144791">stackProcessing</a> () override</td></tr>
-<tr class="memdesc:a605f6a9ed4900558b52a80abd1144791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the service's functions for each item on the receive-stack and add all response-payloads to be send to the send-stack.  <br /></td></tr>
+<tr class="memdesc:a605f6a9ed4900558b52a80abd1144791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes all messages from the receive stack.  <br /></td></tr>
 <tr class="separator:a605f6a9ed4900558b52a80abd1144791"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22ec667c9ac9f87f33b7c5eb1cbf4691" id="r_a22ec667c9ac9f87f33b7c5eb1cbf4691"><td class="memItemLeft" align="right" valign="top"><a id="a22ec667c9ac9f87f33b7c5eb1cbf4691" name="a22ec667c9ac9f87f33b7c5eb1cbf4691"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_destinationId</b> ()</td></tr>
+<tr class="memitem:a22ec667c9ac9f87f33b7c5eb1cbf4691" id="r_a22ec667c9ac9f87f33b7c5eb1cbf4691"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22ec667c9ac9f87f33b7c5eb1cbf4691">get_destinationId</a> ()</td></tr>
+<tr class="memdesc:a22ec667c9ac9f87f33b7c5eb1cbf4691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the destination instance ID for the current response PDU in the send stack.  <br /></td></tr>
 <tr class="separator:a22ec667c9ac9f87f33b7c5eb1cbf4691"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8d198ccf700400339e3240e1c9c86e4" id="r_aa8d198ccf700400339e3240e1c9c86e4"><td class="memItemLeft" align="right" valign="top"><a id="aa8d198ccf700400339e3240e1c9c86e4" name="aa8d198ccf700400339e3240e1c9c86e4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sendMessage</b> (char receiverId, String messagetext)</td></tr>
+<tr class="memitem:aa8d198ccf700400339e3240e1c9c86e4" id="r_aa8d198ccf700400339e3240e1c9c86e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8d198ccf700400339e3240e1c9c86e4">sendMessage</a> (char receiverId, String messagetext)</td></tr>
+<tr class="memdesc:aa8d198ccf700400339e3240e1c9c86e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a new message.  <br /></td></tr>
 <tr class="separator:aa8d198ccf700400339e3240e1c9c86e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_service"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_service')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_service.html">Service&lt; Message, STACKSIZE &gt;</a></td></tr>
 <tr class="memitem:a546e00166c119fae55bd9f29eaee9114 inherit pub_methods_class_service" id="r_a546e00166c119fae55bd9f29eaee9114"><td class="memItemLeft" align="right" valign="top">
@@ -174,7 +177,139 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>instanceID</b></td
 String&#160;</td><td class="memItemRight" valign="bottom"><b>response_pdu</b></td></tr>
 <tr class="separator:a01d2b42d0a3e01bb2435af5b4071dc56 inherit pro_attribs_class_service"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> class for handling messages and acknowledgments. </p>
+<p>The <code><a class="el" href="class_message__service.html" title="Service class for handling messages and acknowledgments.">Message_service</a></code> class manages messages of type <code><a class="el" href="class_message.html" title="Represents a message with information for sender and receiver, and provides methods for converting be...">Message</a></code>, processes incoming messages from the receive stack, and handles sending acknowledgments. It inherits from a <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> for conetnt_type '<a class="el" href="class_message.html" title="Represents a message with information for sender and receiver, and provides methods for converting be...">Message</a>' (<code><a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a>&lt;<a class="el" href="class_message.html" title="Represents a message with information for sender and receiver, and provides methods for converting be...">Message</a>, STACKSIZE&gt;</code>).</p>
+<h1><a class="anchor" id="Constructors"></a>
+Constructors</h1>
+<ul>
+<li><code><a class="el" href="#affc45896c13fb1ccf7af8708621d7568" title="Constructor for Message_service with default Service ID &quot;m&quot;.">Message_service(uint8_t instance_id)</a></code>: Constructs a <code><a class="el" href="class_message__service.html" title="Service class for handling messages and acknowledgments.">Message_service</a></code> with a default service ID of "m".</li>
+<li><code><a class="el" href="#a97d86af31342a27f39e16268df59f832" title="Constructor for Message_service with a custom Service ID.">Message_service(uint8_t instance_id, uint8_t service_id)</a></code>: Constructs a <code><a class="el" href="class_message__service.html" title="Service class for handling messages and acknowledgments.">Message_service</a></code> with a custom service ID.</li>
+</ul>
+<h1><a class="anchor" id="Methods"></a>
+Methods</h1>
+<ul>
+<li><code>void <a class="el" href="#a605f6a9ed4900558b52a80abd1144791" title="Processes all messages from the receive stack.">stackProcessing()</a> override</code>: Processes all messages from the receive stack until it is empty. Adds acknowledgments to the send stack and prints received messages.</li>
+<li><code>uint8_t <a class="el" href="#a22ec667c9ac9f87f33b7c5eb1cbf4691" title="Retrieves the destination instance ID for the current response PDU in the send stack.">get_destinationId()</a></code>: Retrieves the destination instance ID for the current response PDU.</li>
+<li><code>void <a class="el" href="#aa8d198ccf700400339e3240e1c9c86e4" title="Sends a new message.">sendMessage(char receiverId, String messagetext)</a></code>: Sends a new message with the specified receiver ID and message text.</li>
+<li><code>void sendAck(Message* message)</code>: Adds an acknowledgment for the given message to the send stack.</li>
+<li><code>void printMessage(Message* message)</code>: Prints the content of the received message.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li>The class handles both the processing of incoming messages and the sending of acknowledgments.</li>
+<li>The <code>stackProcessing</code> method is responsible for managing the receive and send stacks, ensuring messages are properly handled and acknowledged. </li>
+</ul>
+</dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="affc45896c13fb1ccf7af8708621d7568" name="affc45896c13fb1ccf7af8708621d7568"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affc45896c13fb1ccf7af8708621d7568">&#9670;&#160;</a></span>Message_service() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Message_service::Message_service </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>instance_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor for <code><a class="el" href="class_message__service.html" title="Service class for handling messages and acknowledgments.">Message_service</a></code> with default <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> ID "m". </p>
+<p>Initializes the service with the given instance ID and a default service ID.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance_id</td><td>The instance ID for the service. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a97d86af31342a27f39e16268df59f832" name="a97d86af31342a27f39e16268df59f832"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97d86af31342a27f39e16268df59f832">&#9670;&#160;</a></span>Message_service() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Message_service::Message_service </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>instance_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>service_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor for <code><a class="el" href="class_message__service.html" title="Service class for handling messages and acknowledgments.">Message_service</a></code> with a custom <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> ID. </p>
+<p>Initializes the service with the given instance ID and a custom service ID.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance_id</td><td>The instance ID for the service. </td></tr>
+    <tr><td class="paramname">service_id</td><td>The custom service ID. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a22ec667c9ac9f87f33b7c5eb1cbf4691" name="a22ec667c9ac9f87f33b7c5eb1cbf4691"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ec667c9ac9f87f33b7c5eb1cbf4691">&#9670;&#160;</a></span>get_destinationId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Message_service::get_destinationId </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves the destination instance ID for the current response PDU in the send stack. </p>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t The destination instance ID extracted from the message in the send stack. </dd></dl>
+
+</div>
+</div>
+<a id="aa8d198ccf700400339e3240e1c9c86e4" name="aa8d198ccf700400339e3240e1c9c86e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8d198ccf700400339e3240e1c9c86e4">&#9670;&#160;</a></span>sendMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Message_service::sendMessage </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>receiverId</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>messagetext</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a new message. </p>
+<p>Constructs and sends a message with the specified receiver ID and message text. The message is added to the send stack for transmission.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">receiverId</td><td>char, The ID of the message receiver. </td></tr>
+    <tr><td class="paramname">messagetext</td><td>String, The text of the message to be sent. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a605f6a9ed4900558b52a80abd1144791" name="a605f6a9ed4900558b52a80abd1144791"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a605f6a9ed4900558b52a80abd1144791">&#9670;&#160;</a></span>stackProcessing()</h2>
 
@@ -198,7 +333,8 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>response_pdu</b></t
 </table>
 </div><div class="memdoc">
 
-<p>Execute the service's functions for each item on the receive-stack and add all response-payloads to be send to the send-stack. </p>
+<p>Processes all messages from the receive stack. </p>
+<p>Processes each message in the receive stack until it is empty. For each message, it prints the message content to the serial output, generates and adds an acknowledgment PDU to the send stack, and removes the processed message from the receive stack. </p>
 
 <p>Reimplemented from <a class="el" href="class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75">Service&lt; Message, STACKSIZE &gt;</a>.</p>
 

@@ -1,5 +1,10 @@
 \doxysection{Message\+\_\+service Class Reference}
 \hypertarget{class_message__service}{}\label{class_message__service}\index{Message\_service@{Message\_service}}
+
+
+\doxylink{class_service}{Service} class for handling messages and acknowledgments.  
+
+
 Inheritance diagram for Message\+\_\+service\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,20 +14,16 @@ Inheritance diagram for Message\+\_\+service\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_message__service_affc45896c13fb1ccf7af8708621d7568}\label{class_message__service_affc45896c13fb1ccf7af8708621d7568} 
-{\bfseries Message\+\_\+service} (uint8\+\_\+t instance\+\_\+id)
-\item 
-\Hypertarget{class_message__service_a97d86af31342a27f39e16268df59f832}\label{class_message__service_a97d86af31342a27f39e16268df59f832} 
-{\bfseries Message\+\_\+service} (uint8\+\_\+t instance\+\_\+id, uint8\+\_\+t service\+\_\+id)
-\item 
+\mbox{\hyperlink{class_message__service_affc45896c13fb1ccf7af8708621d7568}{Message\+\_\+service}} (uint8\+\_\+t instance\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Constructor for {\ttfamily \doxylink{class_message__service}{Message\+\_\+service}} with default \doxylink{class_service}{Service} ID "{}m"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_message__service_a97d86af31342a27f39e16268df59f832}{Message\+\_\+service}} (uint8\+\_\+t instance\+\_\+id, uint8\+\_\+t service\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Constructor for {\ttfamily \doxylink{class_message__service}{Message\+\_\+service}} with a custom \doxylink{class_service}{Service} ID. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_message__service_a605f6a9ed4900558b52a80abd1144791}{stack\+Processing}} () override
-\begin{DoxyCompactList}\small\item\em Execute the service\textquotesingle{}s functions for each item on the receive-\/stack and add all response-\/payloads to be send to the send-\/stack. \end{DoxyCompactList}\item 
-\Hypertarget{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691}\label{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691} 
-uint8\+\_\+t {\bfseries get\+\_\+destination\+Id} ()
-\item 
-\Hypertarget{class_message__service_aa8d198ccf700400339e3240e1c9c86e4}\label{class_message__service_aa8d198ccf700400339e3240e1c9c86e4} 
-void {\bfseries send\+Message} (char receiver\+Id, String messagetext)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Processes all messages from the receive stack. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691}{get\+\_\+destination\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the destination instance ID for the current response PDU in the send stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_message__service_aa8d198ccf700400339e3240e1c9c86e4}{send\+Message}} (char receiver\+Id, String messagetext)
+\begin{DoxyCompactList}\small\item\em Sends a new message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_service}{Service$<$ Message, STACKSIZE $>$}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -69,7 +70,105 @@ String {\bfseries response\+\_\+pdu}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+\doxylink{class_service}{Service} class for handling messages and acknowledgments. 
+
+The {\ttfamily \doxylink{class_message__service}{Message\+\_\+service}} class manages messages of type {\ttfamily \doxylink{class_message}{Message}}, processes incoming messages from the receive stack, and handles sending acknowledgments. It inherits from a \doxylink{class_service}{Service} for conetnt\+\_\+type \textquotesingle{}\doxylink{class_message}{Message}\textquotesingle{} ({\ttfamily \doxylink{class_service}{Service}\texorpdfstring{$<$}{<}\doxylink{class_message}{Message}, STACKSIZE\texorpdfstring{$>$}{>}}).\hypertarget{class_message__service_Constructors}{}\doxysubsection{\texorpdfstring{Constructors}{Constructors}}\label{class_message__service_Constructors}
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{class_message__service_affc45896c13fb1ccf7af8708621d7568}{Message\+\_\+service(uint8\+\_\+t instance\+\_\+id)}}\+: Constructs a {\ttfamily \doxylink{class_message__service}{Message\+\_\+service}} with a default service ID of "{}m"{}.
+\item {\ttfamily \doxylink{class_message__service_a97d86af31342a27f39e16268df59f832}{Message\+\_\+service(uint8\+\_\+t instance\+\_\+id, uint8\+\_\+t service\+\_\+id)}}\+: Constructs a {\ttfamily \doxylink{class_message__service}{Message\+\_\+service}} with a custom service ID.
+\end{DoxyItemize}\hypertarget{class_message__service_Methods}{}\doxysubsection{\texorpdfstring{Methods}{Methods}}\label{class_message__service_Methods}
+
+\begin{DoxyItemize}
+\item {\ttfamily void \doxylink{class_message__service_a605f6a9ed4900558b52a80abd1144791}{stack\+Processing()} override}\+: Processes all messages from the receive stack until it is empty. Adds acknowledgments to the send stack and prints received messages.
+\item {\ttfamily uint8\+\_\+t \doxylink{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691}{get\+\_\+destination\+Id()}}\+: Retrieves the destination instance ID for the current response PDU.
+\item {\ttfamily void \doxylink{class_message__service_aa8d198ccf700400339e3240e1c9c86e4}{send\+Message(char receiver\+Id, String messagetext)}}\+: Sends a new message with the specified receiver ID and message text.
+\item {\ttfamily void send\+Ack(\+Message\texorpdfstring{$\ast$}{*} message)}\+: Adds an acknowledgment for the given message to the send stack.
+\item {\ttfamily void print\+Message(\+Message\texorpdfstring{$\ast$}{*} message)}\+: Prints the content of the received message.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item The class handles both the processing of incoming messages and the sending of acknowledgments.
+\item The {\ttfamily stack\+Processing} method is responsible for managing the receive and send stacks, ensuring messages are properly handled and acknowledged. 
+\end{DoxyItemize}
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_message__service_affc45896c13fb1ccf7af8708621d7568}\index{Message\_service@{Message\_service}!Message\_service@{Message\_service}}
+\index{Message\_service@{Message\_service}!Message\_service@{Message\_service}}
+\doxysubsubsection{\texorpdfstring{Message\_service()}{Message\_service()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_message__service_affc45896c13fb1ccf7af8708621d7568} 
+Message\+\_\+service\+::\+Message\+\_\+service (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{instance\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for {\ttfamily \doxylink{class_message__service}{Message\+\_\+service}} with default \doxylink{class_service}{Service} ID "{}m"{}. 
+
+Initializes the service with the given instance ID and a default service ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em instance\+\_\+id} & The instance ID for the service. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_message__service_a97d86af31342a27f39e16268df59f832}\index{Message\_service@{Message\_service}!Message\_service@{Message\_service}}
+\index{Message\_service@{Message\_service}!Message\_service@{Message\_service}}
+\doxysubsubsection{\texorpdfstring{Message\_service()}{Message\_service()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_message__service_a97d86af31342a27f39e16268df59f832} 
+Message\+\_\+service\+::\+Message\+\_\+service (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{instance\+\_\+id}{, }\item[{uint8\+\_\+t}]{service\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for {\ttfamily \doxylink{class_message__service}{Message\+\_\+service}} with a custom \doxylink{class_service}{Service} ID. 
+
+Initializes the service with the given instance ID and a custom service ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em instance\+\_\+id} & The instance ID for the service. \\
+\hline
+{\em service\+\_\+id} & The custom service ID. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691}\index{Message\_service@{Message\_service}!get\_destinationId@{get\_destinationId}}
+\index{get\_destinationId@{get\_destinationId}!Message\_service@{Message\_service}}
+\doxysubsubsection{\texorpdfstring{get\_destinationId()}{get\_destinationId()}}
+{\footnotesize\ttfamily \label{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691} 
+uint8\+\_\+t Message\+\_\+service\+::get\+\_\+destination\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the destination instance ID for the current response PDU in the send stack. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t The destination instance ID extracted from the message in the send stack. 
+\end{DoxyReturn}
+\Hypertarget{class_message__service_aa8d198ccf700400339e3240e1c9c86e4}\index{Message\_service@{Message\_service}!sendMessage@{sendMessage}}
+\index{sendMessage@{sendMessage}!Message\_service@{Message\_service}}
+\doxysubsubsection{\texorpdfstring{sendMessage()}{sendMessage()}}
+{\footnotesize\ttfamily \label{class_message__service_aa8d198ccf700400339e3240e1c9c86e4} 
+void Message\+\_\+service\+::send\+Message (\begin{DoxyParamCaption}\item[{char}]{receiver\+Id}{, }\item[{String}]{messagetext}{}\end{DoxyParamCaption})}
+
+
+
+Sends a new message. 
+
+Constructs and sends a message with the specified receiver ID and message text. The message is added to the send stack for transmission.
+
+
+\begin{DoxyParams}{Parameters}
+{\em receiver\+Id} & char, The ID of the message receiver. \\
+\hline
+{\em messagetext} & String, The text of the message to be sent. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_message__service_a605f6a9ed4900558b52a80abd1144791}\index{Message\_service@{Message\_service}!stackProcessing@{stackProcessing}}
 \index{stackProcessing@{stackProcessing}!Message\_service@{Message\_service}}
 \doxysubsubsection{\texorpdfstring{stackProcessing()}{stackProcessing()}}
@@ -78,9 +177,9 @@ void Message\+\_\+service\+::stack\+Processing (\begin{DoxyParamCaption}{}{}\end
 
 
 
-Execute the service\textquotesingle{}s functions for each item on the receive-\/stack and add all response-\/payloads to be send to the send-\/stack. 
+Processes all messages from the receive stack. 
 
-
+Processes each message in the receive stack until it is empty. For each message, it prints the message content to the serial output, generates and adds an acknowledgment PDU to the send stack, and removes the processed message from the receive stack. 
 
 Reimplemented from \mbox{\hyperlink{class_service_a3eafa52c7f4bfe29698ba4a91c75dc75}{Service$<$ Message, STACKSIZE $>$}}.
 
@@ -88,5 +187,5 @@ Reimplemented from \mbox{\hyperlink{class_service_a3eafa52c7f4bfe29698ba4a91c75d
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Message\+\_\+service/Message\+\_\+service.\+h\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Message\+\_\+service/\mbox{\hyperlink{_message__service_8h}{Message\+\_\+service.\+h}}\item 
 /\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Message\+\_\+service/Message\+\_\+service.\+cpp\end{DoxyCompactItemize}

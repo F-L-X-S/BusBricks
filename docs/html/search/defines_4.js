@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['suffixsize_0',['SUFFIXSIZE',['../_frame__modbus_r_t_u_8h.html#a1a4e85f0c42d838071c35c4c5bfa4e26',1,'Frame_modbusRTU.h']]]
+  ['prefixsize_0',['PREFIXSIZE',['../_frame__modbus_r_t_u_8h.html#a5b759218acbb3b1a38f7c041d9cc94ea',1,'Frame_modbusRTU.h']]]
 ];
