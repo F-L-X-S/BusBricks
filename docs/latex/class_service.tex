@@ -25,9 +25,9 @@ uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_a4d0e8aca
 \begin{DoxyCompactList}\small\item\em Get pointer to the 1-\/byte Service\+ID of the \doxylink{class_service}{Service} (unique for each Service-\/template derived Class) \end{DoxyCompactList}\item 
 uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_abd1295896aca84e6dd85c0973885b279}{get\+\_\+\+Instance\+ID}} () override
 \begin{DoxyCompactList}\small\item\em Get pointer to the 1-\/byte Instance\+ID of the Service-\/instance (unique for each Instance of \doxylink{class_service}{Service} within the whole communication-\/network) \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{class_service_ac0c60bc735c64547dee269c6c3a62767}{impart\+\_\+pdu}} (String \texorpdfstring{$\ast$}{*}pdu) override
+virtual bool \mbox{\hyperlink{class_service_ac0c60bc735c64547dee269c6c3a62767}{impart\+\_\+pdu}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}pdu) override
 \begin{DoxyCompactList}\small\item\em Add a new Content-\/\+Object created from a received payload to the services receive-\/\+Stack. The payload is the representation of the Content-\/\+Object, during the construction, the Content-\/object creates it\textquotesingle{}s content from the representation. The Content-\/object is added to the rec\+\_\+stack. \end{DoxyCompactList}\item 
-virtual String \mbox{\hyperlink{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}{get\+\_\+response}} () override
+virtual \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \mbox{\hyperlink{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}{get\+\_\+response}} () override
 \begin{DoxyCompactList}\small\item\em Get the get the response-\/payload, stored at the response\+\_\+pdu of the service instance ~\newline
  \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_service_ad0a6407e13cd84f81393d96273212822}{response\+Available}} () override
@@ -63,7 +63,7 @@ uint8\+\_\+t {\bfseries instance\+ID}
 \mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ content\+\_\+class, stack\+Size $>$ {\bfseries send\+\_\+stack}
 \item 
 \Hypertarget{class_service_a01d2b42d0a3e01bb2435af5b4071dc56}\label{class_service_a01d2b42d0a3e01bb2435af5b4071dc56} 
-String {\bfseries response\+\_\+pdu}
+\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} {\bfseries response\+\_\+pdu}
 \end{DoxyCompactItemize}
 
 
@@ -123,7 +123,7 @@ Implements \mbox{\hyperlink{class_service_base_a236d018d5a72cab094b68e636b348c70
 \doxysubsubsection{\texorpdfstring{get\_response()}{get\_response()}}
 {\footnotesize\ttfamily \label{class_service_a601e6d2878ce2b292a3b7c6428f0d51f} 
 template$<$typename content\+\_\+class , int stack\+Size$>$ \\
-virtual String \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::get\+\_\+response (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+virtual \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::get\+\_\+response (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -160,7 +160,7 @@ Implements \mbox{\hyperlink{class_service_base_a10d3306ab361be7854734c80eb30dc1d
 \doxysubsubsection{\texorpdfstring{impart\_pdu()}{impart\_pdu()}}
 {\footnotesize\ttfamily \label{class_service_ac0c60bc735c64547dee269c6c3a62767} 
 template$<$typename content\+\_\+class , int stack\+Size$>$ \\
-virtual bool \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::impart\+\_\+pdu (\begin{DoxyParamCaption}\item[{String \texorpdfstring{$\ast$}{*}}]{pdu}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+virtual bool \mbox{\hyperlink{class_service}{Service}}$<$ content\+\_\+class, stack\+Size $>$\+::impart\+\_\+pdu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}}]{pdu}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 

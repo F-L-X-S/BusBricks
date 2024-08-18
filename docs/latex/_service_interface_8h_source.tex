@@ -9,7 +9,7 @@
 \DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#else}}
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacearduino_mocking}{arduinoMocking}};}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{_comm_interface_8h}{CommInterface.h}}>}}
@@ -39,9 +39,9 @@
 \DoxyCodeLine{00069\ }
 \DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<frameType,\ STACKSIZE>}}\ \mbox{\hyperlink{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a}{sendStack}};\ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1}{sendItem}};\ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}\ \mbox{\hyperlink{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1}{sendItem}};\ \ }
 \DoxyCodeLine{00075\ }
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{class_service_interface_ac69502c2d78c4a046c5d3219d637f1b3}{recItem}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}\ \mbox{\hyperlink{class_service_interface_ac69502c2d78c4a046c5d3219d637f1b3}{recItem}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00078\ }
 \DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_interface_ab4112c2b2eb29d1e0ade95e4f3c07030}{getPDU\_from\_services}}()=0;}
 \DoxyCodeLine{00086\ }
@@ -59,7 +59,7 @@
 \DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_interface_a23feb243ed1748e04dd757aa5f788b3e}{processSendStack}}()\{}
 \DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Serial\ debugging}}
 \DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEBUG}}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Processing\ Send-\/Stack..."{}});}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacearduino_mocking_ace877ffb508b19b20cbc06b8f9837359}{Serial}}.\mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a3ae50becfead299fa547d158a80544d4}{println}}(\textcolor{stringliteral}{"{}Processing\ Send-\/Stack..."{}});}
 \DoxyCodeLine{00119\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
 \DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ sendstack}}
 \DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a}{sendStack}}.\mbox{\hyperlink{class_content__stack_a4710d468535ed030bf5f67052e68eebb}{empty}}())}
@@ -67,7 +67,7 @@
 \DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>\mbox{\hyperlink{class_comm_interface_base_a23e0f975ebf29d40bde25eea58465bfa}{finishedSending}}())\{}
 \DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_frame}{Frame}}*\ frameToSend\ =\ \mbox{\hyperlink{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a}{sendStack}}.\mbox{\hyperlink{class_content__stack_a5ac2a896da7724281d9d85eb239f5084}{getElement}}();\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ next\ item\ from\ the\ send-\/stack}}
 \DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1}{sendItem}}\ =\ frameToSend-\/>\mbox{\hyperlink{class_frame_a2aa3fb0eb3fc7248bda4684a57b3bf27}{getFrame}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extract\ Frame\ from\ Item}}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String*\ sendItemAdr\ =\ \&\mbox{\hyperlink{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1}{sendItem}};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}*\ sendItemAdr\ =\ \&\mbox{\hyperlink{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1}{sendItem}};}
 \DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>\mbox{\hyperlink{class_comm_interface_base_aec9a9fb6aa77428e8b9a65a33172f6a1}{sendNewFrame}}(sendItemAdr);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Impart\ Frame\ that\ has\ to\ be\ sent\ next\ }}
 \DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a}{sendStack}}.\mbox{\hyperlink{class_content__stack_a7b2d11fd9ee9f45090a545031883edb6}{deleteElement}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ Item\ from\ send-\/stack}}
 \DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>sendCycle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ execute\ sending\ }}
@@ -80,7 +80,7 @@
 \DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214}{processRecStack}}()\ \{}
 \DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Serial\ debugging}}
 \DoxyCodeLine{00147\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEBUG}}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Processing\ Receive-\/Stack..."{}});}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacearduino_mocking_ace877ffb508b19b20cbc06b8f9837359}{Serial}}.\mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a3ae50becfead299fa547d158a80544d4}{println}}(\textcolor{stringliteral}{"{}Processing\ Receive-\/Stack..."{}});}
 \DoxyCodeLine{00149\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
 \DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ receivebuffer\ }}
 \DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>\mbox{\hyperlink{class_comm_interface_base_a01c285fd2ea35bf3f081ee531e666def}{receivedNewFrame}}()\ \&\&\ !\mbox{\hyperlink{class_service_interface_a7793efd070a56f021ce56a372b13c2fa}{recStack}}.\mbox{\hyperlink{class_content__stack_a200a86b0f3bdfa24e4a56b5e02efb02a}{full}}())\{}

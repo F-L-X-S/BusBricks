@@ -1,71 +1,367 @@
 \doxysection{arduino\+Mocking\+::Mock\+Serial Class Reference}
 \hypertarget{classarduino_mocking_1_1_mock_serial}{}\label{classarduino_mocking_1_1_mock_serial}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+
+
+Simulates Arduino\textquotesingle{}s {\ttfamily Serial} class for testing purposes.  
+
+
+
+
+{\ttfamily \#include $<$mock\+Arduino.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a7b18c0f26f4bed1b4789f2ea47bfd6dc}\label{classarduino_mocking_1_1_mock_serial_a7b18c0f26f4bed1b4789f2ea47bfd6dc} 
-void {\bfseries begin} (unsigned long baudrate)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a5574b127279fa6e099d1026d3a69a5d4}\label{classarduino_mocking_1_1_mock_serial_a5574b127279fa6e099d1026d3a69a5d4} 
-void {\bfseries print} (const std\+::string \&str)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_ab78a5a346275ab600281acb8b62350ce}\label{classarduino_mocking_1_1_mock_serial_ab78a5a346275ab600281acb8b62350ce} 
-void {\bfseries print} (char c)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a20ab0b8af925e49c0fb3d409612e2961}\label{classarduino_mocking_1_1_mock_serial_a20ab0b8af925e49c0fb3d409612e2961} 
-void {\bfseries print} (int num)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_ae11d6d44915c7f5aa22d126e5dc09191}\label{classarduino_mocking_1_1_mock_serial_ae11d6d44915c7f5aa22d126e5dc09191} 
-void {\bfseries print} (unsigned int num)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a669f7bae40ca6627250fcc99afd09255}\label{classarduino_mocking_1_1_mock_serial_a669f7bae40ca6627250fcc99afd09255} 
-void {\bfseries print} (long num)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_abca1ad8ef0287f2cbf3c5687cfa01a0c}\label{classarduino_mocking_1_1_mock_serial_abca1ad8ef0287f2cbf3c5687cfa01a0c} 
-void {\bfseries print} (unsigned long num)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a9ee99aad6429ee3ba655f656f0110182}\label{classarduino_mocking_1_1_mock_serial_a9ee99aad6429ee3ba655f656f0110182} 
-void {\bfseries print} (double num)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a3ae50becfead299fa547d158a80544d4}\label{classarduino_mocking_1_1_mock_serial_a3ae50becfead299fa547d158a80544d4} 
-void {\bfseries println} (const std\+::string \&str)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a0d99ac9e6d82fdd860298b4a62366df3}\label{classarduino_mocking_1_1_mock_serial_a0d99ac9e6d82fdd860298b4a62366df3} 
-void {\bfseries println} (char c)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_aa4903d4eae568197d4c4b79500e4d4db}\label{classarduino_mocking_1_1_mock_serial_aa4903d4eae568197d4c4b79500e4d4db} 
-void {\bfseries println} (int num)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a7f5068154c7422844343ef7908b6df5e}\label{classarduino_mocking_1_1_mock_serial_a7f5068154c7422844343ef7908b6df5e} 
-void {\bfseries println} (unsigned int num)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_aafdd120adc7002a1308a7cc48483555a}\label{classarduino_mocking_1_1_mock_serial_aafdd120adc7002a1308a7cc48483555a} 
-void {\bfseries println} (long num)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a3a0a3788fa52814acad9919bc8442d8c}\label{classarduino_mocking_1_1_mock_serial_a3a0a3788fa52814acad9919bc8442d8c} 
-void {\bfseries println} (unsigned long num)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a5c4f259c0a492f7370acbd95c4e73a24}\label{classarduino_mocking_1_1_mock_serial_a5c4f259c0a492f7370acbd95c4e73a24} 
-void {\bfseries println} (double num)
-\item 
+\Hypertarget{classarduino_mocking_1_1_mock_serial_ada513d971da540ac8a25c78ec5ff0e8c}\label{classarduino_mocking_1_1_mock_serial_ada513d971da540ac8a25c78ec5ff0e8c} 
+{\bfseries Mock\+Serial} ()
+\begin{DoxyCompactList}\small\item\em Constructs a {\ttfamily \doxylink{classarduino_mocking_1_1_mock_serial}{Mock\+Serial}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a7b18c0f26f4bed1b4789f2ea47bfd6dc}{begin}} (unsigned long baudrate)
+\begin{DoxyCompactList}\small\item\em Begins serial communication with the specified baud rate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a5574b127279fa6e099d1026d3a69a5d4}{print}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Prints a string to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_ab78a5a346275ab600281acb8b62350ce}{print}} (char c)
+\begin{DoxyCompactList}\small\item\em Prints a character to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a20ab0b8af925e49c0fb3d409612e2961}{print}} (int num)
+\begin{DoxyCompactList}\small\item\em Prints an integer to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_ae11d6d44915c7f5aa22d126e5dc09191}{print}} (unsigned int num)
+\begin{DoxyCompactList}\small\item\em Prints an unsigned integer to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a669f7bae40ca6627250fcc99afd09255}{print}} (long num)
+\begin{DoxyCompactList}\small\item\em Prints a long integer to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_abca1ad8ef0287f2cbf3c5687cfa01a0c}{print}} (unsigned long num)
+\begin{DoxyCompactList}\small\item\em Prints an unsigned long integer to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a9ee99aad6429ee3ba655f656f0110182}{print}} (double num)
+\begin{DoxyCompactList}\small\item\em Prints a double to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a3ae50becfead299fa547d158a80544d4}{println}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Prints a string followed by a newline to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a0d99ac9e6d82fdd860298b4a62366df3}{println}} (char c)
+\begin{DoxyCompactList}\small\item\em Prints a character followed by a newline to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_aa4903d4eae568197d4c4b79500e4d4db}{println}} (int num)
+\begin{DoxyCompactList}\small\item\em Prints an integer followed by a newline to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a7f5068154c7422844343ef7908b6df5e}{println}} (unsigned int num)
+\begin{DoxyCompactList}\small\item\em Prints an unsigned integer followed by a newline to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_aafdd120adc7002a1308a7cc48483555a}{println}} (long num)
+\begin{DoxyCompactList}\small\item\em Prints a long integer followed by a newline to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a3a0a3788fa52814acad9919bc8442d8c}{println}} (unsigned long num)
+\begin{DoxyCompactList}\small\item\em Prints an unsigned long integer followed by a newline to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a5c4f259c0a492f7370acbd95c4e73a24}{println}} (double num)
+\begin{DoxyCompactList}\small\item\em Prints a double followed by a newline to the serial output. \end{DoxyCompactList}\item 
 \Hypertarget{classarduino_mocking_1_1_mock_serial_a47a129e1092041a5b2e0d1d881213c3c}\label{classarduino_mocking_1_1_mock_serial_a47a129e1092041a5b2e0d1d881213c3c} 
 void {\bfseries println} ()
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_ae3bc93e13c179593356b87385563ecae}\label{classarduino_mocking_1_1_mock_serial_ae3bc93e13c179593356b87385563ecae} 
-int {\bfseries available} ()
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a06e96a93e5e0f1785e6e87620625eeaf}\label{classarduino_mocking_1_1_mock_serial_a06e96a93e5e0f1785e6e87620625eeaf} 
-int {\bfseries read} ()
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a91b045c8593d3c38d38e0039d29de94a}\label{classarduino_mocking_1_1_mock_serial_a91b045c8593d3c38d38e0039d29de94a} 
-size\+\_\+t {\bfseries write} (uint8\+\_\+t byte)
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a1ba440a4ceb82eee58a793a1656e77e8}\label{classarduino_mocking_1_1_mock_serial_a1ba440a4ceb82eee58a793a1656e77e8} 
-void {\bfseries simulate\+Input} ()
-\item 
-\Hypertarget{classarduino_mocking_1_1_mock_serial_a7cf70afc3ba560ddc5446f066c9c7252}\label{classarduino_mocking_1_1_mock_serial_a7cf70afc3ba560ddc5446f066c9c7252} 
-void {\bfseries simulate\+Input} (std\+::string input)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints a newline to the serial output. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_ae3bc93e13c179593356b87385563ecae}{available}} ()
+\begin{DoxyCompactList}\small\item\em Returns the number of bytes available to read from the serial input buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a06e96a93e5e0f1785e6e87620625eeaf}{read}} ()
+\begin{DoxyCompactList}\small\item\em Reads a byte from the serial input buffer. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a91b045c8593d3c38d38e0039d29de94a}{write}} (uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Writes a byte to the serial output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a1ba440a4ceb82eee58a793a1656e77e8}{simulate\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Simulates user input by adding characters to the input buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial_a7cf70afc3ba560ddc5446f066c9c7252}{simulate\+Input}} (std\+::string input)
+\begin{DoxyCompactList}\small\item\em Simulates user input by adding a predefined string to the input buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simulates Arduino\textquotesingle{}s {\ttfamily Serial} class for testing purposes. 
+
+This class provides methods for serial communication, including print, println, and simulated input. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_ae3bc93e13c179593356b87385563ecae}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!available@{available}}
+\index{available@{available}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{available()}{available()}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_ae3bc93e13c179593356b87385563ecae} 
+int arduino\+Mocking\+::\+Mock\+Serial\+::available (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the number of bytes available to read from the serial input buffer. 
+
+\begin{DoxyReturn}{Returns}
+The number of bytes available (size of input buffer). 
+\end{DoxyReturn}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a7b18c0f26f4bed1b4789f2ea47bfd6dc}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!begin@{begin}}
+\index{begin@{begin}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a7b18c0f26f4bed1b4789f2ea47bfd6dc} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::begin (\begin{DoxyParamCaption}\item[{unsigned long}]{baudrate}{}\end{DoxyParamCaption})}
+
+
+
+Begins serial communication with the specified baud rate. 
+
+Prints a message indicating the baud rate in the mock implementation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em baudrate} & The baud rate for serial communication. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_ab78a5a346275ab600281acb8b62350ce}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!print@{print}}
+\index{print@{print}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_ab78a5a346275ab600281acb8b62350ce} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::print (\begin{DoxyParamCaption}\item[{char}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Prints a character to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The character to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a5574b127279fa6e099d1026d3a69a5d4}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!print@{print}}
+\index{print@{print}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a5574b127279fa6e099d1026d3a69a5d4} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::print (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Prints a string to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a9ee99aad6429ee3ba655f656f0110182}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!print@{print}}
+\index{print@{print}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a9ee99aad6429ee3ba655f656f0110182} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::print (\begin{DoxyParamCaption}\item[{double}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints a double to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The double to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a20ab0b8af925e49c0fb3d409612e2961}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!print@{print}}
+\index{print@{print}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a20ab0b8af925e49c0fb3d409612e2961} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::print (\begin{DoxyParamCaption}\item[{int}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints an integer to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The integer to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a669f7bae40ca6627250fcc99afd09255}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!print@{print}}
+\index{print@{print}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a669f7bae40ca6627250fcc99afd09255} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::print (\begin{DoxyParamCaption}\item[{long}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints a long integer to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The long integer to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_ae11d6d44915c7f5aa22d126e5dc09191}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!print@{print}}
+\index{print@{print}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_ae11d6d44915c7f5aa22d126e5dc09191} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::print (\begin{DoxyParamCaption}\item[{unsigned int}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints an unsigned integer to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The unsigned integer to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_abca1ad8ef0287f2cbf3c5687cfa01a0c}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!print@{print}}
+\index{print@{print}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_abca1ad8ef0287f2cbf3c5687cfa01a0c} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::print (\begin{DoxyParamCaption}\item[{unsigned long}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints an unsigned long integer to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The unsigned long integer to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a0d99ac9e6d82fdd860298b4a62366df3}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!println@{println}}
+\index{println@{println}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a0d99ac9e6d82fdd860298b4a62366df3} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::println (\begin{DoxyParamCaption}\item[{char}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Prints a character followed by a newline to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The character to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a3ae50becfead299fa547d158a80544d4}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!println@{println}}
+\index{println@{println}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a3ae50becfead299fa547d158a80544d4} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::println (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Prints a string followed by a newline to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a5c4f259c0a492f7370acbd95c4e73a24}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!println@{println}}
+\index{println@{println}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a5c4f259c0a492f7370acbd95c4e73a24} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::println (\begin{DoxyParamCaption}\item[{double}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints a double followed by a newline to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The double to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_aa4903d4eae568197d4c4b79500e4d4db}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!println@{println}}
+\index{println@{println}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_aa4903d4eae568197d4c4b79500e4d4db} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::println (\begin{DoxyParamCaption}\item[{int}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints an integer followed by a newline to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The integer to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_aafdd120adc7002a1308a7cc48483555a}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!println@{println}}
+\index{println@{println}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_aafdd120adc7002a1308a7cc48483555a} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::println (\begin{DoxyParamCaption}\item[{long}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints a long integer followed by a newline to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The long integer to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a7f5068154c7422844343ef7908b6df5e}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!println@{println}}
+\index{println@{println}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a7f5068154c7422844343ef7908b6df5e} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::println (\begin{DoxyParamCaption}\item[{unsigned int}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints an unsigned integer followed by a newline to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The unsigned integer to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a3a0a3788fa52814acad9919bc8442d8c}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!println@{println}}
+\index{println@{println}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a3a0a3788fa52814acad9919bc8442d8c} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::println (\begin{DoxyParamCaption}\item[{unsigned long}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints an unsigned long integer followed by a newline to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The unsigned long integer to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a06e96a93e5e0f1785e6e87620625eeaf}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!read@{read}}
+\index{read@{read}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a06e96a93e5e0f1785e6e87620625eeaf} 
+int arduino\+Mocking\+::\+Mock\+Serial\+::read (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Reads a byte from the serial input buffer. 
+
+\begin{DoxyReturn}{Returns}
+The byte read, or {\ttfamily -\/1} if no data is available. 
+\end{DoxyReturn}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a1ba440a4ceb82eee58a793a1656e77e8}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!simulateInput@{simulateInput}}
+\index{simulateInput@{simulateInput}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{simulateInput()}{simulateInput()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a1ba440a4ceb82eee58a793a1656e77e8} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::simulate\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Simulates user input by adding characters to the input buffer. 
+
+Prompts the user to enter a string, which is added to the buffer. \Hypertarget{classarduino_mocking_1_1_mock_serial_a7cf70afc3ba560ddc5446f066c9c7252}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!simulateInput@{simulateInput}}
+\index{simulateInput@{simulateInput}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{simulateInput()}{simulateInput()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a7cf70afc3ba560ddc5446f066c9c7252} 
+void arduino\+Mocking\+::\+Mock\+Serial\+::simulate\+Input (\begin{DoxyParamCaption}\item[{std\+::string}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Simulates user input by adding a predefined string to the input buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The string to add to the buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classarduino_mocking_1_1_mock_serial_a91b045c8593d3c38d38e0039d29de94a}\index{arduinoMocking::MockSerial@{arduinoMocking::MockSerial}!write@{write}}
+\index{write@{write}!arduinoMocking::MockSerial@{arduinoMocking::MockSerial}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classarduino_mocking_1_1_mock_serial_a91b045c8593d3c38d38e0039d29de94a} 
+size\+\_\+t arduino\+Mocking\+::\+Mock\+Serial\+::write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte}{}\end{DoxyParamCaption})}
+
+
+
+Writes a byte to the serial output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & The byte to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written (always 1 in the mock implementation). 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

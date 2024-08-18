@@ -99,12 +99,12 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #include &lt;Arduino.h&gt;</span>    <span class="comment">// include Arduino-Library for platformIO-build </span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &lt;mockArduino.h&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">using namespace </span>arduinoMocking;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacearduino_mocking.html">arduinoMocking</a>;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include&lt;<a class="code" href="_content_8h.html">Content.h</a>&gt;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="_frame_8h.html#a482f50c6b69835c5a4abdd201a2d40df">   26</a></span><span class="keyword">using </span><a class="code hl_typedef" href="_frame_8h.html#a482f50c6b69835c5a4abdd201a2d40df">pduString</a> = String;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="_frame_8h.html#a482f50c6b69835c5a4abdd201a2d40df">   26</a></span><span class="keyword">using </span><a class="code hl_typedef" href="_frame_8h.html#a482f50c6b69835c5a4abdd201a2d40df">pduString</a> = <a class="code hl_typedef" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a>;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">using </span>frameString = <span class="keyword">const</span> <span class="keywordtype">char</span>*;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="foldopen" id="foldopen00043" data-start="{" data-end="};">
@@ -118,9 +118,9 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_function" href="class_frame.html#ad2e5946cf41d4817e750500acf05d02b">Frame</a>(frameString* frame);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        String <a class="code hl_function" href="class_frame.html#abfe1ce91d1d7080940628ba6acdc7196">getPDU</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_typedef" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> <a class="code hl_function" href="class_frame.html#abfe1ce91d1d7080940628ba6acdc7196">getPDU</a>();</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        String <a class="code hl_function" href="class_frame.html#a2aa3fb0eb3fc7248bda4684a57b3bf27">getFrame</a>();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_typedef" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> <a class="code hl_function" href="class_frame.html#a2aa3fb0eb3fc7248bda4684a57b3bf27">getFrame</a>();</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
 </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#endif </span><span class="comment">// FRAME_H</span></div>
@@ -132,6 +132,8 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclass_frame_html_abec8c7bccdfc88cb4da137caae9f73d6"><div class="ttname"><a href="class_frame.html#abec8c7bccdfc88cb4da137caae9f73d6">Frame::~Frame</a></div><div class="ttdeci">~Frame()</div><div class="ttdoc">Destroy the Frame object.</div><div class="ttdef"><b>Definition</b> Frame.cpp:13</div></div>
 <div class="ttc" id="aclass_frame_html_abfe1ce91d1d7080940628ba6acdc7196"><div class="ttname"><a href="class_frame.html#abfe1ce91d1d7080940628ba6acdc7196">Frame::getPDU</a></div><div class="ttdeci">String getPDU()</div><div class="ttdoc">get the pdu (Content) as String from the frame-object</div><div class="ttdef"><b>Definition</b> Frame.cpp:16</div></div>
 <div class="ttc" id="aclass_frame_html_ad2e5946cf41d4817e750500acf05d02b"><div class="ttname"><a href="class_frame.html#ad2e5946cf41d4817e750500acf05d02b">Frame::Frame</a></div><div class="ttdeci">Frame()</div><div class="ttdoc">Construct a new empty Frame object.</div><div class="ttdef"><b>Definition</b> Frame.cpp:4</div></div>
+<div class="ttc" id="anamespacearduino_mocking_html"><div class="ttname"><a href="namespacearduino_mocking.html">arduinoMocking</a></div><div class="ttdoc">Provides mock implementations of Arduino framework functions and classes for native builds.</div><div class="ttdef"><b>Definition</b> mockArduino.cpp:5</div></div>
+<div class="ttc" id="anamespacearduino_mocking_html_a074bce778184555fd29d1370a36298bf"><div class="ttname"><a href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">arduinoMocking::String</a></div><div class="ttdeci">std::string String</div><div class="ttdoc">Alias for std::string to simulate Arduino's String type.</div><div class="ttdef"><b>Definition</b> mockArduino.h:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

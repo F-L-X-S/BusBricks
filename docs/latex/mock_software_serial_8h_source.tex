@@ -5,53 +5,48 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MOCKSOFTWARESERIAL\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MOCKSOFTWARESERIAL\_H}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
-\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ <\mbox{\hyperlink{_content__stack_8h}{Content\_stack.h}}>}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{comment}{//\ Namespace\ to\ redefine\ Arduino-\/Framework\ specific\ functions\ for\ native-\/build}}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{namespace\ }arduinoMocking\{}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//\ Class\ to\ redefine\ Arduino-\/Framework\ specific\ functions\ }}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ of\ the\ SoftwareSerial-\/Libraray\ for\ native-\/build}}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{SoftwareSerial}}\ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{SoftwareSerial}}(\textcolor{keywordtype}{int}\ rx,\ \textcolor{keywordtype}{int}\ tx);}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ begin(\textcolor{keywordtype}{long}\ baud);}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ println(\textcolor{keyword}{const}\ String\ \&message);}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ print(\textcolor{keyword}{const}\ String\ \&message);}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ write(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data,\ \textcolor{keywordtype}{size\_t}\ size);}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ flush();}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ available();}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ read();}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ peek();}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Simulate\ a\ string\ input\ defined\ by\ user\ (for\ testing\ purposes)}}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ simulateInput();}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Simulate\ a\ string\ input\ \ defined\ by\ parameter\ (for\ testing\ purposes)}}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ simulateInput(std::string\ input);}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rxPin;}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ txPin;}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<char,\ 512>}}\ dataQueue;}
-\DoxyCodeLine{00047\ \ \ \ \ \};}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \}}
-\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MOCKSOFTWARESERIAL\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacearduino_mocking}{arduinoMocking}};}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#include\ <\mbox{\hyperlink{_content__stack_8h}{Content\_stack.h}}>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacearduino_mocking}{arduinoMocking}}\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{SoftwareSerial}}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{SoftwareSerial}}(\textcolor{keywordtype}{int}\ rx,\ \textcolor{keywordtype}{int}\ tx);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_ab050271dd2458917e916cf127b92dc51}{begin}}(\textcolor{keywordtype}{long}\ baud);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_a5fd9d4b41b5a69dfd9e9555901bd2b48}{println}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}\ \&message);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_ad19e74f4a2378ed414ca4f18649b0e31}{print}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}\ \&message);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_aaa6defec7b617c31998ba26a5a472458}{write}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_a5785050c0162a9c4285b822d1dd940a1}{flush}}();}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_a17c94423c8f8cbfda9d5e6c4ae04ed69}{available}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_a892a38a5eb6b0c115c2745098c9637ad}{read}}();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_ae70b691c402eede6805828c476b96bf5}{peek}}();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_af10cc233a2ac7f8a10f492af5b6b501b}{simulateInput}}();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classarduino_mocking_1_1_software_serial_af10cc233a2ac7f8a10f492af5b6b501b}{simulateInput}}(std::string\ input);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rxPin;\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ txPin;\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<char,\ 512>}}\ dataQueue;\ }
+\DoxyCodeLine{00135\ \ \ \ \ \};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ arduinoMocking}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ARDUINO}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MOCKSOFTWARESERIAL\_H}}
 
 \end{DoxyCode}

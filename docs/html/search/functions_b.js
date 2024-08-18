@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['send_0',['send',['../class_comm_interface.html#a458e3da4ff47bdf6cc9f0a5f956c80dd',1,'CommInterface::send()'],['../class_comm_interface__modbus_r_t_u.html#a0e78a2a6e3b5b029609c2b16c21bd85b',1,'CommInterface_modbusRTU::send()']]],
-  ['sendcycle_1',['sendCycle',['../class_comm_interface.html#a8670e37fdefcfeca579e99b6051fe3da',1,'CommInterface']]],
-  ['sendmessage_2',['sendMessage',['../class_message__service.html#aa8d198ccf700400339e3240e1c9c86e4',1,'Message_service']]],
-  ['sendnewframe_3',['sendNewFrame',['../class_comm_interface_base.html#aec9a9fb6aa77428e8b9a65a33172f6a1',1,'CommInterfaceBase::sendNewFrame()'],['../class_comm_interface.html#a21c8ee8eddb3011e89b950f1b5264664',1,'CommInterface::sendNewFrame()']]],
-  ['servicecluster_4',['ServiceCluster',['../class_service_cluster.html#a3fddf1a55492bf5438cd55bb9d4cc91f',1,'ServiceCluster']]],
-  ['serviceinterface_5',['ServiceInterface',['../class_service_interface.html#acc70c85786fa2e133f90683f60ebf67f',1,'ServiceInterface']]],
-  ['serviceinterface_5fmodbusrtu_6',['ServiceInterface_modbusRTU',['../class_service_interface__modbus_r_t_u.html#aa8ce2b3a043c2ed435c84e1b4a2c1cba',1,'ServiceInterface_modbusRTU']]],
-  ['setup_5finterface_7',['setup_interface',['../class_comm_interface_base.html#a28c489a3103fea57a2df4ef6cca41302',1,'CommInterfaceBase']]],
-  ['stackprocessing_8',['stackProcessing',['../class_message__service.html#a605f6a9ed4900558b52a80abd1144791',1,'Message_service::stackProcessing()'],['../class_service_base.html#a6129f02c6e59212d0b5b6d4d451b30e9',1,'ServiceBase::stackProcessing()'],['../class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75',1,'Service::stackProcessing()']]]
+  ['read_0',['read',['../classarduino_mocking_1_1_mock_serial.html#a06e96a93e5e0f1785e6e87620625eeaf',1,'arduinoMocking::MockSerial::read()'],['../classarduino_mocking_1_1_software_serial.html#a892a38a5eb6b0c115c2745098c9637ad',1,'arduinoMocking::SoftwareSerial::read()']]],
+  ['receive_1',['receive',['../class_comm_interface.html#a81c74dee239a10522d30900943f64eb2',1,'CommInterface::receive()'],['../class_comm_interface__modbus_r_t_u.html#a50b42ad0a40a82ebe5a7749313ca2283',1,'CommInterface_modbusRTU::receive()']]],
+  ['receivecycle_2',['receiveCycle',['../class_comm_interface.html#a86287d0a0ecad690b5182bbe01b7f63f',1,'CommInterface']]],
+  ['receivednewframe_3',['receivedNewFrame',['../class_comm_interface_base.html#a01c285fd2ea35bf3f081ee531e666def',1,'CommInterfaceBase::receivedNewFrame()'],['../class_comm_interface.html#aea53cf3e71460f3a662c175958acb643',1,'CommInterface::receivedNewFrame()']]],
+  ['rep_5fto_5fcontent_4',['rep_to_content',['../class_content.html#abac5c5b29b85a4abbd5dc5f09ce03d46',1,'Content']]],
+  ['responseavailable_5',['responseAvailable',['../class_service_base.html#ad1326c5e6b02553e6e23d0b0a3130ba3',1,'ServiceBase::responseAvailable()'],['../class_service.html#ad0a6407e13cd84f81393d96273212822',1,'Service::responseAvailable()']]]
 ];

@@ -21,20 +21,20 @@ Inheritance diagram for Message\+:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_message}{Message} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_message_ada4b47391ebb6de3518de3ec28817c56}{Message}} (bool boolean\+\_\+expression)
 \begin{DoxyCompactList}\small\item\em Constructor for {\ttfamily \doxylink{class_message}{Message}} from a boolean expression. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_message_a0f9ed77d7adc95866f8347931ce972b9}{Message}} (String \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8}{representation}})
+\mbox{\hyperlink{class_message_a0f9ed77d7adc95866f8347931ce972b9}{Message}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8}{representation}})
 \begin{DoxyCompactList}\small\item\em Constructor for {\ttfamily \doxylink{class_message}{Message}} from a string-\/formatted PDU. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_message_ad4a2faf03fc02e47bcdd909fb091d71e}{Message}} (\mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} \texorpdfstring{$\ast$}{*}message\+\_\+content)
 \begin{DoxyCompactList}\small\item\em Constructor for {\ttfamily \doxylink{class_message}{Message}} from {\ttfamily \doxylink{struct_message__content__t}{Message\+\_\+content\+\_\+t}}. \end{DoxyCompactList}\item 
-String \mbox{\hyperlink{class_message_a8907afa8cc86db8a3623aea0caba0324}{to\+\_\+string}} ()
+\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \mbox{\hyperlink{class_message_a8907afa8cc86db8a3623aea0caba0324}{to\+\_\+string}} ()
 \begin{DoxyCompactList}\small\item\em Converts the message to a string representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_content}{Content$<$ Message\+\_\+content\+\_\+t, String $>$}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_content_a2d300bab9c7fe3f9efb537139d8efba9}{Content}} (\mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} \mbox{\hyperlink{class_content_a5078d76f7e6118f67e1f158692650d5b}{content}})
 \begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_content}{Content} object from an instance from type content\+\_\+type (content itself) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_content_a017ed819c621340a1c77c59f93729c42}{Content}} (String \mbox{\hyperlink{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8}{representation}})
+\mbox{\hyperlink{class_content_a017ed819c621340a1c77c59f93729c42}{Content}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \mbox{\hyperlink{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8}{representation}})
 \begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_content}{Content} object from it\textquotesingle{}s representation from type representation\+\_\+type. \end{DoxyCompactList}\item 
-String \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content_a206c6c8ebf9f5f84c571d8d9dfbdd40c}{get\+\_\+representation}} ()
+\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content_a206c6c8ebf9f5f84c571d8d9dfbdd40c}{get\+\_\+representation}} ()
 \begin{DoxyCompactList}\small\item\em Get the address of the informations representation of type representation-\/type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content_a5a3cdbe54fb690a53a5a4fda109fd044}{get\+\_\+content}} ()
 \begin{DoxyCompactList}\small\item\em Get the address of the informations content of type content\+\_\+type. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -46,7 +46,7 @@ String \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content_a206c6c8ebf9f5f
 \mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} {\bfseries content}
 \begin{DoxyCompactList}\small\item\em \doxylink{class_content}{Content} of an information (view on information (content) closer to Service-\/\+Layer) ~\newline
  \end{DoxyCompactList}\item 
-String {\bfseries representation}
+\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} {\bfseries representation}
 \begin{DoxyCompactList}\small\item\em Representation of an information (view on information (content) closer to physical layer) ~\newline
  \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -106,7 +106,7 @@ Constructs a message with default content if the boolean expression is {\ttfamil
 \index{Message@{Message}!Message@{Message}}
 \doxysubsubsection{\texorpdfstring{Message()}{Message()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
 {\footnotesize\ttfamily \label{class_message_a0f9ed77d7adc95866f8347931ce972b9} 
-Message\+::\+Message (\begin{DoxyParamCaption}\item[{String \texorpdfstring{$\ast$}{*}}]{representation}{}\end{DoxyParamCaption})}
+Message\+::\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}}]{representation}{}\end{DoxyParamCaption})}
 
 
 
@@ -143,7 +143,7 @@ Initializes the message using the provided {\ttfamily \doxylink{struct_message__
 \index{to\_string@{to\_string}!Message@{Message}}
 \doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
 {\footnotesize\ttfamily \label{class_message_a8907afa8cc86db8a3623aea0caba0324} 
-String Message\+::to\+\_\+string (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} Message\+::to\+\_\+string (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
 

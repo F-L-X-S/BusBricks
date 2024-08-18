@@ -21,11 +21,11 @@ Inheritance diagram for Comm\+Interface\+Base\+:\begin{figure}[H]
 \Hypertarget{class_comm_interface_base_a28c489a3103fea57a2df4ef6cca41302}\label{class_comm_interface_base_a28c489a3103fea57a2df4ef6cca41302} 
 void {\bfseries setup\+\_\+interface} ()
 \begin{DoxyCompactList}\small\item\em Setup the Interface has to be called in Setup-\/function. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_comm_interface_base_aec9a9fb6aa77428e8b9a65a33172f6a1}{send\+New\+Frame}} (String \texorpdfstring{$\ast$}{*}send\+Frame)
+void \mbox{\hyperlink{class_comm_interface_base_aec9a9fb6aa77428e8b9a65a33172f6a1}{send\+New\+Frame}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}send\+Frame)
 \begin{DoxyCompactList}\small\item\em Add a new \doxylink{class_frame}{Frame} to the send-\/buffer. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_comm_interface_base_a23e0f975ebf29d40bde25eea58465bfa}{finished\+Sending}} ()
 \begin{DoxyCompactList}\small\item\em Check, if the \doxylink{class_frame}{Frame} was sent and the \doxylink{class_comm_interface}{Comm\+Interface} is ready to send the next \doxylink{class_frame}{Frame}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_comm_interface_base_a2d2742daa73bbbf0b8317391c5c85a19}{get\+Received\+Frame}} (String \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
+void \mbox{\hyperlink{class_comm_interface_base_a2d2742daa73bbbf0b8317391c5c85a19}{get\+Received\+Frame}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
 \begin{DoxyCompactList}\small\item\em Define the destination, the next received \doxylink{class_frame}{Frame} should be copied to ba a pointer to an empty String-\/\+Object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_comm_interface_base_a01c285fd2ea35bf3f081ee531e666def}{received\+New\+Frame}} ()
 \begin{DoxyCompactList}\small\item\em Check, if a new \doxylink{class_frame}{Frame} was received. \end{DoxyCompactList}\item 
@@ -60,7 +60,7 @@ false \doxylink{class_frame}{Frame}, that was added by send\+New\+Frame-\/functi
 \index{getReceivedFrame@{getReceivedFrame}!CommInterfaceBase@{CommInterfaceBase}}
 \doxysubsubsection{\texorpdfstring{getReceivedFrame()}{getReceivedFrame()}}
 {\footnotesize\ttfamily \label{class_comm_interface_base_a2d2742daa73bbbf0b8317391c5c85a19} 
-void Comm\+Interface\+Base\+::get\+Received\+Frame (\begin{DoxyParamCaption}\item[{String \texorpdfstring{$\ast$}{*}}]{dest\+Frame\+Buffer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void Comm\+Interface\+Base\+::get\+Received\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}}]{dest\+Frame\+Buffer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -90,7 +90,7 @@ false no new frame was received, get\+Received\+Frame specified String-\/\+Objec
 \index{sendNewFrame@{sendNewFrame}!CommInterfaceBase@{CommInterfaceBase}}
 \doxysubsubsection{\texorpdfstring{sendNewFrame()}{sendNewFrame()}}
 {\footnotesize\ttfamily \label{class_comm_interface_base_aec9a9fb6aa77428e8b9a65a33172f6a1} 
-void Comm\+Interface\+Base\+::send\+New\+Frame (\begin{DoxyParamCaption}\item[{String \texorpdfstring{$\ast$}{*}}]{send\+Frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void Comm\+Interface\+Base\+::send\+New\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}}]{send\+Frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

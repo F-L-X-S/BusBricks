@@ -9,7 +9,7 @@
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#else}}
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacearduino_mocking}{arduinoMocking}};}
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#include\ <cstring>}}
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{00022\ }
@@ -18,7 +18,7 @@
 \DoxyCodeLine{00025\ }
 \DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_service_base}{ServiceBase}}\ \{}
 \DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ String\ \mbox{\hyperlink{class_service_base_ab59dbe94f663838461cdd00536f46c0c}{get\_response}}()=0;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}\ \mbox{\hyperlink{class_service_base_ab59dbe94f663838461cdd00536f46c0c}{get\_response}}()=0;}
 \DoxyCodeLine{00039\ }
 \DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_service_base_ad1326c5e6b02553e6e23d0b0a3130ba3}{responseAvailable}}()=0;}
 \DoxyCodeLine{00047\ }
@@ -26,7 +26,7 @@
 \DoxyCodeLine{00053\ }
 \DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_base_a6129f02c6e59212d0b5b6d4d451b30e9}{stackProcessing}}()=0;}
 \DoxyCodeLine{00058\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_service_base_a4d01083248ca9afc41bcd36faa8b966d}{impart\_pdu}}(String*\ pdu)=0;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_service_base_a4d01083248ca9afc41bcd36faa8b966d}{impart\_pdu}}(\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}*\ pdu)=0;}
 \DoxyCodeLine{00069\ }
 \DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{virtual}\ uint8\_t*\ \mbox{\hyperlink{class_service_base_a10d3306ab361be7854734c80eb30dc1d}{get\_ServiceID}}()=0;}
 \DoxyCodeLine{00076\ }
@@ -42,7 +42,7 @@
 \DoxyCodeLine{00107\ \ \ \ \ uint8\_t\ instanceID;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ service-\/instance-\/id\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
 \DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<content\_class,\ stackSize>}}\ rec\_stack;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stack\ for\ received\ content-\/elements}}
 \DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<content\_class,\ stackSize>}}\ send\_stack;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stack\ for\ received\ content-\/elements}}
-\DoxyCodeLine{00110\ \ \ \ \ String\ response\_pdu;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PDU\ with\ response\ }}
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}\ response\_pdu;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PDU\ with\ response\ }}
 \DoxyCodeLine{00111\ \ \ \ \ }
 \DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ write\ the\ response-\/PDU\ to\ the\ reserved\ memory\ of\ the\ service-\/instance\ }}
 \DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ write\_response\_pdu(content\_class\ response\_object)\{}
@@ -60,12 +60,12 @@
 \DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&instanceID;}
 \DoxyCodeLine{00136\ \ \ \ \ \}}
 \DoxyCodeLine{00137\ }
-\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_service_ac0c60bc735c64547dee269c6c3a62767}{impart\_pdu}}(String*\ pdu)\textcolor{keyword}{\ override\ }\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_service_ac0c60bc735c64547dee269c6c3a62767}{impart\_pdu}}(\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}*\ pdu)\textcolor{keyword}{\ override\ }\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ content\_class\ content(pdu);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ Content-\/object\ from\ PDU}}
 \DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rec\_stack.\mbox{\hyperlink{class_content__stack_a3d5491c67763ef3c19780619d70cb59a}{addElement}}(content);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ Content-\/Object\ to\ Rec-\/Stack}}
 \DoxyCodeLine{00150\ \ \ \ \ \};}
 \DoxyCodeLine{00151\ }
-\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{virtual}\ String\ \mbox{\hyperlink{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}{get\_response}}()\textcolor{keyword}{\ override\ }\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}}\ \mbox{\hyperlink{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}{get\_response}}()\textcolor{keyword}{\ override\ }\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ copy\ the\ response\ element\ from\ send-\/stack}}
 \DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ content\_class\ response\_element\ =\ (send\_stack.\mbox{\hyperlink{class_content__stack_a4710d468535ed030bf5f67052e68eebb}{empty}}())?\ content\_class():*send\_stack.\mbox{\hyperlink{class_content__stack_a5ac2a896da7724281d9d85eb239f5084}{getElement}}();}
 \DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ write\ pdu\ from\ this\ element\ to\ response-\/pdu-\/memory\ of\ service-\/instance\ }}

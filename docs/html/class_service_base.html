@@ -110,7 +110,7 @@ Inheritance diagram for ServiceBase:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab59dbe94f663838461cdd00536f46c0c" id="r_ab59dbe94f663838461cdd00536f46c0c"><td class="memItemLeft" align="right" valign="top">virtual String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab59dbe94f663838461cdd00536f46c0c">get_response</a> ()=0</td></tr>
+<tr class="memitem:ab59dbe94f663838461cdd00536f46c0c" id="r_ab59dbe94f663838461cdd00536f46c0c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab59dbe94f663838461cdd00536f46c0c">get_response</a> ()=0</td></tr>
 <tr class="memdesc:ab59dbe94f663838461cdd00536f46c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the get the response-payload, stored at the response_pdu of the service instance <br  />
   <br /></td></tr>
 <tr class="separator:ab59dbe94f663838461cdd00536f46c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,7 +123,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6129f02c6e59212d0b5b6d4d451b30e9" id="r_a6129f02c6e59212d0b5b6d4d451b30e9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6129f02c6e59212d0b5b6d4d451b30e9">stackProcessing</a> ()=0</td></tr>
 <tr class="memdesc:a6129f02c6e59212d0b5b6d4d451b30e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the service's functions for each item on the receive-stack and add all response-payloads to be send to the send-stack.  <br /></td></tr>
 <tr class="separator:a6129f02c6e59212d0b5b6d4d451b30e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d01083248ca9afc41bcd36faa8b966d" id="r_a4d01083248ca9afc41bcd36faa8b966d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d01083248ca9afc41bcd36faa8b966d">impart_pdu</a> (String *pdu)=0</td></tr>
+<tr class="memitem:a4d01083248ca9afc41bcd36faa8b966d" id="r_a4d01083248ca9afc41bcd36faa8b966d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d01083248ca9afc41bcd36faa8b966d">impart_pdu</a> (<a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *pdu)=0</td></tr>
 <tr class="memdesc:a4d01083248ca9afc41bcd36faa8b966d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new Content-Object created from a received payload to the services receive-Stack. The payload is the representation of the Content-Object, during the construction, the Content-object creates it's content from the representation. The Content-object is added to the rec_stack.  <br /></td></tr>
 <tr class="separator:a4d01083248ca9afc41bcd36faa8b966d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10d3306ab361be7854734c80eb30dc1d" id="r_a10d3306ab361be7854734c80eb30dc1d"><td class="memItemLeft" align="right" valign="top">virtual uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10d3306ab361be7854734c80eb30dc1d">get_ServiceID</a> ()=0</td></tr>
@@ -210,7 +210,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ServiceBase</b> (
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual String ServiceBase::get_response </td>
+          <td class="memname">virtual <a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> ServiceBase::get_response </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -273,7 +273,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ServiceBase</b> (
         <tr>
           <td class="memname">virtual bool ServiceBase::impart_pdu </td>
           <td>(</td>
-          <td class="paramtype">String *</td>          <td class="paramname"><span class="paramname"><em>pdu</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *</td>          <td class="paramname"><span class="paramname"><em>pdu</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

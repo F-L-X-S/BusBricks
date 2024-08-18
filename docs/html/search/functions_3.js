@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['empty_0',['empty',['../class_content__stack.html#a4710d468535ed030bf5f67052e68eebb',1,'Content_stack']]]
+  ['deleteelement_0',['deleteElement',['../class_content__stack.html#a7b2d11fd9ee9f45090a545031883edb6',1,'Content_stack']]]
 ];

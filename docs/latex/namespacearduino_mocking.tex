@@ -1,0 +1,93 @@
+\doxysection{arduino\+Mocking Namespace Reference}
+\hypertarget{namespacearduino_mocking}{}\label{namespacearduino_mocking}\index{arduinoMocking@{arduinoMocking}}
+
+
+Provides mock implementations of Arduino framework functions and classes for native builds.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classarduino_mocking_1_1_mock_serial}{Mock\+Serial}}
+\begin{DoxyCompactList}\small\item\em Simulates Arduino\textquotesingle{}s {\ttfamily Serial} class for testing purposes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classarduino_mocking_1_1_mock_time}{Mock\+Time}}
+\begin{DoxyCompactList}\small\item\em Simulates Arduino\textquotesingle{}s time functions for testing purposes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{Software\+Serial}}
+\begin{DoxyCompactList}\small\item\em Mock class to simulate the \doxylink{classarduino_mocking_1_1_software_serial}{Software\+Serial} library for native builds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}\label{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf} 
+typedef std\+::string {\bfseries String}
+\begin{DoxyCompactList}\small\item\em Alias for {\ttfamily std\+::string} to simulate Arduino\textquotesingle{}s String type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacearduino_mocking_acbfa9a213dea8b606211beb942bc52ab}{pin\+Mode}} (int pin, int mode)
+\begin{DoxyCompactList}\small\item\em Simulates the {\ttfamily pin\+Mode} function for setting pin modes. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{namespacearduino_mocking_ae971adfb99d2ac9321473e3ae0e5d5e2}{millis}} ()
+\begin{DoxyCompactList}\small\item\em Simulates the {\ttfamily millis} function to get the number of milliseconds since the program started. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{namespacearduino_mocking_a0e9de3c37e4e59ae09b1590268fa0e17}{micros}} ()
+\begin{DoxyCompactList}\small\item\em Simulates the {\ttfamily micros} function to get the number of microseconds since the program started. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacearduino_mocking_aa5db4a430c7d1a388a678f8db8efb14a}\label{namespacearduino_mocking_aa5db4a430c7d1a388a678f8db8efb14a} 
+\mbox{\hyperlink{classarduino_mocking_1_1_mock_time}{Mock\+Time}} {\bfseries mocked\+Timer}
+\item 
+\Hypertarget{namespacearduino_mocking_ace877ffb508b19b20cbc06b8f9837359}\label{namespacearduino_mocking_ace877ffb508b19b20cbc06b8f9837359} 
+\mbox{\hyperlink{classarduino_mocking_1_1_mock_serial}{Mock\+Serial}} {\bfseries Serial}
+\begin{DoxyCompactList}\small\item\em Global instance of {\ttfamily \doxylink{classarduino_mocking_1_1_mock_serial}{Mock\+Serial}} to mimic Arduino\textquotesingle{}s Serial object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides mock implementations of Arduino framework functions and classes for native builds. 
+
+Namespace to provide mock implementations of Arduino framework classes for native builds. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacearduino_mocking_a0e9de3c37e4e59ae09b1590268fa0e17}\index{arduinoMocking@{arduinoMocking}!micros@{micros}}
+\index{micros@{micros}!arduinoMocking@{arduinoMocking}}
+\doxysubsubsection{\texorpdfstring{micros()}{micros()}}
+{\footnotesize\ttfamily \label{namespacearduino_mocking_a0e9de3c37e4e59ae09b1590268fa0e17} 
+unsigned long arduino\+Mocking\+::micros (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Simulates the {\ttfamily micros} function to get the number of microseconds since the program started. 
+
+\begin{DoxyReturn}{Returns}
+The number of microseconds since the program started. 
+\end{DoxyReturn}
+\Hypertarget{namespacearduino_mocking_ae971adfb99d2ac9321473e3ae0e5d5e2}\index{arduinoMocking@{arduinoMocking}!millis@{millis}}
+\index{millis@{millis}!arduinoMocking@{arduinoMocking}}
+\doxysubsubsection{\texorpdfstring{millis()}{millis()}}
+{\footnotesize\ttfamily \label{namespacearduino_mocking_ae971adfb99d2ac9321473e3ae0e5d5e2} 
+unsigned long arduino\+Mocking\+::millis (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Simulates the {\ttfamily millis} function to get the number of milliseconds since the program started. 
+
+\begin{DoxyReturn}{Returns}
+The number of milliseconds since the program started. 
+\end{DoxyReturn}
+\Hypertarget{namespacearduino_mocking_acbfa9a213dea8b606211beb942bc52ab}\index{arduinoMocking@{arduinoMocking}!pinMode@{pinMode}}
+\index{pinMode@{pinMode}!arduinoMocking@{arduinoMocking}}
+\doxysubsubsection{\texorpdfstring{pinMode()}{pinMode()}}
+{\footnotesize\ttfamily \label{namespacearduino_mocking_acbfa9a213dea8b606211beb942bc52ab} 
+void arduino\+Mocking\+::pin\+Mode (\begin{DoxyParamCaption}\item[{int}]{pin}{, }\item[{int}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Simulates the {\ttfamily pin\+Mode} function for setting pin modes. 
+
+This function is a placeholder for the Arduino {\ttfamily pin\+Mode} function and does nothing in this mock implementation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & The pin number to configure. \\
+\hline
+{\em mode} & The mode to set for the pin (INPUT or OUTPUT). \\
+\hline
+\end{DoxyParams}

@@ -20,11 +20,11 @@ Inheritance diagram for Comm\+Interface\texorpdfstring{$<$}{<} interface\+\_\+ty
 \item 
 \mbox{\hyperlink{class_comm_interface_a036d6ee859c4aa352083626e3d852da2}{Comm\+Interface}} (interface\+\_\+type \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_comm_interface_a500d5da6b485fc7450fbd8c9afd79374}{interface}}, uint32\+\_\+t baudrate)
 \begin{DoxyCompactList}\small\item\em Construct a new Comm-\/\+Interface object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_comm_interface_a21c8ee8eddb3011e89b950f1b5264664}{send\+New\+Frame}} (String \texorpdfstring{$\ast$}{*}send\+Frame)
+void \mbox{\hyperlink{class_comm_interface_a21c8ee8eddb3011e89b950f1b5264664}{send\+New\+Frame}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}send\+Frame)
 \begin{DoxyCompactList}\small\item\em Specify the next frame to be sent by the interface, no overwrite, if the send\+Buffer is already pointing to another frame. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_comm_interface_a9a27c7221b188bde1632a7c44f79b493}{finished\+Sending}} ()
 \begin{DoxyCompactList}\small\item\em Check, if the \doxylink{class_frame}{Frame} was sent and the \doxylink{class_comm_interface}{Comm\+Interface} is ready to send the next \doxylink{class_frame}{Frame} Interface is ready to send a new frame, if the send\+Buffer is nullpointer. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_comm_interface_a446d6dfeb4dd695c061f1ff1c926fb51}{get\+Received\+Frame}} (String \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
+void \mbox{\hyperlink{class_comm_interface_a446d6dfeb4dd695c061f1ff1c926fb51}{get\+Received\+Frame}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
 \begin{DoxyCompactList}\small\item\em Define the destination, the next received \doxylink{class_frame}{Frame} should be stored at. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_comm_interface_aea53cf3e71460f3a662c175958acb643}{received\+New\+Frame}} ()
 \begin{DoxyCompactList}\small\item\em Check, if a new \doxylink{class_frame}{Frame} was received and stored at the in get\+Received\+Frame specified location the interface is waiting waiting for get\+Received\+Frame-\/call to specify the location, the next received frame should be stored at. \end{DoxyCompactList}\item 
@@ -39,11 +39,11 @@ virtual void {\bfseries send\+Cycle} ()
 \item 
 void {\bfseries setup\+\_\+interface} ()
 \begin{DoxyCompactList}\small\item\em Setup the Interface has to be called in Setup-\/function. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_comm_interface_base_aec9a9fb6aa77428e8b9a65a33172f6a1}{send\+New\+Frame}} (String \texorpdfstring{$\ast$}{*}send\+Frame)
+void \mbox{\hyperlink{class_comm_interface_base_aec9a9fb6aa77428e8b9a65a33172f6a1}{send\+New\+Frame}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}send\+Frame)
 \begin{DoxyCompactList}\small\item\em Add a new \doxylink{class_frame}{Frame} to the send-\/buffer. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_comm_interface_base_a23e0f975ebf29d40bde25eea58465bfa}{finished\+Sending}} ()
 \begin{DoxyCompactList}\small\item\em Check, if the \doxylink{class_frame}{Frame} was sent and the \doxylink{class_comm_interface}{Comm\+Interface} is ready to send the next \doxylink{class_frame}{Frame}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_comm_interface_base_a2d2742daa73bbbf0b8317391c5c85a19}{get\+Received\+Frame}} (String \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
+void \mbox{\hyperlink{class_comm_interface_base_a2d2742daa73bbbf0b8317391c5c85a19}{get\+Received\+Frame}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}dest\+Frame\+Buffer)
 \begin{DoxyCompactList}\small\item\em Define the destination, the next received \doxylink{class_frame}{Frame} should be copied to ba a pointer to an empty String-\/\+Object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_comm_interface_base_a01c285fd2ea35bf3f081ee531e666def}{received\+New\+Frame}} ()
 \begin{DoxyCompactList}\small\item\em Check, if a new \doxylink{class_frame}{Frame} was received. \end{DoxyCompactList}\item 
@@ -65,10 +65,10 @@ virtual bool \mbox{\hyperlink{class_comm_interface_a81c74dee239a10522d30900943f6
 interface\+\_\+type \texorpdfstring{$\ast$}{*} {\bfseries interface}
 \begin{DoxyCompactList}\small\item\em pointer to an instance of the native bus-\/interface (setup outside of Bus\+Bricks) \end{DoxyCompactList}\item 
 \Hypertarget{class_comm_interface_a158b6fec22811cd97732ca9bada05873}\label{class_comm_interface_a158b6fec22811cd97732ca9bada05873} 
-String \texorpdfstring{$\ast$}{*} {\bfseries send\+Buffer} = nullptr
+\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*} {\bfseries send\+Buffer} = nullptr
 \begin{DoxyCompactList}\small\item\em pointer to the next frame to be send, set to nullptr if \doxylink{class_frame}{Frame} was sent \end{DoxyCompactList}\item 
 \Hypertarget{class_comm_interface_aa2cedf4d8d25ab2a0a04278c976383d9}\label{class_comm_interface_aa2cedf4d8d25ab2a0a04278c976383d9} 
-String \texorpdfstring{$\ast$}{*} {\bfseries receive\+Buffer} = nullptr
+\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*} {\bfseries receive\+Buffer} = nullptr
 \begin{DoxyCompactList}\small\item\em pointer to String-\/object, a received frame should be stored at, set to nullptr if \doxylink{class_frame}{Frame} was copied to destination \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -131,7 +131,7 @@ false frame, send\+Buffer is pointing to is not sent yet not ready to to accept 
 \doxysubsubsection{\texorpdfstring{getReceivedFrame()}{getReceivedFrame()}}
 {\footnotesize\ttfamily \label{class_comm_interface_a446d6dfeb4dd695c061f1ff1c926fb51} 
 template$<$typename interface\+\_\+type $>$ \\
-void \mbox{\hyperlink{class_comm_interface}{Comm\+Interface}}$<$ interface\+\_\+type $>$\+::get\+Received\+Frame (\begin{DoxyParamCaption}\item[{String \texorpdfstring{$\ast$}{*}}]{dest\+Frame\+Buffer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \mbox{\hyperlink{class_comm_interface}{Comm\+Interface}}$<$ interface\+\_\+type $>$\+::get\+Received\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}}]{dest\+Frame\+Buffer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -203,7 +203,7 @@ Implemented in \mbox{\hyperlink{class_comm_interface__modbus_r_t_u_a0e78a2a6e3b5
 \doxysubsubsection{\texorpdfstring{sendNewFrame()}{sendNewFrame()}}
 {\footnotesize\ttfamily \label{class_comm_interface_a21c8ee8eddb3011e89b950f1b5264664} 
 template$<$typename interface\+\_\+type $>$ \\
-void \mbox{\hyperlink{class_comm_interface}{Comm\+Interface}}$<$ interface\+\_\+type $>$\+::send\+New\+Frame (\begin{DoxyParamCaption}\item[{String \texorpdfstring{$\ast$}{*}}]{send\+Frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \mbox{\hyperlink{class_comm_interface}{Comm\+Interface}}$<$ interface\+\_\+type $>$\+::send\+New\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}}]{send\+Frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

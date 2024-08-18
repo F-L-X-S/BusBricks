@@ -114,13 +114,13 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setup_interface</b> ()</td></tr>
 <tr class="memdesc:a28c489a3103fea57a2df4ef6cca41302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the Interface has to be called in Setup-function. <br /></td></tr>
 <tr class="separator:a28c489a3103fea57a2df4ef6cca41302"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec9a9fb6aa77428e8b9a65a33172f6a1" id="r_aec9a9fb6aa77428e8b9a65a33172f6a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec9a9fb6aa77428e8b9a65a33172f6a1">sendNewFrame</a> (String *sendFrame)</td></tr>
+<tr class="memitem:aec9a9fb6aa77428e8b9a65a33172f6a1" id="r_aec9a9fb6aa77428e8b9a65a33172f6a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec9a9fb6aa77428e8b9a65a33172f6a1">sendNewFrame</a> (<a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *sendFrame)</td></tr>
 <tr class="memdesc:aec9a9fb6aa77428e8b9a65a33172f6a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> to the send-buffer.  <br /></td></tr>
 <tr class="separator:aec9a9fb6aa77428e8b9a65a33172f6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23e0f975ebf29d40bde25eea58465bfa" id="r_a23e0f975ebf29d40bde25eea58465bfa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23e0f975ebf29d40bde25eea58465bfa">finishedSending</a> ()</td></tr>
 <tr class="memdesc:a23e0f975ebf29d40bde25eea58465bfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check, if the <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> was sent and the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> is ready to send the next <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a>.  <br /></td></tr>
 <tr class="separator:a23e0f975ebf29d40bde25eea58465bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d2742daa73bbbf0b8317391c5c85a19" id="r_a2d2742daa73bbbf0b8317391c5c85a19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d2742daa73bbbf0b8317391c5c85a19">getReceivedFrame</a> (String *destFrameBuffer)</td></tr>
+<tr class="memitem:a2d2742daa73bbbf0b8317391c5c85a19" id="r_a2d2742daa73bbbf0b8317391c5c85a19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d2742daa73bbbf0b8317391c5c85a19">getReceivedFrame</a> (<a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *destFrameBuffer)</td></tr>
 <tr class="memdesc:a2d2742daa73bbbf0b8317391c5c85a19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the destination, the next received <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> should be copied to ba a pointer to an empty String-Object.  <br /></td></tr>
 <tr class="separator:a2d2742daa73bbbf0b8317391c5c85a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01c285fd2ea35bf3f081ee531e666def" id="r_a01c285fd2ea35bf3f081ee531e666def"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01c285fd2ea35bf3f081ee531e666def">receivedNewFrame</a> ()</td></tr>
@@ -180,7 +180,7 @@ false <a class="el" href="class_frame.html" title="Frame-Class as derived class 
         <tr>
           <td class="memname">void CommInterfaceBase::getReceivedFrame </td>
           <td>(</td>
-          <td class="paramtype">String *</td>          <td class="paramname"><span class="paramname"><em>destFrameBuffer</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *</td>          <td class="paramname"><span class="paramname"><em>destFrameBuffer</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -243,7 +243,7 @@ false no new frame was received, getReceivedFrame specified String-Object still 
         <tr>
           <td class="memname">void CommInterfaceBase::sendNewFrame </td>
           <td>(</td>
-          <td class="paramtype">String *</td>          <td class="paramname"><span class="paramname"><em>sendFrame</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *</td>          <td class="paramname"><span class="paramname"><em>sendFrame</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

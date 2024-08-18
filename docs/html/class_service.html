@@ -119,10 +119,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abd1295896aca84e6dd85c0973885b279" id="r_abd1295896aca84e6dd85c0973885b279"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd1295896aca84e6dd85c0973885b279">get_InstanceID</a> () override</td></tr>
 <tr class="memdesc:abd1295896aca84e6dd85c0973885b279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the 1-byte InstanceID of the Service-instance (unique for each Instance of <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> within the whole communication-network)  <br /></td></tr>
 <tr class="separator:abd1295896aca84e6dd85c0973885b279"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0c60bc735c64547dee269c6c3a62767" id="r_ac0c60bc735c64547dee269c6c3a62767"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0c60bc735c64547dee269c6c3a62767">impart_pdu</a> (String *pdu) override</td></tr>
+<tr class="memitem:ac0c60bc735c64547dee269c6c3a62767" id="r_ac0c60bc735c64547dee269c6c3a62767"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0c60bc735c64547dee269c6c3a62767">impart_pdu</a> (<a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *pdu) override</td></tr>
 <tr class="memdesc:ac0c60bc735c64547dee269c6c3a62767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new Content-Object created from a received payload to the services receive-Stack. The payload is the representation of the Content-Object, during the construction, the Content-object creates it's content from the representation. The Content-object is added to the rec_stack.  <br /></td></tr>
 <tr class="separator:ac0c60bc735c64547dee269c6c3a62767"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a601e6d2878ce2b292a3b7c6428f0d51f" id="r_a601e6d2878ce2b292a3b7c6428f0d51f"><td class="memItemLeft" align="right" valign="top">virtual String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a601e6d2878ce2b292a3b7c6428f0d51f">get_response</a> () override</td></tr>
+<tr class="memitem:a601e6d2878ce2b292a3b7c6428f0d51f" id="r_a601e6d2878ce2b292a3b7c6428f0d51f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a601e6d2878ce2b292a3b7c6428f0d51f">get_response</a> () override</td></tr>
 <tr class="memdesc:a601e6d2878ce2b292a3b7c6428f0d51f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the get the response-payload, stored at the response_pdu of the service instance <br  />
   <br /></td></tr>
 <tr class="separator:a601e6d2878ce2b292a3b7c6428f0d51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,7 +162,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>instanceID</b></td
 <a class="el" href="class_content__stack.html">Content_stack</a>&lt; content_class, stackSize &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>send_stack</b></td></tr>
 <tr class="separator:a4dbf987b550b6f63031129d1f24f57ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01d2b42d0a3e01bb2435af5b4071dc56" id="r_a01d2b42d0a3e01bb2435af5b4071dc56"><td class="memItemLeft" align="right" valign="top"><a id="a01d2b42d0a3e01bb2435af5b4071dc56" name="a01d2b42d0a3e01bb2435af5b4071dc56"></a>
-String&#160;</td><td class="memItemRight" valign="bottom"><b>response_pdu</b></td></tr>
+<a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a>&#160;</td><td class="memItemRight" valign="bottom"><b>response_pdu</b></td></tr>
 <tr class="separator:a01d2b42d0a3e01bb2435af5b4071dc56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -252,7 +252,7 @@ template&lt;typename content_class , int stackSize&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual String <a class="el" href="class_service.html">Service</a>&lt; content_class, stackSize &gt;::get_response </td>
+          <td class="memname">virtual <a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> <a class="el" href="class_service.html">Service</a>&lt; content_class, stackSize &gt;::get_response </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -319,7 +319,7 @@ template&lt;typename content_class , int stackSize&gt; </div>
         <tr>
           <td class="memname">virtual bool <a class="el" href="class_service.html">Service</a>&lt; content_class, stackSize &gt;::impart_pdu </td>
           <td>(</td>
-          <td class="paramtype">String *</td>          <td class="paramname"><span class="paramname"><em>pdu</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *</td>          <td class="paramname"><span class="paramname"><em>pdu</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

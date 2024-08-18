@@ -99,7 +99,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #include &lt;Arduino.h&gt;</span>    <span class="comment">// include Arduino-Library for platformIO-build </span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &lt;mockArduino.h&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">using namespace </span>arduinoMocking;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacearduino_mocking.html">arduinoMocking</a>;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;<a class="code" href="_service_8h.html">Service.h</a>&gt;</span></div>
@@ -173,6 +173,7 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclass_service_cluster_html_a507a50d20b2764c77200a73971935971"><div class="ttname"><a href="class_service_cluster.html#a507a50d20b2764c77200a73971935971">ServiceCluster::getNumberOfServices</a></div><div class="ttdeci">uint8_t getNumberOfServices() const override</div><div class="ttdoc">Get the total Number Of Services-objects associated to the cluster.</div><div class="ttdef"><b>Definition</b> ServiceCluster.h:115</div></div>
 <div class="ttc" id="aclass_service_cluster_html_a9e24f14fb13116a5f7bb7a551b8c5d22"><div class="ttname"><a href="class_service_cluster.html#a9e24f14fb13116a5f7bb7a551b8c5d22">ServiceCluster::getService_byPos</a></div><div class="ttdeci">ServiceBase * getService_byPos(uint8_t ServicePosition) override</div><div class="ttdoc">Get pointer to the service at a specific position in the cluster (positions starting by zero)</div><div class="ttdef"><b>Definition</b> ServiceCluster.h:103</div></div>
 <div class="ttc" id="aclass_service_cluster_html_ae40a5207d621ccd428297ae8f3bbbf40"><div class="ttname"><a href="class_service_cluster.html#ae40a5207d621ccd428297ae8f3bbbf40">ServiceCluster::getService_byID</a></div><div class="ttdeci">ServiceBase * getService_byID(uint8_t ServiceID) override</div><div class="ttdoc">Get pointer to the service with the given service-ID by iterating through the associated services and...</div><div class="ttdef"><b>Definition</b> ServiceCluster.h:88</div></div>
+<div class="ttc" id="anamespacearduino_mocking_html"><div class="ttname"><a href="namespacearduino_mocking.html">arduinoMocking</a></div><div class="ttdoc">Provides mock implementations of Arduino framework functions and classes for native builds.</div><div class="ttdef"><b>Definition</b> mockArduino.cpp:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

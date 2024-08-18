@@ -18,7 +18,7 @@ Inheritance diagram for Service\+Base\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual String \mbox{\hyperlink{class_service_base_ab59dbe94f663838461cdd00536f46c0c}{get\+\_\+response}} ()=0
+virtual \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \mbox{\hyperlink{class_service_base_ab59dbe94f663838461cdd00536f46c0c}{get\+\_\+response}} ()=0
 \begin{DoxyCompactList}\small\item\em Get the get the response-\/payload, stored at the response\+\_\+pdu of the service instance ~\newline
  \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_service_base_ad1326c5e6b02553e6e23d0b0a3130ba3}{response\+Available}} ()=0
@@ -27,7 +27,7 @@ virtual void \mbox{\hyperlink{class_service_base_ae959e3c9fa34b4c021e3d28a4c7422
 \begin{DoxyCompactList}\small\item\em Clear the response-\/buffer (delete item, that was returned by get\+\_\+response from the service-\/send\+Stack) \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_service_base_a6129f02c6e59212d0b5b6d4d451b30e9}{stack\+Processing}} ()=0
 \begin{DoxyCompactList}\small\item\em Execute the service\textquotesingle{}s functions for each item on the receive-\/stack and add all response-\/payloads to be send to the send-\/stack. \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{class_service_base_a4d01083248ca9afc41bcd36faa8b966d}{impart\+\_\+pdu}} (String \texorpdfstring{$\ast$}{*}pdu)=0
+virtual bool \mbox{\hyperlink{class_service_base_a4d01083248ca9afc41bcd36faa8b966d}{impart\+\_\+pdu}} (\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}pdu)=0
 \begin{DoxyCompactList}\small\item\em Add a new Content-\/\+Object created from a received payload to the services receive-\/\+Stack. The payload is the representation of the Content-\/\+Object, during the construction, the Content-\/object creates it\textquotesingle{}s content from the representation. The Content-\/object is added to the rec\+\_\+stack. \end{DoxyCompactList}\item 
 virtual uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_base_a10d3306ab361be7854734c80eb30dc1d}{get\+\_\+\+Service\+ID}} ()=0
 \begin{DoxyCompactList}\small\item\em Get pointer to the 1-\/byte Service\+ID of the \doxylink{class_service}{Service} (unique for each Service-\/template derived Class) \end{DoxyCompactList}\item 
@@ -82,7 +82,7 @@ Implemented in \mbox{\hyperlink{class_service_abd1295896aca84e6dd85c0973885b279}
 \index{get\_response@{get\_response}!ServiceBase@{ServiceBase}}
 \doxysubsubsection{\texorpdfstring{get\_response()}{get\_response()}}
 {\footnotesize\ttfamily \label{class_service_base_ab59dbe94f663838461cdd00536f46c0c} 
-virtual String Service\+Base\+::get\+\_\+response (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+virtual \mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} Service\+Base\+::get\+\_\+response (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -117,7 +117,7 @@ Implemented in \mbox{\hyperlink{class_service_a4d0e8aca49451e363888ca46c2742b2e}
 \index{impart\_pdu@{impart\_pdu}!ServiceBase@{ServiceBase}}
 \doxysubsubsection{\texorpdfstring{impart\_pdu()}{impart\_pdu()}}
 {\footnotesize\ttfamily \label{class_service_base_a4d01083248ca9afc41bcd36faa8b966d} 
-virtual bool Service\+Base\+::impart\+\_\+pdu (\begin{DoxyParamCaption}\item[{String \texorpdfstring{$\ast$}{*}}]{pdu}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+virtual bool Service\+Base\+::impart\+\_\+pdu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacearduino_mocking_a074bce778184555fd29d1370a36298bf}{String}} \texorpdfstring{$\ast$}{*}}]{pdu}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
