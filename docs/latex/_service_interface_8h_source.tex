@@ -1,115 +1,99 @@
 \doxysection{Service\+Interface.\+h}
 \hypertarget{_service_interface_8h_source}{}\label{_service_interface_8h_source}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Interface/ServiceInterface.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Interface/ServiceInterface.h}}
-
+\mbox{\hyperlink{_service_interface_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SERVICEINTERFACE\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SERVICEINTERFACE\_H}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
-\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <CommInterface.h>}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <ServiceCluster.h>}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Frame.h>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <Content\_stack.h>}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ STACKSIZE\ 2\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Size\ of\ Send-\/\ /\ Rec-\/Stack}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ DEBUG}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{comment}{//\ Template\ for\ generic\ Service-\/Interface}}
-\DoxyCodeLine{00020\ \textcolor{comment}{//\ The\ derived\ class\ defines\ the\ handling\ of\ incoming\ frames\ from\ communication-\/interface\ to\ the\ services\ (associated\ by\ service-\/id)}}
-\DoxyCodeLine{00021\ \textcolor{comment}{//\ and\ the\ conversion\ from\ PDU\ provided\ by\ Services\ to\ frames\ getting\ sent\ by\ the\ communication-\/interface}}
-\DoxyCodeLine{00022\ \textcolor{comment}{//\ Template-\/parameters:\ }}
-\DoxyCodeLine{00023\ \textcolor{comment}{//\ \ -\/type\ of\ the\ Communication-\/Interface\ (e.g.\ SoftwareSerial,\ Wire...)}}
-\DoxyCodeLine{00024\ \textcolor{comment}{//\ \ -\/type\ of\ the\ frames\ to\ be\ send\ as\ a\ derived\ Class\ of\ the\ Frame-\/Class\ (e.g.\ Frame\_modbusRTU)}}
-\DoxyCodeLine{00025\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CommInterfaceBase,\ \textcolor{keyword}{typename}\ frameType>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_service_interface}{ServiceInterface}}\{}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ Service-\/Interface\ }}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface}{ServiceInterface}}(\mbox{\hyperlink{class_comm_interface_base}{CommInterfaceBase}}*\ comm\_interface,\ \mbox{\hyperlink{class_service_cluster_base}{ServiceClusterBase}}*\ services):}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comm\_interface(comm\_interface),\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ services(services)\ \{\};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Execute\ all\ relevant\ tasks\ for\ transferring\ data\ between\ CommInterface\ and\ Services:}}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ Get\ PDU\ from\ Services}}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ Add\ PDU\ to\ Services}}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ Update\ communication-\/stacks}}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ Execute\ the\ CommInterfaces\ Comm-\/cycle\ }}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Has\ to\ be\ implemented\ in\ the\ derived\ class}}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ communicate()\ =\ 0;\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comm_interface_base}{CommInterfaceBase}}*\ comm\_interface;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Communication-\/Interface\ }}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_cluster_base}{ServiceClusterBase}}*\ services;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ServiceCluster\ containing\ the\ Services\ associated\ with\ the\ Interface\ }}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<frameType,\ STACKSIZE>}}\ recStack;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stack\ for\ received\ frames}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<frameType,\ STACKSIZE>}}\ sendStack;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stack\ for\ frames\ to\ send\ next}}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ String\ sendItem;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Item\ to\ be\ sent\ next}}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ String\ recItem;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Item\ received\ last}}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ all\ PDUs\ provided\ by\ the\ services\ to\ the\ sendstack}}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Implemented\ in\ derived\ Class,\ depending\ on\ frametype}}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ getPDU\_from\_services()=0;}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Impart\ all\ received\ PDUs\ from\ the\ receivestack\ to\ the\ associated\ services\ }}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Implemented\ in\ derived\ Class,\ depending\ on\ frametype}}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ addPDU\_to\_services()=0;}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ start\ the\ processing\ of\ the\ registered\ services\ }}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ processServices()\{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ services-\/>getNumberOfServices();\ i++)}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_base}{ServiceBase}}*\ destinationService\ =\ services-\/>getService\_byPos(i);\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pointer\ to\ the\ destination-\/Service\ }}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destinationService-\/>stackProcessing();}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ SERVICEINTERFACE\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ SERVICEINTERFACE\_H}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{_comm_interface_8h}{CommInterface.h}}>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <ServiceCluster.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{_frame_8h}{Frame.h}}>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <Content\_stack.h>}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ STACKSIZE\ 2\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Size\ of\ Send-\/\ /\ Rec-\/Stack}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ DEBUG}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CommInterfaceBase,\ \textcolor{keyword}{typename}\ frameType>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_service_interface}{ServiceInterface}}\{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_acc70c85786fa2e133f90683f60ebf67f}{ServiceInterface}}(\mbox{\hyperlink{class_comm_interface_base}{CommInterfaceBase}}*\ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}},\ \mbox{\hyperlink{class_service_cluster_base}{ServiceClusterBase}}*\ \mbox{\hyperlink{class_service_interface_ad1f915c1a536af5c73aa1315fd035535}{services}}):}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}(\mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}),\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_ad1f915c1a536af5c73aa1315fd035535}{services}}(\mbox{\hyperlink{class_service_interface_ad1f915c1a536af5c73aa1315fd035535}{services}})\ \{\};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_interface_aeaebdad7101c0a66bee56edc4e6a19c1}{communicate}}()\ =\ 0;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comm_interface_base}{CommInterfaceBase}}*\ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_cluster_base}{ServiceClusterBase}}*\ \mbox{\hyperlink{class_service_interface_ad1f915c1a536af5c73aa1315fd035535}{services}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ the\ last\ item\ from\ the\ sendstack\ to\ the\ Comminterface}}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ it\ after\ sending}}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ processSendStack()\{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Serial\ debugging}}
-\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEBUG}}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Processing\ Send-\/Stack..."{}});}
-\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ sendstack}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!sendStack.empty())}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (comm\_interface-\/>finishedSending())\{}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_frame}{Frame}}*\ frameToSend\ =\ sendStack.getElement();\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ next\ item\ from\ the\ send-\/stack}}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sendItem\ =\ frameToSend-\/>getFrame();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extract\ Frame\ from\ Item}}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String*\ sendItemAdr\ =\ \&sendItem;}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comm\_interface-\/>sendNewFrame(sendItemAdr);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Impart\ Frame\ that\ has\ to\ be\ sent\ next\ }}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sendStack.deleteElement();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ Item\ from\ send-\/stack}}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comm\_interface-\/>sendCycle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ execute\ sending\ }}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ items\ received\ by\ the\ CommInterface\ to\ the\ Receivestack}}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ processRecStack()\ \{}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Serial\ debugging}}
-\DoxyCodeLine{00092\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEBUG}}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Processing\ Receive-\/Stack..."{}});}
-\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ receivebuffer\ }}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (comm\_interface-\/>receivedNewFrame()\ \&\&\ !recStack.full())\{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recItem\ !=\ \textcolor{stringliteral}{"{}"{}})\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Item\ not\ empty\ }}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frameString\ frameStr\ =\ recItem.c\_str();\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ conversion\ for\ identification\ as\ framestring\ in\ Frame-\/Class-\/Constructor}}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frameType\ recItemFrame(\&frameStr);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ Frame-\/Class\ derived\ Object}}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ recStack.addElement(recItemFrame);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ the\ received\ element\ to\ the\ stack}}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ recItem\ =\ \textcolor{stringliteral}{"{}"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clear\ rec-\/Item\ }}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comm\_interface-\/>getReceivedFrame(\&recItem);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Impart\ memory\ the\ received\ item\ has\ to\ be\ stored\ at\ }}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comm\_interface-\/>receiveCycle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Receive\ new\ frames\ from\ comm-\/interface\ }}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ comm\_interface-\/>receiveCycle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Receive\ new\ frames\ from\ comm-\/interface}}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00108\ \};}
-\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SERVICEINTERFACE\_H}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<frameType,\ STACKSIZE>}}\ \mbox{\hyperlink{class_service_interface_a7793efd070a56f021ce56a372b13c2fa}{recStack}};\ \ \ \ \ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_content__stack}{Content\_stack<frameType,\ STACKSIZE>}}\ \mbox{\hyperlink{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a}{sendStack}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1}{sendItem}};\ \ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{class_service_interface_ac69502c2d78c4a046c5d3219d637f1b3}{recItem}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_interface_ab4112c2b2eb29d1e0ade95e4f3c07030}{getPDU\_from\_services}}()=0;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_interface_ac740850d1a24a1d8a96f7a7bbf4eb784}{addPDU\_to\_services}}()=0;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_interface_a4dffc7c3e366b470e1075db65333b67e}{processServices}}()\{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_service_interface_ad1f915c1a536af5c73aa1315fd035535}{services}}-\/>getNumberOfServices();\ i++)}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_base}{ServiceBase}}*\ destinationService\ =\ \mbox{\hyperlink{class_service_interface_ad1f915c1a536af5c73aa1315fd035535}{services}}-\/>getService\_byPos(i);\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pointer\ to\ the\ destination-\/Service\ }}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destinationService-\/>stackProcessing();}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_interface_a23feb243ed1748e04dd757aa5f788b3e}{processSendStack}}()\{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Serial\ debugging}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEBUG}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Processing\ Send-\/Stack..."{}});}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ sendstack}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a}{sendStack}}.empty())}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>\mbox{\hyperlink{class_comm_interface_base_a23e0f975ebf29d40bde25eea58465bfa}{finishedSending}}())\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_frame}{Frame}}*\ frameToSend\ =\ \mbox{\hyperlink{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a}{sendStack}}.getElement();\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ next\ item\ from\ the\ send-\/stack}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1}{sendItem}}\ =\ frameToSend-\/>\mbox{\hyperlink{class_frame_a2aa3fb0eb3fc7248bda4684a57b3bf27}{getFrame}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extract\ Frame\ from\ Item}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String*\ sendItemAdr\ =\ \&\mbox{\hyperlink{class_service_interface_a1e08cf764cea2084e1f425e32f44d2c1}{sendItem}};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>\mbox{\hyperlink{class_comm_interface_base_aec9a9fb6aa77428e8b9a65a33172f6a1}{sendNewFrame}}(sendItemAdr);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Impart\ Frame\ that\ has\ to\ be\ sent\ next\ }}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a38bd169d6286c4ddbda050b7f28d093a}{sendStack}}.deleteElement();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ Item\ from\ send-\/stack}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>sendCycle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ execute\ sending\ }}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214}{processRecStack}}()\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Serial\ debugging}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ DEBUG}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Processing\ Receive-\/Stack..."{}});}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ receivebuffer\ }}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>\mbox{\hyperlink{class_comm_interface_base_a01c285fd2ea35bf3f081ee531e666def}{receivedNewFrame}}()\ \&\&\ !\mbox{\hyperlink{class_service_interface_a7793efd070a56f021ce56a372b13c2fa}{recStack}}.full())\{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_service_interface_ac69502c2d78c4a046c5d3219d637f1b3}{recItem}}\ !=\ \textcolor{stringliteral}{"{}"{}})\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Item\ not\ empty\ }}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frameString\ frameStr\ =\ \mbox{\hyperlink{class_service_interface_ac69502c2d78c4a046c5d3219d637f1b3}{recItem}}.c\_str();\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ conversion\ for\ identification\ as\ framestring\ in\ Frame-\/Class-\/Constructor}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ frameType\ recItemFrame(\&frameStr);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ Frame-\/Class\ derived\ Object}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a7793efd070a56f021ce56a372b13c2fa}{recStack}}.addElement(recItemFrame);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ the\ received\ element\ to\ the\ stack}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_ac69502c2d78c4a046c5d3219d637f1b3}{recItem}}\ =\ \textcolor{stringliteral}{"{}"{}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clear\ rec-\/Item\ }}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>\mbox{\hyperlink{class_comm_interface_base_a2d2742daa73bbbf0b8317391c5c85a19}{getReceivedFrame}}(\&\mbox{\hyperlink{class_service_interface_ac69502c2d78c4a046c5d3219d637f1b3}{recItem}});\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Impart\ memory\ the\ received\ item\ has\ to\ be\ stored\ at\ }}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>receiveCycle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Receive\ new\ frames\ from\ comm-\/interface\ }}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\_interface}}-\/>receiveCycle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Receive\ new\ frames\ from\ comm-\/interface}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \};}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SERVICEINTERFACE\_H}}
 
 \end{DoxyCode}

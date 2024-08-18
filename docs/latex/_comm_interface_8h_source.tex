@@ -1,115 +1,90 @@
 \doxysection{Comm\+Interface.\+h}
 \hypertarget{_comm_interface_8h_source}{}\label{_comm_interface_8h_source}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Interface/CommInterface.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Interface/CommInterface.h}}
-
+\mbox{\hyperlink{_comm_interface_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ COMMINTERFACE\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ COMMINTERFACE\_H}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
-\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include<Frame.h>}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{comment}{//\ Communcation-\/Interface-\/Base-\/Class\ }}
-\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_comm_interface_base}{CommInterfaceBase}}}
-\DoxyCodeLine{00014\ \{}
-\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Setup\ the\ Interface,\ has\ to\ be\ called\ in\ Setup-\/function}}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ setup\_interface()\{\};}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Add\ a\ new\ Frame\ to\ the\ send-\/buffer}}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ sendNewFrame(String*\ sendFrame)\{\};}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Check,\ if\ the\ Frame\ was\ sent\ and\ the\ CommInterface\ is\ ready\ to\ send\ the\ next\ Frame\ }}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ finishedSending()\{\};}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ Define\ the\ destination,\ the\ next\ received\ Frame\ should\ be\ copied\ to\ }}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ getReceivedFrame(String*\ destFrameBuffer)\{\};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Check,\ if\ a\ new\ Frame\ was\ received\ }}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ receivedNewFrame()\{\};}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Execute\ the\ Communication-\/Cycle}}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ execCommunicationCycle()\{\};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_comm_interface_base}{CommInterfaceBase}}(\textcolor{comment}{/*\ args\ */})\{\};}
-\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_comm_interface_base}{\string~CommInterfaceBase}}()\{\};}
-\DoxyCodeLine{00036\ \};}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{comment}{//\ Template\ for\ generic\ communication-\/interface}}
-\DoxyCodeLine{00040\ \textcolor{comment}{//\ specifies\ a\ standardized\ interface\ to\ use\ for\ integrating\ }}
-\DoxyCodeLine{00041\ \textcolor{comment}{//\ any\ hardware-\/interface\ (e.g.\ SoftwareSerial,\ OneWire...)into\ a\ Service\ Interface\ }}
-\DoxyCodeLine{00042\ \textcolor{comment}{//\ The\ template\ ensures\ the\ correct\ handling\ of\ send-\/\ and\ receive-\/buffers\ of\ the\ interface:}}
-\DoxyCodeLine{00043\ \textcolor{comment}{//}}
-\DoxyCodeLine{00044\ \textcolor{comment}{//\ sendBuffer\ set\ to\ nullptr:\ \ \ \ \ \ \ the\ Interface\ is\ ready\ to\ send\ another\ frame}}
-\DoxyCodeLine{00045\ \textcolor{comment}{//\ sendBuffer\ not\ set\ to\ nullptr:\ \ \ the\ frame,\ sendBuffer\ is\ pointing\ to,\ has\ to\ be\ send\ next\ }}
-\DoxyCodeLine{00046\ \textcolor{comment}{//}}
-\DoxyCodeLine{00047\ \textcolor{comment}{//\ recBuffer\ set\ to\ nullptr:\ \ \ \ \ \ \ \ the\ frame\ received\ last\ was\ written\ to\ the\ destination\ successfully,\ no\ new\ receive-\/Buffer\ was\ defined}}
-\DoxyCodeLine{00048\ \textcolor{comment}{//\ recBuffer\ not\ set\ to\ nullptr:\ \ \ \ the\ interface\ is\ waiting\ to\ receive\ a\ new\ frame\ to\ write\ ist\ to\ the\ destination,\ recBuffer\ is\ pointing\ to\ }}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ \textcolor{keywordtype}{int}erface\_type>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_comm_interface}{CommInterface}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_comm_interface_base}{CommInterfaceBase}}\{}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ interface\_type*\ interface;}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ String*\ sendBuffer\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ to\ nullptr\ if\ Frame\ was\ sent\ }}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ String*\ receiveBuffer\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ to\ nullptr\ if\ Frame\ was\ copied\ to\ destination}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Send\ a\ Frame\ }}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ True,\ if\ a\ frame\ was\ send\ successfully\ }}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ send()\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ implementation\ of\ sending\ a\ Frame\ has\ to\ be\ done\ in\ the\ derived\ class}}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Receive\ a\ Frame\ }}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ True,\ if\ a\ new\ Frame\ was\ received}}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ receive()\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ implementation\ of\ receiving\ a\ Frame\ has\ to\ be\ done\ in\ the\ derived\ class}}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ Communication-\/Interface\ }}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comm_interface}{CommInterface}}(interface\_type*\ interface,\ uint32\_t\ baudrate):\ interface(interface)\{\};\ }
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ a\ new\ Frame\ to\ the\ send-\/buffer}}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ sendNewFrame(String*\ sendFrame)\{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sendBuffer\ ==\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sendBuffer\ =\ sendFrame;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ send-\/buffer-\/ptr\ to\ the\ Frame,\ that\ has\ to\ be\ sent\ }}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check,\ if\ the\ Frame\ was\ sent\ and\ the\ CommInterface\ is\ ready\ to\ send\ the\ next\ Frame\ }}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ finishedSending()\{}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sendBuffer==\textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ the\ destination,\ the\ next\ received\ Frame\ should\ be\ copied\ to\ }}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ getReceivedFrame(String*\ destFrameBuffer)\{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ receiveBuffer\ =\ destFrameBuffer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ receive-\/buffer-\/ptr\ to\ the\ destination,\ the\ next\ received\ Frame\ should\ be\ stored\ at\ }}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check,\ if\ a\ new\ Frame\ was\ received\ }}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ receivedNewFrame()\{}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ receiveBuffer==\textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Execution\ of\ receive-\/cycle}}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ receiveCycle()\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Receiving}}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (receive())\ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ receiveBuffer\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ receive-\/buffer\ to\ nullptr\ after\ a\ new\ frame\ was\ received\ }}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Execution\ of\ send-\/cycle}}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ sendCycle()\{\ \ \ }
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sending}}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (send())\{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sendBuffer\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ send-\/buffer\ to\ nullptr\ after\ the\ frame,\ pointed\ to,\ was\ send\ }}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ }
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00108\ \};}
-\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ COMMINTERFACE\_H}}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ COMMINTERFACE\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ COMMINTERFACE\_H}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ <Arduino.h>}\ \ \ \ \textcolor{comment}{//\ include\ Arduino-\/Library\ for\ platformIO-\/build\ }}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ <mockArduino.h>}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }arduinoMocking;}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include<\mbox{\hyperlink{_frame_8h}{Frame.h}}>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_comm_interface_base}{CommInterfaceBase}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comm_interface_base_a28c489a3103fea57a2df4ef6cca41302}{setup\_interface}}()\{\};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comm_interface_base_aec9a9fb6aa77428e8b9a65a33172f6a1}{sendNewFrame}}(String*\ sendFrame)\{\};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_comm_interface_base_a23e0f975ebf29d40bde25eea58465bfa}{finishedSending}}()\{\};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comm_interface_base_a2d2742daa73bbbf0b8317391c5c85a19}{getReceivedFrame}}(String*\ destFrameBuffer)\{\};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_comm_interface_base_a01c285fd2ea35bf3f081ee531e666def}{receivedNewFrame}}()\{\};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_comm_interface_base_ac1c7e099dc4fce9e9c93a93cbf3c133e}{CommInterfaceBase}}()\{\};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_comm_interface_base_a04f23e3fad55bfe5d149e78ec5843388}{\string~CommInterfaceBase}}()\{\};}
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ \textcolor{keywordtype}{int}erface\_type>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_comm_interface}{CommInterface}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_comm_interface_base}{CommInterfaceBase}}\{}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ interface\_type*\ \mbox{\hyperlink{class_comm_interface_a500d5da6b485fc7450fbd8c9afd79374}{interface}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ String*\ \mbox{\hyperlink{class_comm_interface_a158b6fec22811cd97732ca9bada05873}{sendBuffer}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ String*\ \mbox{\hyperlink{class_comm_interface_aa2cedf4d8d25ab2a0a04278c976383d9}{receiveBuffer}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Send\ a\ Frame\ }}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ True,\ if\ a\ frame\ was\ send\ successfully\ }}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_comm_interface_a458e3da4ff47bdf6cc9f0a5f956c80dd}{send}}()\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_comm_interface_a81c74dee239a10522d30900943f64eb2}{receive}}()\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comm_interface_a036d6ee859c4aa352083626e3d852da2}{CommInterface}}(interface\_type*\ \mbox{\hyperlink{class_comm_interface_a500d5da6b485fc7450fbd8c9afd79374}{interface}},\ uint32\_t\ baudrate):\ \mbox{\hyperlink{class_comm_interface_a500d5da6b485fc7450fbd8c9afd79374}{interface}}(\mbox{\hyperlink{class_comm_interface_a500d5da6b485fc7450fbd8c9afd79374}{interface}})\{\};\ }
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comm_interface_a21c8ee8eddb3011e89b950f1b5264664}{sendNewFrame}}(String*\ sendFrame)\{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_comm_interface_a158b6fec22811cd97732ca9bada05873}{sendBuffer}}\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comm_interface_a158b6fec22811cd97732ca9bada05873}{sendBuffer}}\ =\ sendFrame;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ send-\/buffer-\/ptr\ to\ the\ Frame,\ that\ has\ to\ be\ sent\ }}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_comm_interface_a9a27c7221b188bde1632a7c44f79b493}{finishedSending}}()\{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_comm_interface_a158b6fec22811cd97732ca9bada05873}{sendBuffer}}==\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comm_interface_a446d6dfeb4dd695c061f1ff1c926fb51}{getReceivedFrame}}(String*\ destFrameBuffer)\{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comm_interface_aa2cedf4d8d25ab2a0a04278c976383d9}{receiveBuffer}}\ =\ destFrameBuffer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ receive-\/buffer-\/ptr\ to\ the\ destination,\ the\ next\ received\ Frame\ should\ be\ stored\ at\ }}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_comm_interface_aea53cf3e71460f3a662c175958acb643}{receivedNewFrame}}()\{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_comm_interface_aa2cedf4d8d25ab2a0a04278c976383d9}{receiveBuffer}}==\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comm_interface_a86287d0a0ecad690b5182bbe01b7f63f}{receiveCycle}}()\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Receiving}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_comm_interface_a81c74dee239a10522d30900943f64eb2}{receive}}())\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comm_interface_aa2cedf4d8d25ab2a0a04278c976383d9}{receiveBuffer}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comm_interface_a8670e37fdefcfeca579e99b6051fe3da}{sendCycle}}()\{\ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sending}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_comm_interface_a458e3da4ff47bdf6cc9f0a5f956c80dd}{send}}())\{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comm_interface_a158b6fec22811cd97732ca9bada05873}{sendBuffer}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00203\ \};}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ COMMINTERFACE\_H}}
 
 \end{DoxyCode}

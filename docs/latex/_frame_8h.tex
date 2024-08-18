@@ -1,0 +1,42 @@
+\doxysection{/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Frame/\+Frame.h File Reference}
+\hypertarget{_frame_8h}{}\label{_frame_8h}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Frame/Frame.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Frame/Frame.h}}
+{\ttfamily \#include $<$mock\+Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Content.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_frame}{Frame}}
+\begin{DoxyCompactList}\small\item\em Frame-\/\+Class as derived class from \doxylink{class_content}{Content} The derived classes define\+: -\/the conversion from a given payload plus protocol-\/specific parameters (e.\+g. Modbus-\/function-\/code, addresses...) to the frame-\/representation (override of content\+\_\+to\+\_\+rep from Content-\/\+Class) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{_frame_8h_a482f50c6b69835c5a4abdd201a2d40df}{pdu\+String}} = String
+\item 
+\Hypertarget{_frame_8h_a5c5f8c5fd6c391e110556c6ad306b410}\label{_frame_8h_a5c5f8c5fd6c391e110556c6ad306b410} 
+using {\bfseries frame\+String} = const char\texorpdfstring{$\ast$}{*}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Felix Schuelke (\href{mailto:flxscode@gmail.com}{\texttt{ flxscode@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/08-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_frame_8h_a482f50c6b69835c5a4abdd201a2d40df}\index{Frame.h@{Frame.h}!pduString@{pduString}}
+\index{pduString@{pduString}!Frame.h@{Frame.h}}
+\doxysubsubsection{\texorpdfstring{pduString}{pduString}}
+{\footnotesize\ttfamily \label{_frame_8h_a482f50c6b69835c5a4abdd201a2d40df} 
+using \mbox{\hyperlink{_frame_8h_a482f50c6b69835c5a4abdd201a2d40df}{pdu\+String}} = String}
+
+Typedefinitions for Constructor-\/parameters of the Frame-\/class necessary to distinguish between construction from PDU (\doxylink{class_content}{Content}) or from byte-\/frame (Representation) 

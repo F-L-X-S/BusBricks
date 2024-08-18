@@ -92,121 +92,128 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">CommInterface.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef COMMINTERFACE_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define COMMINTERFACE_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">    #include &lt;Arduino.h&gt;</span>    <span class="comment">// include Arduino-Library for platformIO-build </span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">    #include &lt;mockArduino.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">using namespace </span>arduinoMocking;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include&lt;Frame.h&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Communcation-Interface-Base-Class </span></div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_comm_interface_base.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="class_comm_interface_base.html">CommInterfaceBase</a></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// Setup the Interface, has to be called in Setup-function</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">void</span> setup_interface(){};</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// Add a new Frame to the send-buffer</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> sendNewFrame(String* sendFrame){};</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// Check, if the Frame was sent and the CommInterface is ready to send the next Frame </span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">bool</span> finishedSending(){};</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Define the destination, the next received Frame should be copied to </span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> getReceivedFrame(String* destFrameBuffer){};</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// Check, if a new Frame was received </span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">bool</span> receivedNewFrame(){};</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// Execute the Communication-Cycle</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span> execCommunicationCycle(){};</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="class_comm_interface_base.html">CommInterfaceBase</a>(<span class="comment">/* args */</span>){};</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_class" href="class_comm_interface_base.html">~CommInterfaceBase</a>(){};</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
+<a href="_comm_interface_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef COMMINTERFACE_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define COMMINTERFACE_H</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #include &lt;Arduino.h&gt;</span>    <span class="comment">// include Arduino-Library for platformIO-build </span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &lt;mockArduino.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">using namespace </span>arduinoMocking;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include&lt;<a class="code" href="_frame_8h.html">Frame.h</a>&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_comm_interface_base.html">   28</a></span><span class="keyword">class </span><a class="code hl_class" href="class_comm_interface_base.html">CommInterfaceBase</a></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_comm_interface_base.html#a28c489a3103fea57a2df4ef6cca41302">   35</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_comm_interface_base.html#a28c489a3103fea57a2df4ef6cca41302">setup_interface</a>(){};</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_comm_interface_base.html#aec9a9fb6aa77428e8b9a65a33172f6a1">   42</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_comm_interface_base.html#aec9a9fb6aa77428e8b9a65a33172f6a1">sendNewFrame</a>(String* sendFrame){};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_comm_interface_base.html#a23e0f975ebf29d40bde25eea58465bfa">   50</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_comm_interface_base.html#a23e0f975ebf29d40bde25eea58465bfa">finishedSending</a>(){};</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_comm_interface_base.html#a2d2742daa73bbbf0b8317391c5c85a19">   57</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_comm_interface_base.html#a2d2742daa73bbbf0b8317391c5c85a19">getReceivedFrame</a>(String* destFrameBuffer){};</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_comm_interface_base.html#a01c285fd2ea35bf3f081ee531e666def">   65</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_comm_interface_base.html#a01c285fd2ea35bf3f081ee531e666def">receivedNewFrame</a>(){};</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="class_comm_interface_base.html#ac1c7e099dc4fce9e9c93a93cbf3c133e">   71</a></span>    <a class="code hl_function" href="class_comm_interface_base.html#ac1c7e099dc4fce9e9c93a93cbf3c133e">CommInterfaceBase</a>(){};</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="class_comm_interface_base.html#a04f23e3fad55bfe5d149e78ec5843388">   77</a></span>    <a class="code hl_function" href="class_comm_interface_base.html#a04f23e3fad55bfe5d149e78ec5843388">~CommInterfaceBase</a>(){};</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
 </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// Template for generic communication-interface</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// specifies a standardized interface to use for integrating </span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// any hardware-interface (e.g. SoftwareSerial, OneWire...)into a Service Interface </span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">// The template ensures the correct handling of send- and receive-buffers of the interface:</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">//</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// sendBuffer set to nullptr:       the Interface is ready to send another frame</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// sendBuffer not set to nullptr:   the frame, sendBuffer is pointing to, has to be send next </span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">//</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">// recBuffer set to nullptr:        the frame received last was written to the destination successfully, no new receive-Buffer was defined</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// recBuffer not set to nullptr:    the interface is waiting to receive a new frame to write ist to the destination, recBuffer is pointing to </span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">int</span>erface_type&gt;                                       </div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="};">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_comm_interface.html">   51</a></span><span class="keyword">class </span><a class="code hl_class" href="class_comm_interface.html">CommInterface</a>: <span class="keyword">public</span> <a class="code hl_class" href="class_comm_interface_base.html">CommInterfaceBase</a>{</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        interface_type* interface;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        String* sendBuffer = <span class="keyword">nullptr</span>;                              <span class="comment">// set to nullptr if Frame was sent </span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        String* receiveBuffer = <span class="keyword">nullptr</span>;                           <span class="comment">// set to nullptr if Frame was copied to destination</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// Send a Frame </span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="comment">// True, if a frame was send successfully </span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> send() = 0;                                        <span class="comment">// implementation of sending a Frame has to be done in the derived class</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="comment">// Receive a Frame </span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="comment">// True, if a new Frame was received</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> receive() = 0;                                     <span class="comment">// implementation of receiving a Frame has to be done in the derived class</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="comment">// Construct Communication-Interface </span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <a class="code hl_class" href="class_comm_interface.html">CommInterface</a>(interface_type* interface, uint32_t baudrate): interface(interface){}; </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment">// Add a new Frame to the send-buffer</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordtype">void</span> sendNewFrame(String* sendFrame){</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">if</span> (sendBuffer == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                sendBuffer = sendFrame;                                 <span class="comment">// set the send-buffer-ptr to the Frame, that has to be sent </span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        };</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// Check, if the Frame was sent and the CommInterface is ready to send the next Frame </span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordtype">bool</span> finishedSending(){</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordflow">return</span> sendBuffer==<span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        };</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="comment">// Define the destination, the next received Frame should be copied to </span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordtype">void</span> getReceivedFrame(String* destFrameBuffer){</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            receiveBuffer = destFrameBuffer;                            <span class="comment">// set the receive-buffer-ptr to the destination, the next received Frame should be stored at </span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        };</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="comment">// Check, if a new Frame was received </span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">bool</span> receivedNewFrame(){</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">return</span> receiveBuffer==<span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        };</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="comment">// Execution of receive-cycle</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> receiveCycle(){                                     </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="comment">// Receiving</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="keywordflow">if</span> (receive()) {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                receiveBuffer = <span class="keyword">nullptr</span>;                                <span class="comment">// set the receive-buffer to nullptr after a new frame was received </span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            };</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        };</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="comment">// Execution of send-cycle</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> sendCycle(){   </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="comment">// Sending</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <span class="keywordflow">if</span> (send()){</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                sendBuffer = <span class="keyword">nullptr</span>;                                   <span class="comment">// set the send-buffer to nullptr after the frame, pointed to, was send </span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            }; </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        };</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>};</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">int</span>erface_type&gt;                                       </div>
+<div class="foldopen" id="foldopen00095" data-start="{" data-end="};">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="class_comm_interface.html">   95</a></span><span class="keyword">class </span><a class="code hl_class" href="class_comm_interface.html">CommInterface</a>: <span class="keyword">public</span> <a class="code hl_class" href="class_comm_interface_base.html">CommInterfaceBase</a>{</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a500d5da6b485fc7450fbd8c9afd79374">   98</a></span>        interface_type* <a class="code hl_variable" href="class_comm_interface.html#a500d5da6b485fc7450fbd8c9afd79374">interface</a>;                       </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a158b6fec22811cd97732ca9bada05873">  101</a></span>        String* <a class="code hl_variable" href="class_comm_interface.html#a158b6fec22811cd97732ca9bada05873">sendBuffer</a> = <span class="keyword">nullptr</span>;                              </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="class_comm_interface.html#aa2cedf4d8d25ab2a0a04278c976383d9">  104</a></span>        String* <a class="code hl_variable" href="class_comm_interface.html#aa2cedf4d8d25ab2a0a04278c976383d9">receiveBuffer</a> = <span class="keyword">nullptr</span>;                           </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="comment">// Send a Frame </span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="comment">// True, if a frame was send successfully </span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a458e3da4ff47bdf6cc9f0a5f956c80dd">  116</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_comm_interface.html#a458e3da4ff47bdf6cc9f0a5f956c80dd">send</a>() = 0;                                       </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a81c74dee239a10522d30900943f64eb2">  126</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_comm_interface.html#a81c74dee239a10522d30900943f64eb2">receive</a>() = 0;                                     </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a036d6ee859c4aa352083626e3d852da2">  135</a></span>        <a class="code hl_function" href="class_comm_interface.html#a036d6ee859c4aa352083626e3d852da2">CommInterface</a>(interface_type* <a class="code hl_variable" href="class_comm_interface.html#a500d5da6b485fc7450fbd8c9afd79374">interface</a>, uint32_t baudrate): <a class="code hl_variable" href="class_comm_interface.html#a500d5da6b485fc7450fbd8c9afd79374">interface</a>(<a class="code hl_variable" href="class_comm_interface.html#a500d5da6b485fc7450fbd8c9afd79374">interface</a>){}; </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="foldopen" id="foldopen00143" data-start="{" data-end="}">
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a21c8ee8eddb3011e89b950f1b5264664">  143</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_comm_interface.html#a21c8ee8eddb3011e89b950f1b5264664">sendNewFrame</a>(String* sendFrame){</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_comm_interface.html#a158b6fec22811cd97732ca9bada05873">sendBuffer</a> == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            {</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                <a class="code hl_variable" href="class_comm_interface.html#a158b6fec22811cd97732ca9bada05873">sendBuffer</a> = sendFrame;                                 <span class="comment">// set the send-buffer-ptr to the Frame, that has to be sent </span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            }</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        };</div>
 </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">// COMMINTERFACE_H</span></div>
-<div class="ttc" id="aclass_comm_interface_base_html"><div class="ttname"><a href="class_comm_interface_base.html">CommInterfaceBase</a></div><div class="ttdef"><b>Definition</b> CommInterface.h:14</div></div>
-<div class="ttc" id="aclass_comm_interface_html"><div class="ttname"><a href="class_comm_interface.html">CommInterface</a></div><div class="ttdef"><b>Definition</b> CommInterface.h:51</div></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="foldopen" id="foldopen00158" data-start="{" data-end="}">
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a9a27c7221b188bde1632a7c44f79b493">  158</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_comm_interface.html#a9a27c7221b188bde1632a7c44f79b493">finishedSending</a>(){</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_comm_interface.html#a158b6fec22811cd97732ca9bada05873">sendBuffer</a>==<span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        };</div>
+</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="foldopen" id="foldopen00167" data-start="{" data-end="}">
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a446d6dfeb4dd695c061f1ff1c926fb51">  167</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_comm_interface.html#a446d6dfeb4dd695c061f1ff1c926fb51">getReceivedFrame</a>(String* destFrameBuffer){</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            <a class="code hl_variable" href="class_comm_interface.html#aa2cedf4d8d25ab2a0a04278c976383d9">receiveBuffer</a> = destFrameBuffer;                            <span class="comment">// set the receive-buffer-ptr to the destination, the next received Frame should be stored at </span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        };</div>
+</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="foldopen" id="foldopen00178" data-start="{" data-end="}">
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="class_comm_interface.html#aea53cf3e71460f3a662c175958acb643">  178</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_comm_interface.html#aea53cf3e71460f3a662c175958acb643">receivedNewFrame</a>(){</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_comm_interface.html#aa2cedf4d8d25ab2a0a04278c976383d9">receiveBuffer</a>==<span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        };</div>
+</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="foldopen" id="foldopen00186" data-start="{" data-end="}">
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a86287d0a0ecad690b5182bbe01b7f63f">  186</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_comm_interface.html#a86287d0a0ecad690b5182bbe01b7f63f">receiveCycle</a>(){                                     </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            <span class="comment">// Receiving</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_comm_interface.html#a81c74dee239a10522d30900943f64eb2">receive</a>()) {</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                <a class="code hl_variable" href="class_comm_interface.html#aa2cedf4d8d25ab2a0a04278c976383d9">receiveBuffer</a> = <span class="keyword">nullptr</span>;                                </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            };</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        };</div>
+</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        </div>
+<div class="foldopen" id="foldopen00197" data-start="{" data-end="}">
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="class_comm_interface.html#a8670e37fdefcfeca579e99b6051fe3da">  197</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_comm_interface.html#a8670e37fdefcfeca579e99b6051fe3da">sendCycle</a>(){   </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            <span class="comment">// Sending</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_comm_interface.html#a458e3da4ff47bdf6cc9f0a5f956c80dd">send</a>()){</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                <a class="code hl_variable" href="class_comm_interface.html#a158b6fec22811cd97732ca9bada05873">sendBuffer</a> = <span class="keyword">nullptr</span>;                                   </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            }; </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        };</div>
+</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>};</div>
+</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="preprocessor">#endif </span><span class="comment">// COMMINTERFACE_H</span></div>
+<div class="ttc" id="a_frame_8h_html"><div class="ttname"><a href="_frame_8h.html">Frame.h</a></div></div>
+<div class="ttc" id="aclass_comm_interface_base_html"><div class="ttname"><a href="class_comm_interface_base.html">CommInterfaceBase</a></div><div class="ttdoc">Communcation-Interface-Base-Class containing functions, that have to be re-implemented in the derived...</div><div class="ttdef"><b>Definition</b> CommInterface.h:29</div></div>
+<div class="ttc" id="aclass_comm_interface_base_html_a01c285fd2ea35bf3f081ee531e666def"><div class="ttname"><a href="class_comm_interface_base.html#a01c285fd2ea35bf3f081ee531e666def">CommInterfaceBase::receivedNewFrame</a></div><div class="ttdeci">bool receivedNewFrame()</div><div class="ttdoc">Check, if a new Frame was received.</div><div class="ttdef"><b>Definition</b> CommInterface.h:65</div></div>
+<div class="ttc" id="aclass_comm_interface_base_html_a04f23e3fad55bfe5d149e78ec5843388"><div class="ttname"><a href="class_comm_interface_base.html#a04f23e3fad55bfe5d149e78ec5843388">CommInterfaceBase::~CommInterfaceBase</a></div><div class="ttdeci">~CommInterfaceBase()</div><div class="ttdoc">Destroy the Comm-Interface Base object.</div><div class="ttdef"><b>Definition</b> CommInterface.h:77</div></div>
+<div class="ttc" id="aclass_comm_interface_base_html_a23e0f975ebf29d40bde25eea58465bfa"><div class="ttname"><a href="class_comm_interface_base.html#a23e0f975ebf29d40bde25eea58465bfa">CommInterfaceBase::finishedSending</a></div><div class="ttdeci">bool finishedSending()</div><div class="ttdoc">Check, if the Frame was sent and the CommInterface is ready to send the next Frame.</div><div class="ttdef"><b>Definition</b> CommInterface.h:50</div></div>
+<div class="ttc" id="aclass_comm_interface_base_html_a28c489a3103fea57a2df4ef6cca41302"><div class="ttname"><a href="class_comm_interface_base.html#a28c489a3103fea57a2df4ef6cca41302">CommInterfaceBase::setup_interface</a></div><div class="ttdeci">void setup_interface()</div><div class="ttdoc">Setup the Interface has to be called in Setup-function.</div><div class="ttdef"><b>Definition</b> CommInterface.h:35</div></div>
+<div class="ttc" id="aclass_comm_interface_base_html_a2d2742daa73bbbf0b8317391c5c85a19"><div class="ttname"><a href="class_comm_interface_base.html#a2d2742daa73bbbf0b8317391c5c85a19">CommInterfaceBase::getReceivedFrame</a></div><div class="ttdeci">void getReceivedFrame(String *destFrameBuffer)</div><div class="ttdoc">Define the destination, the next received Frame should be copied to ba a pointer to an empty String-O...</div><div class="ttdef"><b>Definition</b> CommInterface.h:57</div></div>
+<div class="ttc" id="aclass_comm_interface_base_html_ac1c7e099dc4fce9e9c93a93cbf3c133e"><div class="ttname"><a href="class_comm_interface_base.html#ac1c7e099dc4fce9e9c93a93cbf3c133e">CommInterfaceBase::CommInterfaceBase</a></div><div class="ttdeci">CommInterfaceBase()</div><div class="ttdoc">Construct a new Comm Interface Base object.</div><div class="ttdef"><b>Definition</b> CommInterface.h:71</div></div>
+<div class="ttc" id="aclass_comm_interface_base_html_aec9a9fb6aa77428e8b9a65a33172f6a1"><div class="ttname"><a href="class_comm_interface_base.html#aec9a9fb6aa77428e8b9a65a33172f6a1">CommInterfaceBase::sendNewFrame</a></div><div class="ttdeci">void sendNewFrame(String *sendFrame)</div><div class="ttdoc">Add a new Frame to the send-buffer.</div><div class="ttdef"><b>Definition</b> CommInterface.h:42</div></div>
+<div class="ttc" id="aclass_comm_interface_html"><div class="ttname"><a href="class_comm_interface.html">CommInterface</a></div><div class="ttdoc">Template for generic communication-interface specifies a standardized interface to use for integratin...</div><div class="ttdef"><b>Definition</b> CommInterface.h:95</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a036d6ee859c4aa352083626e3d852da2"><div class="ttname"><a href="class_comm_interface.html#a036d6ee859c4aa352083626e3d852da2">CommInterface::CommInterface</a></div><div class="ttdeci">CommInterface(interface_type *interface, uint32_t baudrate)</div><div class="ttdoc">Construct a new Comm-Interface object.</div><div class="ttdef"><b>Definition</b> CommInterface.h:135</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a158b6fec22811cd97732ca9bada05873"><div class="ttname"><a href="class_comm_interface.html#a158b6fec22811cd97732ca9bada05873">CommInterface::sendBuffer</a></div><div class="ttdeci">String * sendBuffer</div><div class="ttdoc">pointer to the next frame to be send, set to nullptr if Frame was sent</div><div class="ttdef"><b>Definition</b> CommInterface.h:101</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a21c8ee8eddb3011e89b950f1b5264664"><div class="ttname"><a href="class_comm_interface.html#a21c8ee8eddb3011e89b950f1b5264664">CommInterface::sendNewFrame</a></div><div class="ttdeci">void sendNewFrame(String *sendFrame)</div><div class="ttdoc">Specify the next frame to be sent by the interface, no overwrite, if the sendBuffer is already pointi...</div><div class="ttdef"><b>Definition</b> CommInterface.h:143</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a446d6dfeb4dd695c061f1ff1c926fb51"><div class="ttname"><a href="class_comm_interface.html#a446d6dfeb4dd695c061f1ff1c926fb51">CommInterface::getReceivedFrame</a></div><div class="ttdeci">void getReceivedFrame(String *destFrameBuffer)</div><div class="ttdoc">Define the destination, the next received Frame should be stored at.</div><div class="ttdef"><b>Definition</b> CommInterface.h:167</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a458e3da4ff47bdf6cc9f0a5f956c80dd"><div class="ttname"><a href="class_comm_interface.html#a458e3da4ff47bdf6cc9f0a5f956c80dd">CommInterface::send</a></div><div class="ttdeci">virtual bool send()=0</div><div class="ttdoc">Send the frame, sendBuffer is pointing to (has to be done in the derived class)</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a500d5da6b485fc7450fbd8c9afd79374"><div class="ttname"><a href="class_comm_interface.html#a500d5da6b485fc7450fbd8c9afd79374">CommInterface::interface</a></div><div class="ttdeci">interface_type * interface</div><div class="ttdoc">pointer to an instance of the native bus-interface (setup outside of BusBricks)</div><div class="ttdef"><b>Definition</b> CommInterface.h:98</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a81c74dee239a10522d30900943f64eb2"><div class="ttname"><a href="class_comm_interface.html#a81c74dee239a10522d30900943f64eb2">CommInterface::receive</a></div><div class="ttdeci">virtual bool receive()=0</div><div class="ttdoc">Receive a Frame (has to be done in the derived class)</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a86287d0a0ecad690b5182bbe01b7f63f"><div class="ttname"><a href="class_comm_interface.html#a86287d0a0ecad690b5182bbe01b7f63f">CommInterface::receiveCycle</a></div><div class="ttdeci">virtual void receiveCycle()</div><div class="ttdoc">Execution of receive-cycle, set the receiveBuffer to nullptr after a new frame was received.</div><div class="ttdef"><b>Definition</b> CommInterface.h:186</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a8670e37fdefcfeca579e99b6051fe3da"><div class="ttname"><a href="class_comm_interface.html#a8670e37fdefcfeca579e99b6051fe3da">CommInterface::sendCycle</a></div><div class="ttdeci">virtual void sendCycle()</div><div class="ttdoc">Execution of send-cycle, set the sendBuffer to nullptr, after the frame, sendBuffer was pointing at,...</div><div class="ttdef"><b>Definition</b> CommInterface.h:197</div></div>
+<div class="ttc" id="aclass_comm_interface_html_a9a27c7221b188bde1632a7c44f79b493"><div class="ttname"><a href="class_comm_interface.html#a9a27c7221b188bde1632a7c44f79b493">CommInterface::finishedSending</a></div><div class="ttdeci">bool finishedSending()</div><div class="ttdoc">Check, if the Frame was sent and the CommInterface is ready to send the next Frame Interface is ready...</div><div class="ttdef"><b>Definition</b> CommInterface.h:158</div></div>
+<div class="ttc" id="aclass_comm_interface_html_aa2cedf4d8d25ab2a0a04278c976383d9"><div class="ttname"><a href="class_comm_interface.html#aa2cedf4d8d25ab2a0a04278c976383d9">CommInterface::receiveBuffer</a></div><div class="ttdeci">String * receiveBuffer</div><div class="ttdoc">pointer to String-object, a received frame should be stored at, set to nullptr if Frame was copied to...</div><div class="ttdef"><b>Definition</b> CommInterface.h:104</div></div>
+<div class="ttc" id="aclass_comm_interface_html_aea53cf3e71460f3a662c175958acb643"><div class="ttname"><a href="class_comm_interface.html#aea53cf3e71460f3a662c175958acb643">CommInterface::receivedNewFrame</a></div><div class="ttdeci">bool receivedNewFrame()</div><div class="ttdoc">Check, if a new Frame was received and stored at the in getReceivedFrame specified location the inter...</div><div class="ttdef"><b>Definition</b> CommInterface.h:178</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

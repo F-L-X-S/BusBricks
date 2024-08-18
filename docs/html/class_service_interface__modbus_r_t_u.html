@@ -104,13 +104,14 @@ Inheritance diagram for ServiceInterface_modbusRTU:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa8ce2b3a043c2ed435c84e1b4a2c1cba" id="r_aa8ce2b3a043c2ed435c84e1b4a2c1cba"><td class="memItemLeft" align="right" valign="top"><a id="aa8ce2b3a043c2ed435c84e1b4a2c1cba" name="aa8ce2b3a043c2ed435c84e1b4a2c1cba"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ServiceInterface_modbusRTU</b> (<a class="el" href="class_service_cluster_base.html">ServiceClusterBase</a> *services, <a class="el" href="class_comm_interface__modbus_r_t_u.html">CommInterface_modbusRTU</a> *comm_interface)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ServiceInterface_modbusRTU</b> (<a class="el" href="class_service_cluster_base.html">ServiceClusterBase</a> *<a class="el" href="class_service_interface.html#ad1f915c1a536af5c73aa1315fd035535">services</a>, <a class="el" href="class_comm_interface__modbus_r_t_u.html">CommInterface_modbusRTU</a> *<a class="el" href="class_service_interface.html#a899b6f3e042682b285dca2588b833ae6">comm_interface</a>)</td></tr>
 <tr class="separator:aa8ce2b3a043c2ed435c84e1b4a2c1cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1afd9540b980f8d4d8f2c947ce10a65" id="r_ad1afd9540b980f8d4d8f2c947ce10a65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1afd9540b980f8d4d8f2c947ce10a65">communicate</a> () override</td></tr>
+<tr class="memdesc:ad1afd9540b980f8d4d8f2c947ce10a65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute all relevant tasks for transferring data between <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> and Services: Getting payloads to sent from the Services, adding received payloads to the right Services, Updating communication-stacks, Executing the CommInterfaces send- and receive-cycle (Has to be implemented in the derived class)  <br /></td></tr>
 <tr class="separator:ad1afd9540b980f8d4d8f2c947ce10a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_service_interface"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_service_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_service_interface.html">ServiceInterface&lt; CommInterface_modbusRTU, Frame_modbusRTU &gt;</a></td></tr>
-<tr class="memitem:acc70c85786fa2e133f90683f60ebf67f inherit pub_methods_class_service_interface" id="r_acc70c85786fa2e133f90683f60ebf67f"><td class="memItemLeft" align="right" valign="top">
-&#160;</td><td class="memItemRight" valign="bottom"><b>ServiceInterface</b> (<a class="el" href="class_comm_interface__modbus_r_t_u.html">CommInterface_modbusRTU</a> *comm_interface, <a class="el" href="class_service_cluster_base.html">ServiceClusterBase</a> *services)</td></tr>
+<tr class="memitem:acc70c85786fa2e133f90683f60ebf67f inherit pub_methods_class_service_interface" id="r_acc70c85786fa2e133f90683f60ebf67f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service_interface.html#acc70c85786fa2e133f90683f60ebf67f">ServiceInterface</a> (<a class="el" href="class_comm_interface__modbus_r_t_u.html">CommInterface_modbusRTU</a> *<a class="el" href="class_service_interface.html#a899b6f3e042682b285dca2588b833ae6">comm_interface</a>, <a class="el" href="class_service_cluster_base.html">ServiceClusterBase</a> *<a class="el" href="class_service_interface.html#ad1f915c1a536af5c73aa1315fd035535">services</a>)</td></tr>
+<tr class="memdesc:acc70c85786fa2e133f90683f60ebf67f inherit pub_methods_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> Interface object.  <br /></td></tr>
 <tr class="separator:acc70c85786fa2e133f90683f60ebf67f inherit pub_methods_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -118,31 +119,45 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_service_interface"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_service_interface')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_service_interface.html">ServiceInterface&lt; CommInterface_modbusRTU, Frame_modbusRTU &gt;</a></td></tr>
 <tr class="memitem:a4dffc7c3e366b470e1075db65333b67e inherit pro_methods_class_service_interface" id="r_a4dffc7c3e366b470e1075db65333b67e"><td class="memItemLeft" align="right" valign="top">
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processServices</b> ()</td></tr>
+<tr class="memdesc:a4dffc7c3e366b470e1075db65333b67e inherit pro_methods_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">start the stackProcessing of the registered services <br /></td></tr>
 <tr class="separator:a4dffc7c3e366b470e1075db65333b67e inherit pro_methods_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23feb243ed1748e04dd757aa5f788b3e inherit pro_methods_class_service_interface" id="r_a23feb243ed1748e04dd757aa5f788b3e"><td class="memItemLeft" align="right" valign="top">
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processSendStack</b> ()</td></tr>
+<tr class="memdesc:a23feb243ed1748e04dd757aa5f788b3e inherit pro_methods_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add items from the sendStack to the comm_interface and execute the sendCycle of <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> delete the sent item from the sendStack. <br /></td></tr>
 <tr class="separator:a23feb243ed1748e04dd757aa5f788b3e inherit pro_methods_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c5ec5e13af8a67d1b08c963fcd71214 inherit pro_methods_class_service_interface" id="r_a7c5ec5e13af8a67d1b08c963fcd71214"><td class="memItemLeft" align="right" valign="top">
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processRecStack</b> ()</td></tr>
+<tr class="memdesc:a7c5ec5e13af8a67d1b08c963fcd71214 inherit pro_methods_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add items received by the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the recStack and execute the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s receiveCycle to wait for new incoming frames exit, if the recStack is full or the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> did not received new Frames within the in receiveCycle specified timeout. <br /></td></tr>
 <tr class="separator:a7c5ec5e13af8a67d1b08c963fcd71214 inherit pro_methods_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_service_interface"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_service_interface')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_service_interface.html">ServiceInterface&lt; CommInterface_modbusRTU, Frame_modbusRTU &gt;</a></td></tr>
 <tr class="memitem:a899b6f3e042682b285dca2588b833ae6 inherit pro_attribs_class_service_interface" id="r_a899b6f3e042682b285dca2588b833ae6"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="class_comm_interface__modbus_r_t_u.html">CommInterface_modbusRTU</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>comm_interface</b></td></tr>
+<tr class="memdesc:a899b6f3e042682b285dca2588b833ae6 inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to Communication-Interface (instance of CommInterface-derived class) <br /></td></tr>
 <tr class="separator:a899b6f3e042682b285dca2588b833ae6 inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1f915c1a536af5c73aa1315fd035535 inherit pro_attribs_class_service_interface" id="r_ad1f915c1a536af5c73aa1315fd035535"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="class_service_cluster_base.html">ServiceClusterBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>services</b></td></tr>
+<tr class="memdesc:ad1f915c1a536af5c73aa1315fd035535 inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services the service-cluster is added to the...">ServiceCluster</a>, containing the Services associated with the Interface (instance of ServiceCluster-derived class) <br  />
+ <br /></td></tr>
 <tr class="separator:ad1f915c1a536af5c73aa1315fd035535 inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7793efd070a56f021ce56a372b13c2fa inherit pro_attribs_class_service_interface" id="r_a7793efd070a56f021ce56a372b13c2fa"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="class_content__stack.html">Content_stack</a>&lt; <a class="el" href="class_frame__modbus_r_t_u.html">Frame_modbusRTU</a>, STACKSIZE &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>recStack</b></td></tr>
+<tr class="memdesc:a7793efd070a56f021ce56a372b13c2fa inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">stack for received frames (instance of Content_stack-derived class, specified for type of frames, the bus is using) <br  />
+ <br /></td></tr>
 <tr class="separator:a7793efd070a56f021ce56a372b13c2fa inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38bd169d6286c4ddbda050b7f28d093a inherit pro_attribs_class_service_interface" id="r_a38bd169d6286c4ddbda050b7f28d093a"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="class_content__stack.html">Content_stack</a>&lt; <a class="el" href="class_frame__modbus_r_t_u.html">Frame_modbusRTU</a>, STACKSIZE &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sendStack</b></td></tr>
+<tr class="memdesc:a38bd169d6286c4ddbda050b7f28d093a inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">stack for frames to send next (instance of Content_stack-derived class, specified for type of frames, the bus is using) <br  />
+ <br /></td></tr>
 <tr class="separator:a38bd169d6286c4ddbda050b7f28d093a inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e08cf764cea2084e1f425e32f44d2c1 inherit pro_attribs_class_service_interface" id="r_a1e08cf764cea2084e1f425e32f44d2c1"><td class="memItemLeft" align="right" valign="top">
 String&#160;</td><td class="memItemRight" valign="bottom"><b>sendItem</b></td></tr>
+<tr class="memdesc:a1e08cf764cea2084e1f425e32f44d2c1 inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Item to be sent next <br  />
+ <br /></td></tr>
 <tr class="separator:a1e08cf764cea2084e1f425e32f44d2c1 inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac69502c2d78c4a046c5d3219d637f1b3 inherit pro_attribs_class_service_interface" id="r_ac69502c2d78c4a046c5d3219d637f1b3"><td class="memItemLeft" align="right" valign="top">
 String&#160;</td><td class="memItemRight" valign="bottom"><b>recItem</b></td></tr>
+<tr class="memdesc:ac69502c2d78c4a046c5d3219d637f1b3 inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Item received last <br  />
+ <br /></td></tr>
 <tr class="separator:ac69502c2d78c4a046c5d3219d637f1b3 inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -169,7 +184,9 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>recItem</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_service_interface.html">ServiceInterface&lt; CommInterface_modbusRTU, Frame_modbusRTU &gt;</a>.</p>
+<p>Execute all relevant tasks for transferring data between <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> and Services: Getting payloads to sent from the Services, adding received payloads to the right Services, Updating communication-stacks, Executing the CommInterfaces send- and receive-cycle (Has to be implemented in the derived class) </p>
+
+<p>Implements <a class="el" href="class_service_interface.html#aeaebdad7101c0a66bee56edc4e6a19c1">ServiceInterface&lt; CommInterface_modbusRTU, Frame_modbusRTU &gt;</a>.</p>
 
 </div>
 </div>

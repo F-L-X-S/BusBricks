@@ -1,0 +1,26 @@
+\doxysection{/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Interface/\+Comm\+Interface.h File Reference}
+\hypertarget{_comm_interface_8h}{}\label{_comm_interface_8h}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Interface/CommInterface.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Interface/CommInterface.h}}
+{\ttfamily \#include $<$mock\+Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Frame.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_comm_interface_base}{Comm\+Interface\+Base}}
+\begin{DoxyCompactList}\small\item\em Communcation-\/\+Interface-\/\+Base-\/\+Class containing functions, that have to be re-\/implemented in the derived classes of the Comm\+Interface-\/template but which have to be called in other (abstract) classes (e.\+g. \doxylink{class_service_interface}{Service\+Interface}) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_comm_interface}{Comm\+Interface$<$ interface\+\_\+type $>$}}
+\begin{DoxyCompactList}\small\item\em Template for generic communication-\/interface specifies a standardized interface to use for integrating any hardware-\/interface (e.\+g. Software\+Serial, One\+Wire...) into a Service-\/\+Interface The template ensures the correct handling of send-\/ and receive-\/buffers of the interface\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Felix Schuelke (\href{mailto:flxscode@gmail.com}{\texttt{ flxscode@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/08-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}

@@ -10,40 +10,45 @@ Inheritance diagram for Service\+Interface\+\_\+modbus\+RTU\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_service_interface__modbus_r_t_u_aa8ce2b3a043c2ed435c84e1b4a2c1cba}\label{class_service_interface__modbus_r_t_u_aa8ce2b3a043c2ed435c84e1b4a2c1cba} 
-{\bfseries Service\+Interface\+\_\+modbus\+RTU} (\mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*}services, \mbox{\hyperlink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU}} \texorpdfstring{$\ast$}{*}comm\+\_\+interface)
+{\bfseries Service\+Interface\+\_\+modbus\+RTU} (\mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_service_interface_ad1f915c1a536af5c73aa1315fd035535}{services}}, \mbox{\hyperlink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\+\_\+interface}})
 \item 
 void \mbox{\hyperlink{class_service_interface__modbus_r_t_u_ad1afd9540b980f8d4d8f2c947ce10a65}{communicate}} () override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Execute all relevant tasks for transferring data between \doxylink{class_comm_interface}{Comm\+Interface} and Services\+: Getting payloads to sent from the Services, adding received payloads to the right Services, Updating communication-\/stacks, Executing the Comm\+Interfaces send-\/ and receive-\/cycle (Has to be implemented in the derived class) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_service_interface}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Service\+Interface} (\mbox{\hyperlink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU}} \texorpdfstring{$\ast$}{*}comm\+\_\+interface, \mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*}services)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_service_interface_acc70c85786fa2e133f90683f60ebf67f}{Service\+Interface}} (\mbox{\hyperlink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_service_interface_a899b6f3e042682b285dca2588b833ae6}{comm\+\_\+interface}}, \mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_service_interface_ad1f915c1a536af5c73aa1315fd035535}{services}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_service}{Service} Interface object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_service_interface}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}}
 \begin{DoxyCompactItemize}
 \item 
 virtual void {\bfseries process\+Services} ()
-\item 
+\begin{DoxyCompactList}\small\item\em start the stack\+Processing of the registered services \end{DoxyCompactList}\item 
 virtual void {\bfseries process\+Send\+Stack} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Add items from the send\+Stack to the comm\+\_\+interface and execute the send\+Cycle of \doxylink{class_comm_interface}{Comm\+Interface} delete the sent item from the send\+Stack. \end{DoxyCompactList}\item 
 virtual void {\bfseries process\+Rec\+Stack} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Add items received by the \doxylink{class_comm_interface}{Comm\+Interface} to the rec\+Stack and execute the \doxylink{class_comm_interface}{Comm\+Interface}\textquotesingle{}s receive\+Cycle to wait for new incoming frames exit, if the rec\+Stack is full or the \doxylink{class_comm_interface}{Comm\+Interface} did not received new Frames within the in receive\+Cycle specified timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_service_interface}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU}} \texorpdfstring{$\ast$}{*} {\bfseries comm\+\_\+interface}
-\item 
+\begin{DoxyCompactList}\small\item\em pointer to Communication-\/\+Interface (instance of Comm\+Interface-\/derived class) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}} \texorpdfstring{$\ast$}{*} {\bfseries services}
-\item 
+\begin{DoxyCompactList}\small\item\em pointer to \doxylink{class_service_cluster}{Service\+Cluster}, containing the Services associated with the Interface (instance of Service\+Cluster-\/derived class) ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}}, STACKSIZE $>$ {\bfseries rec\+Stack}
-\item 
+\begin{DoxyCompactList}\small\item\em stack for received frames (instance of Content\+\_\+stack-\/derived class, specified for type of frames, the bus is using) ~\newline
+ \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_content__stack}{Content\+\_\+stack}}$<$ \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}}, STACKSIZE $>$ {\bfseries send\+Stack}
-\item 
+\begin{DoxyCompactList}\small\item\em stack for frames to send next (instance of Content\+\_\+stack-\/derived class, specified for type of frames, the bus is using) ~\newline
+ \end{DoxyCompactList}\item 
 String {\bfseries send\+Item}
-\item 
+\begin{DoxyCompactList}\small\item\em Item to be sent next ~\newline
+ \end{DoxyCompactList}\item 
 String {\bfseries rec\+Item}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Item received last ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -55,7 +60,11 @@ void Service\+Interface\+\_\+modbus\+RTU\+::communicate (\begin{DoxyParamCaption
 
 
 
-Implements \mbox{\hyperlink{class_service_interface}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}.
+Execute all relevant tasks for transferring data between \doxylink{class_comm_interface}{Comm\+Interface} and Services\+: Getting payloads to sent from the Services, adding received payloads to the right Services, Updating communication-\/stacks, Executing the Comm\+Interfaces send-\/ and receive-\/cycle (Has to be implemented in the derived class) 
+
+
+
+Implements \mbox{\hyperlink{class_service_interface_aeaebdad7101c0a66bee56edc4e6a19c1}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}.
 
 
 
