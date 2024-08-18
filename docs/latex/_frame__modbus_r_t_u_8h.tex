@@ -1,0 +1,39 @@
+\doxysection{/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/\+Frame\+\_\+modbus\+RTU.h File Reference}
+\hypertarget{_frame__modbus_r_t_u_8h}{}\label{_frame__modbus_r_t_u_8h}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/ModbusRTU/Frame\_modbusRTU.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/ModbusRTU/Frame\_modbusRTU.h}}
+{\ttfamily \#include $<$mock\+Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Frame.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}}
+\begin{DoxyCompactList}\small\item\em Class for defining the structure of the Modbus-\/\+RTU-\/\+Frame. Can be constructed by a given modbus-\/frame and extracts payload, device-\/id and function-\/code (additionally checking CRC) or by providing payload, device-\/id and function-\/code (additionally calculating CRC). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_frame__modbus_r_t_u_8h_a5b759218acbb3b1a38f7c041d9cc94ea}\label{_frame__modbus_r_t_u_8h_a5b759218acbb3b1a38f7c041d9cc94ea} 
+\#define {\bfseries PREFIXSIZE}~2
+\begin{DoxyCompactList}\small\item\em two bytes prefix in frame before pdu (Device-\/adress, modbus-\/functioncode) \end{DoxyCompactList}\item 
+\Hypertarget{_frame__modbus_r_t_u_8h_a1a4e85f0c42d838071c35c4c5bfa4e26}\label{_frame__modbus_r_t_u_8h_a1a4e85f0c42d838071c35c4c5bfa4e26} 
+\#define {\bfseries SUFFIXSIZE}~2
+\begin{DoxyCompactList}\small\item\em two bytes suffix in frame after pdu (CRC High\+Byte / Low\+Byte) \end{DoxyCompactList}\item 
+\Hypertarget{_frame__modbus_r_t_u_8h_a3c68608186b114292e3b5d467afea323}\label{_frame__modbus_r_t_u_8h_a3c68608186b114292e3b5d467afea323} 
+\#define {\bfseries CRC16\+MASK}~0x\+A001
+\begin{DoxyCompactList}\small\item\em CRC-\/16 mask to use (modbus-\/rtu default 0x\+A001) \end{DoxyCompactList}\item 
+\Hypertarget{_frame__modbus_r_t_u_8h_a1278bf212a9965b29b29c8f0a740ec99}\label{_frame__modbus_r_t_u_8h_a1278bf212a9965b29b29c8f0a740ec99} 
+\#define {\bfseries CRC16\+VALUE}~0x\+FFFF
+\begin{DoxyCompactList}\small\item\em CRC-\/16 startvalue to use (modbus-\/rtu default 0x\+FFFF) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Felix Schuelke (\href{mailto:flxscode@gmail.com}{\texttt{ flxscode@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/08-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}

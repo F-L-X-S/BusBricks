@@ -1,5 +1,14 @@
 \doxysection{Comm\+Interface\+\_\+modbus\+RTU Class Reference}
 \hypertarget{class_comm_interface__modbus_r_t_u}{}\label{class_comm_interface__modbus_r_t_u}\index{CommInterface\_modbusRTU@{CommInterface\_modbusRTU}}
+
+
+The Modbus-\/\+RTU Comm\+Interface-\/class specifies a communication interface with Software\+Serial as interface-\/type and Monitors modbus-\/specific timeouts. Ensures correct data-\/transfer between standardized Frame-\/\+Objects in the Interface-\/\+Stack and Software\+Serial.  
+
+
+
+
+{\ttfamily \#include $<$Comm\+Interface\+\_\+modbus\+RTU.\+h$>$}
+
 Inheritance diagram for Comm\+Interface\+\_\+modbus\+RTU\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,16 +18,17 @@ Inheritance diagram for Comm\+Interface\+\_\+modbus\+RTU\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_comm_interface__modbus_r_t_u_ac349c7e4dafa46ea96d89ed808a67b07}\label{class_comm_interface__modbus_r_t_u_ac349c7e4dafa46ea96d89ed808a67b07} 
-{\bfseries Comm\+Interface\+\_\+modbus\+RTU} (\mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{Software\+Serial}} \texorpdfstring{$\ast$}{*}softwareserial, uint16\+\_\+t baudrate, char device\+Id)
-\item 
+\mbox{\hyperlink{class_comm_interface__modbus_r_t_u_ac349c7e4dafa46ea96d89ed808a67b07}{Comm\+Interface\+\_\+modbus\+RTU}} (\mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{Software\+Serial}} \texorpdfstring{$\ast$}{*}softwareserial, uint16\+\_\+t baudrate, char device\+Id)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_comm_interface__modbus_r_t_u_ae10bee9bfea696f21ab0732420f65241}\label{class_comm_interface__modbus_r_t_u_ae10bee9bfea696f21ab0732420f65241} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Comm\+Interface\+\_\+modbus\+RTU} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU} object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_comm_interface__modbus_r_t_u_a0e78a2a6e3b5b029609c2b16c21bd85b}{send}} () override
-\begin{DoxyCompactList}\small\item\em Send the frame, send\+Buffer is pointing to (has to be done in the derived class) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Override of \doxylink{class_comm_interface}{Comm\+Interface} send-\/function. Send the frame, send\+Buffer is pointing to by writing and flushing Software\+Serial-\/interface. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_comm_interface__modbus_r_t_u_a50b42ad0a40a82ebe5a7749313ca2283}{receive}} () override
-\begin{DoxyCompactList}\small\item\em Receive a \doxylink{class_frame}{Frame} (has to be done in the derived class) \end{DoxyCompactList}\item 
-\Hypertarget{class_comm_interface__modbus_r_t_u_acced18055fd7b7157e66155b1346d20f}\label{class_comm_interface__modbus_r_t_u_acced18055fd7b7157e66155b1346d20f} 
-char {\bfseries get\+Device\+Id} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Receives a Modbus RTU frame and writes it to {\ttfamily receive\+Buffer}. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_comm_interface__modbus_r_t_u_acced18055fd7b7157e66155b1346d20f}{get\+Device\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Get Modbus-\/specific device-\/identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_comm_interface}{Comm\+Interface$<$ Software\+Serial $>$}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -66,7 +76,46 @@ String \texorpdfstring{$\ast$}{*} {\bfseries receive\+Buffer}
 \begin{DoxyCompactList}\small\item\em pointer to String-\/object, a received frame should be stored at, set to nullptr if \doxylink{class_frame}{Frame} was copied to destination \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+The Modbus-\/\+RTU Comm\+Interface-\/class specifies a communication interface with Software\+Serial as interface-\/type and Monitors modbus-\/specific timeouts. Ensures correct data-\/transfer between standardized Frame-\/\+Objects in the Interface-\/\+Stack and Software\+Serial. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_comm_interface__modbus_r_t_u_ac349c7e4dafa46ea96d89ed808a67b07}\index{CommInterface\_modbusRTU@{CommInterface\_modbusRTU}!CommInterface\_modbusRTU@{CommInterface\_modbusRTU}}
+\index{CommInterface\_modbusRTU@{CommInterface\_modbusRTU}!CommInterface\_modbusRTU@{CommInterface\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{CommInterface\_modbusRTU()}{CommInterface\_modbusRTU()}}
+{\footnotesize\ttfamily \label{class_comm_interface__modbus_r_t_u_ac349c7e4dafa46ea96d89ed808a67b07} 
+Comm\+Interface\+\_\+modbus\+RTU\+::\+Comm\+Interface\+\_\+modbus\+RTU (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classarduino_mocking_1_1_software_serial}{Software\+Serial}} \texorpdfstring{$\ast$}{*}}]{softwareserial}{, }\item[{uint16\+\_\+t}]{baudrate}{, }\item[{char}]{device\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{class_comm_interface__modbus_r_t_u}{Comm\+Interface\+\_\+modbus\+RTU} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em softwareserial} & pointer to the Software\+Serial-\/instance, the Comminterface should use ~\newline
+ \\
+\hline
+{\em baudrate} & baudrate in bps to calculate timeouts \\
+\hline
+{\em device\+Id} & Modbus-\/specific device-\/identifier \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_comm_interface__modbus_r_t_u_acced18055fd7b7157e66155b1346d20f}\index{CommInterface\_modbusRTU@{CommInterface\_modbusRTU}!getDeviceId@{getDeviceId}}
+\index{getDeviceId@{getDeviceId}!CommInterface\_modbusRTU@{CommInterface\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{getDeviceId()}{getDeviceId()}}
+{\footnotesize\ttfamily \label{class_comm_interface__modbus_r_t_u_acced18055fd7b7157e66155b1346d20f} 
+char Comm\+Interface\+\_\+modbus\+RTU\+::get\+Device\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get Modbus-\/specific device-\/identifier. 
+
+\begin{DoxyReturn}{Returns}
+char Modbus-\/specific device-\/identifier 
+\end{DoxyReturn}
 \Hypertarget{class_comm_interface__modbus_r_t_u_a50b42ad0a40a82ebe5a7749313ca2283}\index{CommInterface\_modbusRTU@{CommInterface\_modbusRTU}!receive@{receive}}
 \index{receive@{receive}!CommInterface\_modbusRTU@{CommInterface\_modbusRTU}}
 \doxysubsubsection{\texorpdfstring{receive()}{receive()}}
@@ -75,13 +124,28 @@ bool Comm\+Interface\+\_\+modbus\+RTU\+::receive (\begin{DoxyParamCaption}{}{}\e
 
 
 
-Receive a \doxylink{class_frame}{Frame} (has to be done in the derived class) 
+Receives a Modbus RTU frame and writes it to {\ttfamily receive\+Buffer}. 
+
+Waits for incoming bytes for a duration defined by {\ttfamily \+\_\+rec\+Timeout}. If no bytes are received within this period, the function exits. When bytes are received via Software\+Serial, the function starts writing the frame to {\ttfamily receive\+Buffer} once a byte containing the device ID of the {\ttfamily \doxylink{class_comm_interface}{Comm\+Interface}} instance is detected. If the device ID is the null terminator (master mode), all incoming frames are captured. Bytes related to the frame must be received within the {\ttfamily \+\_\+char\+Timeout}.
+
+The function continues receiving until either {\ttfamily MAXFRAMESIZE} is reached or {\ttfamily \+\_\+char\+Timeout} expires. After receiving, it waits for {\ttfamily \+\_\+frame\+Timeout} before clearing the Software\+Serial receive buffer by calling {\ttfamily \+\_\+clear\+Rx\+Buffer}.
 
 \begin{DoxyReturn}{Returns}
-true a new \doxylink{class_frame}{Frame} was received and stored at the String-\/obj, receive\+Buffer is pointing to 
+{\ttfamily true} if a frame was successfully received and written to {\ttfamily receive\+Buffer} within the receive timeout. 
 
-false no new frame was received receive\+Buffer still empty 
+{\ttfamily false} if no frame was received during {\ttfamily \+\_\+rec\+Timeout}.
 \end{DoxyReturn}
+The function operates in two modes\+:
+\begin{DoxyItemize}
+\item {\bfseries{Slave Mode}}\+: Begins receiving only if the frame is addressed to the device\textquotesingle{}s ID.
+\item {\bfseries{Master Mode}}\+: Captures any incoming frame.
+\end{DoxyItemize}
+
+The function does not validate the content of the received frame. It uses timeouts to ensure the entire frame is received and then clears the communication interface\textquotesingle{}s buffer.
+
+\begin{DoxyNote}{Note}
+If {\ttfamily DEBUG} is defined, debugging information is printed to the serial monitor. 
+\end{DoxyNote}
 
 
 Implements \mbox{\hyperlink{class_comm_interface_a81c74dee239a10522d30900943f64eb2}{Comm\+Interface$<$ Software\+Serial $>$}}.
@@ -94,12 +158,12 @@ bool Comm\+Interface\+\_\+modbus\+RTU\+::send (\begin{DoxyParamCaption}{}{}\end{
 
 
 
-Send the frame, send\+Buffer is pointing to (has to be done in the derived class) 
+Override of \doxylink{class_comm_interface}{Comm\+Interface} send-\/function. Send the frame, send\+Buffer is pointing to by writing and flushing Software\+Serial-\/interface. 
 
 \begin{DoxyReturn}{Returns}
-true the frame, the send\+Buffer was pointing to, was sent 
+true frame was flushed to serial-\/bus 
 
-false the frame, the send\+Buffer was pointing to, was not sent or send\+Buffer nullptr (no frame to be sent) 
+false send\+Buffer is nullptr 
 \end{DoxyReturn}
 
 
@@ -109,5 +173,5 @@ Implements \mbox{\hyperlink{class_comm_interface_a458e3da4ff47bdf6cc9f0a5f956c80
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/Comm\+Interface\+\_\+modbus\+RTU.\+h\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/\mbox{\hyperlink{_comm_interface__modbus_r_t_u_8h}{Comm\+Interface\+\_\+modbus\+RTU.\+h}}\item 
 /\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/Comm\+Interface\+\_\+modbus\+RTU.\+cpp\end{DoxyCompactItemize}

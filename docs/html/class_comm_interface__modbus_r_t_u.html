@@ -91,6 +91,11 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">CommInterface_modbusRTU Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interface-type and Monitors modbus-specific timeouts. Ensures correct data-transfer between standardized Frame-Objects in the Interface-Stack and SoftwareSerial.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_comm_interface__modbus_r_t_u_8h_source.html">CommInterface_modbusRTU.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CommInterface_modbusRTU:</div>
 <div class="dyncontent">
@@ -104,17 +109,21 @@ Inheritance diagram for CommInterface_modbusRTU:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac349c7e4dafa46ea96d89ed808a67b07" id="r_ac349c7e4dafa46ea96d89ed808a67b07"><td class="memItemLeft" align="right" valign="top"><a id="ac349c7e4dafa46ea96d89ed808a67b07" name="ac349c7e4dafa46ea96d89ed808a67b07"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CommInterface_modbusRTU</b> (<a class="el" href="classarduino_mocking_1_1_software_serial.html">SoftwareSerial</a> *softwareserial, uint16_t baudrate, char deviceId)</td></tr>
+<tr class="memitem:ac349c7e4dafa46ea96d89ed808a67b07" id="r_ac349c7e4dafa46ea96d89ed808a67b07"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac349c7e4dafa46ea96d89ed808a67b07">CommInterface_modbusRTU</a> (<a class="el" href="classarduino_mocking_1_1_software_serial.html">SoftwareSerial</a> *softwareserial, uint16_t baudrate, char deviceId)</td></tr>
+<tr class="memdesc:ac349c7e4dafa46ea96d89ed808a67b07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_comm_interface__modbus_r_t_u.html" title="The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interfa...">CommInterface_modbusRTU</a> object.  <br /></td></tr>
 <tr class="separator:ac349c7e4dafa46ea96d89ed808a67b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae10bee9bfea696f21ab0732420f65241" id="r_ae10bee9bfea696f21ab0732420f65241"><td class="memItemLeft" align="right" valign="top"><a id="ae10bee9bfea696f21ab0732420f65241" name="ae10bee9bfea696f21ab0732420f65241"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~CommInterface_modbusRTU</b> ()</td></tr>
+<tr class="memdesc:ae10bee9bfea696f21ab0732420f65241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_comm_interface__modbus_r_t_u.html" title="The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interfa...">CommInterface_modbusRTU</a> object. <br /></td></tr>
+<tr class="separator:ae10bee9bfea696f21ab0732420f65241"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e78a2a6e3b5b029609c2b16c21bd85b" id="r_a0e78a2a6e3b5b029609c2b16c21bd85b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e78a2a6e3b5b029609c2b16c21bd85b">send</a> () override</td></tr>
-<tr class="memdesc:a0e78a2a6e3b5b029609c2b16c21bd85b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send the frame, sendBuffer is pointing to (has to be done in the derived class)  <br /></td></tr>
+<tr class="memdesc:a0e78a2a6e3b5b029609c2b16c21bd85b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override of <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> send-function. Send the frame, sendBuffer is pointing to by writing and flushing SoftwareSerial-interface.  <br /></td></tr>
 <tr class="separator:a0e78a2a6e3b5b029609c2b16c21bd85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50b42ad0a40a82ebe5a7749313ca2283" id="r_a50b42ad0a40a82ebe5a7749313ca2283"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50b42ad0a40a82ebe5a7749313ca2283">receive</a> () override</td></tr>
-<tr class="memdesc:a50b42ad0a40a82ebe5a7749313ca2283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> (has to be done in the derived class)  <br /></td></tr>
+<tr class="memdesc:a50b42ad0a40a82ebe5a7749313ca2283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a Modbus RTU frame and writes it to <code>receiveBuffer</code>.  <br /></td></tr>
 <tr class="separator:a50b42ad0a40a82ebe5a7749313ca2283"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acced18055fd7b7157e66155b1346d20f" id="r_acced18055fd7b7157e66155b1346d20f"><td class="memItemLeft" align="right" valign="top"><a id="acced18055fd7b7157e66155b1346d20f" name="acced18055fd7b7157e66155b1346d20f"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>getDeviceId</b> ()</td></tr>
+<tr class="memitem:acced18055fd7b7157e66155b1346d20f" id="r_acced18055fd7b7157e66155b1346d20f"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acced18055fd7b7157e66155b1346d20f">getDeviceId</a> ()</td></tr>
+<tr class="memdesc:acced18055fd7b7157e66155b1346d20f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Modbus-specific device-identifier.  <br /></td></tr>
 <tr class="separator:acced18055fd7b7157e66155b1346d20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_comm_interface"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_comm_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_comm_interface.html">CommInterface&lt; SoftwareSerial &gt;</a></td></tr>
 <tr class="memitem:a036d6ee859c4aa352083626e3d852da2 inherit pub_methods_class_comm_interface" id="r_a036d6ee859c4aa352083626e3d852da2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_interface.html#a036d6ee859c4aa352083626e3d852da2">CommInterface</a> (<a class="el" href="classarduino_mocking_1_1_software_serial.html">SoftwareSerial</a> *<a class="el" href="class_comm_interface.html#a500d5da6b485fc7450fbd8c9afd79374">interface</a>, uint32_t baudrate)</td></tr>
@@ -183,7 +192,67 @@ String *&#160;</td><td class="memItemRight" valign="bottom"><b>receiveBuffer</b>
 <tr class="memdesc:aa2cedf4d8d25ab2a0a04278c976383d9 inherit pro_attribs_class_comm_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to String-object, a received frame should be stored at, set to nullptr if <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> was copied to destination <br /></td></tr>
 <tr class="separator:aa2cedf4d8d25ab2a0a04278c976383d9 inherit pro_attribs_class_comm_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interface-type and Monitors modbus-specific timeouts. Ensures correct data-transfer between standardized Frame-Objects in the Interface-Stack and SoftwareSerial. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac349c7e4dafa46ea96d89ed808a67b07" name="ac349c7e4dafa46ea96d89ed808a67b07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac349c7e4dafa46ea96d89ed808a67b07">&#9670;&#160;</a></span>CommInterface_modbusRTU()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CommInterface_modbusRTU::CommInterface_modbusRTU </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classarduino_mocking_1_1_software_serial.html">SoftwareSerial</a> *</td>          <td class="paramname"><span class="paramname"><em>softwareserial</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>baudrate</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>deviceId</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="class_comm_interface__modbus_r_t_u.html" title="The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interfa...">CommInterface_modbusRTU</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">softwareserial</td><td>pointer to the SoftwareSerial-instance, the Comminterface should use <br  />
+ </td></tr>
+    <tr><td class="paramname">baudrate</td><td>baudrate in bps to calculate timeouts </td></tr>
+    <tr><td class="paramname">deviceId</td><td>Modbus-specific device-identifier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="acced18055fd7b7157e66155b1346d20f" name="acced18055fd7b7157e66155b1346d20f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acced18055fd7b7157e66155b1346d20f">&#9670;&#160;</a></span>getDeviceId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char CommInterface_modbusRTU::getDeviceId </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get Modbus-specific device-identifier. </p>
+<dl class="section return"><dt>Returns</dt><dd>char Modbus-specific device-identifier </dd></dl>
+
+</div>
+</div>
 <a id="a50b42ad0a40a82ebe5a7749313ca2283" name="a50b42ad0a40a82ebe5a7749313ca2283"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50b42ad0a40a82ebe5a7749313ca2283">&#9670;&#160;</a></span>receive()</h2>
 
@@ -207,10 +276,18 @@ String *&#160;</td><td class="memItemRight" valign="bottom"><b>receiveBuffer</b>
 </table>
 </div><div class="memdoc">
 
-<p>Receive a <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> (has to be done in the derived class) </p>
-<dl class="section return"><dt>Returns</dt><dd>true a new <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> was received and stored at the String-obj, receiveBuffer is pointing to </dd>
+<p>Receives a Modbus RTU frame and writes it to <code>receiveBuffer</code>. </p>
+<p>Waits for incoming bytes for a duration defined by <code>_recTimeout</code>. If no bytes are received within this period, the function exits. When bytes are received via SoftwareSerial, the function starts writing the frame to <code>receiveBuffer</code> once a byte containing the device ID of the <code><a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a></code> instance is detected. If the device ID is the null terminator (master mode), all incoming frames are captured. Bytes related to the frame must be received within the <code>_charTimeout</code>.</p>
+<p>The function continues receiving until either <code>MAXFRAMESIZE</code> is reached or <code>_charTimeout</code> expires. After receiving, it waits for <code>_frameTimeout</code> before clearing the SoftwareSerial receive buffer by calling <code>_clearRxBuffer</code>.</p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if a frame was successfully received and written to <code>receiveBuffer</code> within the receive timeout. </dd>
 <dd>
-false no new frame was received receiveBuffer still empty </dd></dl>
+<code>false</code> if no frame was received during <code>_recTimeout</code>.</dd></dl>
+<p>The function operates in two modes:</p><ul>
+<li><b>Slave Mode</b>: Begins receiving only if the frame is addressed to the device's ID.</li>
+<li><b>Master Mode</b>: Captures any incoming frame.</li>
+</ul>
+<p>The function does not validate the content of the received frame. It uses timeouts to ensure the entire frame is received and then clears the communication interface's buffer.</p>
+<dl class="section note"><dt>Note</dt><dd>If <code>DEBUG</code> is defined, debugging information is printed to the serial monitor. </dd></dl>
 
 <p>Implements <a class="el" href="class_comm_interface.html#a81c74dee239a10522d30900943f64eb2">CommInterface&lt; SoftwareSerial &gt;</a>.</p>
 
@@ -239,10 +316,10 @@ false no new frame was received receiveBuffer still empty </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>Send the frame, sendBuffer is pointing to (has to be done in the derived class) </p>
-<dl class="section return"><dt>Returns</dt><dd>true the frame, the sendBuffer was pointing to, was sent </dd>
+<p>Override of <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> send-function. Send the frame, sendBuffer is pointing to by writing and flushing SoftwareSerial-interface. </p>
+<dl class="section return"><dt>Returns</dt><dd>true frame was flushed to serial-bus </dd>
 <dd>
-false the frame, the sendBuffer was pointing to, was not sent or sendBuffer nullptr (no frame to be sent) </dd></dl>
+false sendBuffer is nullptr </dd></dl>
 
 <p>Implements <a class="el" href="class_comm_interface.html#a458e3da4ff47bdf6cc9f0a5f956c80dd">CommInterface&lt; SoftwareSerial &gt;</a>.</p>
 

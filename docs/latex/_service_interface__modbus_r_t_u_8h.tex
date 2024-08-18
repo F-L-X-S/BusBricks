@@ -1,0 +1,27 @@
+\doxysection{/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/\+Service\+Interface\+\_\+modbus\+RTU.h File Reference}
+\hypertarget{_service_interface__modbus_r_t_u_8h}{}\label{_service_interface__modbus_r_t_u_8h}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/ModbusRTU/ServiceInterface\_modbusRTU.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/ModbusRTU/ServiceInterface\_modbusRTU.h}}
+{\ttfamily \#include $<$mock\+Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Service\+Interface.\+h$>$}\newline
+{\ttfamily \#include $<$Comm\+Interface\+\_\+modbus\+RTU.\+h$>$}\newline
+{\ttfamily \#include $<$Frame\+\_\+modbus\+RTU.\+h$>$}\newline
+{\ttfamily \#include $<$Message\+\_\+service.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_service_interface__modbus_r_t_u}{Service\+Interface\+\_\+modbus\+RTU}}
+\begin{DoxyCompactList}\small\item\em Service-\/\+Interface-\/class for Modbus-\/\+RTU\+: Impart incoming frames from the \doxylink{class_comm_interface}{Comm\+Interface} to the designated service of the service-\/cluster. Build outgoing modbus-\/\+RTU-\/frames from the payload provided by the services and impart them to the Communication-\/\+Interface. The service-\/\+IDs of the associated services are mapped to the modbus-\/rtu-\/function-\/code. If a \doxylink{class_frame}{Frame} is sent by a modbus-\/slave device, the frame\textquotesingle{}s slave-\/id is the same as the sender-\/id (and the local device-\/id). If a \doxylink{class_frame}{Frame} is sent by a modbus-\/device in mastermode, the frame\textquotesingle{}s slave-\/id is the receiver-\/id provided by the service, that provided the payload for the frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Felix Schuelke (\href{mailto:flxscode@gmail.com}{\texttt{ flxscode@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/08-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}

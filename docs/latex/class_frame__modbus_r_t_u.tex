@@ -1,5 +1,14 @@
 \doxysection{Frame\+\_\+modbus\+RTU Class Reference}
 \hypertarget{class_frame__modbus_r_t_u}{}\label{class_frame__modbus_r_t_u}\index{Frame\_modbusRTU@{Frame\_modbusRTU}}
+
+
+Class for defining the structure of the Modbus-\/\+RTU-\/\+Frame. Can be constructed by a given modbus-\/frame and extracts payload, device-\/id and function-\/code (additionally checking CRC) or by providing payload, device-\/id and function-\/code (additionally calculating CRC).  
+
+
+
+
+{\ttfamily \#include $<$Frame\+\_\+modbus\+RTU.\+h$>$}
+
 Inheritance diagram for Frame\+\_\+modbus\+RTU\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,24 +18,24 @@ Inheritance diagram for Frame\+\_\+modbus\+RTU\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_frame__modbus_r_t_u_a6009ce4dda11184e6e0055baf09b280a}\label{class_frame__modbus_r_t_u_a6009ce4dda11184e6e0055baf09b280a} 
-{\bfseries Frame\+\_\+modbus\+RTU} (\mbox{\hyperlink{_frame_8h_a482f50c6b69835c5a4abdd201a2d40df}{pdu\+String}} \texorpdfstring{$\ast$}{*}pdu, char \texorpdfstring{$\ast$}{*}slave\+Id, char \texorpdfstring{$\ast$}{*}function\+Code)
-\item 
-\Hypertarget{class_frame__modbus_r_t_u_a591ed00bcf27673a8534bfdb07dfa121}\label{class_frame__modbus_r_t_u_a591ed00bcf27673a8534bfdb07dfa121} 
-{\bfseries Frame\+\_\+modbus\+RTU} (frame\+String \texorpdfstring{$\ast$}{*}frame)
-\item 
-\Hypertarget{class_frame__modbus_r_t_u_aeefc27c92fbcc096f4181869e918712e}\label{class_frame__modbus_r_t_u_aeefc27c92fbcc096f4181869e918712e} 
-{\bfseries Frame\+\_\+modbus\+RTU} (const \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}} \&other)
-\item 
-\Hypertarget{class_frame__modbus_r_t_u_af22baa4f3962f3f4e9d9d86c2155bc45}\label{class_frame__modbus_r_t_u_af22baa4f3962f3f4e9d9d86c2155bc45} 
-\mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}} \&other)
-\item 
-\Hypertarget{class_frame__modbus_r_t_u_a4c47818dc37cda1cd7ba792989bcb0ea}\label{class_frame__modbus_r_t_u_a4c47818dc37cda1cd7ba792989bcb0ea} 
-bool {\bfseries check\+CRC16} ()
-\item 
-\Hypertarget{class_frame__modbus_r_t_u_a02b47ac99a90a57c64b17f291190b13d}\label{class_frame__modbus_r_t_u_a02b47ac99a90a57c64b17f291190b13d} 
-char {\bfseries get\+Function\+Code} ()
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_frame__modbus_r_t_u_a6009ce4dda11184e6e0055baf09b280a}{Frame\+\_\+modbus\+RTU}} (\mbox{\hyperlink{_frame_8h_a482f50c6b69835c5a4abdd201a2d40df}{pdu\+String}} \texorpdfstring{$\ast$}{*}pdu, char \texorpdfstring{$\ast$}{*}slave\+Id, char \texorpdfstring{$\ast$}{*}function\+Code)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU} object by PDU, modbus-\/slave-\/\+ID and modus-\/function-\/code. Object calculates and adds the CRC16, the Modbus-\/\+Slave-\/\+ID and the Modbus-\/\+Function-\/\+Code and concatenates them to the modbus-\/frame (representation) by calling content\+\_\+to\+\_\+rep during construction. Allocate heap-\/memory (buffer) to the frame-\/representation and let the \doxylink{class_content}{Content}\textquotesingle{}s representation (parent-\/class-\/template) point to that buffer on heap. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_frame__modbus_r_t_u_a591ed00bcf27673a8534bfdb07dfa121}{Frame\+\_\+modbus\+RTU}} (frame\+String \texorpdfstring{$\ast$}{*}frame)
+\begin{DoxyCompactList}\small\item\em Construct Modbus-\/\+RTU-\/\+Frame from given Byte-\/\+Frame (Representation). Copy the representation, the argument is pointing to, to heap-\/memory and let by calling copy\+\_\+to\+\_\+heap and let \doxylink{class_content}{Content}\textquotesingle{}s representation (parent-\/class-\/template) point to that buffer on heap. Extract Payload, device-\/\+ID and function-\/\+Code. Check the CRC16 for plausibility by checking rest = 0. \end{DoxyCompactList}\item 
+\Hypertarget{class_frame__modbus_r_t_u_ac8bde306d324d44d9d6adc6bc718e3a5}\label{class_frame__modbus_r_t_u_ac8bde306d324d44d9d6adc6bc718e3a5} 
+{\bfseries Frame\+\_\+modbus\+RTU} ()
+\begin{DoxyCompactList}\small\item\em Construct empty Modbus-\/\+RTU-\/\+Frame. \end{DoxyCompactList}\item 
+\Hypertarget{class_frame__modbus_r_t_u_a981fc8dff661e9ac46ea378f17a28e9a}\label{class_frame__modbus_r_t_u_a981fc8dff661e9ac46ea378f17a28e9a} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Frame\+\_\+modbus\+RTU} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_frame__modbus_r_t_u_aeefc27c92fbcc096f4181869e918712e}{Frame\+\_\+modbus\+RTU}} (const \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}} \& \mbox{\hyperlink{class_frame__modbus_r_t_u_af22baa4f3962f3f4e9d9d86c2155bc45}{operator=}} (const \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}} \&other)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_frame__modbus_r_t_u_a4c47818dc37cda1cd7ba792989bcb0ea}{check\+CRC16}} ()
+\begin{DoxyCompactList}\small\item\em Verifies the CRC16 checksum of the current Modbus RTU frame. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_frame__modbus_r_t_u_a02b47ac99a90a57c64b17f291190b13d}{get\+Function\+Code}} ()
+\begin{DoxyCompactList}\small\item\em Get the Modbus-\/\+RTU-\/function-\/code of the frame-\/instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_frame}{Frame}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -66,7 +75,117 @@ frame\+String {\bfseries representation}
  \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Class for defining the structure of the Modbus-\/\+RTU-\/\+Frame. Can be constructed by a given modbus-\/frame and extracts payload, device-\/id and function-\/code (additionally checking CRC) or by providing payload, device-\/id and function-\/code (additionally calculating CRC). 
+
+Because the frame-\/representation is stored as a reference, the representation has to be allocated on the heap-\/memory (buffer) The allocation is done during the conversion from "{}\+Content"{} (construction by PDU) within the content\+\_\+to\+\_\+rep-\/function or it has to be initiated by calling the function "{}copy\+\_\+to\+\_\+heap"{} (e.\+g. in copy-\/constructor or during construction by frame-\/representation) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_frame__modbus_r_t_u_a6009ce4dda11184e6e0055baf09b280a}\index{Frame\_modbusRTU@{Frame\_modbusRTU}!Frame\_modbusRTU@{Frame\_modbusRTU}}
+\index{Frame\_modbusRTU@{Frame\_modbusRTU}!Frame\_modbusRTU@{Frame\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{Frame\_modbusRTU()}{Frame\_modbusRTU()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_frame__modbus_r_t_u_a6009ce4dda11184e6e0055baf09b280a} 
+Frame\+\_\+modbus\+RTU\+::\+Frame\+\_\+modbus\+RTU (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_frame_8h_a482f50c6b69835c5a4abdd201a2d40df}{pdu\+String}} \texorpdfstring{$\ast$}{*}}]{pdu}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{slave\+Id}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{function\+Code}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU} object by PDU, modbus-\/slave-\/\+ID and modus-\/function-\/code. Object calculates and adds the CRC16, the Modbus-\/\+Slave-\/\+ID and the Modbus-\/\+Function-\/\+Code and concatenates them to the modbus-\/frame (representation) by calling content\+\_\+to\+\_\+rep during construction. Allocate heap-\/memory (buffer) to the frame-\/representation and let the \doxylink{class_content}{Content}\textquotesingle{}s representation (parent-\/class-\/template) point to that buffer on heap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdu} & \\
+\hline
+{\em slave\+Id} & \\
+\hline
+{\em function\+Code} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_frame__modbus_r_t_u_a591ed00bcf27673a8534bfdb07dfa121}\index{Frame\_modbusRTU@{Frame\_modbusRTU}!Frame\_modbusRTU@{Frame\_modbusRTU}}
+\index{Frame\_modbusRTU@{Frame\_modbusRTU}!Frame\_modbusRTU@{Frame\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{Frame\_modbusRTU()}{Frame\_modbusRTU()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_frame__modbus_r_t_u_a591ed00bcf27673a8534bfdb07dfa121} 
+Frame\+\_\+modbus\+RTU\+::\+Frame\+\_\+modbus\+RTU (\begin{DoxyParamCaption}\item[{frame\+String \texorpdfstring{$\ast$}{*}}]{frame}{}\end{DoxyParamCaption})}
+
+
+
+Construct Modbus-\/\+RTU-\/\+Frame from given Byte-\/\+Frame (Representation). Copy the representation, the argument is pointing to, to heap-\/memory and let by calling copy\+\_\+to\+\_\+heap and let \doxylink{class_content}{Content}\textquotesingle{}s representation (parent-\/class-\/template) point to that buffer on heap. Extract Payload, device-\/\+ID and function-\/\+Code. Check the CRC16 for plausibility by checking rest = 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & const char\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} to a modbus-\/rtu-\/frame to construct the Frame-\/object from \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_frame__modbus_r_t_u_aeefc27c92fbcc096f4181869e918712e}\index{Frame\_modbusRTU@{Frame\_modbusRTU}!Frame\_modbusRTU@{Frame\_modbusRTU}}
+\index{Frame\_modbusRTU@{Frame\_modbusRTU}!Frame\_modbusRTU@{Frame\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{Frame\_modbusRTU()}{Frame\_modbusRTU()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_frame__modbus_r_t_u_aeefc27c92fbcc096f4181869e918712e} 
+Frame\+\_\+modbus\+RTU\+::\+Frame\+\_\+modbus\+RTU (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+Initializes a new \doxylink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU} object as a copy of another \doxylink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \doxylink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU} object to copy.\\
+\hline
+\end{DoxyParams}
+This constructor performs a deep copy of all the data from {\ttfamily other}, ensuring that the new object is an exact copy of the source object. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_frame__modbus_r_t_u_a4c47818dc37cda1cd7ba792989bcb0ea}\index{Frame\_modbusRTU@{Frame\_modbusRTU}!checkCRC16@{checkCRC16}}
+\index{checkCRC16@{checkCRC16}!Frame\_modbusRTU@{Frame\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{checkCRC16()}{checkCRC16()}}
+{\footnotesize\ttfamily \label{class_frame__modbus_r_t_u_a4c47818dc37cda1cd7ba792989bcb0ea} 
+bool Frame\+\_\+modbus\+RTU\+::check\+CRC16 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifies the CRC16 checksum of the current Modbus RTU frame. 
+
+This function calculates the CRC16 checksum of the frame\textquotesingle{}s representation and checks whether it is correct.
+
+\begin{DoxyReturn}{Returns}
+true if the CRC16 checksum is correct, {\ttfamily false} otherwise.
+\end{DoxyReturn}
+The function creates a temporary buffer, copies the frame\textquotesingle{}s representation to it, and then compares the calculated CRC16 checksum with the expected value. The temporary buffer is deleted after use. \Hypertarget{class_frame__modbus_r_t_u_a02b47ac99a90a57c64b17f291190b13d}\index{Frame\_modbusRTU@{Frame\_modbusRTU}!getFunctionCode@{getFunctionCode}}
+\index{getFunctionCode@{getFunctionCode}!Frame\_modbusRTU@{Frame\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{getFunctionCode()}{getFunctionCode()}}
+{\footnotesize\ttfamily \label{class_frame__modbus_r_t_u_a02b47ac99a90a57c64b17f291190b13d} 
+char Frame\+\_\+modbus\+RTU\+::get\+Function\+Code (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the Modbus-\/\+RTU-\/function-\/code of the frame-\/instance. 
+
+\begin{DoxyReturn}{Returns}
+char Modbus-\/\+RTU-\/function-\/code of the frame-\/instance 
+\end{DoxyReturn}
+\Hypertarget{class_frame__modbus_r_t_u_af22baa4f3962f3f4e9d9d86c2155bc45}\index{Frame\_modbusRTU@{Frame\_modbusRTU}!operator=@{operator=}}
+\index{operator=@{operator=}!Frame\_modbusRTU@{Frame\_modbusRTU}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_frame__modbus_r_t_u_af22baa4f3962f3f4e9d9d86c2155bc45} 
+\mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}} \& Frame\+\_\+modbus\+RTU\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+This operator assigns the values from another object of the same type to the current object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \doxylink{class_frame__modbus_r_t_u}{Frame\+\_\+modbus\+RTU} object whose values will be assigned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the current object after assignment.
+\end{DoxyReturn}
+This operator performs a deep copy of the data from {\ttfamily other}, ensuring that the current object becomes an exact copy of {\ttfamily other}. 
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/Frame\+\_\+modbus\+RTU.\+h\item 
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/\mbox{\hyperlink{_frame__modbus_r_t_u_8h}{Frame\+\_\+modbus\+RTU.\+h}}\item 
 /\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Modbus\+RTU/Frame\+\_\+modbus\+RTU.\+cpp\end{DoxyCompactItemize}
