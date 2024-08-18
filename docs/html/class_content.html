@@ -94,47 +94,53 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="class_content.html" title="Content and representation The cascading of processing information and the rules applied to it lead t...">Content</a> and representation The cascading of processing information and the rules applied to it lead to the concept of content- and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called <a class="el" href="class_content.html" title="Content and representation The cascading of processing information and the rules applied to it lead t...">Content</a>. Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called representation.  
+<p>The cascading of processing information and the rules applied to it lead to the concept of content- and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a>. Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called representation.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_content_8h_source.html">Content.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2d300bab9c7fe3f9efb537139d8efba9" id="r_a2d300bab9c7fe3f9efb537139d8efba9"><td class="memItemLeft" align="right" valign="top"><a id="a2d300bab9c7fe3f9efb537139d8efba9" name="a2d300bab9c7fe3f9efb537139d8efba9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Content</b> (content_type content)</td></tr>
+<tr class="memitem:a2d300bab9c7fe3f9efb537139d8efba9" id="r_a2d300bab9c7fe3f9efb537139d8efba9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d300bab9c7fe3f9efb537139d8efba9">Content</a> (content_type <a class="el" href="#a5078d76f7e6118f67e1f158692650d5b">content</a>)</td></tr>
+<tr class="memdesc:a2d300bab9c7fe3f9efb537139d8efba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a> object from an instance from type content_type (content itself)  <br /></td></tr>
 <tr class="separator:a2d300bab9c7fe3f9efb537139d8efba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a017ed819c621340a1c77c59f93729c42" id="r_a017ed819c621340a1c77c59f93729c42"><td class="memItemLeft" align="right" valign="top"><a id="a017ed819c621340a1c77c59f93729c42" name="a017ed819c621340a1c77c59f93729c42"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Content</b> (representation_type representation)</td></tr>
+<tr class="memitem:a017ed819c621340a1c77c59f93729c42" id="r_a017ed819c621340a1c77c59f93729c42"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a017ed819c621340a1c77c59f93729c42">Content</a> (representation_type <a class="el" href="#aa667f2d6f2ec335fb5ac1204f4cdc0b8">representation</a>)</td></tr>
+<tr class="memdesc:a017ed819c621340a1c77c59f93729c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a> object from it's representation from type representation_type.  <br /></td></tr>
 <tr class="separator:a017ed819c621340a1c77c59f93729c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a206c6c8ebf9f5f84c571d8d9dfbdd40c" id="r_a206c6c8ebf9f5f84c571d8d9dfbdd40c"><td class="memItemLeft" align="right" valign="top"><a id="a206c6c8ebf9f5f84c571d8d9dfbdd40c" name="a206c6c8ebf9f5f84c571d8d9dfbdd40c"></a>
-representation_type *&#160;</td><td class="memItemRight" valign="bottom"><b>get_representation</b> ()</td></tr>
+<tr class="memitem:a206c6c8ebf9f5f84c571d8d9dfbdd40c" id="r_a206c6c8ebf9f5f84c571d8d9dfbdd40c"><td class="memItemLeft" align="right" valign="top">representation_type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a206c6c8ebf9f5f84c571d8d9dfbdd40c">get_representation</a> ()</td></tr>
+<tr class="memdesc:a206c6c8ebf9f5f84c571d8d9dfbdd40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the address of the informations representation of type representation-type.  <br /></td></tr>
 <tr class="separator:a206c6c8ebf9f5f84c571d8d9dfbdd40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a3cdbe54fb690a53a5a4fda109fd044" id="r_a5a3cdbe54fb690a53a5a4fda109fd044"><td class="memItemLeft" align="right" valign="top"><a id="a5a3cdbe54fb690a53a5a4fda109fd044" name="a5a3cdbe54fb690a53a5a4fda109fd044"></a>
-content_type *&#160;</td><td class="memItemRight" valign="bottom"><b>get_content</b> ()</td></tr>
+<tr class="memitem:a5a3cdbe54fb690a53a5a4fda109fd044" id="r_a5a3cdbe54fb690a53a5a4fda109fd044"><td class="memItemLeft" align="right" valign="top">content_type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a3cdbe54fb690a53a5a4fda109fd044">get_content</a> ()</td></tr>
+<tr class="memdesc:a5a3cdbe54fb690a53a5a4fda109fd044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the address of the informations content of type content_type.  <br /></td></tr>
 <tr class="separator:a5a3cdbe54fb690a53a5a4fda109fd044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:abac5c5b29b85a4abbd5dc5f09ce03d46" id="r_abac5c5b29b85a4abbd5dc5f09ce03d46"><td class="memItemLeft" align="right" valign="top"><a id="abac5c5b29b85a4abbd5dc5f09ce03d46" name="abac5c5b29b85a4abbd5dc5f09ce03d46"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>rep_to_content</b> ()=0</td></tr>
+<tr class="memdesc:abac5c5b29b85a4abbd5dc5f09ce03d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the mapping from Representation to <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a>. Convert the class-attribute "representation" to the class-attribute "content". (has to be defined in derived class) (has to be called in the constructor of the derived class) <br /></td></tr>
 <tr class="separator:abac5c5b29b85a4abbd5dc5f09ce03d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f6eb4cb7073a5dc6c30d8566caff6c5" id="r_a1f6eb4cb7073a5dc6c30d8566caff6c5"><td class="memItemLeft" align="right" valign="top"><a id="a1f6eb4cb7073a5dc6c30d8566caff6c5" name="a1f6eb4cb7073a5dc6c30d8566caff6c5"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>content_to_rep</b> ()=0</td></tr>
+<tr class="memdesc:a1f6eb4cb7073a5dc6c30d8566caff6c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the mapping from <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a> to Representation. Convert the class-attribute "content"to the class-attribute "representation" . (has to be defined in derived class) (has to be called in the constructor of the derived class) <br /></td></tr>
 <tr class="separator:a1f6eb4cb7073a5dc6c30d8566caff6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a5078d76f7e6118f67e1f158692650d5b" id="r_a5078d76f7e6118f67e1f158692650d5b"><td class="memItemLeft" align="right" valign="top"><a id="a5078d76f7e6118f67e1f158692650d5b" name="a5078d76f7e6118f67e1f158692650d5b"></a>
 content_type&#160;</td><td class="memItemRight" valign="bottom"><b>content</b></td></tr>
+<tr class="memdesc:a5078d76f7e6118f67e1f158692650d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a> of an information (view on information (content) closer to Service-Layer) <br  />
+ <br /></td></tr>
 <tr class="separator:a5078d76f7e6118f67e1f158692650d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa667f2d6f2ec335fb5ac1204f4cdc0b8" id="r_aa667f2d6f2ec335fb5ac1204f4cdc0b8"><td class="memItemLeft" align="right" valign="top"><a id="aa667f2d6f2ec335fb5ac1204f4cdc0b8" name="aa667f2d6f2ec335fb5ac1204f4cdc0b8"></a>
 representation_type&#160;</td><td class="memItemRight" valign="bottom"><b>representation</b></td></tr>
+<tr class="memdesc:aa667f2d6f2ec335fb5ac1204f4cdc0b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representation of an information (view on information (content) closer to physical layer) <br  />
+ <br /></td></tr>
 <tr class="separator:aa667f2d6f2ec335fb5ac1204f4cdc0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename content_type, typename representation_type&gt;<br />
-class Content&lt; content_type, representation_type &gt;</div><p><a class="el" href="class_content.html" title="Content and representation The cascading of processing information and the rules applied to it lead t...">Content</a> and representation The cascading of processing information and the rules applied to it lead to the concept of content- and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called <a class="el" href="class_content.html" title="Content and representation The cascading of processing information and the rules applied to it lead t...">Content</a>. Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called representation. </p>
+class Content&lt; content_type, representation_type &gt;</div><p>The cascading of processing information and the rules applied to it lead to the concept of content- and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a>. Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called representation. </p>
 <dl class="section author"><dt>Author</dt><dd>Felix Schuelke </dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -143,7 +149,139 @@ class Content&lt; content_type, representation_type &gt;</div><p><a class="el" h
   </table>
   </dd>
 </dl>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2d300bab9c7fe3f9efb537139d8efba9" name="a2d300bab9c7fe3f9efb537139d8efba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d300bab9c7fe3f9efb537139d8efba9">&#9670;&#160;</a></span>Content() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename content_type , typename representation_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_content.html">Content</a>&lt; content_type, representation_type &gt;<a class="el" href="class_content.html">::Content</a> </td>
+          <td>(</td>
+          <td class="paramtype">content_type</td>          <td class="paramname"><span class="paramname"><em>content</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a> object from an instance from type content_type (content itself) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">content</td><td>information (content itself) of type content_type </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a017ed819c621340a1c77c59f93729c42" name="a017ed819c621340a1c77c59f93729c42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a017ed819c621340a1c77c59f93729c42">&#9670;&#160;</a></span>Content() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename content_type , typename representation_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_content.html">Content</a>&lt; content_type, representation_type &gt;<a class="el" href="class_content.html">::Content</a> </td>
+          <td>(</td>
+          <td class="paramtype">representation_type</td>          <td class="paramname"><span class="paramname"><em>representation</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a> object from it's representation from type representation_type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">representation</td><td>representation of the information (content) from type representation_type </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5a3cdbe54fb690a53a5a4fda109fd044" name="a5a3cdbe54fb690a53a5a4fda109fd044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3cdbe54fb690a53a5a4fda109fd044">&#9670;&#160;</a></span>get_content()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename content_type , typename representation_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">content_type * <a class="el" href="class_content.html">Content</a>&lt; content_type, representation_type &gt;::get_content </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the address of the informations content of type content_type. </p>
+<dl class="section return"><dt>Returns</dt><dd>content_type* </dd></dl>
+
+</div>
+</div>
+<a id="a206c6c8ebf9f5f84c571d8d9dfbdd40c" name="a206c6c8ebf9f5f84c571d8d9dfbdd40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a206c6c8ebf9f5f84c571d8d9dfbdd40c">&#9670;&#160;</a></span>get_representation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename content_type , typename representation_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">representation_type * <a class="el" href="class_content.html">Content</a>&lt; content_type, representation_type &gt;::get_representation </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the address of the informations representation of type representation-type. </p>
+<dl class="section return"><dt>Returns</dt><dd>representation_type* pointer to the informations representation </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/felixschulke/Developement/Arduino/Modbus_RTU/Modbus_RTU/Modbus-RTU/lib/Service/<a class="el" href="_content_8h_source.html">Content.h</a></li>
 </ul>
 </div><!-- contents -->

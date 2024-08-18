@@ -94,7 +94,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Template for generic Service-Interface Defines the handling of incoming frames from <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to services stored in the associated <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services the service-cluster is added to the...">ServiceCluster</a> and the conversion from PDU provided by Services in the <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services the service-cluster is added to the...">ServiceCluster</a> to frames, getting sent by the communication-interface.  
+<p>Template for generic Service-Interface Defines the handling of incoming frames from <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to services stored in the associated <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> and the conversion from PDU provided by Services in the <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> to frames, getting sent by the communication-interface.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_service_interface_8h_source.html">ServiceInterface.h</a>&gt;</code></p>
@@ -124,11 +124,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processServic
 <tr class="separator:a4dffc7c3e366b470e1075db65333b67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23feb243ed1748e04dd757aa5f788b3e" id="r_a23feb243ed1748e04dd757aa5f788b3e"><td class="memItemLeft" align="right" valign="top"><a id="a23feb243ed1748e04dd757aa5f788b3e" name="a23feb243ed1748e04dd757aa5f788b3e"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processSendStack</b> ()</td></tr>
-<tr class="memdesc:a23feb243ed1748e04dd757aa5f788b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add items from the sendStack to the comm_interface and execute the sendCycle of <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> delete the sent item from the sendStack. <br /></td></tr>
+<tr class="memdesc:a23feb243ed1748e04dd757aa5f788b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is getting pointers to the representation of the <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> on the bottom of the stack. The pointer to the string-formatted representation is imparted to the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> as teh next frame to be sent by calling sendNewFrame. Then the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s sendCycle get's executed. Exit, after the sendStack is empty. <br /></td></tr>
 <tr class="separator:a23feb243ed1748e04dd757aa5f788b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c5ec5e13af8a67d1b08c963fcd71214" id="r_a7c5ec5e13af8a67d1b08c963fcd71214"><td class="memItemLeft" align="right" valign="top"><a id="a7c5ec5e13af8a67d1b08c963fcd71214" name="a7c5ec5e13af8a67d1b08c963fcd71214"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processRecStack</b> ()</td></tr>
-<tr class="memdesc:a7c5ec5e13af8a67d1b08c963fcd71214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add items received by the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the recStack and execute the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s receiveCycle to wait for new incoming frames exit, if the recStack is full or the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> did not received new Frames within the in receiveCycle specified timeout. <br /></td></tr>
+<tr class="memitem:a7c5ec5e13af8a67d1b08c963fcd71214" id="r_a7c5ec5e13af8a67d1b08c963fcd71214"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c5ec5e13af8a67d1b08c963fcd71214">processRecStack</a> ()</td></tr>
+<tr class="memdesc:a7c5ec5e13af8a67d1b08c963fcd71214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add items received by the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the recStack and execute the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s receiveCycle to wait for new incoming frames. Exit, if the recStack is full or the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> did not received new Frames within the in receiveCycle specified timeout.  <br /></td></tr>
 <tr class="separator:a7c5ec5e13af8a67d1b08c963fcd71214"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -139,7 +138,7 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a899b6f3e042682b285dca2588b833ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1f915c1a536af5c73aa1315fd035535" id="r_ad1f915c1a536af5c73aa1315fd035535"><td class="memItemLeft" align="right" valign="top"><a id="ad1f915c1a536af5c73aa1315fd035535" name="ad1f915c1a536af5c73aa1315fd035535"></a>
 <a class="el" href="class_service_cluster_base.html">ServiceClusterBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>services</b></td></tr>
-<tr class="memdesc:ad1f915c1a536af5c73aa1315fd035535"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services the service-cluster is added to the...">ServiceCluster</a>, containing the Services associated with the Interface (instance of ServiceCluster-derived class) <br  />
+<tr class="memdesc:ad1f915c1a536af5c73aa1315fd035535"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a>, containing the Services associated with the Interface (instance of ServiceCluster-derived class) <br  />
  <br /></td></tr>
 <tr class="separator:ad1f915c1a536af5c73aa1315fd035535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7793efd070a56f021ce56a372b13c2fa" id="r_a7793efd070a56f021ce56a372b13c2fa"><td class="memItemLeft" align="right" valign="top"><a id="a7793efd070a56f021ce56a372b13c2fa" name="a7793efd070a56f021ce56a372b13c2fa"></a>
@@ -165,7 +164,7 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>recItem</b></td></t
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInterfaceBase</a>, typename frameType&gt;<br />
-class ServiceInterface&lt; CommInterfaceBase, frameType &gt;</div><p>Template for generic Service-Interface Defines the handling of incoming frames from <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to services stored in the associated <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services the service-cluster is added to the...">ServiceCluster</a> and the conversion from PDU provided by Services in the <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services the service-cluster is added to the...">ServiceCluster</a> to frames, getting sent by the communication-interface. </p>
+class ServiceInterface&lt; CommInterfaceBase, frameType &gt;</div><p>Template for generic Service-Interface Defines the handling of incoming frames from <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to services stored in the associated <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> and the conversion from PDU provided by Services in the <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> to frames, getting sent by the communication-interface. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname"><a class="el" href="class_comm_interface_base.html" title="Communcation-Interface-Base-Class containing functions, that have to be re-implemented in the derived...">CommInterfaceBase</a></td><td>type of <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to use, derived Class of the abstract CommInterface-Class (e.g. <a class="el" href="class_comm_interface__modbus_r_t_u.html">CommInterface_modbusRTU</a>) </td></tr>
@@ -243,6 +242,36 @@ template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInt
 <p>Execute all relevant tasks for transferring data between <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> and Services: Getting payloads to sent from the Services, adding received payloads to the right Services, Updating communication-stacks, Executing the CommInterfaces send- and receive-cycle (Has to be implemented in the derived class) </p>
 
 <p>Implemented in <a class="el" href="class_service_interface__modbus_r_t_u.html#ad1afd9540b980f8d4d8f2c947ce10a65">ServiceInterface_modbusRTU</a>.</p>
+
+</div>
+</div>
+<a id="a7c5ec5e13af8a67d1b08c963fcd71214" name="a7c5ec5e13af8a67d1b08c963fcd71214"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c5ec5e13af8a67d1b08c963fcd71214">&#9670;&#160;</a></span>processRecStack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInterfaceBase</a> , typename frameType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="class_service_interface.html">ServiceInterface</a>&lt; <a class="el" href="class_comm_interface_base.html">CommInterfaceBase</a>, frameType &gt;::processRecStack </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add items received by the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the recStack and execute the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s receiveCycle to wait for new incoming frames. Exit, if the recStack is full or the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> did not received new Frames within the in receiveCycle specified timeout. </p>
+<p>If the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> received a new frame (that means, it's recBuffer is set to nullptr), the function creates the Frame-instance (specified by frameType) from it's recItem and adds it to the recStack. Then it initializes the recItem and imparts it's reference to the comm_interface by calling getReceivedFrame. The <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> is now storing the next <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> received at this address. After specifying the destination for received frames for ComInterface, the receiveCycle is executed again, to wait for incoming Frames. </p>
 
 </div>
 </div>

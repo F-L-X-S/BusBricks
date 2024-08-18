@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_7ecomminterfacebase_0',['~CommInterfaceBase',['../class_comm_interface_base.html#a04f23e3fad55bfe5d149e78ec5843388',1,'CommInterfaceBase']]],
-  ['_7eframe_1',['~Frame',['../class_frame.html#abec8c7bccdfc88cb4da137caae9f73d6',1,'Frame']]]
+  ['processrecstack_0',['processRecStack',['../class_service_interface.html#a7c5ec5e13af8a67d1b08c963fcd71214',1,'ServiceInterface']]],
+  ['processsendstack_1',['processSendStack',['../class_service_interface.html#a23feb243ed1748e04dd757aa5f788b3e',1,'ServiceInterface']]],
+  ['processservices_2',['processServices',['../class_service_interface.html#a4dffc7c3e366b470e1075db65333b67e',1,'ServiceInterface']]]
 ];

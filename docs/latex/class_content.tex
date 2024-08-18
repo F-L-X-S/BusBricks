@@ -2,7 +2,7 @@
 \hypertarget{class_content}{}\label{class_content}\index{Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}}
 
 
-\doxylink{class_content}{Content} and representation The cascading of processing information and the rules applied to it lead to the concept of content-\/ and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called \doxylink{class_content}{Content}. Conversely, the format, the information has after applying the rules of the next level closer to "{}\+Layer-\/0"{} is called representation.  
+The cascading of processing information and the rules applied to it lead to the concept of content-\/ and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called \doxylink{class_content}{Content}. Conversely, the format, the information has after applying the rules of the next level closer to "{}\+Layer-\/0"{} is called representation.  
 
 
 
@@ -12,42 +12,40 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_content_a2d300bab9c7fe3f9efb537139d8efba9}\label{class_content_a2d300bab9c7fe3f9efb537139d8efba9} 
-{\bfseries Content} (content\+\_\+type content)
-\item 
-\Hypertarget{class_content_a017ed819c621340a1c77c59f93729c42}\label{class_content_a017ed819c621340a1c77c59f93729c42} 
-{\bfseries Content} (representation\+\_\+type representation)
-\item 
-\Hypertarget{class_content_a206c6c8ebf9f5f84c571d8d9dfbdd40c}\label{class_content_a206c6c8ebf9f5f84c571d8d9dfbdd40c} 
-representation\+\_\+type \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+representation} ()
-\item 
-\Hypertarget{class_content_a5a3cdbe54fb690a53a5a4fda109fd044}\label{class_content_a5a3cdbe54fb690a53a5a4fda109fd044} 
-content\+\_\+type \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+content} ()
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_content_a2d300bab9c7fe3f9efb537139d8efba9}{Content}} (content\+\_\+type \mbox{\hyperlink{class_content_a5078d76f7e6118f67e1f158692650d5b}{content}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_content}{Content} object from an instance from type content\+\_\+type (content itself) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_content_a017ed819c621340a1c77c59f93729c42}{Content}} (representation\+\_\+type \mbox{\hyperlink{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8}{representation}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_content}{Content} object from it\textquotesingle{}s representation from type representation\+\_\+type. \end{DoxyCompactList}\item 
+representation\+\_\+type \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content_a206c6c8ebf9f5f84c571d8d9dfbdd40c}{get\+\_\+representation}} ()
+\begin{DoxyCompactList}\small\item\em Get the address of the informations representation of type representation-\/type. \end{DoxyCompactList}\item 
+content\+\_\+type \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content_a5a3cdbe54fb690a53a5a4fda109fd044}{get\+\_\+content}} ()
+\begin{DoxyCompactList}\small\item\em Get the address of the informations content of type content\+\_\+type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_content_abac5c5b29b85a4abbd5dc5f09ce03d46}\label{class_content_abac5c5b29b85a4abbd5dc5f09ce03d46} 
 virtual void {\bfseries rep\+\_\+to\+\_\+content} ()=0
-\item 
+\begin{DoxyCompactList}\small\item\em Defines the mapping from Representation to \doxylink{class_content}{Content}. Convert the class-\/attribute "{}representation"{} to the class-\/attribute "{}content"{}. (has to be defined in derived class) (has to be called in the constructor of the derived class) \end{DoxyCompactList}\item 
 \Hypertarget{class_content_a1f6eb4cb7073a5dc6c30d8566caff6c5}\label{class_content_a1f6eb4cb7073a5dc6c30d8566caff6c5} 
 virtual void {\bfseries content\+\_\+to\+\_\+rep} ()=0
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Defines the mapping from \doxylink{class_content}{Content} to Representation. Convert the class-\/attribute "{}content"{}to the class-\/attribute "{}representation"{} . (has to be defined in derived class) (has to be called in the constructor of the derived class) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_content_a5078d76f7e6118f67e1f158692650d5b}\label{class_content_a5078d76f7e6118f67e1f158692650d5b} 
 content\+\_\+type {\bfseries content}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{class_content}{Content} of an information (view on information (content) closer to Service-\/\+Layer) ~\newline
+ \end{DoxyCompactList}\item 
 \Hypertarget{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8}\label{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8} 
 representation\+\_\+type {\bfseries representation}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Representation of an information (view on information (content) closer to physical layer) ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$typename content\+\_\+type, typename representation\+\_\+type$>$\newline
 class Content$<$ content\+\_\+type, representation\+\_\+type $>$}
-\doxylink{class_content}{Content} and representation The cascading of processing information and the rules applied to it lead to the concept of content-\/ and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called \doxylink{class_content}{Content}. Conversely, the format, the information has after applying the rules of the next level closer to "{}\+Layer-\/0"{} is called representation. 
+The cascading of processing information and the rules applied to it lead to the concept of content-\/ and representation. In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called \doxylink{class_content}{Content}. Conversely, the format, the information has after applying the rules of the next level closer to "{}\+Layer-\/0"{} is called representation. 
 
 \begin{DoxyAuthor}{Author}
 Felix Schuelke 
@@ -61,6 +59,72 @@ Felix Schuelke
 \end{DoxyTemplParams}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_content_a2d300bab9c7fe3f9efb537139d8efba9}\index{Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}!Content@{Content}}
+\index{Content@{Content}!Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}}
+\doxysubsubsection{\texorpdfstring{Content()}{Content()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_content_a2d300bab9c7fe3f9efb537139d8efba9} 
+template$<$typename content\+\_\+type , typename representation\+\_\+type $>$ \\
+\mbox{\hyperlink{class_content}{Content}}$<$ content\+\_\+type, representation\+\_\+type $>$\mbox{\hyperlink{class_content}{\+::\+Content}} (\begin{DoxyParamCaption}\item[{content\+\_\+type}]{content}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_content}{Content} object from an instance from type content\+\_\+type (content itself) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em content} & information (content itself) of type content\+\_\+type \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_content_a017ed819c621340a1c77c59f93729c42}\index{Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}!Content@{Content}}
+\index{Content@{Content}!Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}}
+\doxysubsubsection{\texorpdfstring{Content()}{Content()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_content_a017ed819c621340a1c77c59f93729c42} 
+template$<$typename content\+\_\+type , typename representation\+\_\+type $>$ \\
+\mbox{\hyperlink{class_content}{Content}}$<$ content\+\_\+type, representation\+\_\+type $>$\mbox{\hyperlink{class_content}{\+::\+Content}} (\begin{DoxyParamCaption}\item[{representation\+\_\+type}]{representation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_content}{Content} object from it\textquotesingle{}s representation from type representation\+\_\+type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em representation} & representation of the information (content) from type representation\+\_\+type \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_content_a5a3cdbe54fb690a53a5a4fda109fd044}\index{Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}!get\_content@{get\_content}}
+\index{get\_content@{get\_content}!Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_content()}{get\_content()}}
+{\footnotesize\ttfamily \label{class_content_a5a3cdbe54fb690a53a5a4fda109fd044} 
+template$<$typename content\+\_\+type , typename representation\+\_\+type $>$ \\
+content\+\_\+type \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content}{Content}}$<$ content\+\_\+type, representation\+\_\+type $>$\+::get\+\_\+content (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the address of the informations content of type content\+\_\+type. 
+
+\begin{DoxyReturn}{Returns}
+content\+\_\+type\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{class_content_a206c6c8ebf9f5f84c571d8d9dfbdd40c}\index{Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}!get\_representation@{get\_representation}}
+\index{get\_representation@{get\_representation}!Content$<$ content\_type, representation\_type $>$@{Content$<$ content\_type, representation\_type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_representation()}{get\_representation()}}
+{\footnotesize\ttfamily \label{class_content_a206c6c8ebf9f5f84c571d8d9dfbdd40c} 
+template$<$typename content\+\_\+type , typename representation\+\_\+type $>$ \\
+representation\+\_\+type \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content}{Content}}$<$ content\+\_\+type, representation\+\_\+type $>$\+::get\+\_\+representation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the address of the informations representation of type representation-\/type. 
+
+\begin{DoxyReturn}{Returns}
+representation\+\_\+type\texorpdfstring{$\ast$}{*} pointer to the informations representation 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Service/Content.\+h\end{DoxyCompactItemize}
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Service/\mbox{\hyperlink{_content_8h}{Content.\+h}}\end{DoxyCompactItemize}

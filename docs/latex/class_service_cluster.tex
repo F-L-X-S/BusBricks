@@ -2,7 +2,7 @@
 \hypertarget{class_service_cluster}{}\label{class_service_cluster}\index{ServiceCluster$<$ number\_of\_services $>$@{ServiceCluster$<$ number\_of\_services $>$}}
 
 
-The \doxylink{class_service_cluster}{Service\+Cluster} provides functions to manage multiple services the service-\/cluster is added to the service-\/interface and contains the references to all services, associated with the interface.  
+The \doxylink{class_service_cluster}{Service\+Cluster} provides functions to manage multiple services. The \doxylink{class_service_cluster}{Service\+Cluster} is added to the \doxylink{class_service_interface}{Service\+Interface} and contains references to all services, associated with the interface.  
 
 
 
@@ -18,22 +18,25 @@ Inheritance diagram for Service\+Cluster\texorpdfstring{$<$}{<} number\+\_\+of\+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_service_cluster_a3fddf1a55492bf5438cd55bb9d4cc91f}\label{class_service_cluster_a3fddf1a55492bf5438cd55bb9d4cc91f} 
-{\bfseries Service\+Cluster} (\mbox{\hyperlink{class_service_base}{Service\+Base}} \texorpdfstring{$\ast$}{*}service\+List\mbox{[}number\+\_\+of\+\_\+services\mbox{]})
-\item 
+\mbox{\hyperlink{class_service_cluster_a3fddf1a55492bf5438cd55bb9d4cc91f}{Service\+Cluster}} (\mbox{\hyperlink{class_service_base}{Service\+Base}} \texorpdfstring{$\ast$}{*}service\+List\mbox{[}number\+\_\+of\+\_\+services\mbox{]})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_service}{Service} Cluster object from associated services. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_service_base}{Service\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_cluster_ae40a5207d621ccd428297ae8f3bbbf40}{get\+Service\+\_\+by\+ID}} (uint8\+\_\+t Service\+ID) override
-\item 
+\begin{DoxyCompactList}\small\item\em Get pointer to the service with the given service-\/\+ID by iterating through the associated services and calling their get\+\_\+\+Service\+ID-\/function. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_service_base}{Service\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_cluster_a9e24f14fb13116a5f7bb7a551b8c5d22}{get\+Service\+\_\+by\+Pos}} (uint8\+\_\+t Service\+Position) override
-\item 
+\begin{DoxyCompactList}\small\item\em Get pointer to the service at a specific position in the cluster (positions starting by zero) \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{class_service_cluster_a507a50d20b2764c77200a73971935971}{get\+Number\+Of\+Services}} () const override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get the total Number Of Services-\/objects associated to the cluster. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Service\+Cluster\+Base} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_service}{Service} Cluster Base object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$uint8\+\_\+t number\+\_\+of\+\_\+services$>$\newline
 class Service\+Cluster$<$ number\+\_\+of\+\_\+services $>$}
-The \doxylink{class_service_cluster}{Service\+Cluster} provides functions to manage multiple services the service-\/cluster is added to the service-\/interface and contains the references to all services, associated with the interface. 
+The \doxylink{class_service_cluster}{Service\+Cluster} provides functions to manage multiple services. The \doxylink{class_service_cluster}{Service\+Cluster} is added to the \doxylink{class_service_interface}{Service\+Interface} and contains references to all services, associated with the interface. 
 
 \begin{DoxyAuthor}{Author}
 Felix Schuelke 
@@ -43,6 +46,25 @@ Felix Schuelke
 {\em number\+\_\+of\+\_\+services} & number of service-\/instances, the cluster contains \\
 \hline
 \end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_service_cluster_a3fddf1a55492bf5438cd55bb9d4cc91f}\index{ServiceCluster$<$ number\_of\_services $>$@{ServiceCluster$<$ number\_of\_services $>$}!ServiceCluster@{ServiceCluster}}
+\index{ServiceCluster@{ServiceCluster}!ServiceCluster$<$ number\_of\_services $>$@{ServiceCluster$<$ number\_of\_services $>$}}
+\doxysubsubsection{\texorpdfstring{ServiceCluster()}{ServiceCluster()}}
+{\footnotesize\ttfamily \label{class_service_cluster_a3fddf1a55492bf5438cd55bb9d4cc91f} 
+template$<$uint8\+\_\+t number\+\_\+of\+\_\+services$>$ \\
+\mbox{\hyperlink{class_service_cluster}{Service\+Cluster}}$<$ number\+\_\+of\+\_\+services $>$\mbox{\hyperlink{class_service_cluster}{\+::\+Service\+Cluster}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_service_base}{Service\+Base}} \texorpdfstring{$\ast$}{*}}]{service\+List}{\mbox{[}number\+\_\+of\+\_\+services\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_service}{Service} Cluster object from associated services. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em service\+List} & Array of references to the associated services \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -55,7 +77,14 @@ uint8\+\_\+t \mbox{\hyperlink{class_service_cluster}{Service\+Cluster}}$<$ numbe
 
 
 
-Implements \mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}}.
+Get the total Number Of Services-\/objects associated to the cluster. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t total Number Of Services-\/objects associated to the cluster 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_service_cluster_base_acbc08bddc57dbe90665216f5b2dedd35}{Service\+Cluster\+Base}}.
 
 \Hypertarget{class_service_cluster_ae40a5207d621ccd428297ae8f3bbbf40}\index{ServiceCluster$<$ number\_of\_services $>$@{ServiceCluster$<$ number\_of\_services $>$}!getService\_byID@{getService\_byID}}
 \index{getService\_byID@{getService\_byID}!ServiceCluster$<$ number\_of\_services $>$@{ServiceCluster$<$ number\_of\_services $>$}}
@@ -66,7 +95,19 @@ template$<$uint8\+\_\+t number\+\_\+of\+\_\+services$>$ \\
 
 
 
-Implements \mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}}.
+Get pointer to the service with the given service-\/\+ID by iterating through the associated services and calling their get\+\_\+\+Service\+ID-\/function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Service\+ID} & 1-\/byte service-\/\+ID (unique for service-\/class) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Service\+Base\texorpdfstring{$\ast$}{*} pointer to the service with the given ID 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_service_cluster_base_ae025282a6ef15d01eaba440bdf73a750}{Service\+Cluster\+Base}}.
 
 \Hypertarget{class_service_cluster_a9e24f14fb13116a5f7bb7a551b8c5d22}\index{ServiceCluster$<$ number\_of\_services $>$@{ServiceCluster$<$ number\_of\_services $>$}!getService\_byPos@{getService\_byPos}}
 \index{getService\_byPos@{getService\_byPos}!ServiceCluster$<$ number\_of\_services $>$@{ServiceCluster$<$ number\_of\_services $>$}}
@@ -77,10 +118,22 @@ template$<$uint8\+\_\+t number\+\_\+of\+\_\+services$>$ \\
 
 
 
-Implements \mbox{\hyperlink{class_service_cluster_base}{Service\+Cluster\+Base}}.
+Get pointer to the service at a specific position in the cluster (positions starting by zero) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Service\+Position} & position of the service in the cluster (0-\/based) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Service\+Base\texorpdfstring{$\ast$}{*} pointer to the service at the given position 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_service_cluster_base_a15023dc39ae2ceeb678d38f9bb51b172}{Service\+Cluster\+Base}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Service/Service\+Cluster.\+h\end{DoxyCompactItemize}
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Service/\mbox{\hyperlink{_service_cluster_8h}{Service\+Cluster.\+h}}\end{DoxyCompactItemize}

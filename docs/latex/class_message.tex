@@ -13,7 +13,7 @@ Inheritance diagram for Message\+:\begin{figure}[H]
 {\bfseries Message} (bool boolean\+\_\+expression)
 \item 
 \Hypertarget{class_message_a0f9ed77d7adc95866f8347931ce972b9}\label{class_message_a0f9ed77d7adc95866f8347931ce972b9} 
-{\bfseries Message} (String \texorpdfstring{$\ast$}{*}representation)
+{\bfseries Message} (String \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8}{representation}})
 \item 
 \Hypertarget{class_message_ad4a2faf03fc02e47bcdd909fb091d71e}\label{class_message_ad4a2faf03fc02e47bcdd909fb091d71e} 
 {\bfseries Message} (\mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} \texorpdfstring{$\ast$}{*}message\+\_\+content)
@@ -24,23 +24,25 @@ String {\bfseries to\+\_\+string} ()
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_content}{Content$<$ Message\+\_\+content\+\_\+t, String $>$}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Content} (\mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} content)
-\item 
-{\bfseries Content} (String representation)
-\item 
-String \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+representation} ()
-\item 
-\mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+content} ()
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_content_a2d300bab9c7fe3f9efb537139d8efba9}{Content}} (\mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} \mbox{\hyperlink{class_content_a5078d76f7e6118f67e1f158692650d5b}{content}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_content}{Content} object from an instance from type content\+\_\+type (content itself) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_content_a017ed819c621340a1c77c59f93729c42}{Content}} (String \mbox{\hyperlink{class_content_aa667f2d6f2ec335fb5ac1204f4cdc0b8}{representation}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_content}{Content} object from it\textquotesingle{}s representation from type representation\+\_\+type. \end{DoxyCompactList}\item 
+String \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content_a206c6c8ebf9f5f84c571d8d9dfbdd40c}{get\+\_\+representation}} ()
+\begin{DoxyCompactList}\small\item\em Get the address of the informations representation of type representation-\/type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_content_a5a3cdbe54fb690a53a5a4fda109fd044}{get\+\_\+content}} ()
+\begin{DoxyCompactList}\small\item\em Get the address of the informations content of type content\+\_\+type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_content}{Content$<$ Message\+\_\+content\+\_\+t, String $>$}}}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_content}{Content$<$ Message\+\_\+content\+\_\+t, String $>$}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{struct_message__content__t}{Message\+\_\+content\+\_\+t}} {\bfseries content}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{class_content}{Content} of an information (view on information (content) closer to Service-\/\+Layer) ~\newline
+ \end{DoxyCompactList}\item 
 String {\bfseries representation}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Representation of an information (view on information (content) closer to physical layer) ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

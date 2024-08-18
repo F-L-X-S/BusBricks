@@ -91,28 +91,142 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">ServiceClusterBase Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>ServiceCluster-base-class to add class-functions to vtable.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_service_cluster_8h_source.html">ServiceCluster.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ServiceClusterBase:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_service_cluster_base.png" usemap="#ServiceClusterBase_map" alt=""/>
   <map id="ServiceClusterBase_map" name="ServiceClusterBase_map">
-<area href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services the service-cluster is added to the..." alt="ServiceCluster&lt; number_of_services &gt;" shape="rect" coords="0,56,235,80"/>
+<area href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the..." alt="ServiceCluster&lt; number_of_services &gt;" shape="rect" coords="0,56,235,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae025282a6ef15d01eaba440bdf73a750" id="r_ae025282a6ef15d01eaba440bdf73a750"><td class="memItemLeft" align="right" valign="top"><a id="ae025282a6ef15d01eaba440bdf73a750" name="ae025282a6ef15d01eaba440bdf73a750"></a>
-virtual <a class="el" href="class_service_base.html">ServiceBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getService_byID</b> (uint8_t ServiceID)=0</td></tr>
+<tr class="memitem:ae025282a6ef15d01eaba440bdf73a750" id="r_ae025282a6ef15d01eaba440bdf73a750"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_service_base.html">ServiceBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae025282a6ef15d01eaba440bdf73a750">getService_byID</a> (uint8_t ServiceID)=0</td></tr>
+<tr class="memdesc:ae025282a6ef15d01eaba440bdf73a750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the service with the given service-ID by iterating through the associated services and calling their get_ServiceID-function.  <br /></td></tr>
 <tr class="separator:ae025282a6ef15d01eaba440bdf73a750"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15023dc39ae2ceeb678d38f9bb51b172" id="r_a15023dc39ae2ceeb678d38f9bb51b172"><td class="memItemLeft" align="right" valign="top"><a id="a15023dc39ae2ceeb678d38f9bb51b172" name="a15023dc39ae2ceeb678d38f9bb51b172"></a>
-virtual <a class="el" href="class_service_base.html">ServiceBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getService_byPos</b> (uint8_t ServicePosition)=0</td></tr>
+<tr class="memitem:a15023dc39ae2ceeb678d38f9bb51b172" id="r_a15023dc39ae2ceeb678d38f9bb51b172"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_service_base.html">ServiceBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15023dc39ae2ceeb678d38f9bb51b172">getService_byPos</a> (uint8_t ServicePosition)=0</td></tr>
+<tr class="memdesc:a15023dc39ae2ceeb678d38f9bb51b172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the service at a specific position in the cluster (positions starting by zero)  <br /></td></tr>
 <tr class="separator:a15023dc39ae2ceeb678d38f9bb51b172"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbc08bddc57dbe90665216f5b2dedd35" id="r_acbc08bddc57dbe90665216f5b2dedd35"><td class="memItemLeft" align="right" valign="top"><a id="acbc08bddc57dbe90665216f5b2dedd35" name="acbc08bddc57dbe90665216f5b2dedd35"></a>
-virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>getNumberOfServices</b> () const =0</td></tr>
+<tr class="memitem:acbc08bddc57dbe90665216f5b2dedd35" id="r_acbc08bddc57dbe90665216f5b2dedd35"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbc08bddc57dbe90665216f5b2dedd35">getNumberOfServices</a> () const =0</td></tr>
+<tr class="memdesc:acbc08bddc57dbe90665216f5b2dedd35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total Number Of Services-objects associated to the cluster.  <br /></td></tr>
 <tr class="separator:acbc08bddc57dbe90665216f5b2dedd35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8027755899da79046ec66cd5d1a34b6e" id="r_a8027755899da79046ec66cd5d1a34b6e"><td class="memItemLeft" align="right" valign="top"><a id="a8027755899da79046ec66cd5d1a34b6e" name="a8027755899da79046ec66cd5d1a34b6e"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ServiceClusterBase</b> ()</td></tr>
+<tr class="memdesc:a8027755899da79046ec66cd5d1a34b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> Cluster Base object. <br /></td></tr>
+<tr class="separator:a8027755899da79046ec66cd5d1a34b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>ServiceCluster-base-class to add class-functions to vtable. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="acbc08bddc57dbe90665216f5b2dedd35" name="acbc08bddc57dbe90665216f5b2dedd35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbc08bddc57dbe90665216f5b2dedd35">&#9670;&#160;</a></span>getNumberOfServices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint8_t ServiceClusterBase::getNumberOfServices </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the total Number Of Services-objects associated to the cluster. </p>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t total Number Of Services-objects associated to the cluster </dd></dl>
+
+<p>Implemented in <a class="el" href="class_service_cluster.html#a507a50d20b2764c77200a73971935971">ServiceCluster&lt; number_of_services &gt;</a>.</p>
+
+</div>
+</div>
+<a id="ae025282a6ef15d01eaba440bdf73a750" name="ae025282a6ef15d01eaba440bdf73a750"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae025282a6ef15d01eaba440bdf73a750">&#9670;&#160;</a></span>getService_byID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_service_base.html">ServiceBase</a> * ServiceClusterBase::getService_byID </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>ServiceID</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get pointer to the service with the given service-ID by iterating through the associated services and calling their get_ServiceID-function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ServiceID</td><td>1-byte service-ID (unique for service-class) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ServiceBase* pointer to the service with the given ID </dd></dl>
+
+<p>Implemented in <a class="el" href="class_service_cluster.html#ae40a5207d621ccd428297ae8f3bbbf40">ServiceCluster&lt; number_of_services &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a15023dc39ae2ceeb678d38f9bb51b172" name="a15023dc39ae2ceeb678d38f9bb51b172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15023dc39ae2ceeb678d38f9bb51b172">&#9670;&#160;</a></span>getService_byPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_service_base.html">ServiceBase</a> * ServiceClusterBase::getService_byPos </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>ServicePosition</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get pointer to the service at a specific position in the cluster (positions starting by zero) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ServicePosition</td><td>position of the service in the cluster (0-based) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ServiceBase* pointer to the service at the given position </dd></dl>
+
+<p>Implemented in <a class="el" href="class_service_cluster.html#a9e24f14fb13116a5f7bb7a551b8c5d22">ServiceCluster&lt; number_of_services &gt;</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/felixschulke/Developement/Arduino/Modbus_RTU/Modbus_RTU/Modbus-RTU/lib/Service/<a class="el" href="_service_cluster_8h_source.html">ServiceCluster.h</a></li>
 </ul>

@@ -1,5 +1,14 @@
 \doxysection{Service\+Base Class Reference}
 \hypertarget{class_service_base}{}\label{class_service_base}\index{ServiceBase@{ServiceBase}}
+
+
+Service-\/base-\/class to add class-\/functions to vtable.  
+
+
+
+
+{\ttfamily \#include $<$Service.\+h$>$}
+
 Inheritance diagram for Service\+Base\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,29 +18,160 @@ Inheritance diagram for Service\+Base\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_service_base_ab59dbe94f663838461cdd00536f46c0c}\label{class_service_base_ab59dbe94f663838461cdd00536f46c0c} 
-virtual String {\bfseries get\+\_\+response} ()=0
-\item 
-\Hypertarget{class_service_base_ad1326c5e6b02553e6e23d0b0a3130ba3}\label{class_service_base_ad1326c5e6b02553e6e23d0b0a3130ba3} 
-virtual bool {\bfseries response\+Available} ()=0
-\item 
-\Hypertarget{class_service_base_ae959e3c9fa34b4c021e3d28a4c74222b}\label{class_service_base_ae959e3c9fa34b4c021e3d28a4c74222b} 
-virtual void {\bfseries clear\+Response} ()=0
-\item 
-\Hypertarget{class_service_base_a6129f02c6e59212d0b5b6d4d451b30e9}\label{class_service_base_a6129f02c6e59212d0b5b6d4d451b30e9} 
-virtual void {\bfseries stack\+Processing} ()=0
-\item 
-\Hypertarget{class_service_base_a4d01083248ca9afc41bcd36faa8b966d}\label{class_service_base_a4d01083248ca9afc41bcd36faa8b966d} 
-virtual bool {\bfseries impart\+\_\+pdu} (String \texorpdfstring{$\ast$}{*}pdu)=0
-\item 
-\Hypertarget{class_service_base_a10d3306ab361be7854734c80eb30dc1d}\label{class_service_base_a10d3306ab361be7854734c80eb30dc1d} 
-virtual uint8\+\_\+t \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+\+Service\+ID} ()=0
-\item 
-\Hypertarget{class_service_base_a236d018d5a72cab094b68e636b348c70}\label{class_service_base_a236d018d5a72cab094b68e636b348c70} 
-virtual uint8\+\_\+t \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+\+Instance\+ID} ()=0
-\end{DoxyCompactItemize}
+virtual String \mbox{\hyperlink{class_service_base_ab59dbe94f663838461cdd00536f46c0c}{get\+\_\+response}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the get the response-\/payload, stored at the response\+\_\+pdu of the service instance ~\newline
+ \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_service_base_ad1326c5e6b02553e6e23d0b0a3130ba3}{response\+Available}} ()=0
+\begin{DoxyCompactList}\small\item\em Check, if a response of the service is available (services send\+Stack not empty) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_service_base_ae959e3c9fa34b4c021e3d28a4c74222b}{clear\+Response}} ()=0
+\begin{DoxyCompactList}\small\item\em Clear the response-\/buffer (delete item, that was returned by get\+\_\+response from the service-\/send\+Stack) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_service_base_a6129f02c6e59212d0b5b6d4d451b30e9}{stack\+Processing}} ()=0
+\begin{DoxyCompactList}\small\item\em Execute the service\textquotesingle{}s functions for each item on the receive-\/stack and add all response-\/payloads to be send to the send-\/stack. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_service_base_a4d01083248ca9afc41bcd36faa8b966d}{impart\+\_\+pdu}} (String \texorpdfstring{$\ast$}{*}pdu)=0
+\begin{DoxyCompactList}\small\item\em Add a new Content-\/\+Object created from a received payload to the services receive-\/\+Stack. The payload is the representation of the Content-\/\+Object, during the construction, the Content-\/object creates it\textquotesingle{}s content from the representation. The Content-\/object is added to the rec\+\_\+stack. \end{DoxyCompactList}\item 
+virtual uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_base_a10d3306ab361be7854734c80eb30dc1d}{get\+\_\+\+Service\+ID}} ()=0
+\begin{DoxyCompactList}\small\item\em Get pointer to the 1-\/byte Service\+ID of the \doxylink{class_service}{Service} (unique for each Service-\/template derived Class) \end{DoxyCompactList}\item 
+virtual uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_base_a236d018d5a72cab094b68e636b348c70}{get\+\_\+\+Instance\+ID}} ()=0
+\begin{DoxyCompactList}\small\item\em Get pointer to the 1-\/byte Instance\+ID of the Service-\/instance (unique for each Instance of \doxylink{class_service}{Service} within the whole communication-\/network) \end{DoxyCompactList}\item 
+\Hypertarget{class_service_base_aa97f10faae142933b99784497f3aeb2e}\label{class_service_base_aa97f10faae142933b99784497f3aeb2e} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Service\+Base} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_service}{Service} Base object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service-\/base-\/class to add class-\/functions to vtable. 
+
+\begin{DoxyAuthor}{Author}
+Felix Schuelke (\href{mailto:flxscode@gmail.com}{\texttt{ flxscode@gmail.\+com}})  
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_service_base_ae959e3c9fa34b4c021e3d28a4c74222b}\index{ServiceBase@{ServiceBase}!clearResponse@{clearResponse}}
+\index{clearResponse@{clearResponse}!ServiceBase@{ServiceBase}}
+\doxysubsubsection{\texorpdfstring{clearResponse()}{clearResponse()}}
+{\footnotesize\ttfamily \label{class_service_base_ae959e3c9fa34b4c021e3d28a4c74222b} 
+virtual void Service\+Base\+::clear\+Response (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Clear the response-\/buffer (delete item, that was returned by get\+\_\+response from the service-\/send\+Stack) 
+
+
+
+Implemented in \mbox{\hyperlink{class_service_a75817b19f202f1696c3609a3f9578cb9}{Service$<$ content\+\_\+class, stack\+Size $>$}}, and \mbox{\hyperlink{class_service_a75817b19f202f1696c3609a3f9578cb9}{Service$<$ Message, STACKSIZE $>$}}.
+
+\Hypertarget{class_service_base_a236d018d5a72cab094b68e636b348c70}\index{ServiceBase@{ServiceBase}!get\_InstanceID@{get\_InstanceID}}
+\index{get\_InstanceID@{get\_InstanceID}!ServiceBase@{ServiceBase}}
+\doxysubsubsection{\texorpdfstring{get\_InstanceID()}{get\_InstanceID()}}
+{\footnotesize\ttfamily \label{class_service_base_a236d018d5a72cab094b68e636b348c70} 
+virtual uint8\+\_\+t \texorpdfstring{$\ast$}{*} Service\+Base\+::get\+\_\+\+Instance\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get pointer to the 1-\/byte Instance\+ID of the Service-\/instance (unique for each Instance of \doxylink{class_service}{Service} within the whole communication-\/network) 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} Instance\+ID of the Service-\/instance 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_service_abd1295896aca84e6dd85c0973885b279}{Service$<$ content\+\_\+class, stack\+Size $>$}}, and \mbox{\hyperlink{class_service_abd1295896aca84e6dd85c0973885b279}{Service$<$ Message, STACKSIZE $>$}}.
+
+\Hypertarget{class_service_base_ab59dbe94f663838461cdd00536f46c0c}\index{ServiceBase@{ServiceBase}!get\_response@{get\_response}}
+\index{get\_response@{get\_response}!ServiceBase@{ServiceBase}}
+\doxysubsubsection{\texorpdfstring{get\_response()}{get\_response()}}
+{\footnotesize\ttfamily \label{class_service_base_ab59dbe94f663838461cdd00536f46c0c} 
+virtual String Service\+Base\+::get\+\_\+response (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the get the response-\/payload, stored at the response\+\_\+pdu of the service instance ~\newline
+ 
+
+\begin{DoxyReturn}{Returns}
+String response-\/pdu as String 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}{Service$<$ content\+\_\+class, stack\+Size $>$}}, and \mbox{\hyperlink{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}{Service$<$ Message, STACKSIZE $>$}}.
+
+\Hypertarget{class_service_base_a10d3306ab361be7854734c80eb30dc1d}\index{ServiceBase@{ServiceBase}!get\_ServiceID@{get\_ServiceID}}
+\index{get\_ServiceID@{get\_ServiceID}!ServiceBase@{ServiceBase}}
+\doxysubsubsection{\texorpdfstring{get\_ServiceID()}{get\_ServiceID()}}
+{\footnotesize\ttfamily \label{class_service_base_a10d3306ab361be7854734c80eb30dc1d} 
+virtual uint8\+\_\+t \texorpdfstring{$\ast$}{*} Service\+Base\+::get\+\_\+\+Service\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get pointer to the 1-\/byte Service\+ID of the \doxylink{class_service}{Service} (unique for each Service-\/template derived Class) 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} Service\+ID of the service 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_service_a4d0e8aca49451e363888ca46c2742b2e}{Service$<$ content\+\_\+class, stack\+Size $>$}}, and \mbox{\hyperlink{class_service_a4d0e8aca49451e363888ca46c2742b2e}{Service$<$ Message, STACKSIZE $>$}}.
+
+\Hypertarget{class_service_base_a4d01083248ca9afc41bcd36faa8b966d}\index{ServiceBase@{ServiceBase}!impart\_pdu@{impart\_pdu}}
+\index{impart\_pdu@{impart\_pdu}!ServiceBase@{ServiceBase}}
+\doxysubsubsection{\texorpdfstring{impart\_pdu()}{impart\_pdu()}}
+{\footnotesize\ttfamily \label{class_service_base_a4d01083248ca9afc41bcd36faa8b966d} 
+virtual bool Service\+Base\+::impart\+\_\+pdu (\begin{DoxyParamCaption}\item[{String \texorpdfstring{$\ast$}{*}}]{pdu}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add a new Content-\/\+Object created from a received payload to the services receive-\/\+Stack. The payload is the representation of the Content-\/\+Object, during the construction, the Content-\/object creates it\textquotesingle{}s content from the representation. The Content-\/object is added to the rec\+\_\+stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdu} & payload from received Frame-\/object as pointer to string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true content-\/object added to service-\/rec\+\_\+stack 
+
+false rec\+\_\+stack is full, content-\/object not added 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_service_ac0c60bc735c64547dee269c6c3a62767}{Service$<$ content\+\_\+class, stack\+Size $>$}}.
+
+\Hypertarget{class_service_base_ad1326c5e6b02553e6e23d0b0a3130ba3}\index{ServiceBase@{ServiceBase}!responseAvailable@{responseAvailable}}
+\index{responseAvailable@{responseAvailable}!ServiceBase@{ServiceBase}}
+\doxysubsubsection{\texorpdfstring{responseAvailable()}{responseAvailable()}}
+{\footnotesize\ttfamily \label{class_service_base_ad1326c5e6b02553e6e23d0b0a3130ba3} 
+virtual bool Service\+Base\+::response\+Available (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check, if a response of the service is available (services send\+Stack not empty) 
+
+\begin{DoxyReturn}{Returns}
+true a response-\/payload is available 
+
+false no response-\/payload is available 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_service_ad0a6407e13cd84f81393d96273212822}{Service$<$ content\+\_\+class, stack\+Size $>$}}, and \mbox{\hyperlink{class_service_ad0a6407e13cd84f81393d96273212822}{Service$<$ Message, STACKSIZE $>$}}.
+
+\Hypertarget{class_service_base_a6129f02c6e59212d0b5b6d4d451b30e9}\index{ServiceBase@{ServiceBase}!stackProcessing@{stackProcessing}}
+\index{stackProcessing@{stackProcessing}!ServiceBase@{ServiceBase}}
+\doxysubsubsection{\texorpdfstring{stackProcessing()}{stackProcessing()}}
+{\footnotesize\ttfamily \label{class_service_base_a6129f02c6e59212d0b5b6d4d451b30e9} 
+virtual void Service\+Base\+::stack\+Processing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Execute the service\textquotesingle{}s functions for each item on the receive-\/stack and add all response-\/payloads to be send to the send-\/stack. 
+
+
+
+Implemented in \mbox{\hyperlink{class_message__service_a605f6a9ed4900558b52a80abd1144791}{Message\+\_\+service}}, \mbox{\hyperlink{class_service_a3eafa52c7f4bfe29698ba4a91c75dc75}{Service$<$ content\+\_\+class, stack\+Size $>$}}, and \mbox{\hyperlink{class_service_a3eafa52c7f4bfe29698ba4a91c75dc75}{Service$<$ Message, STACKSIZE $>$}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Service/Service.\+h\end{DoxyCompactItemize}
+/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Service/\mbox{\hyperlink{_service_8h}{Service.\+h}}\end{DoxyCompactItemize}

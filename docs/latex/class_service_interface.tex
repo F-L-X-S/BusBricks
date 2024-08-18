@@ -30,10 +30,9 @@ virtual void {\bfseries process\+Services} ()
 \begin{DoxyCompactList}\small\item\em start the stack\+Processing of the registered services \end{DoxyCompactList}\item 
 \Hypertarget{class_service_interface_a23feb243ed1748e04dd757aa5f788b3e}\label{class_service_interface_a23feb243ed1748e04dd757aa5f788b3e} 
 virtual void {\bfseries process\+Send\+Stack} ()
-\begin{DoxyCompactList}\small\item\em Add items from the send\+Stack to the comm\+\_\+interface and execute the send\+Cycle of \doxylink{class_comm_interface}{Comm\+Interface} delete the sent item from the send\+Stack. \end{DoxyCompactList}\item 
-\Hypertarget{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214}\label{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214} 
-virtual void {\bfseries process\+Rec\+Stack} ()
-\begin{DoxyCompactList}\small\item\em Add items received by the \doxylink{class_comm_interface}{Comm\+Interface} to the rec\+Stack and execute the \doxylink{class_comm_interface}{Comm\+Interface}\textquotesingle{}s receive\+Cycle to wait for new incoming frames exit, if the rec\+Stack is full or the \doxylink{class_comm_interface}{Comm\+Interface} did not received new Frames within the in receive\+Cycle specified timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Send all Frames, stored in the send\+Stack. As long as the send\+Stack is not empty, the function is getting pointers to the representation of the \doxylink{class_frame}{Frame} on the bottom of the stack. The pointer to the string-\/formatted representation is imparted to the \doxylink{class_comm_interface}{Comm\+Interface} as teh next frame to be sent by calling send\+New\+Frame. Then the \doxylink{class_comm_interface}{Comm\+Interface}\textquotesingle{}s send\+Cycle get\textquotesingle{}s executed. Exit, after the send\+Stack is empty. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214}{process\+Rec\+Stack}} ()
+\begin{DoxyCompactList}\small\item\em Add items received by the \doxylink{class_comm_interface}{Comm\+Interface} to the rec\+Stack and execute the \doxylink{class_comm_interface}{Comm\+Interface}\textquotesingle{}s receive\+Cycle to wait for new incoming frames. Exit, if the rec\+Stack is full or the \doxylink{class_comm_interface}{Comm\+Interface} did not received new Frames within the in receive\+Cycle specified timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -113,7 +112,18 @@ Execute all relevant tasks for transferring data between \doxylink{class_comm_in
 
 Implemented in \mbox{\hyperlink{class_service_interface__modbus_r_t_u_ad1afd9540b980f8d4d8f2c947ce10a65}{Service\+Interface\+\_\+modbus\+RTU}}.
 
+\Hypertarget{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214}\index{ServiceInterface$<$ CommInterfaceBase, frameType $>$@{ServiceInterface$<$ CommInterfaceBase, frameType $>$}!processRecStack@{processRecStack}}
+\index{processRecStack@{processRecStack}!ServiceInterface$<$ CommInterfaceBase, frameType $>$@{ServiceInterface$<$ CommInterfaceBase, frameType $>$}}
+\doxysubsubsection{\texorpdfstring{processRecStack()}{processRecStack()}}
+{\footnotesize\ttfamily \label{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214} 
+template$<$typename \mbox{\hyperlink{class_comm_interface_base}{Comm\+Interface\+Base}} , typename frame\+Type $>$ \\
+virtual void \mbox{\hyperlink{class_service_interface}{Service\+Interface}}$<$ \mbox{\hyperlink{class_comm_interface_base}{Comm\+Interface\+Base}}, frame\+Type $>$\+::process\+Rec\+Stack (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
 
+
+
+Add items received by the \doxylink{class_comm_interface}{Comm\+Interface} to the rec\+Stack and execute the \doxylink{class_comm_interface}{Comm\+Interface}\textquotesingle{}s receive\+Cycle to wait for new incoming frames. Exit, if the rec\+Stack is full or the \doxylink{class_comm_interface}{Comm\+Interface} did not received new Frames within the in receive\+Cycle specified timeout. 
+
+If the \doxylink{class_comm_interface}{Comm\+Interface} received a new frame (that means, it\textquotesingle{}s rec\+Buffer is set to nullptr), the function creates the Frame-\/instance (specified by frame\+Type) from it\textquotesingle{}s rec\+Item and adds it to the rec\+Stack. Then it initializes the rec\+Item and imparts it\textquotesingle{}s reference to the comm\+\_\+interface by calling get\+Received\+Frame. The \doxylink{class_comm_interface}{Comm\+Interface} is now storing the next \doxylink{class_frame}{Frame} received at this address. After specifying the destination for received frames for Com\+Interface, the receive\+Cycle is executed again, to wait for incoming Frames. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

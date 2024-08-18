@@ -26,9 +26,9 @@ void \mbox{\hyperlink{class_service_interface__modbus_r_t_u_ad1afd9540b980f8d4d8
 virtual void {\bfseries process\+Services} ()
 \begin{DoxyCompactList}\small\item\em start the stack\+Processing of the registered services \end{DoxyCompactList}\item 
 virtual void {\bfseries process\+Send\+Stack} ()
-\begin{DoxyCompactList}\small\item\em Add items from the send\+Stack to the comm\+\_\+interface and execute the send\+Cycle of \doxylink{class_comm_interface}{Comm\+Interface} delete the sent item from the send\+Stack. \end{DoxyCompactList}\item 
-virtual void {\bfseries process\+Rec\+Stack} ()
-\begin{DoxyCompactList}\small\item\em Add items received by the \doxylink{class_comm_interface}{Comm\+Interface} to the rec\+Stack and execute the \doxylink{class_comm_interface}{Comm\+Interface}\textquotesingle{}s receive\+Cycle to wait for new incoming frames exit, if the rec\+Stack is full or the \doxylink{class_comm_interface}{Comm\+Interface} did not received new Frames within the in receive\+Cycle specified timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Send all Frames, stored in the send\+Stack. As long as the send\+Stack is not empty, the function is getting pointers to the representation of the \doxylink{class_frame}{Frame} on the bottom of the stack. The pointer to the string-\/formatted representation is imparted to the \doxylink{class_comm_interface}{Comm\+Interface} as teh next frame to be sent by calling send\+New\+Frame. Then the \doxylink{class_comm_interface}{Comm\+Interface}\textquotesingle{}s send\+Cycle get\textquotesingle{}s executed. Exit, after the send\+Stack is empty. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214}{process\+Rec\+Stack}} ()
+\begin{DoxyCompactList}\small\item\em Add items received by the \doxylink{class_comm_interface}{Comm\+Interface} to the rec\+Stack and execute the \doxylink{class_comm_interface}{Comm\+Interface}\textquotesingle{}s receive\+Cycle to wait for new incoming frames. Exit, if the rec\+Stack is full or the \doxylink{class_comm_interface}{Comm\+Interface} did not received new Frames within the in receive\+Cycle specified timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_service_interface}{Service\+Interface$<$ Comm\+Interface\+\_\+modbus\+RTU, Frame\+\_\+modbus\+RTU $>$}}}
 \begin{DoxyCompactItemize}
 \item 

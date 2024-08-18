@@ -16,7 +16,7 @@ Inheritance diagram for Message\+\_\+service\+:\begin{figure}[H]
 {\bfseries Message\+\_\+service} (uint8\+\_\+t instance\+\_\+id, uint8\+\_\+t service\+\_\+id)
 \item 
 void \mbox{\hyperlink{class_message__service_a605f6a9ed4900558b52a80abd1144791}{stack\+Processing}} () override
-\item 
+\begin{DoxyCompactList}\small\item\em Execute the service\textquotesingle{}s functions for each item on the receive-\/stack and add all response-\/payloads to be send to the send-\/stack. \end{DoxyCompactList}\item 
 \Hypertarget{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691}\label{class_message__service_a22ec667c9ac9f87f33b7c5eb1cbf4691} 
 uint8\+\_\+t {\bfseries get\+\_\+destination\+Id} ()
 \item 
@@ -29,22 +29,25 @@ void {\bfseries send\+Message} (char receiver\+Id, String messagetext)
 {\bfseries Service} (uint8\+\_\+t service\+ID, uint8\+\_\+t instance\+ID)
 \item 
 uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_a4d0e8aca49451e363888ca46c2742b2e}{get\+\_\+\+Service\+ID}} () override
-\item 
+\begin{DoxyCompactList}\small\item\em Get pointer to the 1-\/byte Service\+ID of the \doxylink{class_service}{Service} (unique for each Service-\/template derived Class) \end{DoxyCompactList}\item 
 uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_service_abd1295896aca84e6dd85c0973885b279}{get\+\_\+\+Instance\+ID}} () override
-\item 
-virtual bool {\bfseries impart\+\_\+pdu} (String \texorpdfstring{$\ast$}{*}pdu) override
-\item 
+\begin{DoxyCompactList}\small\item\em Get pointer to the 1-\/byte Instance\+ID of the Service-\/instance (unique for each Instance of \doxylink{class_service}{Service} within the whole communication-\/network) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_service_ac0c60bc735c64547dee269c6c3a62767}{impart\+\_\+pdu}} (String \texorpdfstring{$\ast$}{*}pdu) override
+\begin{DoxyCompactList}\small\item\em Add a new Content-\/\+Object created from a received payload to the services receive-\/\+Stack. The payload is the representation of the Content-\/\+Object, during the construction, the Content-\/object creates it\textquotesingle{}s content from the representation. The Content-\/object is added to the rec\+\_\+stack. \end{DoxyCompactList}\item 
 virtual String \mbox{\hyperlink{class_service_a601e6d2878ce2b292a3b7c6428f0d51f}{get\+\_\+response}} () override
-\item 
+\begin{DoxyCompactList}\small\item\em Get the get the response-\/payload, stored at the response\+\_\+pdu of the service instance ~\newline
+ \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_service_ad0a6407e13cd84f81393d96273212822}{response\+Available}} () override
-\item 
+\begin{DoxyCompactList}\small\item\em Check, if a response of the service is available (services send\+Stack not empty) \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_service_a75817b19f202f1696c3609a3f9578cb9}{clear\+Response}} () override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Clear the response-\/buffer (delete item, that was returned by get\+\_\+response from the service-\/send\+Stack) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_service_base}{Service\+Base}}}
 \begin{DoxyCompactItemize}
 \item 
-virtual bool {\bfseries impart\+\_\+pdu} (String \texorpdfstring{$\ast$}{*}pdu)=0
-\end{DoxyCompactItemize}
+virtual bool \mbox{\hyperlink{class_service_base_a4d01083248ca9afc41bcd36faa8b966d}{impart\+\_\+pdu}} (String \texorpdfstring{$\ast$}{*}pdu)=0
+\begin{DoxyCompactList}\small\item\em Add a new Content-\/\+Object created from a received payload to the services receive-\/\+Stack. The payload is the representation of the Content-\/\+Object, during the construction, the Content-\/object creates it\textquotesingle{}s content from the representation. The Content-\/object is added to the rec\+\_\+stack. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Service\+Base} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_service}{Service} Base object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_service}{Service$<$ Message, STACKSIZE $>$}}}
 \begin{DoxyCompactItemize}
@@ -75,7 +78,11 @@ void Message\+\_\+service\+::stack\+Processing (\begin{DoxyParamCaption}{}{}\end
 
 
 
-Reimplemented from \mbox{\hyperlink{class_service}{Service$<$ Message, STACKSIZE $>$}}.
+Execute the service\textquotesingle{}s functions for each item on the receive-\/stack and add all response-\/payloads to be send to the send-\/stack. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_service_a3eafa52c7f4bfe29698ba4a91c75dc75}{Service$<$ Message, STACKSIZE $>$}}.
 
 
 

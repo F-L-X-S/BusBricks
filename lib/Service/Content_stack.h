@@ -1,3 +1,15 @@
+/**
+ * @file Content_stack.h
+ * @author Felix Schuelke (flxscode@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2024-08-18
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
+
 #ifndef CONTENT_STACK_H
 #define CONTENT_STACK_H
 #ifdef ARDUINO
@@ -10,7 +22,7 @@
 
 
 /**
- * @author Felix Schuelke 
+ * @author Felix Schuelke (flxscode@gmail.com)
  * @brief Content-Stack-Template
  the content-stack stores the added items (call-by-value / copy) on internal array
  the item added last is stacked on top (highest index), the one added first is stored on index "0"
@@ -21,17 +33,31 @@
 template<typename content_class, int MaxSize>
 class Content_stack{
 private:
-    content_class elements[MaxSize];                                    // Array for saving elements of the template                                                 
-    int size;                                                           // Current number of stored elements
+    /// @brief Array of content_class-instances 
+    content_class elements[MaxSize]; 
+
+    /// @brief Current number of stored elements                                                 
+    int size;                                                           
 public: 
-    // Construct Content_stack-class with zero elements
+    /**
+     * @brief Construct Content_stack with zero elements
+     * 
+     */
     Content_stack(): size(0) {}                                         
 
-    // Destroy Content-stack
+    /**
+     * @brief Destroy the Content_stack object
+     * 
+     */
     ~Content_stack() {} 
 
-    // Add element to stack
-    // True if successful
+    /**
+     * @brief Add item to stack
+     * 
+     * @param element Item to add to the stack 
+     * @return true item added successfully 
+     * @return false item not added, stacksize has reached maximum 
+     */
     bool addElement(content_class element){                                          
         if (size >= MaxSize) {
             return false;}                                              // return false, if stacksize has reached maximum 
@@ -40,9 +66,13 @@ public:
         return true;                                                    // return true, if added successful 
     };
 
-    // Delete element on index-position from stack 
-    // only positive index-positions
-    // True if successful
+    /**
+     * @brief Delete item on index-position from stack and shift all items with higher index, accepts only positive index-positions.
+     * 
+     * @param index index of item, that should be deleted (default 0, item on bottom of stack)
+     * @return true deleted successfully
+     * @return false index of element to delete is out of range 
+     */
     bool deleteElement(int index=0){                                        
         if (index < 0 || index >= size) {
             return false;}                                              // return false, if index of element to delete is out of range 
@@ -51,13 +81,17 @@ public:
             elements[i] = elements[i + 1];
         }
         size--;
-        return true;                                                    // return true, if deleted successful
+        return true;                                                    // return true, if deleted successfully
     };
 
-    // Get Pointer to element in the stack
-    // indexing:
-    // neg. index: return element indexed from end of stack (size)
-    // pos. index: return element indexed from beginning of stack (0)
+
+
+    /**
+     * @brief Get Pointer to element in the stack. Accepts positive and negative indexing.
+     * 
+     * @param index neg. index: return element indexed from end of stack (size) / pos. index: return element indexed from beginning of stack (0)
+     * @return content_class* pointer to the indexed item, nullptr if no item is stored at the given index
+     */
     content_class* getElement(int index = 0){                             
         if (index >= size || size+index<0) {                            
             return nullptr;}  
@@ -68,13 +102,23 @@ public:
         return &elements[index];                                         // pos. index: return element indexed from beginning of stack (0)
     };
 
-    // Check if the Stack is empty 
+    /**
+     * @brief Check if the Stack is empty (size is 0)
+     * 
+     * @return true Stack is empty 
+     * @return false Stack is not empty 
+     */
     bool empty(){
         bool retVal = (size == 0) ? true:false;
         return retVal;
     }          
 
-    // Check if the Stack is full 
+    /**
+     * @brief Check if the Stack is full (size reached MaxSize)
+     * 
+     * @return true Stack is full 
+     * @return false Stack is not full 
+     */
     bool full(){
         bool retVal = (size == MaxSize) ? true:false;
         return retVal;

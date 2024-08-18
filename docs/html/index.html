@@ -115,7 +115,7 @@ Service- and Communication-Layer</h2>
 </p>
 <h4><a class="anchor" id="autotoc_md5"></a>
 Service-Layer</h4>
-<p><b>Services</b> are defined in the <b>service-layer</b>. All implementations in the service-layer are Service-specific and therefore they should not be dependent the chosen communication-interface. That means, the service-layer-modules should be <b>reusable, independent which communication-interface the host-device supports</b>.</p>
+<p><b>Services</b> are defined in the <b>service-layer</b>. All implementations in the service-layer are Service-specific and therefore they should not depend on the chosen communication-interface. That means, the service-layer-modules should be <b>reusable, independent which communication-interface the host-device supports</b>.</p>
 <h4><a class="anchor" id="autotoc_md6"></a>
 Communication-Layer</h4>
 <p>Modules being part of the Communication-Layer are specific for the chosen bus (e.g. I2C, OneWire, Musbus-rtu...) the host device provides. They are responsible for <b>applying the bus-protocol-specific rules (e.g. CRC-check and -calculation, communication-timeouts, framelength...) to the content (PDU)</b> provided by the services. <br  />
@@ -123,7 +123,7 @@ Communication-Layer</h4>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Content and representation</h2>
 <p>The cascading of processing information and the rules applied to it lead to the concept of <em>content- and representation</em>.<br  />
- In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called <b><a class="el" href="class_content.html" title="Content and representation The cascading of processing information and the rules applied to it lead t...">Content</a></b>.<br  />
+ In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called <b><a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a></b>.<br  />
  Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called <b>representation</b>.<br  />
  </p>
 </div></div><!-- PageDoc -->

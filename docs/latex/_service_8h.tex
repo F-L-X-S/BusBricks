@@ -1,0 +1,28 @@
+\doxysection{/\+Users/felixschulke/\+Developement/\+Arduino/\+Modbus\+\_\+\+RTU/\+Modbus\+\_\+\+RTU/\+Modbus-\/\+RTU/lib/\+Service/\+Service.h File Reference}
+\hypertarget{_service_8h}{}\label{_service_8h}\index{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Service/Service.h@{/Users/felixschulke/Developement/Arduino/Modbus\_RTU/Modbus\_RTU/Modbus-\/RTU/lib/Service/Service.h}}
+{\ttfamily \#include $<$mock\+Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include "{}Content.\+h"{}}\newline
+{\ttfamily \#include "{}Content\+\_\+stack.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_service_base}{Service\+Base}}
+\begin{DoxyCompactList}\small\item\em Service-\/base-\/class to add class-\/functions to vtable. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_service}{Service$<$ content\+\_\+class, stack\+Size $>$}}
+\begin{DoxyCompactList}\small\item\em Service-\/\+Template to derive a \doxylink{class_service}{Service} class by defining the \doxylink{class_content}{Content} (derived Class of "{}\+Content"{}) to handle and the size of the stacks (send and receive). A \doxylink{class_service}{Service} has to be instantiated with a unique service-\/\+ID and an instance-\/\+ID, the service-\/instance should use for it\textquotesingle{}s communication. E.\+g.\+: Messenger-\/service with service-\/id "{}m"{} (specified in derived class, same on every host) is instantiated with a host-\/specific ID to identify the instances. The derived classes have to define the stack-\/processing to handle the payload at the rec-\/stack and add payload to the send-\/stack. Each derived class has a unique service\+ID to identify the Service-\/type and each instance in the communication-\/network has a unique instance\+ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Felix Schuelke (\href{mailto:flxscode@gmail.com}{\texttt{ flxscode@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/08-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}

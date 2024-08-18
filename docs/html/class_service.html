@@ -94,7 +94,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Service-Template to derive a <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> class by defining the <a class="el" href="class_content.html" title="Content and representation The cascading of processing information and the rules applied to it lead t...">Content</a> (derived Class of "Content") to handle and the size of the stacks (send and receive). A <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> has to be instantiated with a unique service-ID and an instance-ID, the service-instance should use for it's communication. E.g.: Messenger-service with service-id "m" (specified in derived class, same on every host) is instantiated with a host-specific ID to identify the instances. The derived classes have to define the stack-processing to handle the payload at the rec-stack and add payload to the send-stack.  
+<p>Service-Template to derive a <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> class by defining the <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a> (derived Class of "Content") to handle and the size of the stacks (send and receive). A <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> has to be instantiated with a unique service-ID and an instance-ID, the service-instance should use for it's communication. E.g.: Messenger-service with service-id "m" (specified in derived class, same on every host) is instantiated with a host-specific ID to identify the instances. The derived classes have to define the stack-processing to handle the payload at the rec-stack and add payload to the send-stack. Each derived class has a unique serviceID to identify the Service-type and each instance in the communication-network has a unique instanceID.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_service_8h_source.html">Service.h</a>&gt;</code></p>
@@ -104,7 +104,7 @@ Inheritance diagram for Service&lt; content_class, stackSize &gt;:</div>
  <div class="center">
   <img src="class_service.png" usemap="#Service_3C_20content_5Fclass_2C_20stackSize_20_3E_map" alt=""/>
   <map id="Service_3C_20content_5Fclass_2C_20stackSize_20_3E_map" name="Service_3C_20content_5Fclass_2C_20stackSize_20_3E_map">
-<area href="class_service_base.html" alt="ServiceBase" shape="rect" coords="0,0,219,24"/>
+<area href="class_service_base.html" title="Service-base-class to add class-functions to vtable." alt="ServiceBase" shape="rect" coords="0,0,219,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -114,20 +114,32 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Service</b> (uint8_t serviceID, uint8_t instanceID)</td></tr>
 <tr class="separator:a546e00166c119fae55bd9f29eaee9114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d0e8aca49451e363888ca46c2742b2e" id="r_a4d0e8aca49451e363888ca46c2742b2e"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d0e8aca49451e363888ca46c2742b2e">get_ServiceID</a> () override</td></tr>
+<tr class="memdesc:a4d0e8aca49451e363888ca46c2742b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the 1-byte ServiceID of the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> (unique for each Service-template derived Class)  <br /></td></tr>
 <tr class="separator:a4d0e8aca49451e363888ca46c2742b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd1295896aca84e6dd85c0973885b279" id="r_abd1295896aca84e6dd85c0973885b279"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd1295896aca84e6dd85c0973885b279">get_InstanceID</a> () override</td></tr>
+<tr class="memdesc:abd1295896aca84e6dd85c0973885b279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the 1-byte InstanceID of the Service-instance (unique for each Instance of <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> within the whole communication-network)  <br /></td></tr>
 <tr class="separator:abd1295896aca84e6dd85c0973885b279"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0c60bc735c64547dee269c6c3a62767" id="r_ac0c60bc735c64547dee269c6c3a62767"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0c60bc735c64547dee269c6c3a62767">impart_pdu</a> (String *pdu) override</td></tr>
+<tr class="memdesc:ac0c60bc735c64547dee269c6c3a62767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new Content-Object created from a received payload to the services receive-Stack. The payload is the representation of the Content-Object, during the construction, the Content-object creates it's content from the representation. The Content-object is added to the rec_stack.  <br /></td></tr>
 <tr class="separator:ac0c60bc735c64547dee269c6c3a62767"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a601e6d2878ce2b292a3b7c6428f0d51f" id="r_a601e6d2878ce2b292a3b7c6428f0d51f"><td class="memItemLeft" align="right" valign="top">virtual String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a601e6d2878ce2b292a3b7c6428f0d51f">get_response</a> () override</td></tr>
+<tr class="memdesc:a601e6d2878ce2b292a3b7c6428f0d51f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the get the response-payload, stored at the response_pdu of the service instance <br  />
+  <br /></td></tr>
 <tr class="separator:a601e6d2878ce2b292a3b7c6428f0d51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0a6407e13cd84f81393d96273212822" id="r_ad0a6407e13cd84f81393d96273212822"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0a6407e13cd84f81393d96273212822">responseAvailable</a> () override</td></tr>
+<tr class="memdesc:ad0a6407e13cd84f81393d96273212822"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check, if a response of the service is available (services sendStack not empty)  <br /></td></tr>
 <tr class="separator:ad0a6407e13cd84f81393d96273212822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75817b19f202f1696c3609a3f9578cb9" id="r_a75817b19f202f1696c3609a3f9578cb9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75817b19f202f1696c3609a3f9578cb9">clearResponse</a> () override</td></tr>
+<tr class="memdesc:a75817b19f202f1696c3609a3f9578cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the response-buffer (delete item, that was returned by get_response from the service-sendStack)  <br /></td></tr>
 <tr class="separator:a75817b19f202f1696c3609a3f9578cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3eafa52c7f4bfe29698ba4a91c75dc75" id="r_a3eafa52c7f4bfe29698ba4a91c75dc75"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3eafa52c7f4bfe29698ba4a91c75dc75">stackProcessing</a> () override</td></tr>
+<tr class="memdesc:a3eafa52c7f4bfe29698ba4a91c75dc75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the service's functions for each item on the receive-stack and add all response-payloads to be send to the send-stack.  <br /></td></tr>
 <tr class="separator:a3eafa52c7f4bfe29698ba4a91c75dc75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_service_base"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_service_base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_service_base.html">ServiceBase</a></td></tr>
+<tr class="memitem:aa97f10faae142933b99784497f3aeb2e inherit pub_methods_class_service_base" id="r_aa97f10faae142933b99784497f3aeb2e"><td class="memItemLeft" align="right" valign="top">
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ServiceBase</b> ()</td></tr>
+<tr class="memdesc:aa97f10faae142933b99784497f3aeb2e inherit pub_methods_class_service_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> Base object. <br /></td></tr>
+<tr class="separator:aa97f10faae142933b99784497f3aeb2e inherit pub_methods_class_service_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -155,8 +167,8 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>response_pdu</b></t
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename content_class, int stackSize&gt;<br />
-class Service&lt; content_class, stackSize &gt;</div><p>Service-Template to derive a <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> class by defining the <a class="el" href="class_content.html" title="Content and representation The cascading of processing information and the rules applied to it lead t...">Content</a> (derived Class of "Content") to handle and the size of the stacks (send and receive). A <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> has to be instantiated with a unique service-ID and an instance-ID, the service-instance should use for it's communication. E.g.: Messenger-service with service-id "m" (specified in derived class, same on every host) is instantiated with a host-specific ID to identify the instances. The derived classes have to define the stack-processing to handle the payload at the rec-stack and add payload to the send-stack. </p>
-<dl class="section author"><dt>Author</dt><dd>Felix Schuelke </dd></dl>
+class Service&lt; content_class, stackSize &gt;</div><p>Service-Template to derive a <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> class by defining the <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a> (derived Class of "Content") to handle and the size of the stacks (send and receive). A <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> has to be instantiated with a unique service-ID and an instance-ID, the service-instance should use for it's communication. E.g.: Messenger-service with service-id "m" (specified in derived class, same on every host) is instantiated with a host-specific ID to identify the instances. The derived classes have to define the stack-processing to handle the payload at the rec-stack and add payload to the send-stack. Each derived class has a unique serviceID to identify the Service-type and each instance in the communication-network has a unique instanceID. </p>
+<dl class="section author"><dt>Author</dt><dd>Felix Schuelke (<a href="#" onclick="location.href='mai'+'lto:'+'flx'+'sc'+'ode'+'@g'+'mai'+'l.'+'com'; return false;">flxsc<span class="obfuscator">.nosp@m.</span>ode@<span class="obfuscator">.nosp@m.</span>gmail<span class="obfuscator">.nosp@m.</span>.com</a>) </dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">content_class</td><td>type of the items stored in the stack </td></tr>
@@ -190,7 +202,9 @@ template&lt;typename content_class , int stackSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_service_base.html">ServiceBase</a>.</p>
+<p>Clear the response-buffer (delete item, that was returned by get_response from the service-sendStack) </p>
+
+<p>Implements <a class="el" href="class_service_base.html#ae959e3c9fa34b4c021e3d28a4c74222b">ServiceBase</a>.</p>
 
 </div>
 </div>
@@ -219,7 +233,10 @@ template&lt;typename content_class , int stackSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_service_base.html">ServiceBase</a>.</p>
+<p>Get pointer to the 1-byte InstanceID of the Service-instance (unique for each Instance of <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> within the whole communication-network) </p>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t* InstanceID of the Service-instance </dd></dl>
+
+<p>Implements <a class="el" href="class_service_base.html#a236d018d5a72cab094b68e636b348c70">ServiceBase</a>.</p>
 
 </div>
 </div>
@@ -248,7 +265,11 @@ template&lt;typename content_class , int stackSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_service_base.html">ServiceBase</a>.</p>
+<p>Get the get the response-payload, stored at the response_pdu of the service instance <br  />
+ </p>
+<dl class="section return"><dt>Returns</dt><dd>String response-pdu as String </dd></dl>
+
+<p>Implements <a class="el" href="class_service_base.html#ab59dbe94f663838461cdd00536f46c0c">ServiceBase</a>.</p>
 
 </div>
 </div>
@@ -277,7 +298,10 @@ template&lt;typename content_class , int stackSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_service_base.html">ServiceBase</a>.</p>
+<p>Get pointer to the 1-byte ServiceID of the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> (unique for each Service-template derived Class) </p>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t* ServiceID of the service </dd></dl>
+
+<p>Implements <a class="el" href="class_service_base.html#a10d3306ab361be7854734c80eb30dc1d">ServiceBase</a>.</p>
 
 </div>
 </div>
@@ -306,7 +330,18 @@ template&lt;typename content_class , int stackSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_service_base.html">ServiceBase</a>.</p>
+<p>Add a new Content-Object created from a received payload to the services receive-Stack. The payload is the representation of the Content-Object, during the construction, the Content-object creates it's content from the representation. The Content-object is added to the rec_stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pdu</td><td>payload from received Frame-object as pointer to string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true content-object added to service-rec_stack </dd>
+<dd>
+false rec_stack is full, content-object not added </dd></dl>
+
+<p>Implements <a class="el" href="class_service_base.html#a4d01083248ca9afc41bcd36faa8b966d">ServiceBase</a>.</p>
 
 </div>
 </div>
@@ -335,7 +370,12 @@ template&lt;typename content_class , int stackSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_service_base.html">ServiceBase</a>.</p>
+<p>Check, if a response of the service is available (services sendStack not empty) </p>
+<dl class="section return"><dt>Returns</dt><dd>true a response-payload is available </dd>
+<dd>
+false no response-payload is available </dd></dl>
+
+<p>Implements <a class="el" href="class_service_base.html#ad1326c5e6b02553e6e23d0b0a3130ba3">ServiceBase</a>.</p>
 
 </div>
 </div>
@@ -364,7 +404,11 @@ template&lt;typename content_class , int stackSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_service_base.html">ServiceBase</a>.</p>
+<p>Execute the service's functions for each item on the receive-stack and add all response-payloads to be send to the send-stack. </p>
+
+<p>Implements <a class="el" href="class_service_base.html#a6129f02c6e59212d0b5b6d4d451b30e9">ServiceBase</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_message__service.html#a605f6a9ed4900558b52a80abd1144791">Message_service</a>.</p>
 
 </div>
 </div>

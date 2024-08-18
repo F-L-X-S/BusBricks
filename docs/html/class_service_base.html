@@ -91,6 +91,11 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">ServiceBase Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Service-base-class to add class-functions to vtable.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_service_8h_source.html">Service.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ServiceBase:</div>
 <div class="dyncontent">
@@ -105,28 +110,256 @@ Inheritance diagram for ServiceBase:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab59dbe94f663838461cdd00536f46c0c" id="r_ab59dbe94f663838461cdd00536f46c0c"><td class="memItemLeft" align="right" valign="top"><a id="ab59dbe94f663838461cdd00536f46c0c" name="ab59dbe94f663838461cdd00536f46c0c"></a>
-virtual String&#160;</td><td class="memItemRight" valign="bottom"><b>get_response</b> ()=0</td></tr>
+<tr class="memitem:ab59dbe94f663838461cdd00536f46c0c" id="r_ab59dbe94f663838461cdd00536f46c0c"><td class="memItemLeft" align="right" valign="top">virtual String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab59dbe94f663838461cdd00536f46c0c">get_response</a> ()=0</td></tr>
+<tr class="memdesc:ab59dbe94f663838461cdd00536f46c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the get the response-payload, stored at the response_pdu of the service instance <br  />
+  <br /></td></tr>
 <tr class="separator:ab59dbe94f663838461cdd00536f46c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1326c5e6b02553e6e23d0b0a3130ba3" id="r_ad1326c5e6b02553e6e23d0b0a3130ba3"><td class="memItemLeft" align="right" valign="top"><a id="ad1326c5e6b02553e6e23d0b0a3130ba3" name="ad1326c5e6b02553e6e23d0b0a3130ba3"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>responseAvailable</b> ()=0</td></tr>
+<tr class="memitem:ad1326c5e6b02553e6e23d0b0a3130ba3" id="r_ad1326c5e6b02553e6e23d0b0a3130ba3"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1326c5e6b02553e6e23d0b0a3130ba3">responseAvailable</a> ()=0</td></tr>
+<tr class="memdesc:ad1326c5e6b02553e6e23d0b0a3130ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check, if a response of the service is available (services sendStack not empty)  <br /></td></tr>
 <tr class="separator:ad1326c5e6b02553e6e23d0b0a3130ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae959e3c9fa34b4c021e3d28a4c74222b" id="r_ae959e3c9fa34b4c021e3d28a4c74222b"><td class="memItemLeft" align="right" valign="top"><a id="ae959e3c9fa34b4c021e3d28a4c74222b" name="ae959e3c9fa34b4c021e3d28a4c74222b"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>clearResponse</b> ()=0</td></tr>
+<tr class="memitem:ae959e3c9fa34b4c021e3d28a4c74222b" id="r_ae959e3c9fa34b4c021e3d28a4c74222b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae959e3c9fa34b4c021e3d28a4c74222b">clearResponse</a> ()=0</td></tr>
+<tr class="memdesc:ae959e3c9fa34b4c021e3d28a4c74222b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the response-buffer (delete item, that was returned by get_response from the service-sendStack)  <br /></td></tr>
 <tr class="separator:ae959e3c9fa34b4c021e3d28a4c74222b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6129f02c6e59212d0b5b6d4d451b30e9" id="r_a6129f02c6e59212d0b5b6d4d451b30e9"><td class="memItemLeft" align="right" valign="top"><a id="a6129f02c6e59212d0b5b6d4d451b30e9" name="a6129f02c6e59212d0b5b6d4d451b30e9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>stackProcessing</b> ()=0</td></tr>
+<tr class="memitem:a6129f02c6e59212d0b5b6d4d451b30e9" id="r_a6129f02c6e59212d0b5b6d4d451b30e9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6129f02c6e59212d0b5b6d4d451b30e9">stackProcessing</a> ()=0</td></tr>
+<tr class="memdesc:a6129f02c6e59212d0b5b6d4d451b30e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the service's functions for each item on the receive-stack and add all response-payloads to be send to the send-stack.  <br /></td></tr>
 <tr class="separator:a6129f02c6e59212d0b5b6d4d451b30e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d01083248ca9afc41bcd36faa8b966d" id="r_a4d01083248ca9afc41bcd36faa8b966d"><td class="memItemLeft" align="right" valign="top"><a id="a4d01083248ca9afc41bcd36faa8b966d" name="a4d01083248ca9afc41bcd36faa8b966d"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>impart_pdu</b> (String *pdu)=0</td></tr>
+<tr class="memitem:a4d01083248ca9afc41bcd36faa8b966d" id="r_a4d01083248ca9afc41bcd36faa8b966d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d01083248ca9afc41bcd36faa8b966d">impart_pdu</a> (String *pdu)=0</td></tr>
+<tr class="memdesc:a4d01083248ca9afc41bcd36faa8b966d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new Content-Object created from a received payload to the services receive-Stack. The payload is the representation of the Content-Object, during the construction, the Content-object creates it's content from the representation. The Content-object is added to the rec_stack.  <br /></td></tr>
 <tr class="separator:a4d01083248ca9afc41bcd36faa8b966d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10d3306ab361be7854734c80eb30dc1d" id="r_a10d3306ab361be7854734c80eb30dc1d"><td class="memItemLeft" align="right" valign="top"><a id="a10d3306ab361be7854734c80eb30dc1d" name="a10d3306ab361be7854734c80eb30dc1d"></a>
-virtual uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>get_ServiceID</b> ()=0</td></tr>
+<tr class="memitem:a10d3306ab361be7854734c80eb30dc1d" id="r_a10d3306ab361be7854734c80eb30dc1d"><td class="memItemLeft" align="right" valign="top">virtual uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10d3306ab361be7854734c80eb30dc1d">get_ServiceID</a> ()=0</td></tr>
+<tr class="memdesc:a10d3306ab361be7854734c80eb30dc1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the 1-byte ServiceID of the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> (unique for each Service-template derived Class)  <br /></td></tr>
 <tr class="separator:a10d3306ab361be7854734c80eb30dc1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a236d018d5a72cab094b68e636b348c70" id="r_a236d018d5a72cab094b68e636b348c70"><td class="memItemLeft" align="right" valign="top"><a id="a236d018d5a72cab094b68e636b348c70" name="a236d018d5a72cab094b68e636b348c70"></a>
-virtual uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>get_InstanceID</b> ()=0</td></tr>
+<tr class="memitem:a236d018d5a72cab094b68e636b348c70" id="r_a236d018d5a72cab094b68e636b348c70"><td class="memItemLeft" align="right" valign="top">virtual uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a236d018d5a72cab094b68e636b348c70">get_InstanceID</a> ()=0</td></tr>
+<tr class="memdesc:a236d018d5a72cab094b68e636b348c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the 1-byte InstanceID of the Service-instance (unique for each Instance of <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> within the whole communication-network)  <br /></td></tr>
 <tr class="separator:a236d018d5a72cab094b68e636b348c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa97f10faae142933b99784497f3aeb2e" id="r_aa97f10faae142933b99784497f3aeb2e"><td class="memItemLeft" align="right" valign="top"><a id="aa97f10faae142933b99784497f3aeb2e" name="aa97f10faae142933b99784497f3aeb2e"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ServiceBase</b> ()</td></tr>
+<tr class="memdesc:aa97f10faae142933b99784497f3aeb2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> Base object. <br /></td></tr>
+<tr class="separator:aa97f10faae142933b99784497f3aeb2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Service-base-class to add class-functions to vtable. </p>
+<dl class="section author"><dt>Author</dt><dd>Felix Schuelke (<a href="#" onclick="location.href='mai'+'lto:'+'flx'+'sc'+'ode'+'@g'+'mai'+'l.'+'com'; return false;">flxsc<span class="obfuscator">.nosp@m.</span>ode@<span class="obfuscator">.nosp@m.</span>gmail<span class="obfuscator">.nosp@m.</span>.com</a>)  </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae959e3c9fa34b4c021e3d28a4c74222b" name="ae959e3c9fa34b4c021e3d28a4c74222b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae959e3c9fa34b4c021e3d28a4c74222b">&#9670;&#160;</a></span>clearResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ServiceBase::clearResponse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clear the response-buffer (delete item, that was returned by get_response from the service-sendStack) </p>
+
+<p>Implemented in <a class="el" href="class_service.html#a75817b19f202f1696c3609a3f9578cb9">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#a75817b19f202f1696c3609a3f9578cb9">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a236d018d5a72cab094b68e636b348c70" name="a236d018d5a72cab094b68e636b348c70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a236d018d5a72cab094b68e636b348c70">&#9670;&#160;</a></span>get_InstanceID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint8_t * ServiceBase::get_InstanceID </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get pointer to the 1-byte InstanceID of the Service-instance (unique for each Instance of <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> within the whole communication-network) </p>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t* InstanceID of the Service-instance </dd></dl>
+
+<p>Implemented in <a class="el" href="class_service.html#abd1295896aca84e6dd85c0973885b279">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#abd1295896aca84e6dd85c0973885b279">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+
+</div>
+</div>
+<a id="ab59dbe94f663838461cdd00536f46c0c" name="ab59dbe94f663838461cdd00536f46c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab59dbe94f663838461cdd00536f46c0c">&#9670;&#160;</a></span>get_response()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual String ServiceBase::get_response </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the get the response-payload, stored at the response_pdu of the service instance <br  />
+ </p>
+<dl class="section return"><dt>Returns</dt><dd>String response-pdu as String </dd></dl>
+
+<p>Implemented in <a class="el" href="class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a10d3306ab361be7854734c80eb30dc1d" name="a10d3306ab361be7854734c80eb30dc1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10d3306ab361be7854734c80eb30dc1d">&#9670;&#160;</a></span>get_ServiceID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint8_t * ServiceBase::get_ServiceID </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get pointer to the 1-byte ServiceID of the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> (unique for each Service-template derived Class) </p>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t* ServiceID of the service </dd></dl>
+
+<p>Implemented in <a class="el" href="class_service.html#a4d0e8aca49451e363888ca46c2742b2e">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#a4d0e8aca49451e363888ca46c2742b2e">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a4d01083248ca9afc41bcd36faa8b966d" name="a4d01083248ca9afc41bcd36faa8b966d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d01083248ca9afc41bcd36faa8b966d">&#9670;&#160;</a></span>impart_pdu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ServiceBase::impart_pdu </td>
+          <td>(</td>
+          <td class="paramtype">String *</td>          <td class="paramname"><span class="paramname"><em>pdu</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a new Content-Object created from a received payload to the services receive-Stack. The payload is the representation of the Content-Object, during the construction, the Content-object creates it's content from the representation. The Content-object is added to the rec_stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pdu</td><td>payload from received Frame-object as pointer to string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true content-object added to service-rec_stack </dd>
+<dd>
+false rec_stack is full, content-object not added </dd></dl>
+
+<p>Implemented in <a class="el" href="class_service.html#ac0c60bc735c64547dee269c6c3a62767">Service&lt; content_class, stackSize &gt;</a>.</p>
+
+</div>
+</div>
+<a id="ad1326c5e6b02553e6e23d0b0a3130ba3" name="ad1326c5e6b02553e6e23d0b0a3130ba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1326c5e6b02553e6e23d0b0a3130ba3">&#9670;&#160;</a></span>responseAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ServiceBase::responseAvailable </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check, if a response of the service is available (services sendStack not empty) </p>
+<dl class="section return"><dt>Returns</dt><dd>true a response-payload is available </dd>
+<dd>
+false no response-payload is available </dd></dl>
+
+<p>Implemented in <a class="el" href="class_service.html#ad0a6407e13cd84f81393d96273212822">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#ad0a6407e13cd84f81393d96273212822">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a6129f02c6e59212d0b5b6d4d451b30e9" name="a6129f02c6e59212d0b5b6d4d451b30e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6129f02c6e59212d0b5b6d4d451b30e9">&#9670;&#160;</a></span>stackProcessing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ServiceBase::stackProcessing </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Execute the service's functions for each item on the receive-stack and add all response-payloads to be send to the send-stack. </p>
+
+<p>Implemented in <a class="el" href="class_message__service.html#a605f6a9ed4900558b52a80abd1144791">Message_service</a>, <a class="el" href="class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/felixschulke/Developement/Arduino/Modbus_RTU/Modbus_RTU/Modbus-RTU/lib/Service/<a class="el" href="_service_8h_source.html">Service.h</a></li>
 </ul>
