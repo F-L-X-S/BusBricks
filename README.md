@@ -19,7 +19,7 @@ Hosting a messenger on different host-devices. Some of those hosts support a ser
 The separation of inter-service- and inter-mcu-communication-rules requires a separation of the software modules. <br><br>
 
 ##### Service-Layer
-**Services** are defined in the **service-layer**. All implementations in the service-layer are Service-specific and therefore they should not be dependent the chosen communication-interface. That means, the service-layer-modules should be **reusable, independent which communication-interface the host-device supports**.
+**Services** are defined in the **service-layer**. All implementations in the service-layer are Service-specific and therefore they should not depend on the chosen communication-interface. That means, the service-layer-modules should be **reusable, independent which communication-interface the host-device supports**.
 
 ##### Communication-Layer 
 Modules being part of the Communication-Layer are specific for the chosen bus (e.g. I2C, OneWire, Musbus-rtu...) the host device provides. They are responsible for **applying the bus-protocol-specific rules (e.g. CRC-check and -calculation, communication-timeouts, framelength...) to the content (PDU)** provided by the services. <br>

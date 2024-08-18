@@ -10,8 +10,7 @@
 
 /**
  * @author Felix Schuelke 
- * @brief Content and representation
-The cascading of processing information and the rules applied to it lead to the concept of content- and representation.
+ * @brief The cascading of processing information and the rules applied to it lead to the concept of content- and representation.
 In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, 
 the information closer to the format the service is able to process is called Content.
 Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called representation.
