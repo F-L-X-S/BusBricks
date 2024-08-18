@@ -106,9 +106,11 @@ class ServiceInterface{
         }
 
         /**
-         * @brief Add items from the sendStack to the comm_interface and execute the sendCycle of CommInterface
-         * delete the sent item from the sendStack
-         * 
+         * @brief Send all Frames, stored in the sendStack. 
+         * As long as the sendStack is not empty, the function is getting pointers to the representation of the Frame on the bottom of the stack.
+         * The pointer to the string-formatted representation is imparted to the CommInterface as teh next frame to be sent by calling sendNewFrame.
+         * Then the CommInterface's sendCycle get's executed.
+         * Exit, after the sendStack is empty.
          */
         virtual void processSendStack(){
             // Serial debugging
@@ -125,13 +127,20 @@ class ServiceInterface{
                     comm_interface->sendNewFrame(sendItemAdr);          // Impart Frame that has to be sent next 
                     sendStack.deleteElement();                          // delete Item from send-stack
                     comm_interface->sendCycle();                        // execute sending 
+                }else{
+                    comm_interface->sendCycle();                        // execute sending 
                 };           
             };        
         }
 
         /**
-         * @brief Add items received by the CommInterface to the recStack and execute the CommInterface's receiveCycle to wait for new incoming frames
-         * exit, if the recStack is full or the CommInterface did not received new Frames within the in receiveCycle specified timeout
+         * @brief Add items received by the CommInterface to the recStack and execute the CommInterface's receiveCycle to wait for new incoming frames.
+         * Exit, if the recStack is full or the CommInterface did not received new Frames within the in receiveCycle specified timeout.
+         * 
+         * If the CommInterface received a new frame (that means, it's recBuffer is set to nullptr), the function creates the 
+         * Frame-instance (specified by frameType) from it's recItem and adds it to the recStack. Then it initializes the recItem and imparts it's reference 
+         * to the comm_interface by calling getReceivedFrame. The CommInterface is now storing the next Frame received at this address. 
+         * After specifying the destination for received frames for ComInterface, the receiveCycle is executed again, to wait for incoming Frames.
          */
         virtual void processRecStack() {
             // Serial debugging
