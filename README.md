@@ -32,3 +32,10 @@ Conversely, the format, the information has after applying the rules of the next
 ### Classdiagram
 <img src="https://github.com/F-L-X-S/Modbus-RTU/blob/main/docs/classdiagram.png" alt="classdiagram" style="width:1000px;">
 
+
+
+## License
+
+This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](LICENSE) file for details.
+
+Copyright (c) 2024 Felix Schuelke
