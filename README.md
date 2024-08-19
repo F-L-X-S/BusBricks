@@ -1,5 +1,7 @@
 # BusBricks 
-Object-oriented building-blocks to customize bus-communication for different services and interfaces on Arduino-MCUs
+Object-oriented building-blocks to customize bus-communication for different services and interfaces on Arduino-MCUs <br>
+
+- [X] Checkout detailed documentation [BusBricks-documentation](https://f-l-x-s.github.io/BusBricks/)!
 
 ## Vision
 Provide configurable software-modules to customize the communication between services, hosted on different MCUs. <br> 
@@ -30,12 +32,15 @@ In every iteration, an information is processed and the rules of the next level,
 Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called **representation**.<br>
 
 ### Classdiagram
-<img src="https://github.com/F-L-X-S/BusBricks/blob/main/docs/classdiagram.png" alt="classdiagram" style="width:1000px;">
+<img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/classdiagram.png" alt="classdiagram" style="width:1700px;">
+
+### Stackprocessing
+<img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/stackProcessing.png" alt="stackProcessing" style="width:600px;">
 
 
 
 ## License
 
-This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](https://github.com/F-L-X-S/BusBricks/blob/5e3d14aac293e28b3e3d8c17ed7d4e8bd7617505/LICENSE) file for details.
 
 Copyright (c) 2024 Felix Schuelke
