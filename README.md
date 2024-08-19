@@ -30,7 +30,7 @@ In every iteration, an information is processed and the rules of the next level,
 Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called **representation**.<br>
 
 ### Classdiagram
-<img src="https://github.com/F-L-X-S/Modbus-RTU/blob/main/docs/classdiagram.png" alt="classdiagram" style="width:1000px;">
+<img src="https://github.com/F-L-X-S/BusBricks/blob/main/docs/classdiagram.png" alt="classdiagram" style="width:1000px;">
 
 
 
