@@ -30,5 +30,5 @@ In every iteration, an information is processed and the rules of the next level,
 Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called **representation**.<br>
 
 ### Classdiagram
-![alt text]((https://github.com/F-L-X-S/Modbus-RTU/blob/main/docs/classdiagram.png?raw=true))
+<img src="https://github.com/F-L-X-S/Modbus-RTU/blob/main/docs/classdiagram.png" alt="classdiagram" style="width:1000px;">
 
