@@ -76,6 +76,16 @@ public:
         return &content;
     }
 
+    /**
+     * @brief Representation and Content of the object are existent (not default)
+     * 
+     * @return true Representation and Content are not default 
+     * @return false Representation or Content do not exist (only defaultvalues)
+     */
+    bool isValid(){
+        return ((content!=content_type()) & (representation!=representation_type()));
+    };
+
 protected:
     /// @brief Content of an information (view on information (content) closer to Service-Layer)             
     content_type content;       
