@@ -71,3 +71,13 @@ void ErrorService::printError(Error* error) {
     // Convert error content to string and print it 
     Serial.println(error->to_string());
 }
+
+/**
+ * @brief Adds an Error-object for the local Instance-Id and given error-code to the Error-services rec-stack
+ * 
+ * @param code The error code of the error to be raised.
+ */
+void ErrorService::raiseError(errorCodes code) {
+    Error localError(instanceID,code);
+    rec_stack.addElement(localError);
+}

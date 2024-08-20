@@ -35,8 +35,10 @@
 #include <ServiceCluster.h>
 #include <Frame.h>
 #include <Content_stack.h>
+#include <ErrorService.h>
 
-#define STACKSIZE 2         // Size of Send- / Rec-Stack
+#define STACKSIZE 2             // Size of Send- / Rec-Stack
+#define ERRORSERVICE_ID 'e'     // Service-ID of the configured Error-Service in Servicecluster
 #define DEBUG
 
 
@@ -119,6 +121,20 @@ class ServiceInterface{
         }
 
         /**
+         * @brief Check if an Error Service is registered in the service cluster under the defined 
+         * ERRORSERVICE_ID of the Service Interface and call raiseError for that Service.
+         * 
+         * @param code The error code of the error to be raised.
+         */
+        void raiseError(errorCodes code){
+            ServiceBase* service = services->getService_byID(ERRORSERVICE_ID);
+            if (service) {
+                ErrorService* errService = static_cast<ErrorService*>(service);
+                errService->raiseError(code);
+            }
+        };
+
+        /**
          * @brief Send all Frames, stored in the sendStack. 
          * As long as the sendStack is not empty, the function is getting pointers to the representation of the Frame on the bottom of the stack.
          * The pointer to the string-formatted representation is imparted to the CommInterface as teh next frame to be sent by calling sendNewFrame.
@@ -151,8 +167,10 @@ class ServiceInterface{
          * Exit, if the recStack is full or the CommInterface did not received new Frames within the in receiveCycle specified timeout.
          * 
          * If the CommInterface received a new frame (that means, it's recBuffer is set to nullptr), the function creates the 
-         * Frame-instance (specified by frameType) from it's recItem and adds it to the recStack. Then it initializes the recItem and imparts it's reference 
-         * to the comm_interface by calling getReceivedFrame. The CommInterface is now storing the next Frame received at this address. 
+         * Frame-instance (specified by frameType) from it's recItem and adds it to the recStack. 
+         * (If the creation of the Frame-instance fails (returned nullptr), the Framing-Error is raised)
+         * Then it initializes the recItem and imparts it's reference to the comm_interface by calling getReceivedFrame. 
+         * The CommInterface is now storing the next Frame received at this address. 
          * After specifying the destination for received frames for ComInterface, the receiveCycle is executed again, to wait for incoming Frames.
          */
         virtual void processRecStack() {
@@ -164,9 +182,12 @@ class ServiceInterface{
             while (comm_interface->receivedNewFrame() && !recStack.full()){
                 if (recItem != ""){                                 // Item not empty 
                     frameString frameStr = recItem.c_str();         // conversion for identification as framestring in Frame-Class-Constructor
-                    frameType recItemFrame(&frameStr);              // Construct Frame-Class derived Object
-                    recStack.addElement(recItemFrame);              // Add the received element to the stack
-                    recItem = "";                                   // Clear rec-Item 
+                    frameType recItemFrame(&frameStr);              // Construct Frame-Class derived Object (nullptr if failed)
+                    if (recItemFrame.isValid()){
+                        recStack.addElement(recItemFrame);          // Add the received element to the stack
+                        }else{
+                            raiseError(framingError);}              // frame-construction failed 
+                    recItem = "";                                   // Clear rec-Item                               
                 }
                 comm_interface->getReceivedFrame(&recItem);         // Impart memory the received item has to be stored at 
                 comm_interface->receiveCycle();                     // Receive new frames from comm-interface 

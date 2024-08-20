@@ -85,6 +85,13 @@ public:
     ErrorService(uint8_t instance_id, uint8_t service_id);
 
     /**
+     * @brief Adds an Error-object for the local Instance-Id to the Error-services rec-stack
+     * 
+     * @param code The error code of the error to be raised.
+     */
+    void raiseError(errorCodes code);
+
+    /**
      * @brief Processes all errors from the receive stack.
      * 
      * Processes each error in the receive stack until it is empty. 

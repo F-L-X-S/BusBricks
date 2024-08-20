@@ -60,7 +60,13 @@ enum errorCodes {
     /**
      * @brief Violated silence-time between frames
      */
-    arbitrationError = '3'         
+    arbitrationError = '3',
+
+    /**
+     * @brief The Service-Id addressed by the frame was not found in the service-cluster
+     * 
+     */
+    serviceNotFound = '4'
 };
 
 

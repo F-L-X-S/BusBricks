@@ -102,20 +102,20 @@ class ServiceInterface_modbusRTU: public ServiceInterface<CommInterface_modbusRT
         void getPDU_from_services() override;
 
         /**
-         * @brief Adds received PDUs from the receive stack to the corresponding services.
-         *
-         * This function processes all PDUs (Protocol Data Units) retrieved from the `recStack` and distributes them to the appropriate services. 
-         * Each PDU is assigned to a service based on the Modbus RTU function code. If the destination service is not found, the frame is discarded.
+         * @brief Add PDUs from all received frames to the corresponding services.
+         * 
+         * This function processes all frames available in the receive stack (`recStack`). 
+         * For each frame, it checks the CRC-16 checksum and, if valid, adds the PDU to the appropriate service's receive stack. 
+         * If the frame's CRC check fails, it raises a CRC error. If no matching service is found for the frame's function code, 
+         * it raises a service-not-found error and discards the frame.
          * 
          * @details
-         * - The function first checks if there are any PDUs in the `recStack`. If the stack is empty, the function exits.
-         * - For each PDU in the stack, it retrieves the Modbus RTU function code and finds the corresponding service using this code as the Service ID.
-         * - If a valid service is found, the PDU is passed to the service's receive stack via the `impart_pdu` method.
-         * - The frame is then removed from the `recStack` after being processed.
-         * - If no corresponding service is found for a PDU, the frame is discarded and removed from the stack.
+         * - If the receive stack is empty, the function returns immediately.
+         * - Frames with invalid CRC are discarded, and a CRC error is raised.
+         * - Frames with no matching service are discarded, and a service-not-found error is raised.
+         * - Valid frames are added to the corresponding service's receive stack.
          * 
-         * @note
-         * - The function assumes that `recStack` contains valid Modbus RTU frames and that `services` provides a method to retrieve services by Service ID.
+         * @note The function continues processing until the receive stack is empty.
          */
         void addPDU_to_services() override;
 };
