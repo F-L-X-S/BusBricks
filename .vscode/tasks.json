@@ -11,6 +11,7 @@
                 "-I${workspaceFolder}/lib/mockSoftwareSerial",
                 "-I${workspaceFolder}/lib/Service", 
                 "-I${workspaceFolder}/lib/MessageService",
+                "-I${workspaceFolder}/lib/ErrorService",
                 "-I${workspaceFolder}/lib/Frame",  
                 "-I${workspaceFolder}/lib/Interface",
                 "-I${workspaceFolder}/lib/ModbusRTU",  
