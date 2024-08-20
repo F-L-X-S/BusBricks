@@ -32,11 +32,6 @@
 // and is receiving Frames with reading the public variable "incoming Frame" each Communicationcycle
 class ExmplCommInterface: public CommInterface<uint8_t>{
     private:
-        // initialize the interface counter as example for setup
-        void setup_interface() override {
-            interface = 0; 
-        };
-
         // Send the Frame from Send-buffer
         bool send() override {
             if (sendBuffer!=nullptr){
@@ -128,14 +123,17 @@ int main() {
             comm_interface.getReceivedFrame(&rec_element);  // Impart memory the received item has to be stored at 
         }
         
-        // Communicate
-        comm_interface.execCommunicationCycle();            // Execute the Communication-Interfaces Comm-Cycle (Send-Receive-Cycle)
+        // Execute send-cycle
+        comm_interface.sendCycle();            
 
         // Simulate the Response 
         comm_interface.incomingFrame = simulateAnswer(comm_interface.outgoingFrame);
 
         // Delete the sent Frame
-        comm_interface.outgoingFrame = "";              
+        comm_interface.outgoingFrame = "";  
+
+        // Execute rec-cycle
+        comm_interface.receiveCycle();              
         
     }
     return 0;
