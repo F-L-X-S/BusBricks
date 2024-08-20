@@ -25,22 +25,25 @@
 
 int main(){
     errorCodes code = unknownError;
+    char instanceId = 'A';
 
     // create Error from representation
-    String rep = "ERROR:";
+    String rep = "";
+    rep += instanceId;
+    rep += ":ERROR";
     rep += code;
     Error errorFromRep(&rep);
     Serial.print(errorFromRep.to_string());
     Serial.println(*errorFromRep.get_representation());
 
     // create Error from content
-    ErrorContent_t content(code);
+    ErrorContent_t content(instanceId, code);
     Error errorFromContent(&content);
     Serial.print(errorFromContent.to_string());
     Serial.println(*errorFromContent.get_representation());
 
     // create Error from code
-    Error errorFromCode(code);
+    Error errorFromCode(instanceId,code);
     Serial.print(errorFromCode.to_string());
     Serial.println(*errorFromCode.get_representation());
 

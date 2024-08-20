@@ -73,6 +73,13 @@ struct ErrorContent_t {
      * @brief The error code representing the specific error.
      */
     errorCodes code;
+
+    /**
+     * @brief Instance-ID if Error-Service, that raised the error 
+     * 
+     */
+    char instanceId;
+
     /**
      * @brief A human-readable message describing the error.
      */
@@ -82,7 +89,8 @@ struct ErrorContent_t {
      * @brief Constructor that initializes the error content based on the provided error code.
      * @param errCode The error code to initialize the structure with, unknownError by default.
      */
-    ErrorContent_t(errorCodes errCode=unknownError) : code(errCode) {
+    ErrorContent_t(char instanceId=0x0, errorCodes errCode=unknownError) : 
+        code(errCode), instanceId(instanceId) {
         message = getErrorMessage(errCode);
     }
 
@@ -170,7 +178,7 @@ class Error: public Content<ErrorContent_t, String>
          * 
          * @param code error-code 
          */
-        Error(errorCodes code);
+        Error(char instanceId, errorCodes code);
 
         /**
          * @brief Converts the Error to a well formatted, printable string.

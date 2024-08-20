@@ -42,7 +42,7 @@ Error::Error(ErrorContent_t* errorContent) : Content<ErrorContent_t, String>(*er
 }
 
 // Constructor for `Error` from error-code
-Error::Error(errorCodes code) : Content<ErrorContent_t, String>(ErrorContent_t(code)) {
+Error::Error(char instanceId, errorCodes code) : Content<ErrorContent_t, String>(ErrorContent_t(instanceId, code)) {
     Error::content_to_rep();
 }
 
@@ -53,6 +53,8 @@ String Error::to_string() {
     // Header
     string_rep = "---Error ";
     string_rep += content.code;
+    string_rep += " raised by ";
+    string_rep += content.instanceId;
     string_rep += "---\n";
 
     // Error-message
@@ -61,14 +63,16 @@ String Error::to_string() {
     return string_rep;
 }
 
-// Converts the byte-representation (PDU) to error's content by initializing ErrorContent_t with Error-code
+// Converts the byte-representation (PDU) to error's content by initializing ErrorContent_t with Instance-Id and Error-code
 void Error::rep_to_content(){
-    content = ErrorContent_t(errorCodes(representation[6]));
+    content = ErrorContent_t(representation[0],errorCodes(representation[7]));
 }
 
 // Converts error's content to byte-representation (PDU)
 void Error::content_to_rep() {
-    representation = "ERROR:";
+    representation = "";
+    representation += content.instanceId;
+    representation += ":ERROR";
     representation += content.code;    // Add Error-code
 }
 
