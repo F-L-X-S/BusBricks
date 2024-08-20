@@ -99,8 +99,7 @@ int main() {
     Message_content_t msg_content;
     msg_content.sender_id = '1';
     msg_content.receiver_id = '2';
-    strcpy(msg_content.msg_text, "Hello");   
-    msg_content.txt_size = 5;
+    msg_content.msg_text="Hello";   
     Message msg(&msg_content);
 
     // Create a generic Frame from the Message-PDU 
