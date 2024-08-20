@@ -48,7 +48,7 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
             // Handle service-type specific conversions
             if (*destinationService->get_ServiceID() == static_cast<uint8_t>('m'))
             {
-                Message_service* messageService = static_cast<Message_service*>(destinationService);   // cast as Message-service for specific functions
+                MessageService* messageService = static_cast<MessageService*>(destinationService);   // cast as Message-service for specific functions
                 uint8_t destId = messageService->get_destinationId();                   // Get the Destination-Device ID (depending on forwarding flag)
                 deviceId = destId;
             }

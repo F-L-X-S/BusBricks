@@ -31,7 +31,7 @@
 
 #include <ServiceInterface_modbusRTU.h>
 #include <CommInterface_modbusRTU.h>
-#include <Message_service.h>
+#include <MessageService.h>
 #include <Service.h>
 
 #define DEVICE_ID 'A'         // Modbus-RTU specific Device-ID 
@@ -50,7 +50,7 @@ CommInterface_modbusRTU comminterface(&serialInterface, BAUDRATE, DEVICE_ID);
 //---------------------------- Service-Layer ----------------------------
 // instantiate  Message Service with default Service-ID "m"
 // RAM: 1639 bytes (Stacksize 3)
- Message_service msg_service(DEVICE_ID); 
+ MessageService msg_service(DEVICE_ID); 
 
 // register the services in a service-cluster
 ServiceBase* serviceList[1] = {&msg_service};         // Array of service-references
@@ -74,10 +74,10 @@ void setup() {
 
 void loop() {
     String s = "";
-    while (Serial.available() != 0) {      // data available
-        s = Serial.readString();           //read until timeout
-        s.trim();  
-    };
+    // while (Serial.available() != 0) {      // data available
+    //     s = Serial.readString();           //read until timeout
+    //     s.trim();  
+    // };
     if (s!="") msg_service.sendMessage('B',s);
     serviceinterface.communicate();
  };

@@ -33,7 +33,7 @@
 #include <ServiceInterface.h>
 #include <CommInterface_modbusRTU.h>
 #include <Frame_modbusRTU.h>
-#include <Message_service.h>
+#include <MessageService.h>
 
 /**
  * @brief Service-Interface-class for Modbus-RTU:

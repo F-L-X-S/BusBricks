@@ -26,7 +26,7 @@
 
 #include <ServiceInterface_modbusRTU.h>
 #include <CommInterface_modbusRTU.h>
-#include <Message_service.h>
+#include <MessageService.h>
 #include <Service.h>
 
 #define DEVICE_ID_ONE 'A'         // Modbus-RTU specific Device-ID of the simulated device 
@@ -36,10 +36,10 @@ int main(){
 
     //---------------------------- Service-Layer ----------------------------
     // instantiate  Message Service with default Service-ID "m"
-    Message_service msg_service_a(DEVICE_ID_ONE); 
+    MessageService msg_service_a(DEVICE_ID_ONE); 
 
     // instantiate  Message Service with custom Service-ID "n"
-    Message_service msg_service_b(DEVICE_ID_ONE, 'n');   
+    MessageService msg_service_b(DEVICE_ID_ONE, 'n');   
 
     // register the services in a service-cluster
     ServiceBase* serviceList[2] = {&msg_service_a, &msg_service_b};         // Array of service-references

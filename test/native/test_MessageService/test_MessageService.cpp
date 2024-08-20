@@ -1,5 +1,5 @@
 /**
- * @file test_Message_service.cpp
+ * @file test_MessageService.cpp
  * @author Felix Schuelke (flxscode@gmail.com)
  * @brief 
  * @version 0.1
@@ -21,7 +21,7 @@
  * 
  */
 
-#include<Message_service.h>
+#include<MessageService.h>
 #include<Message.h>
 #include<unity.h>
 
@@ -40,7 +40,7 @@ void test_Message_from_content(void) {
     Message msg_from_content(&msg_content);
 
     // Check String-representation of created object
-    TEST_ASSERT_EQUAL_STRING_MESSAGE("Sender: 0x01\x09\x09Receiver: 0x0F\nHello\n", msg_from_content.to_string().c_str(),\
+    TEST_ASSERT_EQUAL_STRING_MESSAGE("Sender: \x01\x09\x09Receiver: \x0F\nHello\n", msg_from_content.to_string().c_str(),\
     "Message-Object created with msg_from_pdu-constructor \
     returns incorrect string-representation ");     
 
@@ -59,7 +59,7 @@ void test_Message_from_pdu(void) {
 
 
     // Check String-representation of created object
-    TEST_ASSERT_EQUAL_STRING_MESSAGE("Sender: 0x01\x09\x09Receiver: 0x0F\nHello\n", msg_from_pdu.to_string().c_str(),\
+    TEST_ASSERT_EQUAL_STRING_MESSAGE("Sender: \x01\x09\x09Receiver: \x0F\nHello\n", msg_from_pdu.to_string().c_str(),\
     "Message-Object created with msg_from_pdu-constructor \
     returns incorrect string-representation ");     
 

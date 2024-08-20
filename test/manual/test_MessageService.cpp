@@ -1,5 +1,5 @@
 /**
- * @file test_Message_service.cpp
+ * @file test_MessageService.cpp
  * @author Felix Schuelke (flxscode@gmail.com)
  * @brief 
  * @version 0.1
@@ -22,13 +22,13 @@
  */
 
 
-#include "Message_service.h"
+#include "MessageService.h"
 
 #define INSTANCE_ID 0xF
 
 int main(){
     // initialize message-service with instance-id 0xF
-    Message_service msg_service(INSTANCE_ID);       
+    MessageService msg_service(INSTANCE_ID);       
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
     std::string sample_pdu = "\x01\x0F:Hello";

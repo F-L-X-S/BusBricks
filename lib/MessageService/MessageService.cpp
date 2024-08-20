@@ -1,5 +1,5 @@
 /**
- * @file Message_service.cpp
+ * @file MessageService.cpp
  * @author Felix Schuelke (flxscode@gmail.com)
  * @brief 
  * @version 0.1
@@ -22,17 +22,17 @@
  */
 
 
-#include "Message_service.h"
+#include "MessageService.h"
 
 // Constructor for creating Message-service with deafult Service-ID "m"
-Message_service::Message_service(uint8_t instance_id): Service<Message, STACKSIZE>(FUNCTIONCODE, instance_id){}
+MessageService::MessageService(uint8_t instance_id): Service<Message, STACKSIZE>(FUNCTIONCODE, instance_id){}
 
 // Constructor for creating Message-service with custom Service-ID 
-Message_service::Message_service(uint8_t instance_id, uint8_t service_id): Service<Message, STACKSIZE>(service_id, instance_id){}
+MessageService::MessageService(uint8_t instance_id, uint8_t service_id): Service<Message, STACKSIZE>(service_id, instance_id){}
 
 // process all messages from the receive-stack, till the stack is empty
 // add all necessary messages to the send-stack 
-void Message_service::stackProcessing() {
+void MessageService::stackProcessing() {
     // abort, if no new messages available 
     if (rec_stack.empty()) return;   
 
@@ -53,12 +53,12 @@ void Message_service::stackProcessing() {
 };
 
 // get the destination Instance-ID for the current response PDU in the send-stack
-uint8_t Message_service::get_destinationId(){
+uint8_t MessageService::get_destinationId(){
     return send_stack.getElement()->get_content()->receiver_id; 
 };
 
 // Add the Ack for the message to the send-stack
-void Message_service::sendAck(Message* message){
+void MessageService::sendAck(Message* message){
     // extract the content of the message 
     Message_content_t* content = message->get_content();
     // generate the ACK-Response 
@@ -75,7 +75,7 @@ void Message_service::sendAck(Message* message){
 };
 
 // Send a new Message 
-void Message_service::sendMessage(char receiverId, String messagetext){
+void MessageService::sendMessage(char receiverId, String messagetext){
     Message_content_t response_content;
     response_content.sender_id = instanceID;                                           // own instance-id as sender                     
     response_content.receiver_id = receiverId;                           
@@ -88,6 +88,6 @@ void Message_service::sendMessage(char receiverId, String messagetext){
 };
 
 // Print the Received Messages
-void Message_service::printMessage(Message* message){
+void MessageService::printMessage(Message* message){
     Serial.println(message->to_string());
 };
