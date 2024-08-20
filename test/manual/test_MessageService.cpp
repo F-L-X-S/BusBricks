@@ -30,7 +30,6 @@ int main(){
     // initialize message-service with instance-id 0xF
     MessageService msg_service(INSTANCE_ID);       
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    // Create a sample PDU with Sender 0x1 and Receiver 0xF
     std::string sample_pdu = "\x01\x0F:Hello";
 
     // Impart PDU to Service till rec-stack is full
