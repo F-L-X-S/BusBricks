@@ -28,9 +28,17 @@
 #include <CommInterface_modbusRTU.h>
 #include <MessageService.h>
 #include <Service.h>
+#include <ErrorService.h>
 
 #define DEVICE_ID_ONE 'A'         // Modbus-RTU specific Device-ID of the simulated device 
 #define DEVICE_ID_TWO 'B'         // Modbus-RTU specific Device-ID of the simulated device 
+
+
+    // PDU to Modbus-Frame
+String getModbusFrame(char functionCode, char DeviceId, String payload){
+    Frame_modbusRTU frame(&payload, &DeviceId, &functionCode);
+    return *frame.get_representation();
+};
 
 int main(){
 
@@ -41,9 +49,12 @@ int main(){
     // instantiate  Message Service with custom Service-ID "n"
     MessageService msg_service_b(DEVICE_ID_ONE, 'n');   
 
+    // instatiate Error-Service with default Service-ID "e"
+    ErrorService errService(DEVICE_ID_ONE);
+
     // register the services in a service-cluster
-    ServiceBase* serviceList[2] = {&msg_service_a, &msg_service_b};         // Array of service-references
-    ServiceCluster<2> services(serviceList);                                // Create a Service-Cluster from ptr-list to the associated services 
+    ServiceBase* serviceList[3] = {&msg_service_a, &msg_service_b, &errService};            // Array of service-references
+    ServiceCluster<3> services(serviceList);                                                // Create a Service-Cluster from ptr-list to the associated services 
 
 
     //---------------------------- Communication-Layer -----------------------
@@ -69,13 +80,11 @@ int main(){
     Message_content_t content_msgNoOne;
     content_msgNoOne.sender_id = DeviceIdTwo;
     content_msgNoOne.receiver_id = DeviceIdOne;
-    content_msgNoOne.msg_text = "Incoming Message No. 1";   
+    content_msgNoOne.msg_text = "Hello";   
     Message msgNoOne(&content_msgNoOne);
 
     // PDU to Modbus-Frame
-    char functionCode = 'm';
-    Frame_modbusRTU frameNoOne(msgNoOne.get_representation(), &DeviceIdOne, &functionCode);
-    String frameNoOne_rep = *frameNoOne.get_representation();
+    String frameNoOne_rep = getModbusFrame('m', DEVICE_ID_ONE, *msgNoOne.get_representation());
 
     // simulate an incoming frame from mocked serial-interface 
     sim_serial.simulateInput(frameNoOne_rep);
@@ -85,14 +94,35 @@ int main(){
 
     // execute the communication-cycle and print the Output from serial Bus (cout interface)
     // Output should contain two ACK for Service-ID "m"
+    serviceinterface.communicate();         // receive incoming frame
+
+    // two empty cycles, not outputs
     serviceinterface.communicate();
     serviceinterface.communicate();
-    serviceinterface.communicate();
-    serviceinterface.communicate();
-    serviceinterface.communicate();
-    
+
     // simulate another incoming frame from mocked serial-interface 
     sim_serial.simulateInput(frameNoOne_rep);
+    serviceinterface.communicate();         // read bus
+    serviceinterface.communicate();         // flush answer 
+
+    // simulate malformed frame
+    String malformedFrame = "";
+    malformedFrame += DEVICE_ID_ONE;
+    malformedFrame += "m";
+    sim_serial.simulateInput(malformedFrame);
+    serviceinterface.communicate();
+    serviceinterface.communicate();
+
+    // simulate incoming Error
+    String incomingError = getModbusFrame('e', DEVICE_ID_ONE, "B:ERROR1");
+    sim_serial.simulateInput(incomingError);
+    serviceinterface.communicate();
+    serviceinterface.communicate();
+
+    // simulate Service-not-found Error
+    String unknownServiceMessage = getModbusFrame('s', DEVICE_ID_ONE, "message for unknown service");
+    sim_serial.simulateInput(unknownServiceMessage);
+    serviceinterface.communicate();
     serviceinterface.communicate();
     
 };
