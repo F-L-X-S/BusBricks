@@ -32,7 +32,7 @@
 #include <ServiceInterface_modbusRTU.h>
 #include <CommInterface_modbusRTU.h>
 #include <MessageService.h>
-#include <Service.h>
+#include <ErrorService.h>
 
 #define DEVICE_ID 'A'         // Modbus-RTU specific Device-ID 
 #define BAUDRATE 9600
@@ -50,18 +50,21 @@ CommInterface_modbusRTU comminterface(&serialInterface, BAUDRATE, DEVICE_ID);
 //---------------------------- Service-Layer ----------------------------
 // instantiate  Message Service with default Service-ID "m"
 // RAM: 1639 bytes (Stacksize 3)
- MessageService msg_service(DEVICE_ID); 
+ MessageService msgService(DEVICE_ID); 
+
+// instantiate  Error Service with default Service-ID "e"
+ErrorService errService(DEVICE_ID); 
 
 // register the services in a service-cluster
-ServiceBase* serviceList[1] = {&msg_service};         // Array of service-references
+ServiceBase* serviceList[2] = {&msgService, &errService};         
 
 // Create a Service-Cluster from ptr-list to the associated services 
 // RAM: 20 bytes
-ServiceCluster<1> services(serviceList);              
+ServiceCluster<2> services(serviceList);              
 
 // instantiate the service-interface 
 // RAM: 146 bytes (Stacksize 3)
- ServiceInterface_modbusRTU serviceinterface(&services, &comminterface);         // construct from ref. to associated service-cluster and communication-interface
+ServiceInterface_modbusRTU serviceinterface(&services, &comminterface);         // construct from ref. to associated service-cluster and communication-interface
 
 
 
@@ -69,15 +72,15 @@ void setup() {
     Serial.begin(9600);
     serialInterface.begin(BAUDRATE);
     Serial.println("Setup...");
-    msg_service.sendMessage('B', "Setup...");
+    msgService.sendMessage('B', "Setup...");
 };
 
 void loop() {
     String s = "";
-    // while (Serial.available() != 0) {      // data available
-    //     s = Serial.readString();           //read until timeout
-    //     s.trim();  
-    // };
-    if (s!="") msg_service.sendMessage('B',s);
+    while (Serial.available() != 0) {      // data available
+        s = Serial.readString();           //read until timeout
+        s.trim();  
+    };
+    if (s!="") msgService.sendMessage('B',s);
     serviceinterface.communicate();
  };
