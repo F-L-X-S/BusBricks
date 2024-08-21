@@ -44,8 +44,11 @@
  * @class ErrorService
  * @brief Service class for handling Errors.
  * 
- * The `ErrorService` class manages messages of type `Message`, processes incoming messages from the receive stack, and handles sending acknowledgments. 
+ * The `ErrorService` class manages content from type 'Error', processes incoming errors from the receive stack, and handles sending errors. 
  * It inherits from a Service for content_type 'Error' (`Service<Error, STACKSIZE>`).
+ * Errors occurred internally are raised by calling the raiseError-function of the service. Those Errors are added with the local instanceId
+ * to the recStack. During the processing, errors with the local instanceId are putted back to the sendStack to publish them to the network.
+ * All Errors are printed to the Serial-interface. 
  * 
  * @section Constructors
  * - `ErrorService(uint8_t instance_id)`: Constructs a `ErrorService` with a default service ID of "e".
@@ -53,13 +56,13 @@
  * 
  * @section Methods
  * - `void stackProcessing() override`: Processes all errors from the receive stack until it is empty. Adds error-responds to the send stack and prints received errors.
- * - `void raiseError(errorCodes code)`: raises a new Error occurred internally or during receiving  
+ * - `void raiseError(errorCodes code)`: add an Error occurred internally to the receive-stack
  * 
  * @private
  * - `void printError(Error* error)`: Prints the content of an error
  * 
  * @note
- * - The class handles both the processing of incoming messages and the sending of acknowledgments. 
+ * - The class handles both the processing of incoming errors and the sending of internally occurred errors. 
  * - The `stackProcessing` method is responsible for managing the receive and send stacks.
  */                       
 class ErrorService: public Service<Error, STACKSIZE>

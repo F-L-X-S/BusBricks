@@ -46,6 +46,7 @@
  * @brief Template for generic Service-Interface
  * Defines the handling of incoming frames from CommInterface to services stored in the associated ServiceCluster
  * and the conversion from PDU provided by Services in the ServiceCluster to frames, getting sent by the communication-interface.
+ * The ServiceInterface dedicates memory to the CommInterface by iterating through it's stacks.
  * 
  * @tparam CommInterfaceBase type of CommInterface to use, derived Class of the abstract CommInterface-Class (e.g. CommInterface_modbusRTU)
  * @tparam frameType type of the frames to be send, derived Class of the abstract Frame-Class (e.g. Frame_modbusRTU)
