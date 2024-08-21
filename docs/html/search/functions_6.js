@@ -1,7 +1,7 @@
 var searchData=
 [
   ['get_5fcontent_0',['get_content',['../class_content.html#a5a3cdbe54fb690a53a5a4fda109fd044',1,'Content']]],
-  ['get_5fdestinationid_1',['get_destinationId',['../class_message__service.html#a22ec667c9ac9f87f33b7c5eb1cbf4691',1,'Message_service']]],
+  ['get_5fdestinationid_1',['get_destinationId',['../class_message_service.html#acc78431dec13eaa6b2d6c325ad84578c',1,'MessageService']]],
   ['get_5finstanceid_2',['get_InstanceID',['../class_service_base.html#a236d018d5a72cab094b68e636b348c70',1,'ServiceBase::get_InstanceID()'],['../class_service.html#abd1295896aca84e6dd85c0973885b279',1,'Service::get_InstanceID()']]],
   ['get_5frepresentation_3',['get_representation',['../class_content.html#a206c6c8ebf9f5f84c571d8d9dfbdd40c',1,'Content']]],
   ['get_5fresponse_4',['get_response',['../class_service_base.html#ab59dbe94f663838461cdd00536f46c0c',1,'ServiceBase::get_response()'],['../class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f',1,'Service::get_response()']]],

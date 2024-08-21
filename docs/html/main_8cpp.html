@@ -99,8 +99,8 @@ $(function(){ initResizable(false); });
 <div class="textblock"><code>#include &lt;<a class="el" href="mock_arduino_8h_source.html">mockArduino.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_service_interface__modbus_r_t_u_8h_source.html">ServiceInterface_modbusRTU.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_comm_interface__modbus_r_t_u_8h_source.html">CommInterface_modbusRTU.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_message__service_8h_source.html">Message_service.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_service_8h_source.html">Service.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_message_service_8h_source.html">MessageService.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_error_service_8h_source.html">ErrorService.h</a>&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -134,14 +134,17 @@ Variables</h2></td></tr>
 <tr class="memitem:a2b9469af42f6d57cda0b7b42ed30d50f" id="r_a2b9469af42f6d57cda0b7b42ed30d50f"><td class="memItemLeft" align="right" valign="top"><a id="a2b9469af42f6d57cda0b7b42ed30d50f" name="a2b9469af42f6d57cda0b7b42ed30d50f"></a>
 <a class="el" href="classarduino_mocking_1_1_software_serial.html">SoftwareSerial</a>&#160;</td><td class="memItemRight" valign="bottom"><b>serialInterface</b> (RX, TX)</td></tr>
 <tr class="separator:a2b9469af42f6d57cda0b7b42ed30d50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29e00e3e351d94a194707811bdc10e09" id="r_a29e00e3e351d94a194707811bdc10e09"><td class="memItemLeft" align="right" valign="top"><a id="a29e00e3e351d94a194707811bdc10e09" name="a29e00e3e351d94a194707811bdc10e09"></a>
-<a class="el" href="class_message__service.html">Message_service</a>&#160;</td><td class="memItemRight" valign="bottom"><b>msg_service</b> (DEVICE_ID)</td></tr>
-<tr class="separator:a29e00e3e351d94a194707811bdc10e09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff7d6437c192c08e38315976544c8c45" id="r_aff7d6437c192c08e38315976544c8c45"><td class="memItemLeft" align="right" valign="top"><a id="aff7d6437c192c08e38315976544c8c45" name="aff7d6437c192c08e38315976544c8c45"></a>
-<a class="el" href="class_service_base.html">ServiceBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>serviceList</b> [1] = {&amp;msg_service}</td></tr>
-<tr class="separator:aff7d6437c192c08e38315976544c8c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64bdb9c6abc27289c2ab9c96e3536608" id="r_a64bdb9c6abc27289c2ab9c96e3536608"><td class="memItemLeft" align="right" valign="top"><a id="a64bdb9c6abc27289c2ab9c96e3536608" name="a64bdb9c6abc27289c2ab9c96e3536608"></a>
+<a class="el" href="class_message_service.html">MessageService</a>&#160;</td><td class="memItemRight" valign="bottom"><b>msgService</b> (DEVICE_ID)</td></tr>
+<tr class="separator:a64bdb9c6abc27289c2ab9c96e3536608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac49fd2ac61d1e3de13a154382f81ede3" id="r_ac49fd2ac61d1e3de13a154382f81ede3"><td class="memItemLeft" align="right" valign="top"><a id="ac49fd2ac61d1e3de13a154382f81ede3" name="ac49fd2ac61d1e3de13a154382f81ede3"></a>
+<a class="el" href="class_error_service.html">ErrorService</a>&#160;</td><td class="memItemRight" valign="bottom"><b>errService</b> (DEVICE_ID)</td></tr>
+<tr class="separator:ac49fd2ac61d1e3de13a154382f81ede3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f997066ef17f5c7161d849e45c73a1b" id="r_a6f997066ef17f5c7161d849e45c73a1b"><td class="memItemLeft" align="right" valign="top"><a id="a6f997066ef17f5c7161d849e45c73a1b" name="a6f997066ef17f5c7161d849e45c73a1b"></a>
+<a class="el" href="class_service_base.html">ServiceBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>serviceList</b> [2] = {&amp;msgService, &amp;errService}</td></tr>
+<tr class="separator:a6f997066ef17f5c7161d849e45c73a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afee207c5f965ea0bd5aec1951d6008d3" id="r_afee207c5f965ea0bd5aec1951d6008d3"><td class="memItemLeft" align="right" valign="top"><a id="afee207c5f965ea0bd5aec1951d6008d3" name="afee207c5f965ea0bd5aec1951d6008d3"></a>
-<a class="el" href="class_service_cluster.html">ServiceCluster</a>&lt; 1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>services</b> (serviceList)</td></tr>
+<a class="el" href="class_service_cluster.html">ServiceCluster</a>&lt; 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>services</b> (serviceList)</td></tr>
 <tr class="separator:afee207c5f965ea0bd5aec1951d6008d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

@@ -102,9 +102,11 @@ Inheritance diagram for ServiceBase:</div>
  <div class="center">
   <img src="class_service_base.png" usemap="#ServiceBase_map" alt=""/>
   <map id="ServiceBase_map" name="ServiceBase_map">
-<area href="class_service.html" alt="Service&lt; Message, STACKSIZE &gt;" shape="rect" coords="0,56,219,80"/>
-<area href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha..." alt="Service&lt; content_class, stackSize &gt;" shape="rect" coords="229,56,448,80"/>
-<area href="class_message__service.html" title="Service class for handling messages and acknowledgments." alt="Message_service" shape="rect" coords="0,112,219,136"/>
+<area href="class_service.html" alt="Service&lt; Error, STACKSIZE &gt;" shape="rect" coords="0,56,219,80"/>
+<area href="class_service.html" alt="Service&lt; Message, STACKSIZE &gt;" shape="rect" coords="229,56,448,80"/>
+<area href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha..." alt="Service&lt; content_class, stackSize &gt;" shape="rect" coords="458,56,677,80"/>
+<area href="class_error_service.html" title="Service class for handling Errors." alt="ErrorService" shape="rect" coords="0,112,219,136"/>
+<area href="class_message_service.html" title="Service class for handling messages and acknowledgments." alt="MessageService" shape="rect" coords="229,112,448,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -166,7 +168,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ServiceBase</b> (
 
 <p>Clear the response-buffer (delete item, that was returned by get_response from the service-sendStack) </p>
 
-<p>Implemented in <a class="el" href="class_service.html#a75817b19f202f1696c3609a3f9578cb9">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#a75817b19f202f1696c3609a3f9578cb9">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_service.html#a75817b19f202f1696c3609a3f9578cb9">Service&lt; content_class, stackSize &gt;</a>, <a class="el" href="class_service.html#a75817b19f202f1696c3609a3f9578cb9">Service&lt; Error, STACKSIZE &gt;</a>, and <a class="el" href="class_service.html#a75817b19f202f1696c3609a3f9578cb9">Service&lt; Message, STACKSIZE &gt;</a>.</p>
 
 </div>
 </div>
@@ -196,7 +198,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ServiceBase</b> (
 <p>Get pointer to the 1-byte InstanceID of the Service-instance (unique for each Instance of <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> within the whole communication-network) </p>
 <dl class="section return"><dt>Returns</dt><dd>uint8_t* InstanceID of the Service-instance </dd></dl>
 
-<p>Implemented in <a class="el" href="class_service.html#abd1295896aca84e6dd85c0973885b279">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#abd1295896aca84e6dd85c0973885b279">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_service.html#abd1295896aca84e6dd85c0973885b279">Service&lt; content_class, stackSize &gt;</a>, <a class="el" href="class_service.html#abd1295896aca84e6dd85c0973885b279">Service&lt; Error, STACKSIZE &gt;</a>, and <a class="el" href="class_service.html#abd1295896aca84e6dd85c0973885b279">Service&lt; Message, STACKSIZE &gt;</a>.</p>
 
 </div>
 </div>
@@ -227,7 +229,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ServiceBase</b> (
  </p>
 <dl class="section return"><dt>Returns</dt><dd>String response-pdu as String </dd></dl>
 
-<p>Implemented in <a class="el" href="class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f">Service&lt; content_class, stackSize &gt;</a>, <a class="el" href="class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f">Service&lt; Error, STACKSIZE &gt;</a>, and <a class="el" href="class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f">Service&lt; Message, STACKSIZE &gt;</a>.</p>
 
 </div>
 </div>
@@ -257,7 +259,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ServiceBase</b> (
 <p>Get pointer to the 1-byte ServiceID of the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> (unique for each Service-template derived Class) </p>
 <dl class="section return"><dt>Returns</dt><dd>uint8_t* ServiceID of the service </dd></dl>
 
-<p>Implemented in <a class="el" href="class_service.html#a4d0e8aca49451e363888ca46c2742b2e">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#a4d0e8aca49451e363888ca46c2742b2e">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_service.html#a4d0e8aca49451e363888ca46c2742b2e">Service&lt; content_class, stackSize &gt;</a>, <a class="el" href="class_service.html#a4d0e8aca49451e363888ca46c2742b2e">Service&lt; Error, STACKSIZE &gt;</a>, and <a class="el" href="class_service.html#a4d0e8aca49451e363888ca46c2742b2e">Service&lt; Message, STACKSIZE &gt;</a>.</p>
 
 </div>
 </div>
@@ -327,7 +329,7 @@ false rec_stack is full, content-object not added </dd></dl>
 <dd>
 false no response-payload is available </dd></dl>
 
-<p>Implemented in <a class="el" href="class_service.html#ad0a6407e13cd84f81393d96273212822">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#ad0a6407e13cd84f81393d96273212822">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_service.html#ad0a6407e13cd84f81393d96273212822">Service&lt; content_class, stackSize &gt;</a>, <a class="el" href="class_service.html#ad0a6407e13cd84f81393d96273212822">Service&lt; Error, STACKSIZE &gt;</a>, and <a class="el" href="class_service.html#ad0a6407e13cd84f81393d96273212822">Service&lt; Message, STACKSIZE &gt;</a>.</p>
 
 </div>
 </div>
@@ -356,7 +358,7 @@ false no response-payload is available </dd></dl>
 
 <p>Execute the service's functions for each item on the receive-stack and add all response-payloads to be send to the send-stack. </p>
 
-<p>Implemented in <a class="el" href="class_message__service.html#a605f6a9ed4900558b52a80abd1144791">Message_service</a>, <a class="el" href="class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75">Service&lt; content_class, stackSize &gt;</a>, and <a class="el" href="class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75">Service&lt; Message, STACKSIZE &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_error_service.html#abdd6940a94fc8619c1ed31934b1cd3bd">ErrorService</a>, <a class="el" href="class_message_service.html#ae02abdc8b83f6c62353dda1a42b2f1ff">MessageService</a>, <a class="el" href="class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75">Service&lt; content_class, stackSize &gt;</a>, <a class="el" href="class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75">Service&lt; Error, STACKSIZE &gt;</a>, and <a class="el" href="class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75">Service&lt; Message, STACKSIZE &gt;</a>.</p>
 
 </div>
 </div>
