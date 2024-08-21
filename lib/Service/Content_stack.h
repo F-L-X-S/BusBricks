@@ -89,7 +89,8 @@ public:
             return false;}                                              // return false, if index of element to delete is out of range 
         // delete element, slice remaining elements, reduce size by 1
         for (int i = index; i < size; ++i) {
-            elements[i] = elements[i + 1];
+            if (i==size-1) elements[i]=content_class();
+            if (i<size-1) elements[i] = elements[i + 1];    
         }
         size--;
         return true;                                                    // return true, if deleted successfully
