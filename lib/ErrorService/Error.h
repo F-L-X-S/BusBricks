@@ -114,6 +114,8 @@ private:
                 return "CRC-Error: CRC checksum incorrect";
             case arbitrationError:
                 return "Arbitration-Error: Silence-time between frames violated";
+            case serviceNotFound:
+                return "Service-not-found: Service-Id was not found in the service-cluster";
             default:
                 return "Unknown Error";
         }
