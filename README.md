@@ -1,7 +1,7 @@
 # BusBricks 
 Object-oriented building-blocks to customize bus-communication for different services and interfaces on Arduino-MCUs <br>
 
-- [X] Checkout detailed documentation [BusBricks-documentation](https://f-l-x-s.github.io/BusBricks/)!
+- [X] Checkout detailed [BusBricks-documentation](https://f-l-x-s.github.io/BusBricks/)!
 
 ## Vision
 Provide configurable software-modules to customize the communication between services, hosted on different MCUs. <br> 

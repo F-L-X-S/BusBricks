@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>BusBricks: /Users/felixschulke/Developement/Arduino/Modbus_RTU/Modbus_RTU/Modbus-RTU/lib/Interface/ServiceInterface.h File Reference</title>
+<title>BusBricks: /Users/felixschulke/Developement/Arduino/Modbus_RTU/Modbus_RTU/Modbus-RTU/lib/ErrorService/ErrorState.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,46 +84,16 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_86b2acb48dc403d1a3fcbb48606cba44.html">Interface</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_fc6accba5b44a40633678f574f1875d6.html">ErrorService</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a>  </div>
-  <div class="headertitle"><div class="title">ServiceInterface.h File Reference</div></div>
+  <div class="headertitle"><div class="title">ErrorState.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="mock_arduino_8h_source.html">mockArduino.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_comm_interface_8h_source.html">CommInterface.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_service_cluster_8h_source.html">ServiceCluster.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_frame_8h_source.html">Frame.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_content__stack_8h_source.html">Content_stack.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_error_service_8h_source.html">ErrorService.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_error_state_8h_source.html">ErrorState.h</a>&gt;</code><br />
-</div>
-<p><a href="_service_interface_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service_interface.html">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template for generic Service-Interface Defines the handling of incoming frames from <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to services stored in the associated <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> and the conversion from PDU provided by Services in the <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> to frames, getting sent by the communication-interface. The <a class="el" href="class_service_interface.html" title="Template for generic Service-Interface Defines the handling of incoming frames from CommInterface to ...">ServiceInterface</a> dedicates memory to the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> by iterating through it's stacks.  <a href="class_service_interface.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a21d9543c516fffee84a7963224271f95" id="r_a21d9543c516fffee84a7963224271f95"><td class="memItemLeft" align="right" valign="top"><a id="a21d9543c516fffee84a7963224271f95" name="a21d9543c516fffee84a7963224271f95"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>STACKSIZE</b>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:a21d9543c516fffee84a7963224271f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb6d02ffb973fb3df14f89a7ae83d34a" id="r_abb6d02ffb973fb3df14f89a7ae83d34a"><td class="memItemLeft" align="right" valign="top"><a id="abb6d02ffb973fb3df14f89a7ae83d34a" name="abb6d02ffb973fb3df14f89a7ae83d34a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERRORSERVICE_ID</b>&#160;&#160;&#160;'e'</td></tr>
-<tr class="separator:abb6d02ffb973fb3df14f89a7ae83d34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad72dbcf6d0153db1b8d8a58001feed83" id="r_ad72dbcf6d0153db1b8d8a58001feed83"><td class="memItemLeft" align="right" valign="top"><a id="ad72dbcf6d0153db1b8d8a58001feed83" name="ad72dbcf6d0153db1b8d8a58001feed83"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG</b></td></tr>
-<tr class="separator:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><code>#include &quot;<a class="el" href="_error_state_8h_source.html">ErrorState.h</a>&quot;</code><br />
+</div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Felix Schuelke (<a href="#" onclick="location.href='mai'+'lto:'+'flx'+'sc'+'ode'+'@g'+'mai'+'l.'+'com'; return false;">flxsc<span class="obfuscator">.nosp@m.</span>ode@<span class="obfuscator">.nosp@m.</span>gmail<span class="obfuscator">.nosp@m.</span>.com</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2024-08-18</dd></dl>

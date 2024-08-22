@@ -101,6 +101,7 @@ $(function(){ initResizable(false); });
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>checkCRC16()&#160;:&#160;<a class="el" href="class_frame__modbus_r_t_u.html#a4c47818dc37cda1cd7ba792989bcb0ea">Frame_modbusRTU</a></li>
+<li>clearErrorState()&#160;:&#160;<a class="el" href="class_error_state.html#a2a2b91200168f27971ff6e63a8ab0e38">ErrorState</a></li>
 <li>clearResponse()&#160;:&#160;<a class="el" href="class_service.html#a75817b19f202f1696c3609a3f9578cb9">Service&lt; content_class, stackSize &gt;</a>, <a class="el" href="class_service_base.html#ae959e3c9fa34b4c021e3d28a4c74222b">ServiceBase</a></li>
 <li>code&#160;:&#160;<a class="el" href="struct_error_content__t.html#a1717614dc6e1a081dac66c003bf424a2">ErrorContent_t</a></li>
 <li>comm_interface&#160;:&#160;<a class="el" href="class_service_interface.html#a899b6f3e042682b285dca2588b833ae6">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
@@ -123,13 +124,14 @@ $(function(){ initResizable(false); });
 <h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
 <li>empty()&#160;:&#160;<a class="el" href="class_content__stack.html#a4710d468535ed030bf5f67052e68eebb">Content_stack&lt; content_class, MaxSize &gt;</a></li>
 <li>Error()&#160;:&#160;<a class="el" href="class_error.html#aca339d00ad8481fb4c184f0ece42698b">Error</a></li>
-<li>ErrorContent_t()&#160;:&#160;<a class="el" href="struct_error_content__t.html#a9e6c4c16ba6b5a452c34e5bc81a5a082">ErrorContent_t</a></li>
+<li>ErrorContent_t()&#160;:&#160;<a class="el" href="struct_error_content__t.html#a124bf7732bb3df57f0f3ca37c2b2f5ad">ErrorContent_t</a></li>
 <li>ErrorService()&#160;:&#160;<a class="el" href="class_error_service.html#a77cf6af4e077a494655aca530d781185">ErrorService</a></li>
+<li>ErrorState()&#160;:&#160;<a class="el" href="class_error_state.html#a5352c4c7895ca89424d36a051249f902">ErrorState</a></li>
 </ul>
 
 
 <h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
-<li>finishedSending()&#160;:&#160;<a class="el" href="class_comm_interface.html#a9a27c7221b188bde1632a7c44f79b493">CommInterface&lt; interface_type &gt;</a>, <a class="el" href="class_comm_interface_base.html#a23e0f975ebf29d40bde25eea58465bfa">CommInterfaceBase</a></li>
+<li>finishedSending()&#160;:&#160;<a class="el" href="class_comm_interface.html#a9a27c7221b188bde1632a7c44f79b493">CommInterface&lt; interface_type &gt;</a>, <a class="el" href="class_comm_interface_base.html#ad0438ac0d164b6179f742dec21be715d">CommInterfaceBase</a></li>
 <li>flush()&#160;:&#160;<a class="el" href="classarduino_mocking_1_1_software_serial.html#a5785050c0162a9c4285b822d1dd940a1">arduinoMocking::SoftwareSerial</a></li>
 <li>Frame()&#160;:&#160;<a class="el" href="class_frame.html#ad2e5946cf41d4817e750500acf05d02b">Frame</a></li>
 <li>Frame_modbusRTU()&#160;:&#160;<a class="el" href="class_frame__modbus_r_t_u.html#a6009ce4dda11184e6e0055baf09b280a">Frame_modbusRTU</a></li>
@@ -146,12 +148,13 @@ $(function(){ initResizable(false); });
 <li>get_ServiceID()&#160;:&#160;<a class="el" href="class_service.html#a4d0e8aca49451e363888ca46c2742b2e">Service&lt; content_class, stackSize &gt;</a>, <a class="el" href="class_service_base.html#a10d3306ab361be7854734c80eb30dc1d">ServiceBase</a></li>
 <li>getDeviceId()&#160;:&#160;<a class="el" href="class_comm_interface__modbus_r_t_u.html#acced18055fd7b7157e66155b1346d20f">CommInterface_modbusRTU</a></li>
 <li>getElement()&#160;:&#160;<a class="el" href="class_content__stack.html#a5ac2a896da7724281d9d85eb239f5084">Content_stack&lt; content_class, MaxSize &gt;</a></li>
+<li>getErrorState()&#160;:&#160;<a class="el" href="class_error_state.html#a55090bb1772cd8c20c936b5a9cf4f2ce">ErrorState</a></li>
 <li>getFrame()&#160;:&#160;<a class="el" href="class_frame.html#a2aa3fb0eb3fc7248bda4684a57b3bf27">Frame</a></li>
 <li>getFunctionCode()&#160;:&#160;<a class="el" href="class_frame__modbus_r_t_u.html#a02b47ac99a90a57c64b17f291190b13d">Frame_modbusRTU</a></li>
 <li>getNumberOfServices()&#160;:&#160;<a class="el" href="class_service_cluster.html#a507a50d20b2764c77200a73971935971">ServiceCluster&lt; number_of_services &gt;</a>, <a class="el" href="class_service_cluster_base.html#acbc08bddc57dbe90665216f5b2dedd35">ServiceClusterBase</a></li>
 <li>getPDU()&#160;:&#160;<a class="el" href="class_frame.html#abfe1ce91d1d7080940628ba6acdc7196">Frame</a></li>
 <li>getPDU_from_services()&#160;:&#160;<a class="el" href="class_service_interface.html#ab4112c2b2eb29d1e0ade95e4f3c07030">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
-<li>getReceivedFrame()&#160;:&#160;<a class="el" href="class_comm_interface.html#a446d6dfeb4dd695c061f1ff1c926fb51">CommInterface&lt; interface_type &gt;</a>, <a class="el" href="class_comm_interface_base.html#a2d2742daa73bbbf0b8317391c5c85a19">CommInterfaceBase</a></li>
+<li>getReceivedFrame()&#160;:&#160;<a class="el" href="class_comm_interface.html#a446d6dfeb4dd695c061f1ff1c926fb51">CommInterface&lt; interface_type &gt;</a>, <a class="el" href="class_comm_interface_base.html#a27a15e83d148ddd98d7116a225a3a30d">CommInterfaceBase</a></li>
 <li>getService_byID()&#160;:&#160;<a class="el" href="class_service_cluster.html#ae40a5207d621ccd428297ae8f3bbbf40">ServiceCluster&lt; number_of_services &gt;</a>, <a class="el" href="class_service_cluster_base.html#ae025282a6ef15d01eaba440bdf73a750">ServiceClusterBase</a></li>
 <li>getService_byPos()&#160;:&#160;<a class="el" href="class_service_cluster.html#a9e24f14fb13116a5f7bb7a551b8c5d22">ServiceCluster&lt; number_of_services &gt;</a>, <a class="el" href="class_service_cluster_base.html#a15023dc39ae2ceeb678d38f9bb51b172">ServiceClusterBase</a></li>
 </ul>
@@ -194,12 +197,12 @@ $(function(){ initResizable(false); });
 
 
 <h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
-<li>raiseError()&#160;:&#160;<a class="el" href="class_error_service.html#a4db0ae1a3ca53fe1e6290b87390098ba">ErrorService</a>, <a class="el" href="class_service_interface.html#a42226b8c236c344b6c5d171736a08f6e">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
+<li>raiseError()&#160;:&#160;<a class="el" href="class_error_service.html#a4db0ae1a3ca53fe1e6290b87390098ba">ErrorService</a>, <a class="el" href="class_error_state.html#ab996befaa1eb1089914ab0fbfecfcf39">ErrorState</a>, <a class="el" href="class_service_interface.html#aa0e50c8cfccf26d09d98567e72c5f5cc">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
 <li>read()&#160;:&#160;<a class="el" href="classarduino_mocking_1_1_mock_serial.html#a06e96a93e5e0f1785e6e87620625eeaf">arduinoMocking::MockSerial</a>, <a class="el" href="classarduino_mocking_1_1_software_serial.html#a892a38a5eb6b0c115c2745098c9637ad">arduinoMocking::SoftwareSerial</a></li>
 <li>receive()&#160;:&#160;<a class="el" href="class_comm_interface.html#a81c74dee239a10522d30900943f64eb2">CommInterface&lt; interface_type &gt;</a>, <a class="el" href="class_comm_interface__modbus_r_t_u.html#a50b42ad0a40a82ebe5a7749313ca2283">CommInterface_modbusRTU</a></li>
 <li>receiveBuffer&#160;:&#160;<a class="el" href="class_comm_interface.html#aa2cedf4d8d25ab2a0a04278c976383d9">CommInterface&lt; interface_type &gt;</a></li>
 <li>receiveCycle()&#160;:&#160;<a class="el" href="class_comm_interface.html#a86287d0a0ecad690b5182bbe01b7f63f">CommInterface&lt; interface_type &gt;</a></li>
-<li>receivedNewFrame()&#160;:&#160;<a class="el" href="class_comm_interface.html#aea53cf3e71460f3a662c175958acb643">CommInterface&lt; interface_type &gt;</a>, <a class="el" href="class_comm_interface_base.html#a01c285fd2ea35bf3f081ee531e666def">CommInterfaceBase</a></li>
+<li>receivedNewFrame()&#160;:&#160;<a class="el" href="class_comm_interface.html#aea53cf3e71460f3a662c175958acb643">CommInterface&lt; interface_type &gt;</a>, <a class="el" href="class_comm_interface_base.html#a08f93b5ea06e7ffb99571f4798108da2">CommInterfaceBase</a></li>
 <li>receiver_id&#160;:&#160;<a class="el" href="struct_message__content__t.html#a0c1e2ca71214ff401635a9cd21c65cee">Message_content_t</a></li>
 <li>recItem&#160;:&#160;<a class="el" href="class_service_interface.html#ac69502c2d78c4a046c5d3219d637f1b3">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
 <li>recStack&#160;:&#160;<a class="el" href="class_service_interface.html#a7793efd070a56f021ce56a372b13c2fa">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
@@ -216,13 +219,13 @@ $(function(){ initResizable(false); });
 <li>sender_id&#160;:&#160;<a class="el" href="struct_message__content__t.html#ad18914f4dbe4131a1cb38cedbdb3069a">Message_content_t</a></li>
 <li>sendItem&#160;:&#160;<a class="el" href="class_service_interface.html#a1e08cf764cea2084e1f425e32f44d2c1">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
 <li>sendMessage()&#160;:&#160;<a class="el" href="class_message_service.html#ac8e64d87d453ae6a6631891bdce42bef">MessageService</a></li>
-<li>sendNewFrame()&#160;:&#160;<a class="el" href="class_comm_interface.html#a21c8ee8eddb3011e89b950f1b5264664">CommInterface&lt; interface_type &gt;</a>, <a class="el" href="class_comm_interface_base.html#aec9a9fb6aa77428e8b9a65a33172f6a1">CommInterfaceBase</a></li>
+<li>sendNewFrame()&#160;:&#160;<a class="el" href="class_comm_interface.html#a21c8ee8eddb3011e89b950f1b5264664">CommInterface&lt; interface_type &gt;</a>, <a class="el" href="class_comm_interface_base.html#abc912fe242ac43255912b2f9bb9ee6fd">CommInterfaceBase</a></li>
 <li>sendStack&#160;:&#160;<a class="el" href="class_service_interface.html#a38bd169d6286c4ddbda050b7f28d093a">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
 <li>ServiceCluster()&#160;:&#160;<a class="el" href="class_service_cluster.html#a3fddf1a55492bf5438cd55bb9d4cc91f">ServiceCluster&lt; number_of_services &gt;</a></li>
 <li>ServiceInterface()&#160;:&#160;<a class="el" href="class_service_interface.html#acc70c85786fa2e133f90683f60ebf67f">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
 <li>ServiceInterface_modbusRTU()&#160;:&#160;<a class="el" href="class_service_interface__modbus_r_t_u.html#aa8ce2b3a043c2ed435c84e1b4a2c1cba">ServiceInterface_modbusRTU</a></li>
 <li>services&#160;:&#160;<a class="el" href="class_service_interface.html#ad1f915c1a536af5c73aa1315fd035535">ServiceInterface&lt; CommInterfaceBase, frameType &gt;</a></li>
-<li>setup_interface()&#160;:&#160;<a class="el" href="class_comm_interface_base.html#a28c489a3103fea57a2df4ef6cca41302">CommInterfaceBase</a></li>
+<li>setup_interface()&#160;:&#160;<a class="el" href="class_comm_interface_base.html#ae4f76b89a083bc84aff2cc88303abf37">CommInterfaceBase</a></li>
 <li>simulateInput()&#160;:&#160;<a class="el" href="classarduino_mocking_1_1_mock_serial.html#a1ba440a4ceb82eee58a793a1656e77e8">arduinoMocking::MockSerial</a>, <a class="el" href="classarduino_mocking_1_1_software_serial.html#af10cc233a2ac7f8a10f492af5b6b501b">arduinoMocking::SoftwareSerial</a></li>
 <li>SoftwareSerial()&#160;:&#160;<a class="el" href="classarduino_mocking_1_1_software_serial.html#ab17052f24c5a40a476b07e26bb6d1f7a">arduinoMocking::SoftwareSerial</a></li>
 <li>stackProcessing()&#160;:&#160;<a class="el" href="class_error_service.html#abdd6940a94fc8619c1ed31934b1cd3bd">ErrorService</a>, <a class="el" href="class_message_service.html#ae02abdc8b83f6c62353dda1a42b2f1ff">MessageService</a>, <a class="el" href="class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75">Service&lt; content_class, stackSize &gt;</a>, <a class="el" href="class_service_base.html#a6129f02c6e59212d0b5b6d4d451b30e9">ServiceBase</a></li>
@@ -244,6 +247,7 @@ $(function(){ initResizable(false); });
 <li>~CommInterfaceBase()&#160;:&#160;<a class="el" href="class_comm_interface_base.html#a04f23e3fad55bfe5d149e78ec5843388">CommInterfaceBase</a></li>
 <li>~Content_stack()&#160;:&#160;<a class="el" href="class_content__stack.html#a9f6ead53f4a1337740962f3e26134c02">Content_stack&lt; content_class, MaxSize &gt;</a></li>
 <li>~Error()&#160;:&#160;<a class="el" href="class_error.html#a1a45d42a3a035d510333cdfeb36a0e93">Error</a></li>
+<li>~ErrorState()&#160;:&#160;<a class="el" href="class_error_state.html#a1343b13a9feac276a1a26a523dfae1a5">ErrorState</a></li>
 <li>~Frame()&#160;:&#160;<a class="el" href="class_frame.html#abec8c7bccdfc88cb4da137caae9f73d6">Frame</a></li>
 <li>~Frame_modbusRTU()&#160;:&#160;<a class="el" href="class_frame__modbus_r_t_u.html#a981fc8dff661e9ac46ea378f17a28e9a">Frame_modbusRTU</a></li>
 <li>~Message()&#160;:&#160;<a class="el" href="class_message.html#a3f7275462831f787a861271687bcad67">Message</a></li>

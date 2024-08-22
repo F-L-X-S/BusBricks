@@ -5,9 +5,12 @@ var searchData=
   ['error_2ecpp_2',['Error.cpp',['../_error_8cpp.html',1,'']]],
   ['error_2eh_3',['Error.h',['../_error_8h.html',1,'']]],
   ['errorcodes_4',['errorCodes',['../_error_8h.html#a88edd67ec29d18293fae821840fef3ac',1,'Error.h']]],
-  ['errorcontent_5ft_5',['ErrorContent_t',['../struct_error_content__t.html',1,'ErrorContent_t'],['../struct_error_content__t.html#a9e6c4c16ba6b5a452c34e5bc81a5a082',1,'ErrorContent_t::ErrorContent_t()']]],
+  ['errorcontent_5ft_5',['ErrorContent_t',['../struct_error_content__t.html',1,'ErrorContent_t'],['../struct_error_content__t.html#a124bf7732bb3df57f0f3ca37c2b2f5ad',1,'ErrorContent_t::ErrorContent_t()']]],
   ['errorservice_6',['ErrorService',['../class_error_service.html',1,'ErrorService'],['../class_error_service.html#a77cf6af4e077a494655aca530d781185',1,'ErrorService::ErrorService(uint8_t instance_id)'],['../class_error_service.html#ac0b509a7e2062c9ec564a2517c1c1c5c',1,'ErrorService::ErrorService(uint8_t instance_id, uint8_t service_id)']]],
   ['errorservice_2ecpp_7',['ErrorService.cpp',['../_error_service_8cpp.html',1,'']]],
   ['errorservice_2eh_8',['ErrorService.h',['../_error_service_8h.html',1,'']]],
-  ['example_3a_20messenger_20service_9',['Example: Messenger-service',['../index.html#autotoc_md2',1,'']]]
+  ['errorstate_9',['ErrorState',['../class_error_state.html',1,'ErrorState'],['../class_error_state.html#a5352c4c7895ca89424d36a051249f902',1,'ErrorState::ErrorState()']]],
+  ['errorstate_2ecpp_10',['ErrorState.cpp',['../_error_state_8cpp.html',1,'']]],
+  ['errorstate_2eh_11',['ErrorState.h',['../_error_state_8h.html',1,'']]],
+  ['example_3a_20messenger_20service_12',['Example: Messenger-service',['../index.html#autotoc_md2',1,'']]]
 ];

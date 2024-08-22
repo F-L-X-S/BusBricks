@@ -92,7 +92,7 @@ $(function(){ initResizable(false); });
 <p>Object-oriented building-blocks to customize bus-communication for different services and interfaces on Arduino-MCUs <br  />
 </p>
 <ul class="check">
-<li class="checked">Checkout detailed documentation <a href="https://f-l-x-s.github.io/BusBricks/">BusBricks-documentation</a>!</li>
+<li class="checked">Checkout detailed <a href="https://f-l-x-s.github.io/BusBricks/">BusBricks-documentation</a>!</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Vision</h1>
@@ -135,8 +135,56 @@ Classdiagram</h2>
 <p><img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/classdiagram.png" alt="classdiagram" style="width:1700px;" class="inline"/></p>
 <h2><a class="anchor" id="autotoc_md9"></a>
 Stackprocessing</h2>
-<p><img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/stackProcessing.png" alt="stackProcessing" style="width:600px;" class="inline"/></p>
+<p><img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/stackProcessing.png" alt="stackProcessing" style="width:400px;" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md10"></a>
+Deriving a custom Service</h1>
+<ul class="check">
+<li class="checked">define content to handle</li>
+</ul>
+<ul class="check">
+<li class="checked">define a service to handle the specified content</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md11"></a>
+Define the content</h3>
+<p>Each <a href="https://f-l-x-s.github.io/BusBricks/class_service.html">Service</a> has to know, how the conversion between the processable data structure (content) and the payload, that is sended or received by the communication-layer (representation) is defined. This is done by</p><ul class="check">
+<li class="checked">deriving a content-class from the <a href="lib/Service/Content.h">content-template</a> (<a href="https://f-l-x-s.github.io/BusBricks/class_content.html">docs</a>) <br  />
+</li>
+</ul>
+<p>The mapping between content and representation (in this case <code>String</code>) is defined by:<br  />
+</p>
+<ul class="check">
+<li class="checked">overwriting and implementing the template functions <code>content_to_rep()</code> and <code>rep_to_content()</code> of <a href="https://f-l-x-s.github.io/BusBricks/class_content.html"><code>Content</code></a></li>
+</ul>
+<ul class="check">
+<li class="checked">adding specific functions to be used inside of the service (optional) (e.g. <a href="https://f-l-x-s.github.io/BusBricks/class_message.html#a8907afa8cc86db8a3623aea0caba0324">string representation for printing</a> of the <a href="https://f-l-x-s.github.io/BusBricks/class_message.html">Message-Class</a>)</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md12"></a>
+Define the service</h3>
+<p>A <a href="https://f-l-x-s.github.io/BusBricks/class_service.html">Service</a> is meant to process incoming payload and eventually generate new payload to be send. Received Payload is added to the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> with <a href="https://f-l-x-s.github.io/BusBricks/class_service.html#ac0c60bc735c64547dee269c6c3a62767"><code>impart_pdu</code></a> and the services response is able to be picked up by calling <a href="https://f-l-x-s.github.io/BusBricks/class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f"><code>get_response</code></a>. Both functions of the <a href="https://f-l-x-s.github.io/BusBricks/class_service.html">service-template</a> are using the representation (for services contents always String) of the <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a>.<br  />
+ Defining a custom service is done by</p><ul class="check">
+<li class="checked">deriving a service-class from the <a href="lib/Service/Service.h">service-template</a></li>
+</ul>
+<ul class="check">
+<li class="checked">defining a default Service-ID (unique for each service)</li>
+</ul>
+<ul class="check">
+<li class="checked">define construction with Service-ID and Instance-ID (unique for each instantiation of a service), e.g.: <div class="fragment"><div class="line"><span class="preprocessor">#define SERVICEID &#39;e&#39;</span></div>
+<div class="line"><a class="code hl_function" href="class_error_service.html#a77cf6af4e077a494655aca530d781185">ErrorService::ErrorService</a>(uint8_t instance_id): <a class="code hl_class" href="class_service.html">Service</a>&lt;<a class="code hl_class" href="class_error.html">Error</a>, <a class="code hl_define" href="_error_service_8h.html#a21d9543c516fffee84a7963224271f95">STACKSIZE</a>&gt;(<a class="code hl_define" href="_error_service_8h.html#aaabf701155256a538027633a5d275632">SERVICEID</a>, instance_id){}</div>
+<div class="ttc" id="a_error_service_8h_html_a21d9543c516fffee84a7963224271f95"><div class="ttname"><a href="_error_service_8h.html#a21d9543c516fffee84a7963224271f95">STACKSIZE</a></div><div class="ttdeci">#define STACKSIZE</div><div class="ttdoc">Number of elements the services stacks can store.</div><div class="ttdef"><b>Definition</b> ErrorService.h:38</div></div>
+<div class="ttc" id="a_error_service_8h_html_aaabf701155256a538027633a5d275632"><div class="ttname"><a href="_error_service_8h.html#aaabf701155256a538027633a5d275632">SERVICEID</a></div><div class="ttdeci">#define SERVICEID</div><div class="ttdoc">Service-id ASCII: &quot;e&quot;.</div><div class="ttdef"><b>Definition</b> ErrorService.h:41</div></div>
+<div class="ttc" id="aclass_error_html"><div class="ttname"><a href="class_error.html">Error</a></div><div class="ttdoc">Represents an error with it's error-content (error-code and an error-message), and provides methods f...</div><div class="ttdef"><b>Definition</b> Error.h:160</div></div>
+<div class="ttc" id="aclass_error_service_html_a77cf6af4e077a494655aca530d781185"><div class="ttname"><a href="class_error_service.html#a77cf6af4e077a494655aca530d781185">ErrorService::ErrorService</a></div><div class="ttdeci">ErrorService(uint8_t instance_id)</div><div class="ttdoc">Constructor for ErrorService with default Service ID &quot;m&quot;.</div><div class="ttdef"><b>Definition</b> ErrorService.cpp:26</div></div>
+<div class="ttc" id="aclass_service_html"><div class="ttname"><a href="class_service.html">Service</a></div><div class="ttdoc">Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...</div><div class="ttdef"><b>Definition</b> Service.h:115</div></div>
+</div><!-- fragment --></li>
+</ul>
+<ul class="check">
+<li class="checked">overwriting and implementing the template's <a href="https://f-l-x-s.github.io/BusBricks/class_service_base.html#a6129f02c6e59212d0b5b6d4d451b30e9"><code>stack_processing</code></a></li>
+</ul>
+<p>The <code>stack_processing</code> function has to process all payloads from the receive-stack and add the payloads to be send to the send-stack. Check <a href="lib/ErrorService/ErrorService.cpp"><code>ErrorService</code></a> or <a href="lib/MessageService/MessageService.cpp"><code>MessageService</code></a> for example implementations.</p>
+<ul class="check">
+<li class="checked">adding functions to interact with the service besides imparting/picking-up payloads (e.g. <a href="https://f-l-x-s.github.io/BusBricks/class_message__service.html#aa8d198ccf700400339e3240e1c9c86e4"><code>sendMessage</code></a> of the <a href="lib/MessageService/MessageService.h"><code>MessageService</code></a>) (optional)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md13"></a>
 License</h1>
 <p>This project is licensed under the GNU Affero General Public License v3.0. See the <a href="https://github.com/F-L-X-S/BusBricks/blob/5e3d14aac293e28b3e3d8c17ed7d4e8bd7617505/LICENSE">LICENSE</a> file for details.</p>
 <p>Copyright (c) 2024 Felix Schuelke </p>

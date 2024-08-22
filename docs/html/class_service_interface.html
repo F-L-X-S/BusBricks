@@ -94,10 +94,19 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Template for generic Service-Interface Defines the handling of incoming frames from <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to services stored in the associated <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> and the conversion from PDU provided by Services in the <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> to frames, getting sent by the communication-interface.  
+<p>Template for generic Service-Interface Defines the handling of incoming frames from <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to services stored in the associated <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> and the conversion from PDU provided by Services in the <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> to frames, getting sent by the communication-interface. The <a class="el" href="class_service_interface.html" title="Template for generic Service-Interface Defines the handling of incoming frames from CommInterface to ...">ServiceInterface</a> dedicates memory to the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> by iterating through it's stacks.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_service_interface_8h_source.html">ServiceInterface.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ServiceInterface&lt; CommInterfaceBase, frameType &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_service_interface.png" usemap="#ServiceInterface_3C_20CommInterfaceBase_2C_20frameType_20_3E_map" alt=""/>
+  <map id="ServiceInterface_3C_20CommInterfaceBase_2C_20frameType_20_3E_map" name="ServiceInterface_3C_20CommInterfaceBase_2C_20frameType_20_3E_map">
+<area href="class_error_state.html" title="A class to manage and track error states using error codes." alt="ErrorState" shape="rect" coords="0,0,311,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,6 +116,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeaebdad7101c0a66bee56edc4e6a19c1" id="r_aeaebdad7101c0a66bee56edc4e6a19c1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaebdad7101c0a66bee56edc4e6a19c1">communicate</a> ()=0</td></tr>
 <tr class="memdesc:aeaebdad7101c0a66bee56edc4e6a19c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute all relevant tasks for transferring data between <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> and Services: Getting payloads to sent from the Services, adding received payloads to the right Services, Updating communication-stacks, Executing the CommInterfaces send- and receive-cycle (Has to be implemented in the derived class)  <br /></td></tr>
 <tr class="separator:aeaebdad7101c0a66bee56edc4e6a19c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_error_state"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_error_state')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_error_state.html">ErrorState</a></td></tr>
+<tr class="memitem:a5352c4c7895ca89424d36a051249f902 inherit pub_methods_class_error_state" id="r_a5352c4c7895ca89424d36a051249f902"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_state.html#a5352c4c7895ca89424d36a051249f902">ErrorState</a> ()</td></tr>
+<tr class="memdesc:a5352c4c7895ca89424d36a051249f902 inherit pub_methods_class_error_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for <code><a class="el" href="class_error_state.html" title="A class to manage and track error states using error codes.">ErrorState</a></code>.  <br /></td></tr>
+<tr class="separator:a5352c4c7895ca89424d36a051249f902 inherit pub_methods_class_error_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1343b13a9feac276a1a26a523dfae1a5 inherit pub_methods_class_error_state" id="r_a1343b13a9feac276a1a26a523dfae1a5"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>~ErrorState</b> ()</td></tr>
+<tr class="memdesc:a1343b13a9feac276a1a26a523dfae1a5 inherit pub_methods_class_error_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_error_state.html" title="A class to manage and track error states using error codes.">ErrorState</a> object. <br /></td></tr>
+<tr class="separator:a1343b13a9feac276a1a26a523dfae1a5 inherit pub_methods_class_error_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55090bb1772cd8c20c936b5a9cf4f2ce inherit pub_methods_class_error_state" id="r_a55090bb1772cd8c20c936b5a9cf4f2ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_error_8h.html#a88edd67ec29d18293fae821840fef3ac">errorCodes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_state.html#a55090bb1772cd8c20c936b5a9cf4f2ce">getErrorState</a> ()</td></tr>
+<tr class="memdesc:a55090bb1772cd8c20c936b5a9cf4f2ce inherit pub_methods_class_error_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the currently active error-code.  <br /></td></tr>
+<tr class="separator:a55090bb1772cd8c20c936b5a9cf4f2ce inherit pub_methods_class_error_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a2b91200168f27971ff6e63a8ab0e38 inherit pub_methods_class_error_state" id="r_a2a2b91200168f27971ff6e63a8ab0e38"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clearErrorState</b> ()</td></tr>
+<tr class="memdesc:a2a2b91200168f27971ff6e63a8ab0e38 inherit pub_methods_class_error_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the current error-state to "no Error" <br /></td></tr>
+<tr class="separator:a2a2b91200168f27971ff6e63a8ab0e38 inherit pub_methods_class_error_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -122,12 +146,11 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addPDU_to_ser
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processServices</b> ()</td></tr>
 <tr class="memdesc:a4dffc7c3e366b470e1075db65333b67e"><td class="mdescLeft">&#160;</td><td class="mdescRight">start the stackProcessing of the registered services <br /></td></tr>
 <tr class="separator:a4dffc7c3e366b470e1075db65333b67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42226b8c236c344b6c5d171736a08f6e" id="r_a42226b8c236c344b6c5d171736a08f6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42226b8c236c344b6c5d171736a08f6e">raiseError</a> (<a class="el" href="_error_8h.html#a88edd67ec29d18293fae821840fef3ac">errorCodes</a> code)</td></tr>
-<tr class="memdesc:a42226b8c236c344b6c5d171736a08f6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an <a class="el" href="class_error.html" title="Represents an error with it&#39;s error-content (error-code and an error-message), and provides methods f...">Error</a> <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> is registered in the service cluster under the defined ERRORSERVICE_ID of the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> Interface and call raiseError for that <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a>.  <br /></td></tr>
-<tr class="separator:a42226b8c236c344b6c5d171736a08f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23feb243ed1748e04dd757aa5f788b3e" id="r_a23feb243ed1748e04dd757aa5f788b3e"><td class="memItemLeft" align="right" valign="top"><a id="a23feb243ed1748e04dd757aa5f788b3e" name="a23feb243ed1748e04dd757aa5f788b3e"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processSendStack</b> ()</td></tr>
-<tr class="memdesc:a23feb243ed1748e04dd757aa5f788b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is getting pointers to the representation of the <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> on the bottom of the stack. The pointer to the string-formatted representation is imparted to the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> as teh next frame to be sent by calling sendNewFrame. Then the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s sendCycle get's executed. Exit, after the sendStack is empty. <br /></td></tr>
+<tr class="memitem:aa0e50c8cfccf26d09d98567e72c5f5cc" id="r_aa0e50c8cfccf26d09d98567e72c5f5cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0e50c8cfccf26d09d98567e72c5f5cc">raiseError</a> (<a class="el" href="_error_8h.html#a88edd67ec29d18293fae821840fef3ac">errorCodes</a> code) override</td></tr>
+<tr class="memdesc:aa0e50c8cfccf26d09d98567e72c5f5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an <a class="el" href="class_error_service.html" title="Service class for handling Errors.">ErrorService</a> is registered in the service cluster under the defined ERRORSERVICE_ID of the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> Interface and call raiseError for that <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a>. If no <a class="el" href="class_error_service.html" title="Service class for handling Errors.">ErrorService</a> is registered, the errorState is stored regularly in the <a class="el" href="class_error_state.html" title="A class to manage and track error states using error codes.">ErrorState</a> class.  <br /></td></tr>
+<tr class="separator:aa0e50c8cfccf26d09d98567e72c5f5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23feb243ed1748e04dd757aa5f788b3e" id="r_a23feb243ed1748e04dd757aa5f788b3e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23feb243ed1748e04dd757aa5f788b3e">processSendStack</a> ()</td></tr>
+<tr class="memdesc:a23feb243ed1748e04dd757aa5f788b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is getting pointers to the representation of the <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> on the bottom of the stack. The pointer to the string-formatted representation is imparted to the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> as teh next frame to be sent by calling sendNewFrame. Then the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s sendCycle get's executed. Exit, after the sendStack is empty.  <br /></td></tr>
 <tr class="separator:a23feb243ed1748e04dd757aa5f788b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c5ec5e13af8a67d1b08c963fcd71214" id="r_a7c5ec5e13af8a67d1b08c963fcd71214"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c5ec5e13af8a67d1b08c963fcd71214">processRecStack</a> ()</td></tr>
 <tr class="memdesc:a7c5ec5e13af8a67d1b08c963fcd71214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add items received by the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the recStack and execute the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s receiveCycle to wait for new incoming frames. Exit, if the recStack is full or the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> did not received new Frames within the in receiveCycle specified timeout.  <br /></td></tr>
@@ -167,10 +190,10 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInterfaceBase</a>, typename frameType&gt;<br />
-class ServiceInterface&lt; CommInterfaceBase, frameType &gt;</div><p>Template for generic Service-Interface Defines the handling of incoming frames from <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to services stored in the associated <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> and the conversion from PDU provided by Services in the <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> to frames, getting sent by the communication-interface. </p>
+class ServiceInterface&lt; CommInterfaceBase, frameType &gt;</div><p>Template for generic Service-Interface Defines the handling of incoming frames from <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to services stored in the associated <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> and the conversion from PDU provided by Services in the <a class="el" href="class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the...">ServiceCluster</a> to frames, getting sent by the communication-interface. The <a class="el" href="class_service_interface.html" title="Template for generic Service-Interface Defines the handling of incoming frames from CommInterface to ...">ServiceInterface</a> dedicates memory to the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> by iterating through it's stacks. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname"><a class="el" href="class_comm_interface_base.html" title="Communcation-Interface-Base-Class containing functions, that have to be re-implemented in the derived...">CommInterfaceBase</a></td><td>type of <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to use, derived Class of the abstract CommInterface-Class (e.g. <a class="el" href="class_comm_interface__modbus_r_t_u.html" title="The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interfa...">CommInterface_modbusRTU</a>) </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_comm_interface_base.html" title="Communcation-Interface-Base-Class of the CommInterface template specifies a standardized interface to...">CommInterfaceBase</a></td><td>type of <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to use, derived Class of the abstract CommInterface-Class (e.g. <a class="el" href="class_comm_interface__modbus_r_t_u.html" title="The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interfa...">CommInterface_modbusRTU</a>) </td></tr>
     <tr><td class="paramname">frameType</td><td>type of the frames to be send, derived Class of the abstract Frame-Class (e.g. <a class="el" href="class_frame__modbus_r_t_u.html" title="Class for defining the structure of the Modbus-RTU-Frame. Can be constructed by a given modbus-frame ...">Frame_modbusRTU</a>) </td></tr>
   </table>
   </dd>
@@ -274,12 +297,43 @@ template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInt
 </div><div class="memdoc">
 
 <p>Add items received by the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the recStack and execute the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s receiveCycle to wait for new incoming frames. Exit, if the recStack is full or the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> did not received new Frames within the in receiveCycle specified timeout. </p>
-<p>If the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> received a new frame (that means, it's recBuffer is set to nullptr), the function creates the Frame-instance (specified by frameType) from it's recItem and adds it to the recStack. (If the creation of the Frame-instance fails (returned nullptr), the Framing-Error is raised) Then it initializes the recItem and imparts it's reference to the comm_interface by calling getReceivedFrame. The <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> is now storing the next <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> received at this address. After specifying the destination for received frames for ComInterface, the receiveCycle is executed again, to wait for incoming Frames. </p>
+<p>If the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> received a new frame (that means, it's recBuffer is set to nullptr), the function creates the Frame-instance (specified by frameType) from it's recItem and adds it to the recStack. (If the creation of the Frame-instance fails (isValid returned false), the Framing-Error is raised) Then it initializes the recItem and imparts it's reference to the comm_interface by calling getReceivedFrame. The <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> is now storing the next <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> received at this address. After specifying the destination for received frames for ComInterface, the receiveCycle is executed again, to wait for incoming Frames.</p>
+<p>The ErrorStates of the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> are transferred to the <a class="el" href="class_service_interface.html" title="Template for generic Service-Interface Defines the handling of incoming frames from CommInterface to ...">ServiceInterface</a> <a class="el" href="class_error_state.html" title="A class to manage and track error states using error codes.">ErrorState</a>. </p>
 
 </div>
 </div>
-<a id="a42226b8c236c344b6c5d171736a08f6e" name="a42226b8c236c344b6c5d171736a08f6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42226b8c236c344b6c5d171736a08f6e">&#9670;&#160;</a></span>raiseError()</h2>
+<a id="a23feb243ed1748e04dd757aa5f788b3e" name="a23feb243ed1748e04dd757aa5f788b3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23feb243ed1748e04dd757aa5f788b3e">&#9670;&#160;</a></span>processSendStack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInterfaceBase</a> , typename frameType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="class_service_interface.html">ServiceInterface</a>&lt; <a class="el" href="class_comm_interface_base.html">CommInterfaceBase</a>, frameType &gt;::processSendStack </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is getting pointers to the representation of the <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> on the bottom of the stack. The pointer to the string-formatted representation is imparted to the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> as teh next frame to be sent by calling sendNewFrame. Then the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s sendCycle get's executed. Exit, after the sendStack is empty. </p>
+<p>The ErrorStates of the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> are transferred to the <a class="el" href="class_service_interface.html" title="Template for generic Service-Interface Defines the handling of incoming frames from CommInterface to ...">ServiceInterface</a> <a class="el" href="class_error_state.html" title="A class to manage and track error states using error codes.">ErrorState</a>. </p>
+
+</div>
+</div>
+<a id="aa0e50c8cfccf26d09d98567e72c5f5cc" name="aa0e50c8cfccf26d09d98567e72c5f5cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e50c8cfccf26d09d98567e72c5f5cc">&#9670;&#160;</a></span>raiseError()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,18 +352,20 @@ template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInt
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Check if an <a class="el" href="class_error.html" title="Represents an error with it&#39;s error-content (error-code and an error-message), and provides methods f...">Error</a> <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> is registered in the service cluster under the defined ERRORSERVICE_ID of the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> Interface and call raiseError for that <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a>. </p>
+<p>Check if an <a class="el" href="class_error_service.html" title="Service class for handling Errors.">ErrorService</a> is registered in the service cluster under the defined ERRORSERVICE_ID of the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> Interface and call raiseError for that <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a>. If no <a class="el" href="class_error_service.html" title="Service class for handling Errors.">ErrorService</a> is registered, the errorState is stored regularly in the <a class="el" href="class_error_state.html" title="A class to manage and track error states using error codes.">ErrorState</a> class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">code</td><td>The error code of the error to be raised. </td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented from <a class="el" href="class_error_state.html#ab996befaa1eb1089914ab0fbfecfcf39">ErrorState</a>.</p>
 
 </div>
 </div>

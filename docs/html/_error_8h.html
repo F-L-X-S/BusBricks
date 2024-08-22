@@ -115,15 +115,16 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a88edd67ec29d18293fae821840fef3ac" id="r_a88edd67ec29d18293fae821840fef3ac"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88edd67ec29d18293fae821840fef3ac">errorCodes</a> { <br />
-&#160;&#160;<a class="el" href="#a88edd67ec29d18293fae821840fef3aca24ab257f4bbf0618975b737474845b82">unknownError</a> = '0'
+&#160;&#160;<a class="el" href="#a88edd67ec29d18293fae821840fef3acab22416d928134d1c6c7b2e8d2c31f20b">noError</a> = '0'
 , <a class="el" href="#a88edd67ec29d18293fae821840fef3aca2c7591001e3c8d11877e717587a0cf5f">framingError</a> = '1'
 , <a class="el" href="#a88edd67ec29d18293fae821840fef3aca44a9e3fc08f1805af68ca3174567fadc">crcError</a> = '2'
 , <a class="el" href="#a88edd67ec29d18293fae821840fef3aca3d04e5ac1616b4f17188bf1cc86bdfd6">arbitrationError</a> = '3'
 , <br />
 &#160;&#160;<a class="el" href="#a88edd67ec29d18293fae821840fef3aca675e49e713e97b6ccc278709766f5e93">serviceNotFound</a> = '4'
+, <a class="el" href="#a88edd67ec29d18293fae821840fef3aca24ab257f4bbf0618975b737474845b82">unknownError</a> = 'X'
 <br />
  }</td></tr>
-<tr class="memdesc:a88edd67ec29d18293fae821840fef3ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration representing possible error codes in the communication system.  <a href="#a88edd67ec29d18293fae821840fef3ac">More...</a><br /></td></tr>
+<tr class="memdesc:a88edd67ec29d18293fae821840fef3ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration for various error codes.  <a href="#a88edd67ec29d18293fae821840fef3ac">More...</a><br /></td></tr>
 <tr class="separator:a88edd67ec29d18293fae821840fef3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -146,9 +147,10 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enumeration representing possible error codes in the communication system. </p>
+<p>Enumeration for various error codes. </p>
+<p>This enum defines the various error codes that can be used to represent different error states. Ensure that <code>noError</code> is defined as the neutral value indicating no active error. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a88edd67ec29d18293fae821840fef3aca24ab257f4bbf0618975b737474845b82" name="a88edd67ec29d18293fae821840fef3aca24ab257f4bbf0618975b737474845b82"></a>unknownError&#160;</td><td class="fielddoc"><p>unknown <a class="el" href="class_error.html" title="Represents an error with it&#39;s error-content (error-code and an error-message), and provides methods f...">Error</a> </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a88edd67ec29d18293fae821840fef3acab22416d928134d1c6c7b2e8d2c31f20b" name="a88edd67ec29d18293fae821840fef3acab22416d928134d1c6c7b2e8d2c31f20b"></a>noError&#160;</td><td class="fielddoc"><p>no <a class="el" href="class_error.html" title="Represents an error with it&#39;s error-content (error-code and an error-message), and provides methods f...">Error</a> </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a88edd67ec29d18293fae821840fef3aca2c7591001e3c8d11877e717587a0cf5f" name="a88edd67ec29d18293fae821840fef3aca2c7591001e3c8d11877e717587a0cf5f"></a>framingError&#160;</td><td class="fielddoc"><p>Structure of the frame is not as expected by the services content-representation-definition. </p>
 </td></tr>
@@ -157,6 +159,8 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a88edd67ec29d18293fae821840fef3aca3d04e5ac1616b4f17188bf1cc86bdfd6" name="a88edd67ec29d18293fae821840fef3aca3d04e5ac1616b4f17188bf1cc86bdfd6"></a>arbitrationError&#160;</td><td class="fielddoc"><p>Violated silence-time between frames. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a88edd67ec29d18293fae821840fef3aca675e49e713e97b6ccc278709766f5e93" name="a88edd67ec29d18293fae821840fef3aca675e49e713e97b6ccc278709766f5e93"></a>serviceNotFound&#160;</td><td class="fielddoc"><p>The Service-Id addressed by the frame was not found in the service-cluster. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a88edd67ec29d18293fae821840fef3aca24ab257f4bbf0618975b737474845b82" name="a88edd67ec29d18293fae821840fef3aca24ab257f4bbf0618975b737474845b82"></a>unknownError&#160;</td><td class="fielddoc"><p>Unknown <a class="el" href="class_error.html" title="Represents an error with it&#39;s error-content (error-code and an error-message), and provides methods f...">Error</a>. </p>
 </td></tr>
 </table>
 
