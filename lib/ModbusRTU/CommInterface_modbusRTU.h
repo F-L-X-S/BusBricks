@@ -37,10 +37,10 @@
 #include <CommInterface.h>
 
 /// @brief debugging flag to prit debugging-information on Serial 
-#define DEBUG
+//#define DEBUG
 
 /// @brief maximum number of Bytes a frame can contain
-#define MAXFRAMESIZE 256 
+#define MAXFRAMESIZE 20
 
 /**
  * @brief The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interface-type
@@ -128,7 +128,7 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
          * @brief Clear the receive-buffer of SoftwareSerial 
          * 
          */
-        void _clearRxBuffer();                          
+        size_t _clearRxBuffer();                          
 
 };
 
