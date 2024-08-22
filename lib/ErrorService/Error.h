@@ -39,13 +39,16 @@
 
 /**
  * @enum errorCodes
- * @brief Enumeration representing possible error codes in the communication system
+ * @brief Enumeration for various error codes.
+ * 
+ * This enum defines the various error codes that can be used to represent different error states.
+ * Ensure that `noError` is defined as the neutral value indicating no active error.
  */
 enum errorCodes {
     /**
-     * @brief unknown Error 
+     * @brief no Error 
      */
-    unknownError = '0',  
+    noError = '0',  
 
     /**
      * @brief Structure of the frame is not as expected by the services content-representation-definition
@@ -66,7 +69,13 @@ enum errorCodes {
      * @brief The Service-Id addressed by the frame was not found in the service-cluster
      * 
      */
-    serviceNotFound = '4'
+    serviceNotFound = '4',
+
+    /**
+     * @brief Unknown Error
+     * 
+     */
+    unknownError = 'X'
 };
 
 
@@ -95,7 +104,7 @@ struct ErrorContent_t {
      * @brief Constructor that initializes the error content based on the provided error code.
      * @param errCode The error code to initialize the structure with, unknownError by default.
      */
-    ErrorContent_t(char instanceId=0x0, errorCodes errCode=unknownError) : 
+    ErrorContent_t(char instanceId=0x0, errorCodes errCode=noError) : 
         code(errCode), instanceId(instanceId) {
         message = getErrorMessage(errCode);
     }
@@ -108,6 +117,8 @@ private:
      */
     const char* getErrorMessage(errorCodes code) {
         switch (code) {
+            case noError:
+                return "No Error";
             case framingError:
                 return "Framing-Error: Structure of the frame is not as expected";
             case crcError:

@@ -36,6 +36,7 @@
 #include <Frame.h>
 #include <Content_stack.h>
 #include <ErrorService.h>
+#include <ErrorState.h>
 
 #define STACKSIZE 2             // Size of Send- / Rec-Stack
 #define ERRORSERVICE_ID 'e'     // Service-ID of the configured Error-Service in Servicecluster
@@ -52,7 +53,7 @@
  * @tparam frameType type of the frames to be send, derived Class of the abstract Frame-Class (e.g. Frame_modbusRTU)
  */
 template<typename CommInterfaceBase, typename frameType>                                       
-class ServiceInterface{
+class ServiceInterface: public ErrorState{
     public:
         /**
          * @brief Construct a new Service Interface object
@@ -61,6 +62,7 @@ class ServiceInterface{
          * @param services pointer to an instance of a ServiceCluster-derived class-object containing the associated services 
          */
         ServiceInterface(CommInterfaceBase* comm_interface, ServiceClusterBase* services):
+                ErrorState(),
                 comm_interface(comm_interface), 
                 services(services) {};
 
@@ -122,16 +124,19 @@ class ServiceInterface{
         }
 
         /**
-         * @brief Check if an Error Service is registered in the service cluster under the defined 
-         * ERRORSERVICE_ID of the Service Interface and call raiseError for that Service.
+         * @brief Check if an ErrorService is registered in the service cluster under the defined 
+         * ERRORSERVICE_ID of the Service Interface and call raiseError for that Service. 
+         * If no ErrorService is registered, the errorState is stored regularly in the ErrorState class.
          * 
          * @param code The error code of the error to be raised.
          */
-        void raiseError(errorCodes code){
+        void raiseError(errorCodes code) override {
             ServiceBase* service = services->getService_byID(ERRORSERVICE_ID);
             if (service) {
                 ErrorService* errService = static_cast<ErrorService*>(service);
                 errService->raiseError(code);
+            }else{
+                ErrorState::raiseError(code);
             }
         };
 
@@ -141,6 +146,9 @@ class ServiceInterface{
          * The pointer to the string-formatted representation is imparted to the CommInterface as teh next frame to be sent by calling sendNewFrame.
          * Then the CommInterface's sendCycle get's executed.
          * Exit, after the sendStack is empty.
+         * 
+         * The ErrorStates of the CommInterface are transferred to the ServiceInterface ErrorState.
+         * 
          */
         virtual void processSendStack(){
             // Serial debugging
@@ -159,7 +167,12 @@ class ServiceInterface{
                     comm_interface->sendCycle();                        // execute sending 
                 }else{
                     comm_interface->sendCycle();                        // execute sending 
-                };           
+                };
+                
+                // check the commInterfaces ErrorState 
+                errorCodes commInterfaceErrorState = comm_interface->getErrorState();
+                if (commInterfaceErrorState!=noError) raiseError(commInterfaceErrorState);
+                comm_interface->clearErrorState();            
             };        
         }
 
@@ -169,10 +182,12 @@ class ServiceInterface{
          * 
          * If the CommInterface received a new frame (that means, it's recBuffer is set to nullptr), the function creates the 
          * Frame-instance (specified by frameType) from it's recItem and adds it to the recStack. 
-         * (If the creation of the Frame-instance fails (returned nullptr), the Framing-Error is raised)
+         * (If the creation of the Frame-instance fails (isValid returned false), the Framing-Error is raised)
          * Then it initializes the recItem and imparts it's reference to the comm_interface by calling getReceivedFrame. 
          * The CommInterface is now storing the next Frame received at this address. 
          * After specifying the destination for received frames for ComInterface, the receiveCycle is executed again, to wait for incoming Frames.
+         * 
+         * The ErrorStates of the CommInterface are transferred to the ServiceInterface ErrorState.
          */
         virtual void processRecStack() {
             // Serial debugging
@@ -180,7 +195,7 @@ class ServiceInterface{
                 Serial.println("Processing Receive-Stack...");
             #endif                  
             // Handle receivebuffer 
-            while (comm_interface->receivedNewFrame() && !recStack.full()){
+            while (comm_interface->receivedNewFrame() && !recStack.full()){               
                 if (recItem != ""){                                 // Item not empty 
                     frameString frameStr = recItem.c_str();         // conversion for identification as framestring in Frame-Class-Constructor
                     frameType recItemFrame(&frameStr);              // Construct Frame-Class derived Object (nullptr if failed)
@@ -190,10 +205,21 @@ class ServiceInterface{
                             raiseError(framingError);}              // frame-construction failed 
                     recItem = "";                                   // Clear rec-Item                               
                 }
+
+                // check the commInterfaces ErrorState 
+                errorCodes commInterfaceErrorState = comm_interface->getErrorState();
+                if (commInterfaceErrorState!=noError) raiseError(commInterfaceErrorState);
+                comm_interface->clearErrorState(); 
+
                 comm_interface->getReceivedFrame(&recItem);         // Impart memory the received item has to be stored at 
                 comm_interface->receiveCycle();                     // Receive new frames from comm-interface 
             }
             comm_interface->receiveCycle();                         // Receive new frames from comm-interface
+
+            // check the commInterfaces ErrorState 
+            errorCodes commInterfaceErrorState = comm_interface->getErrorState();
+            if (commInterfaceErrorState!=noError) raiseError(commInterfaceErrorState);
+            comm_interface->clearErrorState(); 
         }
 };
 #endif // SERVICEINTERFACE_H

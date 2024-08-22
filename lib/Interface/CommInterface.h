@@ -32,27 +32,39 @@
 #endif
 
 #include<Frame.h>
+#include<ErrorState.h>
 
 /**
- * @brief Communcation-Interface-Base-Class 
- * containing functions, that have to be re-implemented in the derived classes  of the CommInterface-template 
- * but which have to be called in other (abstract) classes (e.g. ServiceInterface)
+ * @brief Communcation-Interface-Base-Class of the CommInterface template
+    * specifies a standardized interface to use for integrating 
+    * any hardware-interface (e.g. SoftwareSerial, OneWire...) into a Service-Interface 
+    * The template ensures the correct handling of send- and receive-buffers of the interface:
+    *
+    * sendBuffer set to nullptr:       the Interface is ready to send another frame
+    * sendBuffer not set to nullptr:   the frame, sendBuffer is pointing to, has to be send next 
+    *
+    * recBuffer set to nullptr:        the frame received last was written to the destination successfully, no new receive-Buffer was defined
+    * recBuffer not set to nullptr:    the interface is waiting to receive a new frame to write it to the destination, recBuffer is pointing to 
+    * 
+    * Stores errors occurred during internal processing by using the ErrorState class. The errors can be picked-up by calling the public 
+    * ErrorState functions after calling the send or receive cycles
+    * 
  */
-class CommInterfaceBase
+class CommInterfaceBase: public ErrorState
 {
 public:
     /**
      * @brief Setup the Interface
      *  has to be called in Setup-function
      */
-    void setup_interface(){};
+    virtual void setup_interface(){};
 
     /**
      * @brief Add a new Frame to the send-buffer
      * 
      * @param sendFrame Pointer to String-Object with frame to be send next  
      */
-    void sendNewFrame(String* sendFrame){};
+    virtual void sendNewFrame(String* sendFrame){};
 
     /**
      * @brief Check, if the Frame was sent and the CommInterface is ready to send the next Frame 
@@ -60,14 +72,14 @@ public:
      * @return true Frame, that was added by sendNewFrame-function was send 
      * @return false Frame, that was added by sendNewFrame-function is not sent yet 
      */
-    bool finishedSending(){};
+    virtual bool finishedSending(){};
 
     /**
      * @brief Define the destination, the next received Frame should be copied to ba a pointer to an empty String-Object
      * 
      * @param destFrameBuffer pointer to an empty String-Object, the next received frame should be stored in
      */
-    void getReceivedFrame(String* destFrameBuffer){};
+    virtual void getReceivedFrame(String* destFrameBuffer){};
 
     /**
      * @brief Check, if a new Frame was received 
@@ -75,13 +87,13 @@ public:
      * @return true a new frame was received and stored on the with getReceivedFrame specified String-Object
      * @return false no new frame was received, getReceivedFrame specified String-Object still empty
      */
-    bool receivedNewFrame(){};
+    virtual bool receivedNewFrame(){};
 
     /**
      * @brief Construct a new Comm Interface Base object
      * 
      */
-    CommInterfaceBase(){};
+    CommInterfaceBase(): ErrorState(){};
 
     /**
      * @brief Destroy the Comm-Interface Base object
@@ -101,6 +113,9 @@ public:
     *
     * recBuffer set to nullptr:        the frame received last was written to the destination successfully, no new receive-Buffer was defined
     * recBuffer not set to nullptr:    the interface is waiting to receive a new frame to write it to the destination, recBuffer is pointing to 
+    *     
+    * Stores errors occurred during internal processing by using the ErrorState class. The errors can be picked-up by calling the public 
+    * ErrorState functions after calling the send or receive cycles
     * 
     * @tparam interface_type type of native bus-interface to setup the Comm-interface for (e.g. SoftwareSerial)
 */

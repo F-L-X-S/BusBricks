@@ -95,8 +95,10 @@ bool CommInterface_modbusRTU::receive(){
         };
   };
 
-    // wait for Frame-timeout to ensure frame is complete
-    while (micros() - startTime < _frameTimeout);
+    // wait for Frame-timeout to ensure frame is complete, raise Error, if the silence-time is violated
+    while (micros() - startTime < _frameTimeout){
+      if (interface->available()) raiseError(arbitrationError);
+    };
     // Serial debugging
     #ifdef DEBUG
         Serial.println("Received:\t");
