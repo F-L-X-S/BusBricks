@@ -40,7 +40,7 @@
 
 #define STACKSIZE 2             // Size of Send- / Rec-Stack
 #define ERRORSERVICE_ID 'e'     // Service-ID of the configured Error-Service in Servicecluster
-#define DEBUG
+//#define DEBUG
 
 
 /**
@@ -130,7 +130,7 @@ class ServiceInterface: public ErrorState{
          * 
          * @param code The error code of the error to be raised.
          */
-        void raiseError(errorCodes code) override {
+        void raiseError(errorCodes code) {
             ServiceBase* service = services->getService_byID(ERRORSERVICE_ID);
             if (service) {
                 ErrorService* errService = static_cast<ErrorService*>(service);
