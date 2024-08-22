@@ -78,35 +78,35 @@ bool CommInterface_modbusRTU::receive(){
 
   startTime = micros();                                             // redefine the time for measuring timeouts
 
-  // Receive a relevant frame as long as timeout and framelength are ok
-  while (micros() - startTime <= _charTimeout && interface->available() && numBytes < MAXFRAMESIZE) {
-        // Serial debugging
-        #ifdef DEBUG
-            Serial.println("Waiting for relevant frame...");
-        #endif
-        if (receivingFlag || (deviceId==interface->peek()))     // check if the char in buffer is the device-ID or receiving started already
+  // Receive a relevant frame as long as timeout and frame length are ok
+  while (numBytes < MAXFRAMESIZE) {
+        // check if the char in buffer is the device-ID or receiving started already
+        if (interface->available() && (receivingFlag || (deviceId==interface->peek())))     
         {
             receivingFlag = true;                               // Set the receive-flag 
             startTime = micros();                               // redefine the time for measuring timeouts
             *receiveBuffer+= char(interface->read());           // Write the received char to the specified buffer
             numBytes++;                                         // increase frame-length-counter 
-        }else{
-          interface->read();
-        };
+        }else if(micros() - startTime >= _charTimeout) break;   // if no char is received, wait for timeout
   };
 
     // wait for Frame-timeout to ensure frame is complete, raise Error, if the silence-time is violated
-    while (micros() - startTime < _frameTimeout){
-      if (interface->available()) raiseError(arbitrationError);
-    };
+    if((_clearRxBuffer()>0) & (*receiveBuffer!="")){
+      (numBytes>=MAXFRAMESIZE) ? raiseError(frameLengthError):raiseError(arbitrationError);
+    } 
+
+    // handle the Arbitration-Error with waiting for bus-silence
+    if(getErrorState()==arbitrationError) while(_clearRxBuffer()!=0);
+
     // Serial debugging
     #ifdef DEBUG
-        Serial.println("Received:\t");
+        Serial.print("Received ");
+        Serial.print(numBytes);
+        Serial.println("bytes:");
         Serial.print(*receiveBuffer);
         Serial.print("\n");
     #endif
-    _clearRxBuffer();                                             // Clear the softwareSerial Rec-buffer
-    
+
     // Serial debugging
     #ifdef DEBUG
         Serial.println("Interface has stopped receiving...");
@@ -117,14 +117,17 @@ bool CommInterface_modbusRTU::receive(){
 };
 
 // Clear the Receive-buffer 
-void CommInterface_modbusRTU::_clearRxBuffer() {
+size_t CommInterface_modbusRTU::_clearRxBuffer() {
+  size_t clearedChars = 0;
   unsigned long startTime = micros();
    while (micros() - startTime < _frameTimeout) {                   // Check for a frame-timeout
     if (interface->available() > 0) {                                
       startTime = micros();                                         // update start-timestamp
       interface->read();                                            // delete one byte from rec-buffer
+      clearedChars++;
     }
   };
+  return clearedChars;
 };
 
 // Calculate the Timeouts
@@ -139,8 +142,8 @@ void CommInterface_modbusRTU::_calculateTimeouts(uint16_t baudrate) {
     _frameTimeout = timePerChar * 3.5;
   }
   else {
-    _charTimeout = 1700000;
-    _frameTimeout = 4000000;
+    _charTimeout = 1700;
+    _frameTimeout = 4000;
   }
 };
 
