@@ -66,7 +66,7 @@ class ErrorState {
          * 
          * @param code error-code of error to raise
          */
-        virtual void raiseError(errorCodes code);
+        void raiseError(errorCodes code);
 
         /**
          * @brief Get the currently active error-code
