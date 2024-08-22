@@ -9,12 +9,29 @@ BusBricks are templates to derive classes for mapping service-specific rules to 
 The communication between the hosting devices is therefore separated from the inter-service-communication. 
 That means, the communication between the services can follow it's own (from the chosen communication-interface independent) rules. <br>
 
-#### Example: Messenger-service 
+### example use-case: Messenger-service 
 Hosting a messenger on different host-devices. Some of those hosts support a serial commuication for modbus-RTU, some only support I2C.<br>
-|*Service*|*Communication-interfaces*|
-|----------|--------------------------|   
-|Messenger|Modbus-RTU (SoftwareSerial)|
-|         |I2C (Wire)|
+#### Roadmap:
+###### Message-Service implementation
+- [x] [Message](lib/MessageService/Message.h) content and payload definition
+- [x] Implementation of the [Messenger-Service](lib/MessageService/MessageService.h)
+
+###### Modbus-RTU implementation
+- [x] Implementation of the [Modbus-RTU communication-interface](lib/ModbusRTU/CommInterface_modbusRTU.h)
+- [x] [Modbus-RTU frame](lib/ModbusRTU/Frame_modbusRTU.h) definition
+- [x] Implementation of the [Modbus-RTU Service-interface](lib/ModbusRTU/ServiceInterface_modbusRTU.h)
+- [x] Registration of [Messenger-Service](lib/MessageService/MessageService.h)-instance and [Error-Service](lib/ErrorService/ErrorService.h)-instance within an [service-cluster](lib/Service/ServiceCluster.h) in [main](src/main.cpp)
+- [x] Implementation of [Modbus-RTU Service-Interface](lib/Interface/ServiceInterface.h) to process payload from/for the registered services and frames of from/for [Modbus-RTU communication-interface](lib/ModbusRTU/CommInterface_modbusRTU.h)
+- [ ] Setup of the [Modbus-RTU Service-interface](lib/ModbusRTU/ServiceInterface_modbusRTU.h) for Master-mode (polling and message-forwarding)
+
+###### I2C implementation
+- [ ] Implementation of a [communication-interface](lib/Interface/CommInterface.h) derived I2C-communication-interface
+- [ ] Definition of a [Frame](lib/Frame/Frame.h) derived I2C-Frame-class
+- [ ] Setup of an I2C service-interface
+- [ ] Setup [service-template](lib/Service/Service.h) and [service-cluster](lib/Service/ServiceCluster.h) for association in multiple [service-interfaces](lib/Interface/ServiceInterface.h)
+  
+###### User-interaction
+- [x] Setup of a tiny chat-interface in [main](src/main.cpp)
 
 ## Basic Concepts
 ### Service- and Communication-Layer  
@@ -67,6 +84,19 @@ ErrorService::ErrorService(uint8_t instance_id): Service<Error, STACKSIZE>(SERVI
 The ```stack_processing``` function has to process all payloads from the receive-stack and add the payloads to be send to the send-stack. Check [```ErrorService```](lib/ErrorService/ErrorService.cpp) or [```MessageService```](lib/MessageService/MessageService.cpp) for example implementations.
 
 - [x] adding functions to interact with the service besides imparting/picking-up payloads (e.g. [```sendMessage```](https://f-l-x-s.github.io/BusBricks/class_message__service.html#aa8d198ccf700400339e3240e1c9c86e4) of the [```MessageService```](lib/MessageService/MessageService.h)) (optional)
+
+## Build environments and testing
+### clang-build for local debugging
+The project is implemented to be debugged on the local engineering-device (PC). Therefore [testing-functions](test/manual) are defined for the local execution with clang (possible with other compilers, but only tested with clang). <br>
+Those functions are more thought as a "playground" for setting up scenarios to debug, than for approving complete functionality of the Program.<br>
+The clang-build is customized in [tasks](.vscode/tasks.json).<br>
+Because of the usage of Arduino-specific functions not supported by c++ natively, those functions are replaced by using the namespaces in [Arduino-Mocking](lib/mockArduino/mockArduino.h) and [Serial-Mocking](lib/mockSoftwareSerial/mockSoftwareSerial.h). 
+
+### native environment 
+The pio native-environment is setup in [platformio.ini](platformio.ini). All [automated tests](test/native/) are executed in this environment.
+
+### uno and nano328p environment 
+ The environments for the target-architecture are configured in [platformio.ini](platformio.ini).
 
 ## License
 
