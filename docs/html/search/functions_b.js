@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['raiseerror_0',['raiseError',['../class_error_service.html#a4db0ae1a3ca53fe1e6290b87390098ba',1,'ErrorService::raiseError()'],['../class_error_state.html#ab996befaa1eb1089914ab0fbfecfcf39',1,'ErrorState::raiseError()'],['../class_service_interface.html#aa0e50c8cfccf26d09d98567e72c5f5cc',1,'ServiceInterface::raiseError()']]],
+  ['raiseerror_0',['raiseError',['../class_error_service.html#a4db0ae1a3ca53fe1e6290b87390098ba',1,'ErrorService::raiseError()'],['../class_error_state.html#ab996befaa1eb1089914ab0fbfecfcf39',1,'ErrorState::raiseError()'],['../class_service_interface.html#a42226b8c236c344b6c5d171736a08f6e',1,'ServiceInterface::raiseError()']]],
   ['read_1',['read',['../classarduino_mocking_1_1_mock_serial.html#a06e96a93e5e0f1785e6e87620625eeaf',1,'arduinoMocking::MockSerial::read()'],['../classarduino_mocking_1_1_software_serial.html#a892a38a5eb6b0c115c2745098c9637ad',1,'arduinoMocking::SoftwareSerial::read()']]],
   ['receive_2',['receive',['../class_comm_interface.html#a81c74dee239a10522d30900943f64eb2',1,'CommInterface::receive()'],['../class_comm_interface__modbus_r_t_u.html#a50b42ad0a40a82ebe5a7749313ca2283',1,'CommInterface_modbusRTU::receive()']]],
   ['receivecycle_3',['receiveCycle',['../class_comm_interface.html#a86287d0a0ecad690b5182bbe01b7f63f',1,'CommInterface']]],
