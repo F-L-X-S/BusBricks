@@ -84,6 +84,8 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
          * The function continues receiving until either `MAXFRAMESIZE` is reached or `_charTimeout` expires. After receiving, it waits for `_frameTimeout` 
          * before clearing the SoftwareSerial receive buffer by calling `_clearRxBuffer`.
          * 
+         * Arbitration-errors (new frame received during bus-silence) are handled by waiting for a complete bus-silence-cycle. 
+         * 
          * @return `true` if a frame was successfully received and written to `receiveBuffer` within the receive timeout.
          * @return `false` if no frame was received during `_recTimeout`.
          * 
