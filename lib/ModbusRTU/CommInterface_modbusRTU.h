@@ -40,7 +40,7 @@
 //#define DEBUG
 
 /// @brief maximum number of Bytes a frame can contain
-#define MAXFRAMESIZE 20
+#define MAXFRAMESIZE 256 
 
 /**
  * @brief The Modbus-RTU CommInterface-class specifies a communication interface with SoftwareSerial as interface-type
