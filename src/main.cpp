@@ -66,7 +66,8 @@ ServiceCluster<2> services(serviceList);
 // RAM: 146 bytes (Stacksize 3)
 ServiceInterface_modbusRTU serviceinterface(&services, &comminterface);         // construct from ref. to associated service-cluster and communication-interface
 
-
+// Decide between Arduino-build and native-build 
+#ifdef ARDUINO
 
 void setup() {
     Serial.begin(9600);
@@ -84,3 +85,9 @@ void loop() {
     if (s!="") msgService.sendMessage('B',s);
     serviceinterface.communicate();
  };
+
+#else
+// define main-function to prevent undefined-symbol _main in native build 
+int main(){}
+
+#endif // ARDUINO
