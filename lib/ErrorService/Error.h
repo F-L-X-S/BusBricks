@@ -72,6 +72,12 @@ enum errorCodes {
     serviceNotFound = '4',
 
     /**
+     * @brief Maximum framelength violated 
+     * 
+     */
+    frameLengthError = '5',
+
+    /**
      * @brief Unknown Error
      * 
      */
@@ -127,6 +133,8 @@ private:
                 return "Arbitration-Error: Silence-time between frames violated";
             case serviceNotFound:
                 return "Service-not-found: Service-Id was not found in the service-cluster";
+            case frameLengthError:
+                return "Frame-Length-Error: Maximum length of Frame was violated";
             default:
                 return "Unknown Error";
         }
