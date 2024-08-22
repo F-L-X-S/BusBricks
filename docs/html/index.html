@@ -99,44 +99,84 @@ Vision</h1>
 <p>Provide configurable software-modules to customize the communication between services, hosted on different MCUs. <br  />
  BusBricks are templates to derive classes for mapping service-specific rules to different bus-systems. The communication between the hosting devices is therefore separated from the inter-service-communication. That means, the communication between the services can follow it's own (from the chosen communication-interface independent) rules. <br  />
 </p>
-<h3><a class="anchor" id="autotoc_md2"></a>
-Example: Messenger-service</h3>
+<h2><a class="anchor" id="autotoc_md2"></a>
+example use-case: Messenger-service</h2>
 <p>Hosting a messenger on different host-devices. Some of those hosts support a serial commuication for modbus-RTU, some only support I2C.<br  />
- </p><table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone"><em><a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a></em>   </th><th class="markdownTableHeadNone"><em>Communication-interfaces</em>    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Messenger   </td><td class="markdownTableBodyNone">Modbus-RTU (SoftwareSerial)    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">I2C (Wire)   </td></tr>
-</table>
-<h1><a class="anchor" id="autotoc_md3"></a>
+ </p>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Roadmap:</h3>
+<h5><a class="anchor" id="autotoc_md4"></a>
+Message-Service implementation</h5>
+<ul class="check">
+<li class="checked"><a href="lib/MessageService/Message.h">Message</a> content and payload definition</li>
+</ul>
+<ul class="check">
+<li class="checked">Implementation of the <a href="lib/MessageService/MessageService.h">Messenger-Service</a></li>
+</ul>
+<h5><a class="anchor" id="autotoc_md5"></a>
+Modbus-RTU implementation</h5>
+<ul class="check">
+<li class="checked">Implementation of the <a href="lib/ModbusRTU/CommInterface_modbusRTU.h">Modbus-RTU communication-interface</a></li>
+</ul>
+<ul class="check">
+<li class="checked"><a href="lib/ModbusRTU/Frame_modbusRTU.h">Modbus-RTU frame</a> definition</li>
+</ul>
+<ul class="check">
+<li class="checked">Implementation of the <a href="lib/ModbusRTU/ServiceInterface_modbusRTU.h">Modbus-RTU Service-interface</a></li>
+</ul>
+<ul class="check">
+<li class="checked">Registration of <a href="lib/MessageService/MessageService.h">Messenger-Service</a>-instance and <a href="lib/ErrorService/ErrorService.h">Error-Service</a>-instance within an <a href="lib/Service/ServiceCluster.h">service-cluster</a> in <a href="src/main.cpp">main</a></li>
+</ul>
+<ul class="check">
+<li class="checked">Implementation of <a href="lib/Interface/ServiceInterface.h">Modbus-RTU Service-Interface</a> to process payload from/for the registered services and frames of from/for <a href="lib/ModbusRTU/CommInterface_modbusRTU.h">Modbus-RTU communication-interface</a></li>
+<li class="unchecked">Setup of the <a href="lib/ModbusRTU/ServiceInterface_modbusRTU.h">Modbus-RTU Service-interface</a> for Master-mode (polling and message-forwarding)</li>
+</ul>
+<h5><a class="anchor" id="autotoc_md6"></a>
+I2C implementation</h5>
+<ul class="check">
+<li class="unchecked">Implementation of a <a href="lib/Interface/CommInterface.h">communication-interface</a> derived I2C-communication-interface</li>
+</ul>
+<ul class="check">
+<li class="unchecked">Definition of a <a href="lib/Frame/Frame.h">Frame</a> derived I2C-Frame-class</li>
+</ul>
+<ul class="check">
+<li class="unchecked">Setup of an I2C service-interface</li>
+</ul>
+<ul class="check">
+<li class="unchecked">Setup <a href="lib/Service/Service.h">service-template</a> and <a href="lib/Service/ServiceCluster.h">service-cluster</a> for association in multiple <a href="lib/Interface/ServiceInterface.h">service-interfaces</a></li>
+</ul>
+<h5><a class="anchor" id="autotoc_md7"></a>
+User-interaction</h5>
+<ul class="check">
+<li class="checked">Setup of a tiny chat-interface in <a href="src/main.cpp">main</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Basic Concepts</h1>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Service- and Communication-Layer</h2>
 <p>The separation of inter-service- and inter-mcu-communication-rules requires a separation of the software modules. <br  />
 <br  />
 </p>
-<h4><a class="anchor" id="autotoc_md5"></a>
+<h4><a class="anchor" id="autotoc_md10"></a>
 Service-Layer</h4>
 <p><b>Services</b> are defined in the <b>service-layer</b>. All implementations in the service-layer are Service-specific and therefore they should not depend on the chosen communication-interface. That means, the service-layer-modules should be <b>reusable, independent which communication-interface the host-device supports</b>.</p>
-<h4><a class="anchor" id="autotoc_md6"></a>
+<h4><a class="anchor" id="autotoc_md11"></a>
 Communication-Layer</h4>
 <p>Modules being part of the Communication-Layer are specific for the chosen bus (e.g. I2C, OneWire, Musbus-rtu...) the host device provides. They are responsible for <b>applying the bus-protocol-specific rules (e.g. CRC-check and -calculation, communication-timeouts, framelength...) to the content (PDU)</b> provided by the services. <br  />
 </p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Content and representation</h2>
 <p>The cascading of processing information and the rules applied to it lead to the concept of <em>content- and representation</em>.<br  />
  In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called <b><a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a></b>.<br  />
  Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called <b>representation</b>.<br  />
 </p>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Classdiagram</h2>
 <p><img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/classdiagram.png" alt="classdiagram" style="width:1700px;" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Stackprocessing</h2>
 <p><img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/stackProcessing.png" alt="stackProcessing" style="width:400px;" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 Deriving a custom Service</h1>
 <ul class="check">
 <li class="checked">define content to handle</li>
@@ -144,7 +184,7 @@ Deriving a custom Service</h1>
 <ul class="check">
 <li class="checked">define a service to handle the specified content</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md11"></a>
+<h3><a class="anchor" id="autotoc_md16"></a>
 Define the content</h3>
 <p>Each <a href="https://f-l-x-s.github.io/BusBricks/class_service.html">Service</a> has to know, how the conversion between the processable data structure (content) and the payload, that is sended or received by the communication-layer (representation) is defined. This is done by</p><ul class="check">
 <li class="checked">deriving a content-class from the <a href="lib/Service/Content.h">content-template</a> (<a href="https://f-l-x-s.github.io/BusBricks/class_content.html">docs</a>) <br  />
@@ -158,7 +198,7 @@ Define the content</h3>
 <ul class="check">
 <li class="checked">adding specific functions to be used inside of the service (optional) (e.g. <a href="https://f-l-x-s.github.io/BusBricks/class_message.html#a8907afa8cc86db8a3623aea0caba0324">string representation for printing</a> of the <a href="https://f-l-x-s.github.io/BusBricks/class_message.html">Message-Class</a>)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md17"></a>
 Define the service</h3>
 <p>A <a href="https://f-l-x-s.github.io/BusBricks/class_service.html">Service</a> is meant to process incoming payload and eventually generate new payload to be send. Received Payload is added to the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> with <a href="https://f-l-x-s.github.io/BusBricks/class_service.html#ac0c60bc735c64547dee269c6c3a62767"><code>impart_pdu</code></a> and the services response is able to be picked up by calling <a href="https://f-l-x-s.github.io/BusBricks/class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f"><code>get_response</code></a>. Both functions of the <a href="https://f-l-x-s.github.io/BusBricks/class_service.html">service-template</a> are using the representation (for services contents always String) of the <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a>.<br  />
  Defining a custom service is done by</p><ul class="check">
@@ -184,7 +224,21 @@ Define the service</h3>
 <ul class="check">
 <li class="checked">adding functions to interact with the service besides imparting/picking-up payloads (e.g. <a href="https://f-l-x-s.github.io/BusBricks/class_message__service.html#aa8d198ccf700400339e3240e1c9c86e4"><code>sendMessage</code></a> of the <a href="lib/MessageService/MessageService.h"><code>MessageService</code></a>) (optional)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
+Build environments and testing</h1>
+<h2><a class="anchor" id="autotoc_md19"></a>
+clang-build for local debugging</h2>
+<p>The project is implemented to be debugged on the local engineering-device (PC). Therefore <a href="test/manual">testing-functions</a> are defined for the local execution with clang (possible with other compilers, but only tested with clang). <br  />
+ Those functions are more thought as a "playground" for setting up scenarios to debug, than for approving complete functionality of the Program.<br  />
+ The clang-build is customized in <a href=".vscode/tasks.json">tasks</a>.<br  />
+ Because of the usage of Arduino-specific functions not supported by c++ natively, those functions are replaced by using the namespaces in <a href="lib/mockArduino/mockArduino.h">Arduino-Mocking</a> and <a href="lib/mockSoftwareSerial/mockSoftwareSerial.h">Serial-Mocking</a>.</p>
+<h2><a class="anchor" id="autotoc_md20"></a>
+native environment</h2>
+<p>The pio native-environment is setup in <a href="platformio.ini">platformio.ini</a>. All <a href="test/native/">automated tests</a> are executed in this environment.</p>
+<h2><a class="anchor" id="autotoc_md21"></a>
+uno and nano328p environment</h2>
+<p>The environments for the target-architecture are configured in <a href="platformio.ini">platformio.ini</a>.</p>
+<h1><a class="anchor" id="autotoc_md22"></a>
 License</h1>
 <p>This project is licensed under the GNU Affero General Public License v3.0. See the <a href="https://github.com/F-L-X-S/BusBricks/blob/5e3d14aac293e28b3e3d8c17ed7d4e8bd7617505/LICENSE">LICENSE</a> file for details.</p>
 <p>Copyright (c) 2024 Felix Schuelke </p>

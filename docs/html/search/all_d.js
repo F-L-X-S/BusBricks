@@ -10,6 +10,8 @@ var searchData=
   ['recitem_7',['recItem',['../class_service_interface.html#ac69502c2d78c4a046c5d3219d637f1b3',1,'ServiceInterface']]],
   ['recstack_8',['recStack',['../class_service_interface.html#a7793efd070a56f021ce56a372b13c2fa',1,'ServiceInterface']]],
   ['rep_5fto_5fcontent_9',['rep_to_content',['../class_content.html#abac5c5b29b85a4abbd5dc5f09ce03d46',1,'Content']]],
-  ['representation_10',['representation',['../index.html#autotoc_md7',1,'Content and representation'],['../class_content.html#aa667f2d6f2ec335fb5ac1204f4cdc0b8',1,'Content::representation']]],
-  ['responseavailable_11',['responseAvailable',['../class_service_base.html#ad1326c5e6b02553e6e23d0b0a3130ba3',1,'ServiceBase::responseAvailable()'],['../class_service.html#ad0a6407e13cd84f81393d96273212822',1,'Service::responseAvailable()']]]
+  ['representation_10',['representation',['../index.html#autotoc_md12',1,'Content and representation'],['../class_content.html#aa667f2d6f2ec335fb5ac1204f4cdc0b8',1,'Content::representation']]],
+  ['responseavailable_11',['responseAvailable',['../class_service_base.html#ad1326c5e6b02553e6e23d0b0a3130ba3',1,'ServiceBase::responseAvailable()'],['../class_service.html#ad0a6407e13cd84f81393d96273212822',1,'Service::responseAvailable()']]],
+  ['roadmap_3a_12',['Roadmap:',['../index.html#autotoc_md3',1,'']]],
+  ['rtu_20implementation_13',['Modbus-RTU implementation',['../index.html#autotoc_md5',1,'']]]
 ];
