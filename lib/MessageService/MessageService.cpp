@@ -45,8 +45,7 @@ void MessageService::stackProcessing() {
         printMessage(last_msg);
 
         // Ack the received Message
-        sendAck(last_msg);
-
+        if (!(last_msg->get_content()->msg_text=="ACK")) sendAck(last_msg);
         // delete the element the response was generated for                                           
         rec_stack.deleteElement(0);       
     };                                                            
