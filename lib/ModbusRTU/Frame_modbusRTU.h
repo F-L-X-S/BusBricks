@@ -35,8 +35,8 @@
 /// @brief two bytes prefix in frame before pdu (Device-adress, modbus-functioncode)
 #define PREFIXSIZE 2    
 
-/// @brief four bytes suffix in frame after pdu (CRC HighByte / LowByte as HEX in ASCII-format)
-#define SUFFIXSIZE 4    
+/// @brief two bytes suffix in frame after pdu (CRC HighByte / LowByte)
+#define SUFFIXSIZE 2    
 
 /// @brief CRC-16 mask to use (modbus-rtu default 0xA001)
 #define CRC16MASK 0xA001

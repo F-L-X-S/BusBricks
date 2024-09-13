@@ -65,9 +65,9 @@ void Frame_modbusRTU::content_to_rep(){
         }
 
         // CRC
-        uint16_t crc = calcCRC16(buffer, pduLength+PREFIXSIZE);                     // Last 4 Bytes: Append CRC (Little Endian: Low Byte first, then High Byte)
-        sprintf(&buffer[pduLength + PREFIXSIZE], "%02X", (crc & 0xFF));             // Append Hex-formatted Low-Byte as ASCII-chars                
-        sprintf(&buffer[pduLength + PREFIXSIZE + 2], "%02X", ((crc >> 8) & 0xFF));  // Append Hex-formatted High-Byte as ASCII-chars    
+        uint16_t crc = calcCRC16(buffer, pduLength+PREFIXSIZE);
+        buffer[pduLength + PREFIXSIZE] = crc & 0xFF;                        // Last 2 Bytes: Append CRC (Little Endian: Low Byte first, then High Byte)
+        buffer[pduLength + PREFIXSIZE + 1] = (crc >> 8) & 0xFF;
 
         // Null terminator
         buffer[buffersize] = '\0';                                          // Append null-termination to the buffer
@@ -113,8 +113,7 @@ void Frame_modbusRTU::copy_to_heap(const char** str_ptr) {
     };
 
 // Calculate the CRC16-value of the given buffer 
-unsigned short Frame_modbusRTU::calcCRC16(char* crcBuffer, uint8_t size){
-    Serial.println(size);   
+unsigned short Frame_modbusRTU::calcCRC16(char* crcBuffer, uint8_t size){   
     unsigned short crc16 = CRC16VALUE;
     for (int i = 0; i < size; i++) {
         crc16 ^= static_cast<unsigned char>(crcBuffer[i]);
@@ -126,31 +125,15 @@ unsigned short Frame_modbusRTU::calcCRC16(char* crcBuffer, uint8_t size){
             }
         }
     }
-    Serial.println(crc16);
     return crc16;
 };
 
 // Check the CRC16-value for the given buffer 
 bool Frame_modbusRTU::checkCRC16(){
-    uint8_t repSize = strlen(representation);                   // Get the length of the representation 
-    char* crcBuffer = new char[repSize-2];                      // create buffer to calc crc for
-    memcpy(crcBuffer, representation, repSize-SUFFIXSIZE);      // copy representation without crc 
-
-    // extract CRC as Hex in Ascii-format
-    char lowCrcAscii[2], highCrcAscii[2];                              
-    memcpy(lowCrcAscii, representation + (repSize-SUFFIXSIZE), 2);
-    memcpy(highCrcAscii, representation + (repSize-SUFFIXSIZE+2), 2);
-
-    // convert Ascii-formatted Hex to byte
-    char lowCrcByte, highCrcByte;
-    sscanf(lowCrcAscii, "%x", &lowCrcByte);
-    sscanf(highCrcAscii, "%x", &highCrcByte);
-
-    // append byte-formatted CRC to crc-buffer
-    crcBuffer[strlen(crcBuffer) - 1] = lowCrcByte;
-    crcBuffer[strlen(crcBuffer)] = highCrcByte;
-
-    bool result = calcCRC16(crcBuffer, strlen(crcBuffer)) == 0;      // if rest is 0 crc was correct 
+    uint8_t size = strlen(representation);              // Get the length of the representation 
+    char* crcBuffer = new char[size];              
+    memcpy(crcBuffer, representation, size);            // copy representation + null-termination to temp-buffer
+    bool result = calcCRC16(crcBuffer, size) == 0;      // if rest is 0 crc was correct 
     delete[] crcBuffer;                                
     return result;
 };
