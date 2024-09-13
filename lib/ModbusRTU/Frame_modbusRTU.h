@@ -69,7 +69,7 @@ class Frame_modbusRTU: public Frame{
          * @param slaveId 
          * @param functionCode 
          */
-        Frame_modbusRTU(pduString* pdu, char* slaveId, char* functionCode);
+        Frame_modbusRTU(String* pdu, char* slaveId, char* functionCode);
 
         /**
          * @brief Construct Modbus-RTU-Frame from given Byte-Frame (Representation). Copy the representation, the argument is pointing to,
@@ -78,7 +78,7 @@ class Frame_modbusRTU: public Frame{
          * 
          * @param frame const char** to a modbus-rtu-frame to construct the Frame-object from
          */
-        Frame_modbusRTU(frameString* frame);
+        Frame_modbusRTU(CharArray* frame);
 
         /**
          * @brief Construct empty Modbus-RTU-Frame 
@@ -145,9 +145,6 @@ class Frame_modbusRTU: public Frame{
         /// @brief Modbus-RTU-function-code
         char functionCode = '\0';
 
-        /// @brief buffer for allocating heap-memory of dynamic length to the frames-representation 
-        char* buffer = new char[1];
-
         /**
          * @brief Converts the given Content (PDU) to the Modbus RTU frame representation.
          *
@@ -194,25 +191,6 @@ class Frame_modbusRTU: public Frame{
          * checksum according to the Modbus RTU CRC16 standard.
          */
         unsigned short calcCRC16(char* buffer, uint8_t size);
-
-        /**
-         * @brief Copies the representation pointing to an externally defined char-array to heap memory.
-         *
-         * This function ensures that the provided string, which may reside in stack memory, 
-         * is copied to heap memory. This is necessary to ensure that the destructor correctly 
-         * frees memory from the heap and avoids attempting to delete stack-allocated memory.
-         * 
-         * @param str_ptr A double pointer to the externally defined char-array that will be copied to heap memory.
-         * 
-         * @details The function allocates a new buffer on the heap, copies the contents of the given 
-         * string into this buffer, and ensures null-termination. After copying, it updates the pointer 
-         * reference to point to the newly allocated heap memory.
-         * 
-         * @note The function deletes any previously allocated heap memory pointed to by `buffer` 
-         * before allocating the new memory.
-         */
-        void copy_to_heap(const char** str_ptr);
-
     };
 
 
