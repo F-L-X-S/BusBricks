@@ -41,14 +41,9 @@ bool CommInterface_modbusRTU::send(){
         Serial.println("Interface started sending:");
     #endif
     
-    if (sendBuffer==nullptr) return false;                        // check, if the sendbuffer-ptr is set to a valid memory
-    interface->write(sendBuffer->c_str(), sendBuffer->length());  // write the byte-converted string to the interface  
-    interface->flush();                                           // ensure, interfaces sending-buffer is completely empty before returning
-    
-    // Serial debugging
-    #ifdef DEBUG
-        Serial.println(*sendBuffer);
-    #endif 
+    if (sendBuffer==nullptr) return false;                            // check, if the sendbuffer-ptr is set to a valid memory
+    interface->write(sendBuffer->getData(), sendBuffer->getSize());   // write the byte-converted string to the interface  
+    interface->flush();                                               // ensure, interfaces sending-buffer is completely empty before returning
     return true;
 };
 
@@ -102,7 +97,7 @@ bool CommInterface_modbusRTU::receive(){
   };
 
     // wait for Frame-timeout to ensure frame is complete, raise Error, if the silence-time is violated
-    if((_clearRxBuffer()>0) & (*receiveBuffer!="")){
+    if((_clearRxBuffer()>0) & (receiveBuffer->getSize()!=0)){
       (numBytes>=MAXFRAMESIZE) ? raiseError(frameLengthError):raiseError(arbitrationError);
     } 
 
