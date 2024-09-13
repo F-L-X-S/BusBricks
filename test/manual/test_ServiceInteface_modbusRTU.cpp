@@ -80,7 +80,7 @@ int main(){
     Message_content_t content_msgNoOne;
     content_msgNoOne.sender_id = DeviceIdTwo;
     content_msgNoOne.receiver_id = DeviceIdOne;
-    content_msgNoOne.msg_text = "asdf";   
+    content_msgNoOne.msg_text = "Hello";   
     Message msgNoOne(&content_msgNoOne);
 
     // PDU to Modbus-Frame
