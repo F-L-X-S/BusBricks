@@ -31,7 +31,7 @@
     using namespace arduinoMocking;
 #endif
 
-#include<Frame.h>
+#include<CharArray.h>
 #include<ErrorState.h>
 
 /**
@@ -62,9 +62,9 @@ public:
     /**
      * @brief Add a new Frame to the send-buffer
      * 
-     * @param sendFrame Pointer to String-Object with frame to be send next  
+     * @param sendFrame Pointer to CharArray-Object with frame to be send next  
      */
-    virtual void sendNewFrame(String* sendFrame){};
+    virtual void sendNewFrame(CharArray* sendFrame){};
 
     /**
      * @brief Check, if the Frame was sent and the CommInterface is ready to send the next Frame 
@@ -77,15 +77,15 @@ public:
     /**
      * @brief Define the destination, the next received Frame should be copied to ba a pointer to an empty String-Object
      * 
-     * @param destFrameBuffer pointer to an empty String-Object, the next received frame should be stored in
+     * @param destFrameBuffer pointer to an empty CharArray-Object, the next received frame should be stored in
      */
-    virtual void getReceivedFrame(String* destFrameBuffer){};
+    virtual void getReceivedFrame(CharArray* destFrameBuffer){};
 
     /**
      * @brief Check, if a new Frame was received 
      * 
-     * @return true a new frame was received and stored on the with getReceivedFrame specified String-Object
-     * @return false no new frame was received, getReceivedFrame specified String-Object still empty
+     * @return true a new frame was received and stored on the with getReceivedFrame specified Frame-Object
+     * @return false no new frame was received, getReceivedFrame specified Frame-Object still empty
      */
     virtual bool receivedNewFrame(){};
 
@@ -126,13 +126,10 @@ class CommInterface: public CommInterfaceBase{
         interface_type* interface;                       
 
         /// @brief pointer to the next frame to be send, set to nullptr if Frame was sent 
-        String* sendBuffer = nullptr;                              
+        CharArray* sendBuffer = nullptr;                              
 
-        /// @brief pointer to String-object, a received frame should be stored at, set to nullptr if Frame was copied to destination
-        String* receiveBuffer = nullptr;                           
-
-        // Send a Frame 
-        // True, if a frame was send successfully 
+        /// @brief pointer to CharArray-object, a received frame should be stored at, set to nullptr if Frame was copied to destination
+        CharArray* receiveBuffer = nullptr;                           
 
         /**
          * @brief Send the frame, sendBuffer is pointing to
@@ -166,9 +163,9 @@ class CommInterface: public CommInterfaceBase{
          * @brief Specify the next frame to be sent by the interface, 
          * no overwrite, if the sendBuffer is already pointing to another frame
          * 
-         * @param sendFrame String-pointer to next frame to be send
+         * @param sendFrame pointer to next Frame-object to be send
          */
-        void sendNewFrame(String* sendFrame){
+        void sendNewFrame(CharArray* sendFrame){
             if (sendBuffer == nullptr)
             {
                 sendBuffer = sendFrame;                                 // set the send-buffer-ptr to the Frame, that has to be sent 
@@ -190,10 +187,10 @@ class CommInterface: public CommInterfaceBase{
         /**
          * @brief Define the destination, the next received Frame should be stored at 
          * 
-         * @param destFrameBuffer pointer to String-object, the next received Frame should be stored at 
+         * @param externalRecBuffer pointer to CharArray-object, the next received Frame should be stored at 
          */
-        void getReceivedFrame(String* destFrameBuffer){
-            receiveBuffer = destFrameBuffer;                            // set the receive-buffer-ptr to the destination, the next received Frame should be stored at 
+        void getReceivedFrame(CharArray* externalRecBuffer){
+            receiveBuffer = externalRecBuffer;                            // set the receive-buffer-ptr to the destination, the next received Frame should be stored at 
         };
 
         /**
