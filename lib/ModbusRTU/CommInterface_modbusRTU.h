@@ -36,7 +36,7 @@
 
 #include <CommInterface.h>
 
-/// @brief debugging flag to prit debugging-information on Serial 
+/// @brief debugging flag to print debugging-information on Serial 
 //#define DEBUG
 
 /// @brief maximum number of Bytes a frame can contain
