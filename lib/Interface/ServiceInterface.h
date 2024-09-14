@@ -89,10 +89,10 @@ class ServiceInterface: public ErrorState{
         Content_stack<frameType, STACKSIZE> sendStack;        
 
         /// @brief Item to be sent next     
-        String sendItem;  
+        CharArray sendItem;  
 
         /// @brief Item received last                                          
-        String recItem;                                             
+        CharArray recItem;                                             
 
         /**
          * @brief Add all PDUs provided by the services to the sendstack,
@@ -159,14 +159,13 @@ class ServiceInterface: public ErrorState{
             while (!sendStack.empty())
             {
                 if (comm_interface->finishedSending()){
-                    Frame* frameToSend = sendStack.getElement();        // Get next item from the send-stack
-                    sendItem = frameToSend->getFrame();                 // Extract Frame from Item
-                    String* sendItemAdr = &sendItem;
-                    comm_interface->sendNewFrame(sendItemAdr);          // Impart Frame that has to be sent next 
-                    sendStack.deleteElement();                          // delete Item from send-stack
-                    comm_interface->sendCycle();                        // execute sending 
+                    Frame* frameToSend = sendStack.getElement();                        // Get next item from the send-stack
+                    sendItem = *frameToSend->get_representation();                      // buffer Frame as char-array
+                    comm_interface->sendNewFrame(&sendItem);                            // Impart Frame that has to be sent next to the CommInterface
+                    sendStack.deleteElement();                                          // delete Item from send-stack
+                    comm_interface->sendCycle();                                        // execute sending 
                 }else{
-                    comm_interface->sendCycle();                        // execute sending 
+                    comm_interface->sendCycle();                                        // execute sending 
                 };
                 
                 // check the commInterfaces ErrorState 
@@ -196,14 +195,13 @@ class ServiceInterface: public ErrorState{
             #endif                  
             // Handle receivebuffer 
             while (comm_interface->receivedNewFrame() && !recStack.full()){               
-                if (recItem != ""){                                 // Item not empty 
-                    frameString frameStr = recItem.c_str();         // conversion for identification as framestring in Frame-Class-Constructor
-                    frameType recItemFrame(&frameStr);              // Construct Frame-Class derived Object (nullptr if failed)
+                if (recItem.getSize() != 0){                        // Item not empty 
+                    frameType recItemFrame(&recItem);               // Construct Frame-Class derived Object (nullptr if failed)
                     if (recItemFrame.isValid()){
                         recStack.addElement(recItemFrame);          // Add the received element to the stack
                         }else{
                             raiseError(framingError);}              // frame-construction failed 
-                    recItem = "";                                   // Clear rec-Item                               
+                    recItem = CharArray();                          // Clear rec-Item                               
                 }
 
                 // check the commInterfaces ErrorState 
