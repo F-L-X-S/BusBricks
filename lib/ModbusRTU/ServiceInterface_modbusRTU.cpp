@@ -42,7 +42,7 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
         if (sendStack.full()) break;                                                // exit the loop if no space left in send stack
         ServiceBase* destinationService = services->getService_byPos(i);            // Pointer to the destination-Service 
         while (destinationService->responseAvailable()){                            // skip iteration if the services response is empty 
-            pduString servicePdu = destinationService->get_response();              // get the response-PDU provided by the service
+            String servicePdu = destinationService->get_response();              // get the response-PDU provided by the service
             char deviceId = *destinationService->get_InstanceID();                  // initialize the device-id by instance-id 
 
             // Handle service-type specific conversions
@@ -82,7 +82,7 @@ void ServiceInterface_modbusRTU::addPDU_to_services()
                 recStack.deleteElement();                                               // discard invalid Frame (no Service found)
                 continue;
             }
-            String pdu = receivedFrame->getPDU();                                       // Get the Frames payload 
+            String pdu = *receivedFrame->get_content();                                       // Get the Frames payload 
             destinationService->impart_pdu(&pdu);                                       // Add a Content-Object created from PDU to the Services receive-stack 
         }
         recStack.deleteElement();                                                       // Delete the item added to services rec-stack from the interface-rec-stack
