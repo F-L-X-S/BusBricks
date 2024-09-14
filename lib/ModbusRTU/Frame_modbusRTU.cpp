@@ -48,8 +48,7 @@ Frame_modbusRTU::~Frame_modbusRTU(){
 // Convert the given Content (PDU) to Representation (Frame)
 void Frame_modbusRTU::content_to_rep(){
         size_t pduLength = content.length();                                // get the length of the Content (PDU)
-        size_t buffersize = PREFIXSIZE+SUFFIXSIZE+pduLength + 1;            // Calculate the necessary size for the buffer + null-termination
-
+        
         // Prefix
         representation[0] = slaveId;                                                // Byte 0:  Slave-Address
         representation[1] = functionCode;                                           // Byte 1:  Modbus-RTU function-code 
@@ -65,7 +64,7 @@ void Frame_modbusRTU::content_to_rep(){
         representation[pduLength + PREFIXSIZE + 1] = (crc >> 8) & 0xFF;
 
         // Null terminator
-        representation[buffersize] = '\0';                                          // Append null-termination to the buffer
+        representation += '\0';                                          // Append null-termination to the buffer
 };
 
 // Convert the given Representation (Frame) to Content (PDU) 
