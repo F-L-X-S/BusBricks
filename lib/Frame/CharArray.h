@@ -156,6 +156,13 @@ public:
      * @return char* A pointer to the internal char array.
      */
     const char* getData() const;
+
+    /**
+     * @brief Get the Hex-Values of the Array as a String
+     * 
+     * @return String 
+     */
+    String getHexString();
 };
 
 

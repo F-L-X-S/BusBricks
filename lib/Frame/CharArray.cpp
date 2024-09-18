@@ -197,3 +197,25 @@ size_t CharArray::getSize() const {
 const char* CharArray::getData() const {
     return data;
 }
+
+String CharArray::getHexString(){
+    String hexRepresentation = "";
+
+    // iterate through the array
+    for (int i = 0; i < size; i++) {
+        hexRepresentation += "0x";
+        // append a leading zero
+        if (data[i] < 16) {
+            hexRepresentation += "0";  
+        }
+        // transform the byte to hex
+        char hexCharBuffer[3];  
+        sprintf(hexCharBuffer, "%02X", (unsigned char)data[i]);  
+        hexRepresentation += String(hexCharBuffer);  
+
+        // append space
+        hexRepresentation += " ";
+    }
+    return hexRepresentation;
+}
+
