@@ -29,24 +29,51 @@
  */
 CharArray::CharArray() : data(nullptr), size(0) {}
 
-
-/**
- * @brief Construct a new Char Array object with specified size
- * 
- * @param size 
- */
-CharArray::CharArray(size_t size) : size(size) {
-    data = new char[size];
-}
-
-
 /**
  * @brief Destroy the Char Array object
  * 
  */
 CharArray::~CharArray() {
-    delete[] data;
+    if (data != nullptr) delete[] data;
 }
+
+
+/**
+ * @brief Copy constructor.
+ *
+ * Initializes a new CharArray object as a copy of another CharArray object.
+ * 
+ * @param other The other CharArray object to copy.
+ * 
+ * @details This constructor performs a deep copy of all the data from `other`, 
+ * ensuring that the new object is an exact copy of the source object.
+ */
+CharArray::CharArray(const CharArray& other) : size(other.size) {
+    data = new char[size];
+    memcpy(data, other.data, size);
+}
+
+/**
+ * @brief Assignment operator.
+ *
+ * This operator assigns the values from another object of the same type to the current object.
+ * 
+ * @param other The other CharArray object whose values will be assigned.
+ * @return A reference to the current object after assignment.
+ * 
+ * @details This operator performs a deep copy of the data from `other`, ensuring that the current object 
+ * becomes an exact copy of `other`.
+ */
+CharArray& CharArray::operator=(const CharArray& other) {
+    if (this != &other) {  
+        delete[] data;
+        size = other.size;
+        data = new char[size];
+        memcpy(data, other.data, size);
+    }
+    return *this;
+}
+
 
 /**
  * @brief Read-Access the element at the specified index.
@@ -76,7 +103,7 @@ const char& CharArray::operator[](size_t index) const {
  */
 char& CharArray::operator[](size_t index){
     if (index >= size) {
-        data = extendArray(index+1);
+        extendArray(index+1);
     }
     return data[index];
 }
@@ -89,13 +116,20 @@ char& CharArray::operator[](size_t index){
  */
 CharArray& CharArray::operator+=(char c) {
     // Allocate a new array with one extra space
-    data = extendArray(size +1);
-
+    extendArray(size +1);
+    // add c on last index
+    data[size - 1] = c;
     // Return the current object to allow chaining
     return *this;
 }
 
-char* CharArray::extendArray(size_t extendedSize){
+/**
+ * @brief extends the size of the array to store more items, return
+ * 
+ * @param extendedSize new size for array
+ * @return char* Pointer to the extended heap-memory 
+ */
+void CharArray::extendArray(size_t extendedSize){
     // Allocate a new array extended space
     char* newData = new char[extendedSize];
     // Copy existing data to new array
@@ -106,7 +140,7 @@ char* CharArray::extendArray(size_t extendedSize){
     size = extendedSize;
     // Delete old array
     delete[] data;
-    return newData;
+    data = newData;
 }
 
 /**
@@ -160,6 +194,6 @@ size_t CharArray::getSize() const {
  * 
  * @return char* A pointer to the internal char array.
  */
-char* CharArray::getData() {
+const char* CharArray::getData() const {
     return data;
 }

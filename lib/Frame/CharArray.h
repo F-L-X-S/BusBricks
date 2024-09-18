@@ -49,7 +49,7 @@ private:
      * @param extendedSize new size for array
      * @return char* Pointer to the extended heap-memory 
      */
-    char* extendArray(size_t extendedSize);
+    void extendArray(size_t extendedSize);
 
 public:
     /**
@@ -58,18 +58,37 @@ public:
      */
     CharArray();
 
-    /**
-     * @brief Construct a new Char Array object with specified size
-     * 
-     * @param size 
-     */
-    CharArray(size_t size);
 
     /**
      * @brief Destroy the Char Array object
      * 
      */
     ~CharArray();
+
+    /**
+     * @brief Copy constructor.
+     *
+     * Initializes a new CharArray object as a copy of another CharArray object.
+     * 
+     * @param other The other CharArray object to copy.
+     * 
+     * @details This constructor performs a deep copy of all the data from `other`, 
+     * ensuring that the new object is an exact copy of the source object.
+     */
+    CharArray(const CharArray& other); 
+
+    /**
+     * @brief Assignment operator.
+     *
+     * This operator assigns the values from another object of the same type to the current object.
+     * 
+     * @param other The other CharArray object whose values will be assigned.
+     * @return A reference to the current object after assignment.
+     * 
+     * @details This operator performs a deep copy of the data from `other`, ensuring that the current object 
+     * becomes an exact copy of `other`.
+     */
+    CharArray& operator=(const CharArray& other);
 
     /**
      * @brief Write-Access the element at the specified index.
@@ -136,7 +155,7 @@ public:
      * 
      * @return char* A pointer to the internal char array.
      */
-    char* getData();
+    const char* getData() const;
 };
 
 
