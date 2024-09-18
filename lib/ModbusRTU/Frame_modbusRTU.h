@@ -92,30 +92,6 @@ class Frame_modbusRTU: public Frame{
          */
         ~Frame_modbusRTU();
 
-        /**
-         * @brief Copy constructor.
-         *
-         * Initializes a new Frame_modbusRTU object as a copy of another Frame_modbusRTU object.
-         * 
-         * @param other The other Frame_modbusRTU object to copy.
-         * 
-         * @details This constructor performs a deep copy of all the data from `other`, 
-         * ensuring that the new object is an exact copy of the source object.
-         */
-        Frame_modbusRTU(const Frame_modbusRTU& other); 
-
-        /**
-         * @brief Assignment operator.
-         *
-         * This operator assigns the values from another object of the same type to the current object.
-         * 
-         * @param other The other Frame_modbusRTU object whose values will be assigned.
-         * @return A reference to the current object after assignment.
-         * 
-         * @details This operator performs a deep copy of the data from `other`, ensuring that the current object 
-         * becomes an exact copy of `other`.
-         */
-        Frame_modbusRTU& operator=(const Frame_modbusRTU& other);
 
         /**
          * @brief Verifies the CRC16 checksum of the current Modbus RTU frame.
