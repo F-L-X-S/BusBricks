@@ -54,7 +54,7 @@ CharArray::CharArray(const CharArray& other) : size(other.size) {
 }
 
 /**
- * @brief Assignment operator.
+ * @brief Assignment operator 
  *
  * This operator assigns the values from another object of the same type to the current object.
  * 
@@ -71,6 +71,22 @@ CharArray& CharArray::operator=(const CharArray& other) {
         data = new char[size];
         memcpy(data, other.data, size);
     }
+    return *this;
+}
+
+/**
+ * @brief Assignment operator for String-assignment
+ *
+ * This operator assigns the values from a String-object to the current object.
+ * 
+ * @param other The String object whose values will be assigned.
+ * @return A reference to the current object after assignment.
+ * 
+ */
+CharArray& CharArray::operator=(const String& str) {
+    size_t new_size = str.length();
+    extendArray(new_size);
+    strcpy(data, str.c_str()); 
     return *this;
 }
 
@@ -124,7 +140,7 @@ CharArray& CharArray::operator+=(char c) {
 }
 
 /**
- * @brief extends the size of the array to store more items, return
+ * @brief resizes the array to store more items
  * 
  * @param extendedSize new size for array
  * @return char* Pointer to the extended heap-memory 
@@ -204,17 +220,14 @@ String CharArray::getHexString(){
     // iterate through the array
     for (int i = 0; i < size; i++) {
         hexRepresentation += "0x";
-        // append a leading zero
-        if (data[i] < 16) {
-            hexRepresentation += "0";  
-        }
+
         // transform the byte to hex
         char hexCharBuffer[3];  
         sprintf(hexCharBuffer, "%02X", (unsigned char)data[i]);  
         hexRepresentation += String(hexCharBuffer);  
 
         // append space
-        hexRepresentation += " ";
+        if (i!=size-1) hexRepresentation += " ";
     }
     return hexRepresentation;
 }

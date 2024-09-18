@@ -91,6 +91,17 @@ public:
     CharArray& operator=(const CharArray& other);
 
     /**
+     * @brief Assignment operator for String-assignment
+     *
+     * This operator assigns the values from a String-object to the current object.
+     * 
+     * @param other The String object whose values will be assigned.
+     * @return A reference to the current object after assignment.
+     * 
+     */
+    CharArray& operator=(const String& other);
+
+    /**
      * @brief Write-Access the element at the specified index.
      * 
      * Returns a reference to the element at the given index in the char array.
