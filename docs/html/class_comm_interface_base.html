@@ -115,15 +115,15 @@ Public Member Functions</h2></td></tr>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setup_interface</b> ()</td></tr>
 <tr class="memdesc:ae4f76b89a083bc84aff2cc88303abf37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the Interface has to be called in Setup-function. <br /></td></tr>
 <tr class="separator:ae4f76b89a083bc84aff2cc88303abf37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc912fe242ac43255912b2f9bb9ee6fd" id="r_abc912fe242ac43255912b2f9bb9ee6fd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc912fe242ac43255912b2f9bb9ee6fd">sendNewFrame</a> (<a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *sendFrame)</td></tr>
-<tr class="memdesc:abc912fe242ac43255912b2f9bb9ee6fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> to the send-buffer.  <br /></td></tr>
-<tr class="separator:abc912fe242ac43255912b2f9bb9ee6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb11f519c50f1e5a7ec22bd5f253a2ce" id="r_afb11f519c50f1e5a7ec22bd5f253a2ce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb11f519c50f1e5a7ec22bd5f253a2ce">sendNewFrame</a> (<a class="el" href="class_char_array.html">CharArray</a> *sendFrame)</td></tr>
+<tr class="memdesc:afb11f519c50f1e5a7ec22bd5f253a2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> to the send-buffer.  <br /></td></tr>
+<tr class="separator:afb11f519c50f1e5a7ec22bd5f253a2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0438ac0d164b6179f742dec21be715d" id="r_ad0438ac0d164b6179f742dec21be715d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0438ac0d164b6179f742dec21be715d">finishedSending</a> ()</td></tr>
 <tr class="memdesc:ad0438ac0d164b6179f742dec21be715d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check, if the <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> was sent and the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> is ready to send the next <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a>.  <br /></td></tr>
 <tr class="separator:ad0438ac0d164b6179f742dec21be715d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27a15e83d148ddd98d7116a225a3a30d" id="r_a27a15e83d148ddd98d7116a225a3a30d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27a15e83d148ddd98d7116a225a3a30d">getReceivedFrame</a> (<a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *destFrameBuffer)</td></tr>
-<tr class="memdesc:a27a15e83d148ddd98d7116a225a3a30d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the destination, the next received <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> should be copied to ba a pointer to an empty String-Object.  <br /></td></tr>
-<tr class="separator:a27a15e83d148ddd98d7116a225a3a30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24de53b6a6f3150b9c2f904fbf872ef5" id="r_a24de53b6a6f3150b9c2f904fbf872ef5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24de53b6a6f3150b9c2f904fbf872ef5">getReceivedFrame</a> (<a class="el" href="class_char_array.html">CharArray</a> *destFrameBuffer)</td></tr>
+<tr class="memdesc:a24de53b6a6f3150b9c2f904fbf872ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the destination, the next received <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> should be copied to ba a pointer to an empty String-Object.  <br /></td></tr>
+<tr class="separator:a24de53b6a6f3150b9c2f904fbf872ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08f93b5ea06e7ffb99571f4798108da2" id="r_a08f93b5ea06e7ffb99571f4798108da2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08f93b5ea06e7ffb99571f4798108da2">receivedNewFrame</a> ()</td></tr>
 <tr class="memdesc:a08f93b5ea06e7ffb99571f4798108da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check, if a new <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> was received.  <br /></td></tr>
 <tr class="separator:a08f93b5ea06e7ffb99571f4798108da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,7 +143,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setup_interfa
 &#160;</td><td class="memItemRight" valign="bottom"><b>~ErrorState</b> ()</td></tr>
 <tr class="memdesc:a1343b13a9feac276a1a26a523dfae1a5 inherit pub_methods_class_error_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_error_state.html" title="A class to manage and track error states using error codes.">ErrorState</a> object. <br /></td></tr>
 <tr class="separator:a1343b13a9feac276a1a26a523dfae1a5 inherit pub_methods_class_error_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab996befaa1eb1089914ab0fbfecfcf39 inherit pub_methods_class_error_state" id="r_ab996befaa1eb1089914ab0fbfecfcf39"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_state.html#ab996befaa1eb1089914ab0fbfecfcf39">raiseError</a> (<a class="el" href="_error_8h.html#a88edd67ec29d18293fae821840fef3ac">errorCodes</a> code)</td></tr>
+<tr class="memitem:ab996befaa1eb1089914ab0fbfecfcf39 inherit pub_methods_class_error_state" id="r_ab996befaa1eb1089914ab0fbfecfcf39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_state.html#ab996befaa1eb1089914ab0fbfecfcf39">raiseError</a> (<a class="el" href="_error_8h.html#a88edd67ec29d18293fae821840fef3ac">errorCodes</a> code)</td></tr>
 <tr class="memdesc:ab996befaa1eb1089914ab0fbfecfcf39 inherit pub_methods_class_error_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">raises a new error by setting the given error-code as errorState  <br /></td></tr>
 <tr class="separator:ab996befaa1eb1089914ab0fbfecfcf39 inherit pub_methods_class_error_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55090bb1772cd8c20c936b5a9cf4f2ce inherit pub_methods_class_error_state" id="r_a55090bb1772cd8c20c936b5a9cf4f2ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_error_8h.html#a88edd67ec29d18293fae821840fef3ac">errorCodes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_state.html#a55090bb1772cd8c20c936b5a9cf4f2ce">getErrorState</a> ()</td></tr>
@@ -192,8 +192,8 @@ false <a class="el" href="class_frame.html" title="Frame-Class as derived class 
 
 </div>
 </div>
-<a id="a27a15e83d148ddd98d7116a225a3a30d" name="a27a15e83d148ddd98d7116a225a3a30d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27a15e83d148ddd98d7116a225a3a30d">&#9670;&#160;</a></span>getReceivedFrame()</h2>
+<a id="a24de53b6a6f3150b9c2f904fbf872ef5" name="a24de53b6a6f3150b9c2f904fbf872ef5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24de53b6a6f3150b9c2f904fbf872ef5">&#9670;&#160;</a></span>getReceivedFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,7 +204,7 @@ false <a class="el" href="class_frame.html" title="Frame-Class as derived class 
         <tr>
           <td class="memname">virtual void CommInterfaceBase::getReceivedFrame </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *</td>          <td class="paramname"><span class="paramname"><em>destFrameBuffer</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_char_array.html">CharArray</a> *</td>          <td class="paramname"><span class="paramname"><em>destFrameBuffer</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -218,12 +218,12 @@ false <a class="el" href="class_frame.html" title="Frame-Class as derived class 
 <p>Define the destination, the next received <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> should be copied to ba a pointer to an empty String-Object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">destFrameBuffer</td><td>pointer to an empty String-Object, the next received frame should be stored in </td></tr>
+    <tr><td class="paramname">destFrameBuffer</td><td>pointer to an empty CharArray-Object, the next received frame should be stored in </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="class_comm_interface.html#a446d6dfeb4dd695c061f1ff1c926fb51">CommInterface&lt; interface_type &gt;</a>.</p>
+<p>Reimplemented in <a class="el" href="class_comm_interface.html#ab8f43fd2837a027c0008859567ced8de">CommInterface&lt; interface_type &gt;</a>, and <a class="el" href="class_comm_interface.html#ab8f43fd2837a027c0008859567ced8de">CommInterface&lt; SoftwareSerial &gt;</a>.</p>
 
 </div>
 </div>
@@ -251,16 +251,16 @@ false <a class="el" href="class_frame.html" title="Frame-Class as derived class 
 </div><div class="memdoc">
 
 <p>Check, if a new <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> was received. </p>
-<dl class="section return"><dt>Returns</dt><dd>true a new frame was received and stored on the with getReceivedFrame specified String-Object </dd>
+<dl class="section return"><dt>Returns</dt><dd>true a new frame was received and stored on the with getReceivedFrame specified Frame-Object </dd>
 <dd>
-false no new frame was received, getReceivedFrame specified String-Object still empty </dd></dl>
+false no new frame was received, getReceivedFrame specified Frame-Object still empty </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_comm_interface.html#aea53cf3e71460f3a662c175958acb643">CommInterface&lt; interface_type &gt;</a>, and <a class="el" href="class_comm_interface.html#aea53cf3e71460f3a662c175958acb643">CommInterface&lt; SoftwareSerial &gt;</a>.</p>
 
 </div>
 </div>
-<a id="abc912fe242ac43255912b2f9bb9ee6fd" name="abc912fe242ac43255912b2f9bb9ee6fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc912fe242ac43255912b2f9bb9ee6fd">&#9670;&#160;</a></span>sendNewFrame()</h2>
+<a id="afb11f519c50f1e5a7ec22bd5f253a2ce" name="afb11f519c50f1e5a7ec22bd5f253a2ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb11f519c50f1e5a7ec22bd5f253a2ce">&#9670;&#160;</a></span>sendNewFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -271,7 +271,7 @@ false no new frame was received, getReceivedFrame specified String-Object still 
         <tr>
           <td class="memname">virtual void CommInterfaceBase::sendNewFrame </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a> *</td>          <td class="paramname"><span class="paramname"><em>sendFrame</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_char_array.html">CharArray</a> *</td>          <td class="paramname"><span class="paramname"><em>sendFrame</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -285,13 +285,13 @@ false no new frame was received, getReceivedFrame specified String-Object still 
 <p>Add a new <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> to the send-buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sendFrame</td><td>Pointer to String-Object with frame to be send next <br  />
+    <tr><td class="paramname">sendFrame</td><td>Pointer to CharArray-Object with frame to be send next <br  />
  </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="class_comm_interface.html#a21c8ee8eddb3011e89b950f1b5264664">CommInterface&lt; interface_type &gt;</a>.</p>
+<p>Reimplemented in <a class="el" href="class_comm_interface.html#a3cf21e5181e56d234dbe9e52e6f2cb70">CommInterface&lt; interface_type &gt;</a>, and <a class="el" href="class_comm_interface.html#a3cf21e5181e56d234dbe9e52e6f2cb70">CommInterface&lt; SoftwareSerial &gt;</a>.</p>
 
 </div>
 </div>

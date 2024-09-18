@@ -1,12 +1,12 @@
 var searchData=
 [
   ['send_0',['send',['../class_comm_interface.html#a458e3da4ff47bdf6cc9f0a5f956c80dd',1,'CommInterface::send()'],['../class_comm_interface__modbus_r_t_u.html#a0e78a2a6e3b5b029609c2b16c21bd85b',1,'CommInterface_modbusRTU::send()']]],
-  ['sendbuffer_1',['sendBuffer',['../class_comm_interface.html#a158b6fec22811cd97732ca9bada05873',1,'CommInterface']]],
+  ['sendbuffer_1',['sendBuffer',['../class_comm_interface.html#a129b3eda32cb5a57087e87c612423589',1,'CommInterface']]],
   ['sendcycle_2',['sendCycle',['../class_comm_interface.html#a8670e37fdefcfeca579e99b6051fe3da',1,'CommInterface']]],
   ['sender_5fid_3',['sender_id',['../struct_message__content__t.html#ad18914f4dbe4131a1cb38cedbdb3069a',1,'Message_content_t']]],
-  ['senditem_4',['sendItem',['../class_service_interface.html#a1e08cf764cea2084e1f425e32f44d2c1',1,'ServiceInterface']]],
+  ['senditem_4',['sendItem',['../class_service_interface.html#ae4aa045a41f0040cacbc20d9dccc3db7',1,'ServiceInterface']]],
   ['sendmessage_5',['sendMessage',['../class_message_service.html#ac8e64d87d453ae6a6631891bdce42bef',1,'MessageService']]],
-  ['sendnewframe_6',['sendNewFrame',['../class_comm_interface_base.html#abc912fe242ac43255912b2f9bb9ee6fd',1,'CommInterfaceBase::sendNewFrame()'],['../class_comm_interface.html#a21c8ee8eddb3011e89b950f1b5264664',1,'CommInterface::sendNewFrame()']]],
+  ['sendnewframe_6',['sendNewFrame',['../class_comm_interface_base.html#afb11f519c50f1e5a7ec22bd5f253a2ce',1,'CommInterfaceBase::sendNewFrame()'],['../class_comm_interface.html#a3cf21e5181e56d234dbe9e52e6f2cb70',1,'CommInterface::sendNewFrame()']]],
   ['sendstack_7',['sendStack',['../class_service_interface.html#a38bd169d6286c4ddbda050b7f28d093a',1,'ServiceInterface']]],
   ['serial_8',['Serial',['../namespacearduino_mocking.html#ace877ffb508b19b20cbc06b8f9837359',1,'arduinoMocking']]],
   ['service_9',['Service',['../index.html#autotoc_md15',1,'Deriving a custom Service'],['../class_service.html',1,'Service&lt; content_class, stackSize &gt;']]],
