@@ -110,6 +110,38 @@ char* CharArray::extendArray(size_t extendedSize){
 }
 
 /**
+ * @brief Equality Operator
+ * 
+ * @param other 
+ * @return bool 
+ */
+bool CharArray::operator==(const CharArray& other) const {
+    // Check if sizes are the same
+    if (size != other.size) {
+        return false;
+    }
+
+    // Check each element for equality
+    for (size_t i = 0; i < size; i++) {
+        if (data[i] != other.data[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
+ * @brief Inequality Operator
+ * 
+ * @param other 
+ * @return bool 
+ */
+bool CharArray::operator!=(const CharArray& other) const {
+    return !(*this == other);
+}
+
+/**
  * @brief Retrieves the size of the char array.
  * 
  * Returns the number of elements in the char array.

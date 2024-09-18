@@ -103,6 +103,23 @@ public:
     CharArray& operator+=(char c);
 
     /**
+     * @brief Equality Operator
+     * 
+     * @param other 
+     * @return bool 
+     */
+    bool operator==(const CharArray& other) const;
+
+    /**
+     * @brief Inequality Operator
+     * 
+     * @param other 
+     * @return bool 
+     */
+    bool operator!=(const CharArray& other) const;
+
+
+    /**
      * @brief Retrieves the size of the char array.
      * 
      * Returns the number of elements in the char array.
