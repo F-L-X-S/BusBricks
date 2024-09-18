@@ -39,19 +39,8 @@ void showCharArrayStats(CharArray buffer,String comment){
 
     // show data as hex-array 
     Serial.print("\tData as hex-array:\t");
-    for (int i = 0; i < buffer.getSize(); i++) {
-        Serial.print("0x");
-        if (data[i] < 16) {
-            Serial.print("0");  
-        }
-        char hexCharBuffer[3];  
-        sprintf(hexCharBuffer, "%02X", (unsigned char)data[i]);  
-        Serial.print(String(hexCharBuffer));  
-        Serial.print(" ");
-    }
-    
-    // newline
-    Serial.println();
+    Serial.println(buffer.getHexString());
+
 }
 
 void test_CharArray(){
