@@ -92,7 +92,7 @@ char Frame_modbusRTU::getFunctionCode(){
 };
 
 // Calculate the CRC16-value of the given buffer 
-unsigned short Frame_modbusRTU::calcCRC16(char* crcBuffer, uint8_t size){   
+unsigned short Frame_modbusRTU::calcCRC16(const char* crcBuffer, uint8_t size){   
     unsigned short crc16 = CRC16VALUE;
     for (int i = 0; i < size; i++) {
         crc16 ^= static_cast<unsigned char>(crcBuffer[i]);

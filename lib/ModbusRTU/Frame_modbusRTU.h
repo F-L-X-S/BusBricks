@@ -166,7 +166,7 @@ class Frame_modbusRTU: public Frame{
          * mask during the calculation. The function iterates over each byte in the buffer, updating the 
          * checksum according to the Modbus RTU CRC16 standard.
          */
-        unsigned short calcCRC16(char* buffer, uint8_t size);
+        unsigned short calcCRC16(const char* buffer, uint8_t size);
     };
 
 
