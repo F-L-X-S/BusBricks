@@ -48,7 +48,7 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
         // Receive a Frame and write it to Receive-buffer
         bool receive() override {                                         
             if (incomingFrame != CharArray()){
-                for (size_t i = 0; i < incomingFrame.getSize()-1; i++)
+                for (size_t i = 0; i < incomingFrame.getSize(); i++)
                 {
                     *receiveBuffer += incomingFrame.getData()[i];     
                 }                                               
@@ -152,7 +152,7 @@ void test_CommInterface_receiving(void) {
     comm_interface.getReceivedFrame(&rec_element);
 
     // Simulate Communication-Cycles
-    for (int i = 0; i < 8; i++)
+    for (size_t i = 0; i < 8; i++)
     {
         // Impart the simulated received Frame
         if (!exmplStack.empty())
@@ -167,6 +167,7 @@ void test_CommInterface_receiving(void) {
         if (comm_interface.receivedNewFrame())
         {
             recStack.addElement(rec_element);               // Add the received element to the stack 
+            rec_element = CharArray();
             comm_interface.getReceivedFrame(&rec_element);  // Impart memory the received item has to be stored at 
         }
 
@@ -181,7 +182,7 @@ void test_CommInterface_receiving(void) {
             "Received Frame not as excepted");   
         }else{    
             String expectedFrame = "0x54 0x68 0x69 0x73 0x20 0x69 0x73 0x20 0x46 0x72 0x61 0x6D 0x65 0x20 0x6E 0x6F 0x2E 0x20 0x00 0xFF 0x0"
-            +std::to_string(STACKSIZE+1);  // last Frame received is on top of stack
+            +std::to_string(STACKSIZE);  // last Frame received is on top of stack
             TEST_ASSERT_EQUAL_STRING_MESSAGE(expectedFrame.c_str(), (*(recStack.getElement(-1))).getHexString().c_str(),      
             "Last Frame in Receive-Stack is not the last received Frame");   
         }
