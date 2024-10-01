@@ -96,6 +96,9 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">main.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>This main is an example-implementation of a simple modbus-messenger to demonstrate the usage of a layer-7-service in the program. The String typed in by the user via serial-interface is sent to the device with PARTNER_DEVICE_ID. All received Messages and raised errors are displayed on serial-monitor. Switch PARTNER_DEVICE_ID and DEVICE_ID before uploading to the Partner-device.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="mock_arduino_8h_source.html">mockArduino.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_service_interface__modbus_r_t_u_8h_source.html">ServiceInterface_modbusRTU.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_comm_interface__modbus_r_t_u_8h_source.html">CommInterface_modbusRTU.h</a>&gt;</code><br />
@@ -110,6 +113,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a0b85963cace75e76ae726bcffb04eb70" id="r_a0b85963cace75e76ae726bcffb04eb70"><td class="memItemLeft" align="right" valign="top"><a id="a0b85963cace75e76ae726bcffb04eb70" name="a0b85963cace75e76ae726bcffb04eb70"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DEVICE_ID</b>&#160;&#160;&#160;'A'</td></tr>
 <tr class="separator:a0b85963cace75e76ae726bcffb04eb70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad94cb35f11af788c537fca133b2dc5e" id="r_aad94cb35f11af788c537fca133b2dc5e"><td class="memItemLeft" align="right" valign="top"><a id="aad94cb35f11af788c537fca133b2dc5e" name="aad94cb35f11af788c537fca133b2dc5e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PARTNER_DEVICE_ID</b>&#160;&#160;&#160;'B'</td></tr>
+<tr class="separator:aad94cb35f11af788c537fca133b2dc5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a734bbab06e1a9fd2e5522db0221ff6e3" id="r_a734bbab06e1a9fd2e5522db0221ff6e3"><td class="memItemLeft" align="right" valign="top"><a id="a734bbab06e1a9fd2e5522db0221ff6e3" name="a734bbab06e1a9fd2e5522db0221ff6e3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BAUDRATE</b>&#160;&#160;&#160;9600</td></tr>
 <tr class="separator:a734bbab06e1a9fd2e5522db0221ff6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,7 +151,8 @@ Variables</h2></td></tr>
 <tr class="separator:afee207c5f965ea0bd5aec1951d6008d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Felix Schuelke (<a href="#" onclick="location.href='mai'+'lto:'+'flx'+'sc'+'ode'+'@g'+'mai'+'l.'+'com'; return false;">flxsc<span class="obfuscator">.nosp@m.</span>ode@<span class="obfuscator">.nosp@m.</span>gmail<span class="obfuscator">.nosp@m.</span>.com</a>) </dd></dl>
+<div class="textblock"><p>This main is an example-implementation of a simple modbus-messenger to demonstrate the usage of a layer-7-service in the program. The String typed in by the user via serial-interface is sent to the device with PARTNER_DEVICE_ID. All received Messages and raised errors are displayed on serial-monitor. Switch PARTNER_DEVICE_ID and DEVICE_ID before uploading to the Partner-device. </p>
+<dl class="section author"><dt>Author</dt><dd>Felix Schuelke (<a href="#" onclick="location.href='mai'+'lto:'+'flx'+'sc'+'ode'+'@g'+'mai'+'l.'+'com'; return false;">flxsc<span class="obfuscator">.nosp@m.</span>ode@<span class="obfuscator">.nosp@m.</span>gmail<span class="obfuscator">.nosp@m.</span>.com</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2024-08-18</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>* Copyright (C) 2024 Felix Schuelke This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</dd></dl>
