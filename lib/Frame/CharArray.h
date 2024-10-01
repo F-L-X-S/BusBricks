@@ -66,6 +66,15 @@ public:
     ~CharArray();
 
     /**
+     * @brief  constructor for Arduino-String
+     *
+     * Initializes a new CharArray object with the content of the String-object.
+     * 
+     * @param other The String-Object
+     */
+    CharArray(const String& str);
+
+    /**
      * @brief Copy constructor.
      *
      * Initializes a new CharArray object as a copy of another CharArray object.

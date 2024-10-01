@@ -37,6 +37,18 @@ CharArray::~CharArray() {
     if (data != nullptr) delete[] data;
 }
 
+/**
+ * @brief  constructor for Arduino-String
+ *
+ * Initializes a new CharArray object with the content of the String-object.
+ * 
+ * @param other The String-Object
+ */
+CharArray::CharArray(const String& str) {
+    size_t new_size = str.length();
+    extendArray(new_size); 
+    strcpy(data, str.c_str());  
+}
 
 /**
  * @brief Copy constructor.
