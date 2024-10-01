@@ -62,9 +62,6 @@ void Frame_modbusRTU::content_to_rep(){
         uint16_t crc = calcCRC16(representation.getData(), pduLength+PREFIXSIZE);
         representation[pduLength + PREFIXSIZE] = crc & 0xFF;                        // Last 2 Bytes: Append CRC (Little Endian: Low Byte first, then High Byte)
         representation[pduLength + PREFIXSIZE + 1] = (crc >> 8) & 0xFF;
-
-        // Null terminator
-        representation += '\0';                                          // Append null-termination to the buffer
 };
 
 // Convert the given Representation (Frame) to Content (PDU) 
