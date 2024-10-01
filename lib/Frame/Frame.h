@@ -31,12 +31,7 @@
 #endif
 
 #include<Content.h>
-
-/** Typedefinitions for Constructor-parameters of the Frame-class 
- * necessary to distinguish between construction from PDU (Content) or from byte-frame (Representation) 
-*/
-using pduString = String;
-using frameString = const char*;
+#include<CharArray.h>
 
 /**
  * @author Felix Schuelke (flxscode@gmail.com)
@@ -49,10 +44,10 @@ The derived classes define:
 In the abstract concept of "Content" the byte-Frame itself is interpreted as the Content-Representation
 The "Content"-Object represents the PDU transmitted to the services 
  *  
- * @tparam pduString type-definition for a String-Object containing the Payload of the frame ("Content")
- * @tparam frameString type-definition for a const-char-pointer pointing to the byte-formatted frame 
+ * @tparam String: type of Payload of the frame ("Content")
+ * @tparam CharArray: type of byte-formatted frame ("Representation")
  */
-class Frame: public Content<pduString, frameString>{
+class Frame: public Content<String, CharArray>{
     public:
        /**
         * @brief Construct a new empty Frame object
@@ -69,29 +64,15 @@ class Frame: public Content<pduString, frameString>{
        /**
         * @brief Constructor for creating Frame-instance from pdu (Content)
         * 
-        * @param pdu pointer to pduString containing the payload of the frame
+        * @param pdu pointer to String containing the payload of the frame
         */
-        Frame(pduString* pdu);
+        Frame(String* pdu);
 
        /**
         * @brief Constructor for creating Frame-Object from byte-frame (Representation)
         * 
-        * @param frame pointer to frameString containing the byte-frame (Representation) of the frame
+        * @param frame pointer to the char-array-object containing the byte-representation
         */
-        Frame(frameString* frame);
-
-       /**
-        * @brief get the pdu (Content) as String from the frame-object
-        * 
-        * @return String with frame-payload
-        */
-        String getPDU();
-
-       /**
-        * @brief Get the byte-frame (Representation) as String from the frame-object 
-        * 
-        * @return String with byte-frame (Representation)
-        */
-        String getFrame();
+        Frame(CharArray* frame);
 };
 #endif // FRAME_H

@@ -36,7 +36,7 @@
 
 #include <CommInterface.h>
 
-/// @brief debugging flag to prit debugging-information on Serial 
+/// @brief debugging flag to print debugging-information on Serial 
 //#define DEBUG
 
 /// @brief maximum number of Bytes a frame can contain
@@ -118,6 +118,9 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
 
         /// @brief time to wait for response during the receive-cycle [microseconds]      
         unsigned long _recTimeout = 1000000;            
+
+        /// @brief Silenecetime for nullbyte between two chars (between 0.9 * time per char and char-timeout)
+        unsigned long _nullByteSilenece;
 
         /**
          * @brief Calculate all timeouts based on the specified baudrate

@@ -35,20 +35,10 @@ CommInterface_modbusRTU::~CommInterface_modbusRTU() {
 }
 
 // Sending
-bool CommInterface_modbusRTU::send(){
-    // Serial debugging
-    #ifdef DEBUG
-        Serial.println("Interface started sending:");
-    #endif
-    
-    if (sendBuffer==nullptr) return false;                        // check, if the sendbuffer-ptr is set to a valid memory
-    interface->write(sendBuffer->c_str(), sendBuffer->length());  // write the byte-converted string to the interface  
-    interface->flush();                                           // ensure, interfaces sending-buffer is completely empty before returning
-    
-    // Serial debugging
-    #ifdef DEBUG
-        Serial.println(*sendBuffer);
-    #endif 
+bool CommInterface_modbusRTU::send(){    
+    if (sendBuffer==nullptr) return false;                            // check, if the sendbuffer-ptr is set to a valid memory
+    interface->write(sendBuffer->getData(), sendBuffer->getSize());   // write the byte-converted string to the interface  
+    interface->flush();                                               // ensure, interfaces sending-buffer is completely empty before returning
     return true;
 };
 
@@ -57,10 +47,6 @@ bool CommInterface_modbusRTU::send(){
 // after a frame was received within the receive-timeout, the function returns true
 // the Comm-Interfece is not checking any Content of the frame 
 bool CommInterface_modbusRTU::receive(){
-    // Serial debugging
-    #ifdef DEBUG
-        Serial.println("Interface is receiving...");
-    #endif
     unsigned long startTime = micros();                             // Time, the function gets called
     uint16_t numBytes = 0;                                          // Received number of bytes
     bool receivingFlag = (deviceId == '\0') ? true:false;           // interface started receiving a frame (Slavemode: only if adressed to the device-ID, Mastermode: each frame) 
@@ -68,10 +54,6 @@ bool CommInterface_modbusRTU::receive(){
     // Wait for a relevant Frame 
     while (!interface->available()) {
     if (micros() - startTime >= _recTimeout) {
-      // Serial debugging
-      #ifdef DEBUG
-          Serial.println("Timeout: No Frame received in specified timespan...");
-      #endif
       return false;                                                 // No Frame received in specified timespan
     }
   }
@@ -79,39 +61,36 @@ bool CommInterface_modbusRTU::receive(){
   startTime = micros();                                             // redefine the time for measuring timeouts
 
   // Receive a relevant frame as long as timeout and frame length are ok
+  bool appendNullByte = false;
   while (numBytes < MAXFRAMESIZE) {
         // check if the char in buffer is the device-ID or receiving started already
         if (interface->available() && (receivingFlag || (deviceId==interface->peek())))     
         {
-            receivingFlag = true;                               // Set the receive-flag 
-            startTime = micros();                               // redefine the time for measuring timeouts
-            *receiveBuffer+= char(interface->read());           // Write the received char to the specified buffer
-            numBytes++;                                         // increase frame-length-counter 
-        }else if(micros() - startTime >= _charTimeout) break;   // if no char is received, wait for timeout
+            receivingFlag = true;                                                       // Set the receive-flag 
+            startTime = micros();                                                       // redefine the time for measuring timeouts
+
+            // Append a nullbyte
+            if (appendNullByte){
+              *receiveBuffer+= '\0';                          
+              appendNullByte = false;}
+
+            *receiveBuffer+= char(interface->read());                                   // Write the received char to the specified buffer
+            numBytes++;                                                                 // increase frame-length-counter 
+        }
+        // if no char is received, wait for timeout    
+        else if(micros() - startTime >= _charTimeout) break; 
+        // detect nullbyte if the next char is received below charTimeout
+        else if (micros() - startTime >= _nullByteSilenece) appendNullByte = true;                           
   };
 
     // wait for Frame-timeout to ensure frame is complete, raise Error, if the silence-time is violated
-    if((_clearRxBuffer()>0) & (*receiveBuffer!="")){
+    if((_clearRxBuffer()>0) & (receiveBuffer->getSize()!=0)){
       (numBytes>=MAXFRAMESIZE) ? raiseError(frameLengthError):raiseError(arbitrationError);
     } 
 
     // handle the Arbitration-Error with waiting for bus-silence
     if(getErrorState()==arbitrationError) while(_clearRxBuffer()!=0);
 
-    // Serial debugging
-    #ifdef DEBUG
-        Serial.print("Received ");
-        Serial.print(numBytes);
-        Serial.println("bytes:");
-        Serial.print(*receiveBuffer);
-        Serial.print("\n");
-    #endif
-
-    // Serial debugging
-    #ifdef DEBUG
-        Serial.println("Interface has stopped receiving...");
-    #endif
-    
     // Frame received and written to specified rec-buffer
     return true;
 };
@@ -134,6 +113,9 @@ size_t CommInterface_modbusRTU::_clearRxBuffer() {
 void CommInterface_modbusRTU::_calculateTimeouts(uint16_t baudrate) {
   uint8_t bitsPerChar = 11;                                   // Bits per character defined in specification
   uint16_t timePerChar = (bitsPerChar * 1000000) / baudrate;
+  // Silence-time for nullbyte on bus
+  _nullByteSilenece = timePerChar *0.9;                
+  // Char- and frametimeout 
   if (baudrate <= 19200) {
     // Set charTimeout to 1.5 times the time to send one character
     _charTimeout = timePerChar * 1.5;

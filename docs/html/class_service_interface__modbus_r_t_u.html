@@ -178,16 +178,16 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processServic
 <tr class="memdesc:a38bd169d6286c4ddbda050b7f28d093a inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">stack for frames to send next (instance of Content_stack-derived class, specified for type of frames, the bus is using) <br  />
  <br /></td></tr>
 <tr class="separator:a38bd169d6286c4ddbda050b7f28d093a inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e08cf764cea2084e1f425e32f44d2c1 inherit pro_attribs_class_service_interface" id="r_a1e08cf764cea2084e1f425e32f44d2c1"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sendItem</b></td></tr>
-<tr class="memdesc:a1e08cf764cea2084e1f425e32f44d2c1 inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Item to be sent next <br  />
+<tr class="memitem:ae4aa045a41f0040cacbc20d9dccc3db7 inherit pro_attribs_class_service_interface" id="r_ae4aa045a41f0040cacbc20d9dccc3db7"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_char_array.html">CharArray</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sendItem</b></td></tr>
+<tr class="memdesc:ae4aa045a41f0040cacbc20d9dccc3db7 inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Item to be sent next <br  />
  <br /></td></tr>
-<tr class="separator:a1e08cf764cea2084e1f425e32f44d2c1 inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac69502c2d78c4a046c5d3219d637f1b3 inherit pro_attribs_class_service_interface" id="r_ac69502c2d78c4a046c5d3219d637f1b3"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf">String</a>&#160;</td><td class="memItemRight" valign="bottom"><b>recItem</b></td></tr>
-<tr class="memdesc:ac69502c2d78c4a046c5d3219d637f1b3 inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Item received last <br  />
+<tr class="separator:ae4aa045a41f0040cacbc20d9dccc3db7 inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5564df6dabbaab51556a9dffe37b2444 inherit pro_attribs_class_service_interface" id="r_a5564df6dabbaab51556a9dffe37b2444"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_char_array.html">CharArray</a>&#160;</td><td class="memItemRight" valign="bottom"><b>recItem</b></td></tr>
+<tr class="memdesc:a5564df6dabbaab51556a9dffe37b2444 inherit pro_attribs_class_service_interface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Item received last <br  />
  <br /></td></tr>
-<tr class="separator:ac69502c2d78c4a046c5d3219d637f1b3 inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a5564df6dabbaab51556a9dffe37b2444 inherit pro_attribs_class_service_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Service-Interface-class for Modbus-RTU: Impart incoming frames from the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the designated service of the service-cluster. Build outgoing modbus-RTU-frames from the payload provided by the services and impart them to the Communication-Interface. The service-IDs of the associated services are mapped to the modbus-rtu-function-code. If a <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> is sent by a modbus-slave device, the frame's slave-id is the same as the sender-id (and the local device-id). If a <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> is sent by a modbus-device in mastermode, the frame's slave-id is the receiver-id provided by the service, that provided the payload for the frame. </p>

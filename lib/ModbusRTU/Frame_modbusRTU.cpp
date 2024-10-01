@@ -24,15 +24,14 @@
 #include "Frame_modbusRTU.h"
 
 // Construct Modbus-RRU-Frame from given PDU (Content)
-Frame_modbusRTU::Frame_modbusRTU(pduString* pdu, char* slaveId, char* functionCode) : 
+Frame_modbusRTU::Frame_modbusRTU(String* pdu, char* slaveId, char* functionCode) : 
     Frame(pdu), slaveId(*slaveId), functionCode(*functionCode) {
     content_to_rep();
 };
 
 // Construct Modbus-RTU-Frame from given Byte-Frame (Representation)
-Frame_modbusRTU::Frame_modbusRTU(frameString* frame) : 
+Frame_modbusRTU::Frame_modbusRTU(CharArray* frame) : 
     Frame(frame) {
-    copy_to_heap(&representation);
     rep_to_content();
 };
 
@@ -44,44 +43,35 @@ Frame_modbusRTU::Frame_modbusRTU() :
 
 // Deconstructor 
 Frame_modbusRTU::~Frame_modbusRTU(){
-    if (buffer!=nullptr) delete[] buffer;
-    buffer = nullptr;
 };
 
 // Convert the given Content (PDU) to Representation (Frame)
 void Frame_modbusRTU::content_to_rep(){
         size_t pduLength = content.length();                                // get the length of the Content (PDU)
-        size_t buffersize = PREFIXSIZE+SUFFIXSIZE+pduLength + 1;            // Calculate the necessary size for the buffer + null-termination
-        delete[] buffer;
-        buffer = new char[buffersize];                                      // Create representation-buffer 
-
+        
         // Prefix
-        buffer[0] = slaveId;                                                // Byte 0:  Slave-Address
-        buffer[1] = functionCode;                                           // Byte 1:  Modbus-RTU function-code 
+        representation[0] = slaveId;                                                // Byte 0:  Slave-Address
+        representation[1] = functionCode;                                           // Byte 1:  Modbus-RTU function-code 
         
         // Content
         for (size_t i = 0; i < pduLength; ++i) {                       
-            buffer[i+PREFIXSIZE] = content[i];                              // Byte 2 to end of PDU:  Content (PDU)
+            representation[i+PREFIXSIZE] = content[i];                              // Byte 2 to end of PDU:  Content (PDU)
         }
 
         // CRC
-        uint16_t crc = calcCRC16(buffer, pduLength+PREFIXSIZE);
-        buffer[pduLength + PREFIXSIZE] = crc & 0xFF;                        // Last 2 Bytes: Append CRC (Little Endian: Low Byte first, then High Byte)
-        buffer[pduLength + PREFIXSIZE + 1] = (crc >> 8) & 0xFF;
-
-        // Null terminator
-        buffer[buffersize] = '\0';                                          // Append null-termination to the buffer
-        representation = buffer;                                            // Set representation to point to the buffer
+        uint16_t crc = calcCRC16(representation.getData(), pduLength+PREFIXSIZE);
+        representation[pduLength + PREFIXSIZE] = crc & 0xFF;                        // Last 2 Bytes: Append CRC (Little Endian: Low Byte first, then High Byte)
+        representation[pduLength + PREFIXSIZE + 1] = (crc >> 8) & 0xFF;
 };
 
 // Convert the given Representation (Frame) to Content (PDU) 
 // leaves Content empty, if Frames is shorter than expected
 void Frame_modbusRTU::rep_to_content(){
-    size_t len = strlen(representation);                                    // Get the length of the representation (frame) 
-    if (len > (PREFIXSIZE + SUFFIXSIZE))
+    // Framesize is has payload
+    if (representation.getSize() > (PREFIXSIZE + SUFFIXSIZE))
     {
         // PDU (Content)
-        for (size_t i = PREFIXSIZE; i < len-SUFFIXSIZE; ++i) {                  
+        for (size_t i = PREFIXSIZE; i < representation.getSize()-SUFFIXSIZE; ++i) {                  
             content += representation[i];                                   // Write PDU from representation (frame) to Content 
         }
 
@@ -98,22 +88,8 @@ char Frame_modbusRTU::getFunctionCode(){
     return functionCode;
 };
 
-
-// Copy the representation pointing to an outside defined char-array to heap-memory
-// has to be called to ensure, that destructor is deleting from heap and not from stack
-void Frame_modbusRTU::copy_to_heap(const char** str_ptr) {
-        size_t len = strlen(*str_ptr);              // Get the length of the referenced string 
-        delete[] buffer;
-        buffer = new char[len+1];                   // create new char-array on heap 
-        for (size_t i = 0; i < len; ++i) {          
-            buffer[i] = (*str_ptr)[i];              // copy each character to heap
-        }
-        buffer[len] = '\0';                         // ensure null-termination
-        *str_ptr = buffer;                          // set the reference to the created char-array on heap-memory 
-    };
-
 // Calculate the CRC16-value of the given buffer 
-unsigned short Frame_modbusRTU::calcCRC16(char* crcBuffer, uint8_t size){   
+unsigned short Frame_modbusRTU::calcCRC16(const char* crcBuffer, uint8_t size){   
     unsigned short crc16 = CRC16VALUE;
     for (int i = 0; i < size; i++) {
         crc16 ^= static_cast<unsigned char>(crcBuffer[i]);
@@ -128,43 +104,8 @@ unsigned short Frame_modbusRTU::calcCRC16(char* crcBuffer, uint8_t size){
     return crc16;
 };
 
-// Check the CRC16-value for the given buffer 
+// Check the CRC16-value of the frame  
 bool Frame_modbusRTU::checkCRC16(){
-    uint8_t size = strlen(representation);              // Get the length of the representation 
-    char* crcBuffer = new char[size];              
-    memcpy(crcBuffer, representation, size);            // copy representation + null-termination to temp-buffer
-    bool result = calcCRC16(crcBuffer, size) == 0;      // if rest is 0 crc was correct 
-    delete[] crcBuffer;                                
-    return result;
+    // if rest is 0 crc was correct   
+    return calcCRC16(representation.getData(), representation.getSize()) == 0;                              
 };
-
-// Copy constructor
-Frame_modbusRTU::Frame_modbusRTU(const Frame_modbusRTU& other) : Frame(other) {
-    // Copy the derived-class-specific attributes
-    slaveId = other.slaveId;
-    functionCode = other.functionCode;
-    Frame::operator=(other);                            // Call base class assignment operator
-
-    // Copy dynamically allocated memory
-    if (!buffer) buffer = new char[1];                  // initialize buffer 
-    copy_to_heap(&representation);                      // copy buffer from assigned instance and re-allocate representation-ptr to prevent double-free
-    
-}
-
-// Assignment operator
-Frame_modbusRTU& Frame_modbusRTU::operator=(const Frame_modbusRTU& other) {
-    if (this == &other) {
-        return *this;                                   // handle self-assignment
-    }
-
-    // Copy the derived-class-specific attributes
-    slaveId = other.slaveId;
-    functionCode = other.functionCode;
-    Frame::operator=(other);                            // Call base class assignment operator
-
-    // Copy dynamically allocated memory
-    if (!buffer) buffer = new char[1];                  // initialize buffer 
-    copy_to_heap(&representation);                      // copy buffer from assigned instance and re-allocate representation-ptr to prevent double-free
-    
-    return *this;
-}

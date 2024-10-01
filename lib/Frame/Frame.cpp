@@ -25,25 +25,13 @@
 #include "Frame.h"
 
 // Default Constructor
-Frame::Frame() : Content<pduString, frameString>(frameString()) {}
+Frame::Frame() : Content<String, CharArray>(CharArray()) {}
 
 // Constructor for creating Frame from PDU
-Frame::Frame(pduString* pdu) : Content<pduString, frameString>(*pdu) {}
+Frame::Frame(String* pdu) : Content<String, CharArray>(*pdu) {}
 
 // Constructor for creating Frame-Object from byte-frame 
-Frame::Frame(frameString* frame) : Content<pduString, frameString>(*frame) {}
+Frame::Frame(CharArray* frame) : Content<String, CharArray>(*frame) {}
 
 // Destructor
 Frame::~Frame() {}
-
-// Get string-formatted PDU (Content) from Frame-Object
-String Frame::getPDU(){
-    pduString p = *get_content();
-    return String(p);
-}
-
-// Get string formatted byte-Frame (Representation) from Frame-Object 
-String Frame::getFrame(){
-    frameString* str = get_representation();
-    return String(*str);
-}
