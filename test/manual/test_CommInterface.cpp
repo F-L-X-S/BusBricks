@@ -35,8 +35,9 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
         // Send the Frame from Send-buffer
         bool send() override {
             if (sendBuffer!=nullptr){
-                outgoingFrame = *sendBuffer;                        // set the outgoing frame to the value stored in the sendbuffer
-                std::cout<<"Sending:\t"<<outgoingFrame<<std::endl;        
+                outgoingFrame = sendBuffer->getData();                        // set the outgoing frame to the value stored in the sendbuffer
+                Serial.print("Sending:\t");  
+                Serial.print(outgoingFrame);       
                 return true;
             }
             else{
@@ -47,8 +48,12 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
         // Receive a Frame and write it to Receive-buffer
         bool receive() override {                                         
             if (incomingFrame != ""){
-                std::cout<<"Receiving:\t"<<incomingFrame<<std::endl;           
-                *receiveBuffer = incomingFrame;                     // copy the value of the incoming frame to the receivebuffer                               
+                Serial.print("Receiving:\t");
+                Serial.print(incomingFrame);        
+                // Iterate through each character in incomingFrame
+                for (size_t i = 0; i < incomingFrame.length(); ++i) {
+                    *receiveBuffer += char(incomingFrame[i]);  // Append each character individually
+                }                                         
                 return true;
             }else{
                 return false;
@@ -57,8 +62,8 @@ class ExmplCommInterface: public CommInterface<uint8_t>{
 
     public:
         ExmplCommInterface(): CommInterface(0, 9600){}                  // Example Interface with value 0 (only used for cycle counting), Example Baudrate of 9600 bps
-        std::string incomingFrame = "";                                 // Simulation for an incoming Frame
-        std::string outgoingFrame = "";                                 // Simulation for an outgoing Frame
+        String incomingFrame = "";                                 // Simulation for an incoming Frame
+        String outgoingFrame = "";                                 // Simulation for an outgoing Frame
 };
 
 
@@ -78,25 +83,25 @@ std::string simulateAnswer(std::string outgoingFrame){
 
 int main() {
     // Example Sendstack
-    Content_stack<std::string, STACKSIZE> sendStack;
+    Content_stack<String, STACKSIZE> sendStack;
     for (size_t i = 0; i < STACKSIZE; i++)
     {
-        std::string frame = std::to_string(i) + "nd outgoing Frame";
+        String frame = std::to_string(i) + "nd outgoing Frame";
         sendStack.addElement(frame);
     }
 
     // Example Rec-Stack with 3 elements
-    Content_stack<std::string, STACKSIZE> recStack;
+    Content_stack<String, STACKSIZE> recStack;
 
     // instantiate the Communication-Interface 
     ExmplCommInterface comm_interface; 
 
     // initialize Sending
-    std::string send_element = *(sendStack.getElement());
+    CharArray send_element = *(sendStack.getElement());
     comm_interface.sendNewFrame(&send_element);
 
     // initialize Receiving
-    std::string rec_element;
+    CharArray rec_element;
     comm_interface.getReceivedFrame(&rec_element);
 
     // Simulate Communication-Cycles
@@ -119,7 +124,7 @@ int main() {
         // Handle receivebuffer
         if (comm_interface.receivedNewFrame())
         {
-            recStack.addElement(rec_element);               // Add the received element to the stack 
+            recStack.addElement(rec_element.getData());               // Add the received element to the stack 
             comm_interface.getReceivedFrame(&rec_element);  // Impart memory the received item has to be stored at 
         }
         
