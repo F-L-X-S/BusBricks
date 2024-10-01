@@ -1,7 +1,12 @@
 /**
  * @file main.cpp
  * @author Felix Schuelke (flxscode@gmail.com)
- * @brief 
+ * @brief This main is an example-implementation of a simple modbus-messenger to demonstrate the usage
+ * of a layer-7-service in the program. 
+ * The String typed in by the user via serial-interface is sent to the device with PARTNER_DEVICE_ID.
+ * All received Messages and raised errors are displayed on serial-monitor.
+ * Switch PARTNER_DEVICE_ID and DEVICE_ID before uploading to the Partner-device.
+ * 
  * @version 0.1
  * @date 2024-08-18
  * 
@@ -35,6 +40,8 @@
 #include <ErrorService.h>
 
 #define DEVICE_ID 'A'         // Modbus-RTU specific Device-ID 
+#define PARTNER_DEVICE_ID 'B' // Modbus-RTU specific Device-ID of an Partner-Device
+
 #define BAUDRATE 9600
 #define RX 2
 #define TX 3
@@ -73,17 +80,18 @@ void setup() {
     Serial.begin(9600);
     serialInterface.begin(BAUDRATE);
     Serial.println("Setup...");
-    msgService.sendMessage('B', "Setup...");
+    msgService.sendMessage(PARTNER_DEVICE_ID, "Setup...");
 };
 
 void loop() {
     String s = "";
+    // wait for a user-input 
     while (Serial.available() != 0) {      // data available
-        s = Serial.readString();           //read until timeout
-        s.trim();  
+        s = Serial.readString();           // read until timeout
+        s.trim();                          // formatting
     };
-    if (s!="") msgService.sendMessage('B',s);
-    serviceinterface.communicate();
+    if (s!="") msgService.sendMessage(PARTNER_DEVICE_ID,s); // send a message to the Partner-device with the given text
+    serviceinterface.communicate();         // execute the communication-cycle
  };
 
 #else
