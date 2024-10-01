@@ -109,7 +109,7 @@ bool CommInterface_modbusRTU::receive(){
         Serial.print("Received ");
         Serial.print(numBytes);
         Serial.println("bytes:");
-        Serial.print(*receiveBuffer);
+        Serial.print(receiveBuffer->getData());
         Serial.print("\n");
     #endif
 
