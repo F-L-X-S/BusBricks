@@ -1,7 +1,11 @@
 var searchData=
 [
   ['case_3a_20messenger_20service_0',['example use-case: Messenger-service',['../index.html#autotoc_md2',1,'']]],
+<<<<<<< HEAD
   ['chararray_1',['CharArray',['../class_char_array.html',1,'CharArray'],['../class_char_array.html#a146ef9bb0b947f92e5f0ccb80b768c81',1,'CharArray::CharArray()'],['../class_char_array.html#ac79f104c9a63490a71f4a05f7fc2539b',1,'CharArray::CharArray(const CharArray &amp;other)']]],
+=======
+  ['chararray_1',['CharArray',['../class_char_array.html',1,'CharArray'],['../class_char_array.html#a146ef9bb0b947f92e5f0ccb80b768c81',1,'CharArray::CharArray()'],['../class_char_array.html#a989d2a2e387fe94255a15341b6bc7550',1,'CharArray::CharArray(const String &amp;str)'],['../class_char_array.html#ac79f104c9a63490a71f4a05f7fc2539b',1,'CharArray::CharArray(const CharArray &amp;other)']]],
+>>>>>>> main
   ['chararray_2ecpp_2',['CharArray.cpp',['../_char_array_8cpp.html',1,'']]],
   ['chararray_2eh_3',['CharArray.h',['../_char_array_8h.html',1,'']]],
   ['checkcrc16_4',['checkCRC16',['../class_frame__modbus_r_t_u.html#a4c47818dc37cda1cd7ba792989bcb0ea',1,'Frame_modbusRTU']]],

@@ -1,6 +1,10 @@
 var searchData=
 [
+<<<<<<< HEAD
   ['chararray_0',['CharArray',['../class_char_array.html#a146ef9bb0b947f92e5f0ccb80b768c81',1,'CharArray::CharArray()'],['../class_char_array.html#ac79f104c9a63490a71f4a05f7fc2539b',1,'CharArray::CharArray(const CharArray &amp;other)']]],
+=======
+  ['chararray_0',['CharArray',['../class_char_array.html#a146ef9bb0b947f92e5f0ccb80b768c81',1,'CharArray::CharArray()'],['../class_char_array.html#a989d2a2e387fe94255a15341b6bc7550',1,'CharArray::CharArray(const String &amp;str)'],['../class_char_array.html#ac79f104c9a63490a71f4a05f7fc2539b',1,'CharArray::CharArray(const CharArray &amp;other)']]],
+>>>>>>> main
   ['checkcrc16_1',['checkCRC16',['../class_frame__modbus_r_t_u.html#a4c47818dc37cda1cd7ba792989bcb0ea',1,'Frame_modbusRTU']]],
   ['clearerrorstate_2',['clearErrorState',['../class_error_state.html#a2a2b91200168f27971ff6e63a8ab0e38',1,'ErrorState']]],
   ['clearresponse_3',['clearResponse',['../class_service_base.html#ae959e3c9fa34b4c021e3d28a4c74222b',1,'ServiceBase::clearResponse()'],['../class_service.html#a75817b19f202f1696c3609a3f9578cb9',1,'Service::clearResponse()']]],

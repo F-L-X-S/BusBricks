@@ -23,6 +23,7 @@ Hosting a messenger on different host-devices. Some of those hosts support a ser
 - [x] Registration of [Messenger-Service](lib/MessageService/MessageService.h)-instance and [Error-Service](lib/ErrorService/ErrorService.h)-instance within an [service-cluster](lib/Service/ServiceCluster.h) in [main](src/main.cpp)
 - [x] Implementation of [Modbus-RTU Service-Interface](lib/Interface/ServiceInterface.h) to process payload from/for the registered services and frames of from/for [Modbus-RTU communication-interface](lib/ModbusRTU/CommInterface_modbusRTU.h)
 - [ ] Setup of the [Modbus-RTU Service-interface](lib/ModbusRTU/ServiceInterface_modbusRTU.h) for Master-mode (polling and message-forwarding)
+- [ ] Response-Timeout for Message-Service
 
 ###### I2C implementation
 - [ ] Implementation of a [communication-interface](lib/Interface/CommInterface.h) derived I2C-communication-interface
