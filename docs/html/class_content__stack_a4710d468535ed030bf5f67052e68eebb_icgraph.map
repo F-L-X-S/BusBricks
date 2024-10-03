@@ -1,0 +1,29 @@
+<map id="Content_stack::empty" name="Content_stack::empty">
+<area shape="rect" id="Node000001" title="Check if the Stack is empty (size is 0)" alt="" coords="517,292,667,317"/>
+<area shape="rect" id="Node000002" href="$classarduino_mocking_1_1_software_serial.html#a17c94423c8f8cbfda9d5e6c4ae04ed69" title="Returns the number of available bytes in the internal queue." alt="" coords="271,71,444,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="577,278,561,243,536,202,505,160,467,125,443,111,445,107,471,121,509,157,541,199,565,241,582,276"/>
+<area shape="rect" id="Node000004" href="$classarduino_mocking_1_1_software_serial.html#a5785050c0162a9c4285b822d1dd940a1" title="Empties the internal queue and prints the flushed data to the console." alt="" coords="271,5,444,46"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="582,277,569,230,546,172,512,112,491,85,467,61,442,46,445,41,471,57,495,81,517,109,551,170,574,228,587,276"/>
+<area shape="rect" id="Node000006" href="$class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f" title="Get the get the response&#45;payload, stored at the response_pdu of the service instance" alt="" coords="282,136,433,161"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="572,280,529,226,500,199,468,176,432,162,434,157,470,171,503,195,533,223,576,277"/>
+<area shape="rect" id="Node000007" href="$classarduino_mocking_1_1_software_serial.html#ae70b691c402eede6805828c476b96bf5" title="Returns the next character in the queue without removing it." alt="" coords="271,185,444,226"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="555,286,468,241,434,229,436,224,470,237,557,281"/>
+<area shape="rect" id="Node000008" href="$class_service_interface.html#a23feb243ed1748e04dd757aa5f788b3e" title="Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is gett..." alt="" coords="272,251,442,291"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="501,294,443,286,443,280,502,289"/>
+<area shape="rect" id="Node000009" href="$classarduino_mocking_1_1_software_serial.html#a892a38a5eb6b0c115c2745098c9637ad" title="Reads a character from the internal queue." alt="" coords="271,316,444,357"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="502,319,444,327,443,322,501,314"/>
+<area shape="rect" id="Node000010" href="$class_service.html#ad0a6407e13cd84f81393d96273212822" title="Check, if a response of the service is available (services sendStack not empty)" alt="" coords="268,381,447,406"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="558,328,517,350,470,371,430,383,429,378,468,366,514,345,555,323"/>
+<area shape="rect" id="Node000011" href="$class_error_service.html#abdd6940a94fc8619c1ed31934b1cd3bd" title="Processes all errors from the receive stack." alt="" coords="258,430,456,456"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="573,331,530,378,501,402,470,421,445,432,442,427,468,417,498,397,526,374,569,328"/>
+<area shape="rect" id="Node000012" href="$class_message_service.html#ae02abdc8b83f6c62353dda1a42b2f1ff" title="Processes all messages from the receive stack." alt="" coords="246,480,469,505"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="581,332,564,365,539,402,508,439,470,471,449,481,446,477,468,466,504,436,535,399,559,362,576,330"/>
+<area shape="rect" id="Node000013" href="$class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75" title="Execute the service&#39;s functions for each item on the receive&#45;stack and add all response&#45;payloads to b..." alt="" coords="272,529,442,554"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="586,332,571,374,547,425,514,477,494,500,470,520,444,534,441,529,468,515,490,496,510,473,543,423,566,372,581,331"/>
+<area shape="rect" id="Node000003" href="$class_comm_interface__modbus_r_t_u.html#a50b42ad0a40a82ebe5a7749313ca2283" title="Receives a Modbus RTU frame and writes it to receiveBuffer." alt="" coords="5,185,198,226"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,119,247,125,186,156,135,187,132,183,184,151,245,121,260,114"/>
+<area shape="rect" id="Node000005" href="$class_comm_interface__modbus_r_t_u.html#a0e78a2a6e3b5b029609c2b16c21bd85b" title="Override of CommInterface send&#45;function. Send the frame, sendBuffer is pointing to by writing and flu..." alt="" coords="5,5,198,46"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="256,28,198,28,198,23,256,23"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="256,208,198,208,198,203,256,203"/>
+<area shape="poly" id="edge10_Node000009_Node000003" title=" " alt="" coords="261,313,244,305,179,267,127,229,130,224,182,263,247,301,263,308"/>
+</map>

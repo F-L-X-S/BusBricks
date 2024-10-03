@@ -1,0 +1,5 @@
+<map id="CommInterface::receive" name="CommInterface::receive">
+<area shape="rect" id="Node000001" title="Receive a Frame (has to be done in the derived class)" alt="" coords="249,5,410,31"/>
+<area shape="rect" id="Node000002" href="$class_comm_interface.html#a86287d0a0ecad690b5182bbe01b7f63f" title="Execution of receive&#45;cycle, set the receiveBuffer to nullptr after a new frame was received." alt="" coords="5,5,201,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,21,201,21,201,16,233,16"/>
+</map>

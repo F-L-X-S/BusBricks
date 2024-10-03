@@ -1,0 +1,23 @@
+<map id="CommInterface_modbusRTU::send" name="CommInterface_modbusRTU::send">
+<area shape="rect" id="Node000001" title="Override of CommInterface send&#45;function. Send the frame, sendBuffer is pointing to by writing and flu..." alt="" coords="5,183,198,224"/>
+<area shape="rect" id="Node000002" href="$classarduino_mocking_1_1_software_serial.html#a5785050c0162a9c4285b822d1dd940a1" title="Empties the internal queue and prints the flushed data to the console." alt="" coords="246,99,418,140"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,180,259,143,261,148,161,185"/>
+<area shape="rect" id="Node000008" href="$class_char_array.html#aca5000ba20e3e1a4b6efd128c8dd62dd" title="Provides direct access to the internal char array." alt="" coords="265,165,399,191"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="198,190,249,185,249,190,198,196"/>
+<area shape="rect" id="Node000009" href="$class_char_array.html#a384344479de289fff7c98966f0b079be" title="Retrieves the size of the char array." alt="" coords="266,215,398,240"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="198,211,250,216,250,222,198,216"/>
+<area shape="rect" id="Node000010" href="$classarduino_mocking_1_1_software_serial.html#aaa6defec7b617c31998ba26a5a472458" title="Writes data to the internal queue." alt="" coords="246,268,418,309"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="159,222,261,260,260,265,158,227"/>
+<area shape="rect" id="Node000003" href="$class_content__stack.html#a7b2d11fd9ee9f45090a545031883edb6" title="Delete item on index&#45;position from stack and shift all items with higher index, accepts only positive..." alt="" coords="466,5,663,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="362,97,409,67,465,40,482,34,484,39,467,45,412,72,364,101"/>
+<area shape="rect" id="Node000004" href="$class_content__stack.html#a4710d468535ed030bf5f67052e68eebb" title="Check if the Stack is empty (size is 0)" alt="" coords="490,55,640,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="418,98,489,82,490,87,419,103"/>
+<area shape="rect" id="Node000005" href="$class_content__stack.html#a5ac2a896da7724281d9d85eb239f5084" title="Get Pointer to element in the stack. Accepts positive and negative indexing." alt="" coords="474,104,655,130"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="418,116,459,115,459,121,418,121"/>
+<area shape="rect" id="Node000006" href="$classarduino_mocking_1_1_mock_serial.html#a5574b127279fa6e099d1026d3a69a5d4" title="Prints a string to the serial output." alt="" coords="472,154,657,194"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="419,137,461,147,460,152,418,142"/>
+<area shape="rect" id="Node000007" href="$classarduino_mocking_1_1_mock_serial.html#a3ae50becfead299fa547d158a80544d4" title="Prints a string followed by a newline to the serial output." alt="" coords="472,219,657,260"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="397,138,420,151,435,165,444,178,453,191,468,204,477,210,474,214,464,208,449,195,440,181,431,168,416,155,395,143"/>
+<area shape="rect" id="Node000011" href="$class_content__stack.html#a3d5491c67763ef3c19780619d70cb59a" title="Add item to stack." alt="" coords="473,284,656,310"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="418,289,457,290,457,296,418,294"/>
+</map>

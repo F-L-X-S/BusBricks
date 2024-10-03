@@ -1,0 +1,7 @@
+<map id="Frame_modbusRTU" name="Frame_modbusRTU">
+<area shape="rect" id="Node000001" title="Class for defining the structure of the Modbus&#45;RTU&#45;Frame. Can be constructed by a given modbus&#45;frame ..." alt="" coords="32,153,171,178"/>
+<area shape="rect" id="Node000002" href="$class_frame.html" title="Frame&#45;Class as derived class from Content The derived classes define: &#45;the conversion from a given pa..." alt="" coords="72,79,131,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,120,104,152,99,152,99,120"/>
+<area shape="rect" id="Node000003" href="$class_content.html" title=" " alt="" coords="5,5,198,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,46,104,79,99,79,99,46"/>
+</map>

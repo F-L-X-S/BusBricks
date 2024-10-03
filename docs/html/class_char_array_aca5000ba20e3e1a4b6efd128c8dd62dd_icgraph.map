@@ -1,0 +1,7 @@
+<map id="CharArray::getData" name="CharArray::getData">
+<area shape="rect" id="Node000001" title="Provides direct access to the internal char array." alt="" coords="280,35,414,60"/>
+<area shape="rect" id="Node000002" href="$class_frame__modbus_r_t_u.html#a4c47818dc37cda1cd7ba792989bcb0ea" title="Verifies the CRC16 checksum of the current Modbus RTU frame." alt="" coords="5,5,232,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="264,40,223,34,224,29,264,34"/>
+<area shape="rect" id="Node000003" href="$class_comm_interface__modbus_r_t_u.html#a0e78a2a6e3b5b029609c2b16c21bd85b" title="Override of CommInterface send&#45;function. Send the frame, sendBuffer is pointing to by writing and flu..." alt="" coords="22,55,215,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="264,60,215,66,215,61,264,55"/>
+</map>

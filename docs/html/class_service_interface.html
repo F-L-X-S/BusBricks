@@ -114,12 +114,13 @@ $(function(){initNavTree('class_service_interface.html',''); initResizable(true)
 <div class="dynheader">
 Inheritance diagram for ServiceInterface&lt; CommInterfaceBase, frameType &gt;:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="class_service_interface.png" usemap="#ServiceInterface_3C_20CommInterfaceBase_2C_20frameType_20_3E_map" alt=""/>
-  <map id="ServiceInterface_3C_20CommInterfaceBase_2C_20frameType_20_3E_map" name="ServiceInterface_3C_20CommInterfaceBase_2C_20frameType_20_3E_map">
-<area href="class_error_state.html" title="A class to manage and track error states using error codes." alt="ErrorState" shape="rect" coords="0,0,311,24"/>
-  </map>
-</div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface__inherit__graph.svg" width="230" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for ServiceInterface&lt; CommInterfaceBase, frameType &gt;:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface__coll__graph.svg" width="687" height="231"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -315,6 +316,11 @@ template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInt
 <p>Add items received by the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the recStack and execute the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s receiveCycle to wait for new incoming frames. Exit, if the recStack is full or the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> did not received new Frames within the in receiveCycle specified timeout. </p>
 <p>If the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> received a new frame (that means, it's recBuffer is set to nullptr), the function creates the Frame-instance (specified by frameType) from it's recItem and adds it to the recStack. (If the creation of the Frame-instance fails (isValid returned false), the Framing-Error is raised) Then it initializes the recItem and imparts it's reference to the comm_interface by calling getReceivedFrame. The <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> is now storing the next <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> received at this address. After specifying the destination for received frames for ComInterface, the receiveCycle is executed again, to wait for incoming Frames.</p>
 <p>The ErrorStates of the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> are transferred to the <a class="el" href="class_service_interface.html" title="Template for generic Service-Interface Defines the handling of incoming frames from CommInterface to ...">ServiceInterface</a> <a class="el" href="class_error_state.html" title="A class to manage and track error states using error codes.">ErrorState</a>. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface_a7c5ec5e13af8a67d1b08c963fcd71214_cgraph.svg" width="851" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -345,6 +351,11 @@ template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInt
 
 <p>Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is getting pointers to the representation of the <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> on the bottom of the stack. The pointer to the string-formatted representation is imparted to the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> as teh next frame to be sent by calling sendNewFrame. Then the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s sendCycle get's executed. Exit, after the sendStack is empty. </p>
 <p>The ErrorStates of the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> are transferred to the <a class="el" href="class_service_interface.html" title="Template for generic Service-Interface Defines the handling of incoming frames from CommInterface to ...">ServiceInterface</a> <a class="el" href="class_error_state.html" title="A class to manage and track error states using error codes.">ErrorState</a>. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface_a23feb243ed1748e04dd757aa5f788b3e_cgraph.svg" width="863" height="528"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -380,6 +391,16 @@ template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInt
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface_a42226b8c236c344b6c5d171736a08f6e_cgraph.svg" width="628" height="151"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface_a42226b8c236c344b6c5d171736a08f6e_icgraph.svg" width="410" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>

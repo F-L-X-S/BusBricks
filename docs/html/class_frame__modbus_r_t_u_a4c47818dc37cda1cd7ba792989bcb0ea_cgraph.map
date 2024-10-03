@@ -1,0 +1,7 @@
+<map id="Frame_modbusRTU::checkCRC16" name="Frame_modbusRTU::checkCRC16">
+<area shape="rect" id="Node000001" title="Verifies the CRC16 checksum of the current Modbus RTU frame." alt="" coords="5,31,232,56"/>
+<area shape="rect" id="Node000002" href="$class_char_array.html#aca5000ba20e3e1a4b6efd128c8dd62dd" title="Provides direct access to the internal char array." alt="" coords="280,5,414,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,28,264,25,264,30,232,34"/>
+<area shape="rect" id="Node000003" href="$class_char_array.html#a384344479de289fff7c98966f0b079be" title="Retrieves the size of the char array." alt="" coords="281,55,413,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,53,266,56,265,62,232,58"/>
+</map>

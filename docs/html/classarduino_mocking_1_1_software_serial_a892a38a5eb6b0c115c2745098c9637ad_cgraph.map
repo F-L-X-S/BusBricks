@@ -1,0 +1,9 @@
+<map id="arduinoMocking::SoftwareSerial::read" name="arduinoMocking::SoftwareSerial::read">
+<area shape="rect" id="Node000001" title="Reads a character from the internal queue." alt="" coords="5,47,178,88"/>
+<area shape="rect" id="Node000002" href="$class_content__stack.html#a7b2d11fd9ee9f45090a545031883edb6" title="Delete item on index&#45;position from stack and shift all items with higher index, accepts only positive..." alt="" coords="226,5,423,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,47,245,32,246,37,178,52"/>
+<area shape="rect" id="Node000003" href="$class_content__stack.html#a4710d468535ed030bf5f67052e68eebb" title="Check if the Stack is empty (size is 0)" alt="" coords="249,55,400,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,65,233,65,233,70,178,70"/>
+<area shape="rect" id="Node000004" href="$class_content__stack.html#a5ac2a896da7724281d9d85eb239f5084" title="Get Pointer to element in the stack. Accepts positive and negative indexing." alt="" coords="234,104,414,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="178,83,246,98,245,103,177,88"/>
+</map>

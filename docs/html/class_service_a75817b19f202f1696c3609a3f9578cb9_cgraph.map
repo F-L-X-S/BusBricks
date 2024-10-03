@@ -1,0 +1,5 @@
+<map id="Service::clearResponse" name="Service::clearResponse">
+<area shape="rect" id="Node000001" title="Clear the response&#45;buffer (delete item, that was returned by get_response from the service&#45;sendStack)" alt="" coords="5,5,166,31"/>
+<area shape="rect" id="Node000002" href="$class_content__stack.html#a7b2d11fd9ee9f45090a545031883edb6" title="Delete item on index&#45;position from stack and shift all items with higher index, accepts only positive..." alt="" coords="214,5,411,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,16,198,16,198,21,166,21"/>
+</map>

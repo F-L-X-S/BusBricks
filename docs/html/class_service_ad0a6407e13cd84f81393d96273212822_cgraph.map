@@ -1,0 +1,5 @@
+<map id="Service::responseAvailable" name="Service::responseAvailable">
+<area shape="rect" id="Node000001" title="Check, if a response of the service is available (services sendStack not empty)" alt="" coords="5,5,185,31"/>
+<area shape="rect" id="Node000002" href="$class_content__stack.html#a4710d468535ed030bf5f67052e68eebb" title="Check if the Stack is empty (size is 0)" alt="" coords="233,5,383,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,16,217,16,217,21,185,21"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="CommInterface::send" name="CommInterface::send">
+<area shape="rect" id="Node000001" title="Send the frame, sendBuffer is pointing to (has to be done in the derived class)" alt="" coords="235,5,382,31"/>
+<area shape="rect" id="Node000002" href="$class_comm_interface.html#a8670e37fdefcfeca579e99b6051fe3da" title="Execution of send&#45;cycle, set the sendBuffer to nullptr, after the frame, sendBuffer was pointing at,..." alt="" coords="5,5,187,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,21,187,21,187,16,219,16"/>
+</map>

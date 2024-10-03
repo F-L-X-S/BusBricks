@@ -1,0 +1,5 @@
+<map id="ServiceInterface&lt; CommInterfaceBase, frameType &gt;" name="ServiceInterface&lt; CommInterfaceBase, frameType &gt;">
+<area shape="rect" id="Node000001" title="Template for generic Service&#45;Interface Defines the handling of incoming frames from CommInterface to ..." alt="" coords="5,79,224,120"/>
+<area shape="rect" id="Node000002" href="$class_error_state.html" title="A class to manage and track error states using error codes." alt="" coords="74,5,155,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,46,117,79,112,79,112,46"/>
+</map>

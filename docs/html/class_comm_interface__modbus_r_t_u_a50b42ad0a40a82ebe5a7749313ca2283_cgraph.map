@@ -1,0 +1,28 @@
+<map id="CommInterface_modbusRTU::receive" name="CommInterface_modbusRTU::receive">
+<area shape="rect" id="Node000001" title="Receives a Modbus RTU frame and writes it to receiveBuffer." alt="" coords="5,193,198,234"/>
+<area shape="rect" id="Node000002" href="$classarduino_mocking_1_1_software_serial.html#a17c94423c8f8cbfda9d5e6c4ae04ed69" title="Returns the number of available bytes in the internal queue." alt="" coords="246,5,418,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,191,167,126,204,89,244,57,253,51,256,56,247,61,207,93,171,130,119,195"/>
+<area shape="rect" id="Node000004" href="$class_error_state.html#a55090bb1772cd8c20c936b5a9cf4f2ce" title="Get the currently active error&#45;code." alt="" coords="249,201,414,226"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,211,233,211,233,216,198,216"/>
+<area shape="rect" id="Node000005" href="$class_char_array.html#a384344479de289fff7c98966f0b079be" title="Retrieves the size of the char array." alt="" coords="266,250,398,276"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="199,232,254,244,253,249,198,237"/>
+<area shape="rect" id="Node000006" href="$namespacearduino_mocking.html#a0e9de3c37e4e59ae09b1590268fa0e17" title="Simulates the micros function to get the number of microseconds since the program started." alt="" coords="252,300,412,325"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="139,232,189,259,247,286,263,292,261,297,245,291,187,264,136,237"/>
+<area shape="rect" id="Node000008" href="$classarduino_mocking_1_1_software_serial.html#ae70b691c402eede6805828c476b96bf5" title="Returns the next character in the queue without removing it." alt="" coords="246,71,418,111"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="131,191,183,157,244,122,258,116,260,120,247,127,186,161,134,195"/>
+<area shape="rect" id="Node000010" href="$class_error_state.html#ab996befaa1eb1089914ab0fbfecfcf39" title="raises a new error by setting the given error&#45;code as errorState" alt="" coords="260,349,404,374"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="123,232,176,284,210,312,247,335,257,340,255,345,244,340,207,316,172,288,119,236"/>
+<area shape="rect" id="Node000011" href="$classarduino_mocking_1_1_software_serial.html#a892a38a5eb6b0c115c2745098c9637ad" title="Reads a character from the internal queue." alt="" coords="246,136,418,177"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="185,190,232,178,233,184,186,195"/>
+<area shape="rect" id="Node000003" href="$class_content__stack.html#a4710d468535ed030bf5f67052e68eebb" title="Check if the Stack is empty (size is 0)" alt="" coords="490,62,640,88"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="419,41,486,56,485,61,418,47"/>
+<area shape="rect" id="Node000007" href="$classarduino_mocking_1_1_mock_time.html#ab64e9362462abf0408b234e7b144c0fc" title="Returns the simulated time in microseconds." alt="" coords="474,292,655,333"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="412,310,459,310,459,315,412,315"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="418,82,474,79,474,84,418,88"/>
+<area shape="rect" id="Node000009" href="$class_content__stack.html#a5ac2a896da7724281d9d85eb239f5084" title="Get Pointer to element in the stack. Accepts positive and negative indexing." alt="" coords="474,112,655,137"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="419,101,460,107,459,112,418,106"/>
+<area shape="poly" id="edge13_Node000011_Node000003" title=" " alt="" coords="388,133,417,121,465,97,485,90,486,95,467,101,419,125,390,138"/>
+<area shape="poly" id="edge14_Node000011_Node000009" title=" " alt="" coords="418,142,459,136,460,141,419,147"/>
+<area shape="rect" id="Node000012" href="$class_content__stack.html#a7b2d11fd9ee9f45090a545031883edb6" title="Delete item on index&#45;position from stack and shift all items with higher index, accepts only positive..." alt="" coords="466,161,663,186"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="418,160,450,162,450,168,418,165"/>
+</map>

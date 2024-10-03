@@ -1,0 +1,9 @@
+<map id="Content::get_content" name="Content::get_content">
+<area shape="rect" id="Node000001" title="Get the address of the informations content of type content_type." alt="" coords="277,70,420,96"/>
+<area shape="rect" id="Node000002" href="$class_message_service.html#acc78431dec13eaa6b2d6c325ad84578c" title="Retrieves the destination instance ID for the current response PDU in the send stack." alt="" coords="45,5,189,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="278,68,189,46,190,41,279,63"/>
+<area shape="rect" id="Node000003" href="$class_error_service.html#abdd6940a94fc8619c1ed31934b1cd3bd" title="Processes all errors from the receive stack." alt="" coords="18,70,216,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="262,86,217,86,217,80,262,80"/>
+<area shape="rect" id="Node000004" href="$class_message_service.html#ae02abdc8b83f6c62353dda1a42b2f1ff" title="Processes all messages from the receive stack." alt="" coords="5,120,229,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="270,102,181,121,180,116,269,97"/>
+</map>

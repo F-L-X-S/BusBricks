@@ -1,0 +1,28 @@
+<map id="ServiceInterface::processRecStack" name="ServiceInterface::processRecStack">
+<area shape="rect" id="Node000001" title="Add items received by the CommInterface to the recStack and execute the CommInterface&#39;s receiveCycle ..." alt="" coords="5,195,176,235"/>
+<area shape="rect" id="Node000002" href="$class_content__stack.html#a3d5491c67763ef3c19780619d70cb59a" title="Add item to stack." alt="" coords="662,161,846,186"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,193,114,156,140,110,176,66,198,47,222,31,257,17,292,8,328,3,364,3,437,13,509,34,575,62,635,93,724,149,721,153,633,98,573,67,507,39,436,19,364,9,328,9,293,13,258,22,225,36,201,51,180,69,144,113,118,158,102,195"/>
+<area shape="rect" id="Node000003" href="$class_error_state.html#a2a2b91200168f27971ff6e63a8ab0e38" title="sets the current error&#45;state to &quot;no Error&quot;" alt="" coords="229,46,404,72"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,192,153,137,186,106,222,81,232,76,235,80,225,85,189,110,157,140,109,196"/>
+<area shape="rect" id="Node000004" href="$class_content__stack.html#a200a86b0f3bdfa24e4a56b5e02efb02a" title="Check if the Stack is full (size reached MaxSize)" alt="" coords="251,95,382,121"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="118,192,165,160,223,130,238,124,240,129,225,135,168,165,121,196"/>
+<area shape="rect" id="Node000005" href="$class_error_state.html#a55090bb1772cd8c20c936b5a9cf4f2ce" title="Get the currently active error&#45;code." alt="" coords="234,145,399,170"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="172,192,247,172,249,177,174,197"/>
+<area shape="rect" id="Node000006" href="$class_comm_interface_base.html#a24de53b6a6f3150b9c2f904fbf872ef5" title="Define the destination, the next received Frame should be copied to ba a pointer to an empty String&#45;O..." alt="" coords="242,195,391,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="176,212,226,212,226,218,176,218"/>
+<area shape="rect" id="Node000007" href="$class_char_array.html#a384344479de289fff7c98966f0b079be" title="Retrieves the size of the char array." alt="" coords="250,259,382,285"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="174,233,249,253,247,258,172,238"/>
+<area shape="rect" id="Node000008" href="$classarduino_mocking_1_1_mock_serial.html#a3ae50becfead299fa547d158a80544d4" title="Prints a string followed by a newline to the serial output." alt="" coords="224,309,409,350"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="122,233,169,264,225,295,237,301,234,305,222,300,167,269,119,238"/>
+<area shape="rect" id="Node000009" href="$class_service_interface.html#a42226b8c236c344b6c5d171736a08f6e" title="Check if an ErrorService is registered in the service cluster under the defined ERRORSERVICE_ID of th..." alt="" coords="226,374,406,400"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="107,234,154,297,187,331,225,359,236,366,234,370,222,364,184,335,150,300,103,237"/>
+<area shape="rect" id="Node000013" href="$class_comm_interface_base.html#a08f93b5ea06e7ffb99571f4798108da2" title="Check, if a new Frame was received." alt="" coords="242,424,391,465"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="103,234,120,272,147,319,182,368,225,410,230,414,227,418,222,414,178,371,142,322,115,274,98,237"/>
+<area shape="rect" id="Node000010" href="$class_service_cluster_base.html#ae025282a6ef15d01eaba440bdf73a750" title="Get pointer to the service with the given service&#45;ID by iterating through the associated services and..." alt="" coords="467,285,604,326"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="372,371,408,359,456,335,468,330,470,335,458,340,410,364,374,376"/>
+<area shape="rect" id="Node000011" href="$class_error_service.html#a4db0ae1a3ca53fe1e6290b87390098ba" title="Adds an Error&#45;object for the local Instance&#45;Id to the Error&#45;services rec&#45;stack." alt="" coords="457,350,614,376"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="407,374,441,371,442,376,407,380"/>
+<area shape="rect" id="Node000012" href="$class_error_state.html#ab996befaa1eb1089914ab0fbfecfcf39" title="raises a new error by setting the given error&#45;code as errorState" alt="" coords="464,399,608,425"/>
+<area shape="poly" id="edge12_Node000009_Node000012" title=" " alt="" coords="407,395,448,400,448,405,407,400"/>
+<area shape="poly" id="edge11_Node000011_Node000002" title=" " alt="" coords="590,347,613,335,652,303,686,266,735,198,740,201,690,270,655,307,616,340,592,352"/>
+</map>

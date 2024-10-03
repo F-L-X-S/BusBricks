@@ -1,0 +1,7 @@
+<map id="arduinoMocking::SoftwareSerial::peek" name="arduinoMocking::SoftwareSerial::peek">
+<area shape="rect" id="Node000001" title="Returns the next character in the queue without removing it." alt="" coords="5,23,178,64"/>
+<area shape="rect" id="Node000002" href="$class_content__stack.html#a4710d468535ed030bf5f67052e68eebb" title="Check if the Stack is empty (size is 0)" alt="" coords="241,5,391,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,31,225,26,226,31,178,36"/>
+<area shape="rect" id="Node000003" href="$class_content__stack.html#a5ac2a896da7724281d9d85eb239f5084" title="Get Pointer to element in the stack. Accepts positive and negative indexing." alt="" coords="226,55,406,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,50,210,54,210,59,178,55"/>
+</map>
