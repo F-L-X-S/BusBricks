@@ -1,0 +1,7 @@
+<map id="CommInterface&lt; interface_type &gt;" name="CommInterface&lt; interface_type &gt;">
+<area shape="rect" id="Node000001" title="Template for generic communication&#45;interface specifies a standardized interface to use for integratin..." alt="" coords="5,153,179,193"/>
+<area shape="rect" id="Node000002" href="$class_comm_interface_base.html" title="Communcation&#45;Interface&#45;Base&#45;Class of the CommInterface template specifies a standardized interface to..." alt="" coords="21,79,163,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,120,95,152,89,152,89,120"/>
+<area shape="rect" id="Node000003" href="$class_error_state.html" title="A class to manage and track error states using error codes." alt="" coords="52,5,132,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,46,95,79,89,79,89,46"/>
+</map>

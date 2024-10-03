@@ -1,0 +1,7 @@
+<map id="Message" name="Message">
+<area shape="rect" id="Node000001" title="Represents a message with information for sender and receiver, and provides methods for converting be..." alt="" coords="59,184,134,210"/>
+<area shape="rect" id="Node000002" href="$class_content.html" title=" " alt="" coords="5,94,188,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,150,99,184,94,184,94,150"/>
+<area shape="rect" id="Node000003" href="$struct_message__content__t.html" title="Represents the content of a message with sender and receiver information." alt="" coords="29,5,164,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="99,46,99,93,94,93,94,46"/>
+</map>

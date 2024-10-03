@@ -1,0 +1,25 @@
+var classarduino_mocking_1_1_mock_serial =
+[
+    [ "MockSerial", "classarduino_mocking_1_1_mock_serial.html#ada513d971da540ac8a25c78ec5ff0e8c", null ],
+    [ "available", "classarduino_mocking_1_1_mock_serial.html#ae3bc93e13c179593356b87385563ecae", null ],
+    [ "begin", "classarduino_mocking_1_1_mock_serial.html#a7b18c0f26f4bed1b4789f2ea47bfd6dc", null ],
+    [ "print", "classarduino_mocking_1_1_mock_serial.html#ab78a5a346275ab600281acb8b62350ce", null ],
+    [ "print", "classarduino_mocking_1_1_mock_serial.html#a5574b127279fa6e099d1026d3a69a5d4", null ],
+    [ "print", "classarduino_mocking_1_1_mock_serial.html#a9ee99aad6429ee3ba655f656f0110182", null ],
+    [ "print", "classarduino_mocking_1_1_mock_serial.html#a20ab0b8af925e49c0fb3d409612e2961", null ],
+    [ "print", "classarduino_mocking_1_1_mock_serial.html#a669f7bae40ca6627250fcc99afd09255", null ],
+    [ "print", "classarduino_mocking_1_1_mock_serial.html#ae11d6d44915c7f5aa22d126e5dc09191", null ],
+    [ "print", "classarduino_mocking_1_1_mock_serial.html#abca1ad8ef0287f2cbf3c5687cfa01a0c", null ],
+    [ "println", "classarduino_mocking_1_1_mock_serial.html#a47a129e1092041a5b2e0d1d881213c3c", null ],
+    [ "println", "classarduino_mocking_1_1_mock_serial.html#a0d99ac9e6d82fdd860298b4a62366df3", null ],
+    [ "println", "classarduino_mocking_1_1_mock_serial.html#a3ae50becfead299fa547d158a80544d4", null ],
+    [ "println", "classarduino_mocking_1_1_mock_serial.html#a5c4f259c0a492f7370acbd95c4e73a24", null ],
+    [ "println", "classarduino_mocking_1_1_mock_serial.html#aa4903d4eae568197d4c4b79500e4d4db", null ],
+    [ "println", "classarduino_mocking_1_1_mock_serial.html#aafdd120adc7002a1308a7cc48483555a", null ],
+    [ "println", "classarduino_mocking_1_1_mock_serial.html#a7f5068154c7422844343ef7908b6df5e", null ],
+    [ "println", "classarduino_mocking_1_1_mock_serial.html#a3a0a3788fa52814acad9919bc8442d8c", null ],
+    [ "read", "classarduino_mocking_1_1_mock_serial.html#a06e96a93e5e0f1785e6e87620625eeaf", null ],
+    [ "simulateInput", "classarduino_mocking_1_1_mock_serial.html#a1ba440a4ceb82eee58a793a1656e77e8", null ],
+    [ "simulateInput", "classarduino_mocking_1_1_mock_serial.html#a7cf70afc3ba560ddc5446f066c9c7252", null ],
+    [ "write", "classarduino_mocking_1_1_mock_serial.html#a91b045c8593d3c38d38e0039d29de94a", null ]
+];

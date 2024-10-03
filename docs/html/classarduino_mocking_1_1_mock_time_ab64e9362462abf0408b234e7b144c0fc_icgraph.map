@@ -1,0 +1,7 @@
+<map id="arduinoMocking::MockTime::micros" name="arduinoMocking::MockTime::micros">
+<area shape="rect" id="Node000001" title="Returns the simulated time in microseconds." alt="" coords="453,5,634,46"/>
+<area shape="rect" id="Node000002" href="$namespacearduino_mocking.html#a0e9de3c37e4e59ae09b1590268fa0e17" title="Simulates the micros function to get the number of microseconds since the program started." alt="" coords="246,13,405,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="438,28,406,28,406,23,438,23"/>
+<area shape="rect" id="Node000003" href="$class_comm_interface__modbus_r_t_u.html#a50b42ad0a40a82ebe5a7749313ca2283" title="Receives a Modbus RTU frame and writes it to receiveBuffer." alt="" coords="5,5,198,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="230,28,198,28,198,23,230,23"/>
+</map>

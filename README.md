@@ -50,10 +50,10 @@ In every iteration, an information is processed and the rules of the next level,
 Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called **representation**.<br>
 
 ### Classdiagram
-<img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/classdiagram.png" alt="classdiagram" style="width:1700px;">
+<img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/classdiagram.svg" alt="classdiagram" style="width:1700px;">
 
 ### Stackprocessing
-<img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/stackProcessing.png" alt="stackProcessing" style="width:400px;">
+<img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/stackProcessing.svg" alt="stackProcessing" style="width:400px;">
 
 ## Deriving a custom Service 
 - [x] [define content to handle](#define-the-content)

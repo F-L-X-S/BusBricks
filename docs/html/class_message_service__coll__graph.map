@@ -1,0 +1,9 @@
+<map id="MessageService" name="MessageService">
+<area shape="rect" id="Node000001" title="Service class for handling messages and acknowledgments." alt="" coords="74,199,192,225"/>
+<area shape="rect" id="Node000002" href="$class_service.html" title=" " alt="" coords="21,124,245,150"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,165,136,199,130,199,130,165"/>
+<area shape="rect" id="Node000003" href="$class_service_base.html" title="Service&#45;base&#45;class to add class&#45;functions to vtable." alt="" coords="5,13,101,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="73,49,126,122,122,125,68,53"/>
+<area shape="rect" id="Node000004" href="$class_content__stack.html" title=" " alt="" coords="125,5,301,46"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="192,60,144,125,140,122,188,57"/>
+</map>

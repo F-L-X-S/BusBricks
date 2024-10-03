@@ -1,0 +1,7 @@
+<map id="Frame" name="Frame">
+<area shape="rect" id="Node000001" title="Frame&#45;Class as derived class from Content The derived classes define: &#45;the conversion from a given pa..." alt="" coords="72,169,131,195"/>
+<area shape="rect" id="Node000002" href="$class_content.html" title=" " alt="" coords="5,94,198,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,135,104,169,99,169,99,135"/>
+<area shape="rect" id="Node000003" href="$class_char_array.html" title="Class for storing char&#45;array (byte&#45;array) together with size. The Array is stored on Heap&#45;memory and ..." alt="" coords="61,5,142,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,47,104,94,99,94,99,47"/>
+</map>

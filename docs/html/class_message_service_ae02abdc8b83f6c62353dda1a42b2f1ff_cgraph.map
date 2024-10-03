@@ -1,0 +1,11 @@
+<map id="MessageService::stackProcessing" name="MessageService::stackProcessing">
+<area shape="rect" id="Node000001" title="Processes all messages from the receive stack." alt="" coords="5,80,229,106"/>
+<area shape="rect" id="Node000002" href="$class_content__stack.html#a7b2d11fd9ee9f45090a545031883edb6" title="Delete item on index&#45;position from stack and shift all items with higher index, accepts only positive..." alt="" coords="277,5,474,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,77,276,40,302,33,303,38,277,45,159,82"/>
+<area shape="rect" id="Node000003" href="$class_content__stack.html#a4710d468535ed030bf5f67052e68eebb" title="Check if the Stack is empty (size is 0)" alt="" coords="300,55,450,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,79,285,74,285,79,229,85"/>
+<area shape="rect" id="Node000004" href="$class_content.html#a5a3cdbe54fb690a53a5a4fda109fd044" title="Get the address of the informations content of type content_type." alt="" coords="304,104,447,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="229,101,288,106,288,111,229,106"/>
+<area shape="rect" id="Node000005" href="$class_content__stack.html#a5ac2a896da7724281d9d85eb239f5084" title="Get Pointer to element in the stack. Accepts positive and negative indexing." alt="" coords="285,153,466,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="160,104,277,140,303,147,302,152,276,145,158,109"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="CommInterfaceBase::finishedSending" name="CommInterfaceBase::finishedSending">
+<area shape="rect" id="Node000001" title="Check, if the Frame was sent and the CommInterface is ready to send the next Frame." alt="" coords="224,5,373,46"/>
+<area shape="rect" id="Node000002" href="$class_service_interface.html#a23feb243ed1748e04dd757aa5f788b3e" title="Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is gett..." alt="" coords="5,5,176,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,28,176,28,176,23,208,23"/>
+</map>

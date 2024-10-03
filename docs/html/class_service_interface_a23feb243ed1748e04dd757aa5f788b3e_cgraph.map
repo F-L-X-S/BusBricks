@@ -1,0 +1,31 @@
+<map id="ServiceInterface::processSendStack" name="ServiceInterface::processSendStack">
+<area shape="rect" id="Node000001" title="Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is gett..." alt="" coords="5,236,176,277"/>
+<area shape="rect" id="Node000002" href="$class_error_state.html#a2a2b91200168f27971ff6e63a8ab0e38" title="sets the current error&#45;state to &quot;no Error&quot;" alt="" coords="235,5,410,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,235,112,194,138,141,175,86,197,61,222,40,228,36,231,41,225,44,201,65,179,89,143,143,117,196,101,237"/>
+<area shape="rect" id="Node000003" href="$class_content__stack.html#a7b2d11fd9ee9f45090a545031883edb6" title="Delete item on index&#45;position from stack and shift all items with higher index, accepts only positive..." alt="" coords="224,55,421,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="100,235,119,202,146,163,181,123,222,89,230,85,233,89,225,94,185,127,151,166,124,205,105,237"/>
+<area shape="rect" id="Node000004" href="$class_content__stack.html#a4710d468535ed030bf5f67052e68eebb" title="Check if the Stack is empty (size is 0)" alt="" coords="247,104,398,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="108,234,156,187,188,161,222,140,238,133,240,138,225,145,191,166,160,191,112,238"/>
+<area shape="rect" id="Node000005" href="$class_comm_interface_base.html#ad0438ac0d164b6179f742dec21be715d" title="Check, if the Frame was sent and the CommInterface is ready to send the next Frame." alt="" coords="248,154,397,194"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="143,234,223,204,241,197,243,202,225,209,145,239"/>
+<area shape="rect" id="Node000006" href="$class_content.html#a206c6c8ebf9f5f84c571d8d9dfbdd40c" title="Get the address of the informations representation of type representation&#45;type." alt="" coords="231,219,414,244"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="176,245,216,240,216,246,176,250"/>
+<area shape="rect" id="Node000007" href="$class_content__stack.html#a5ac2a896da7724281d9d85eb239f5084" title="Get Pointer to element in the stack. Accepts positive and negative indexing." alt="" coords="232,268,412,294"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="176,263,217,267,216,273,176,268"/>
+<area shape="rect" id="Node000008" href="$class_error_state.html#a55090bb1772cd8c20c936b5a9cf4f2ce" title="Get the currently active error&#45;code." alt="" coords="240,317,405,343"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="144,275,224,304,248,310,247,316,223,309,142,280"/>
+<area shape="rect" id="Node000009" href="$classarduino_mocking_1_1_mock_serial.html#a3ae50becfead299fa547d158a80544d4" title="Prints a string followed by a newline to the serial output." alt="" coords="230,367,415,408"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="116,275,164,314,225,353,236,358,234,363,222,358,161,319,113,280"/>
+<area shape="rect" id="Node000010" href="$class_service_interface.html#a42226b8c236c344b6c5d171736a08f6e" title="Check if an ErrorService is registered in the service cluster under the defined ERRORSERVICE_ID of th..." alt="" coords="232,432,412,458"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="105,276,151,346,185,385,225,417,236,423,233,428,222,422,181,388,147,349,100,279"/>
+<area shape="rect" id="Node000015" href="$class_comm_interface_base.html#afb11f519c50f1e5a7ec22bd5f253a2ce" title="Add a new Frame to the send&#45;buffer." alt="" coords="248,482,397,522"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="102,277,118,317,145,369,180,422,202,447,225,468,235,475,232,479,222,472,198,450,176,425,140,371,113,319,97,279"/>
+<area shape="rect" id="Node000011" href="$class_service_cluster_base.html#ae025282a6ef15d01eaba440bdf73a750" title="Get pointer to the service with the given service&#45;ID by iterating through the associated services and..." alt="" coords="479,367,616,408"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="375,429,463,406,464,411,377,434"/>
+<area shape="rect" id="Node000012" href="$class_error_service.html#a4db0ae1a3ca53fe1e6290b87390098ba" title="Adds an Error&#45;object for the local Instance&#45;Id to the Error&#45;services rec&#45;stack." alt="" coords="469,432,626,458"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="413,442,454,442,454,448,413,448"/>
+<area shape="rect" id="Node000014" href="$class_error_state.html#ab996befaa1eb1089914ab0fbfecfcf39" title="raises a new error by setting the given error&#45;code as errorState" alt="" coords="476,481,620,507"/>
+<area shape="poly" id="edge13_Node000010_Node000014" title=" " alt="" coords="385,456,471,475,470,480,384,461"/>
+<area shape="rect" id="Node000013" href="$class_content__stack.html#a3d5491c67763ef3c19780619d70cb59a" title="Add item to stack." alt="" coords="674,432,858,458"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="627,442,659,442,659,448,627,448"/>
+</map>

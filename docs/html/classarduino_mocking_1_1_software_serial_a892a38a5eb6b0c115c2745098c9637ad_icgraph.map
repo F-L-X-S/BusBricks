@@ -1,0 +1,5 @@
+<map id="arduinoMocking::SoftwareSerial::read" name="arduinoMocking::SoftwareSerial::read">
+<area shape="rect" id="Node000001" title="Reads a character from the internal queue." alt="" coords="246,5,418,46"/>
+<area shape="rect" id="Node000002" href="$class_comm_interface__modbus_r_t_u.html#a50b42ad0a40a82ebe5a7749313ca2283" title="Receives a Modbus RTU frame and writes it to receiveBuffer." alt="" coords="5,5,198,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,28,198,28,198,23,230,23"/>
+</map>

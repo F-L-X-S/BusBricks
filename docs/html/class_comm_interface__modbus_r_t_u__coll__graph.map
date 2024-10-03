@@ -1,0 +1,13 @@
+<map id="CommInterface_modbusRTU" name="CommInterface_modbusRTU">
+<area shape="rect" id="Node000001" title="The Modbus&#45;RTU CommInterface&#45;class specifies a communication interface with SoftwareSerial as interfa..." alt="" coords="161,274,354,300"/>
+<area shape="rect" id="Node000002" href="$class_comm_interface.html" title=" " alt="" coords="147,199,368,225"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="260,240,260,274,255,274,255,240"/>
+<area shape="rect" id="Node000003" href="$class_comm_interface_base.html" title="Communcation&#45;Interface&#45;Base&#45;Class of the CommInterface template specifies a standardized interface to..." alt="" coords="5,88,147,114"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="111,120,239,196,236,201,108,124"/>
+<area shape="rect" id="Node000004" href="$class_error_state.html" title="A class to manage and track error states using error codes." alt="" coords="36,5,116,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="79,47,79,88,73,88,73,47"/>
+<area shape="rect" id="Node000005" href="$classarduino_mocking_1_1_software_serial.html" title="Mock class to simulate the SoftwareSerial library for native builds." alt="" coords="171,80,344,121"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="260,137,260,199,255,199,255,137"/>
+<area shape="rect" id="Node000006" href="$class_char_array.html" title="Class for storing char&#45;array (byte&#45;array) together with size. The Array is stored on Heap&#45;memory and ..." alt="" coords="368,88,448,114"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="384,126,319,177,281,201,278,196,316,173,381,122"/>
+</map>

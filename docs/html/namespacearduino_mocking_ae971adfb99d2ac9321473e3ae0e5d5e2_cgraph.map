@@ -1,0 +1,5 @@
+<map id="arduinoMocking::millis" name="arduinoMocking::millis">
+<area shape="rect" id="Node000001" title="Simulates the millis function to get the number of milliseconds since the program started." alt="" coords="5,13,156,38"/>
+<area shape="rect" id="Node000002" href="$classarduino_mocking_1_1_mock_time.html#a2441d392d09fda421b9dcb114b13817e" title="Returns the simulated time in milliseconds." alt="" coords="204,5,385,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,23,188,23,188,28,156,28"/>
+</map>
