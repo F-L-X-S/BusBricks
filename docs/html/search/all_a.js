@@ -1,6 +1,26 @@
 var searchData=
 [
-  ['nano328p_20environment_0',['uno and nano328p environment',['../index.html#autotoc_md21',1,'']]],
-  ['native_20environment_1',['native environment',['../index.html#autotoc_md20',1,'']]],
-  ['noerror_2',['noError',['../_error_8h.html#a88edd67ec29d18293fae821840fef3acab22416d928134d1c6c7b2e8d2c31f20b',1,'Error.h']]]
+  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['maxframesize_1',['MAXFRAMESIZE',['../_comm_interface__modbus_r_t_u_8h.html#afaf81cfe1f7c01e8fa6c4b1a592b0f53',1,'CommInterface_modbusRTU.h']]],
+  ['message_2',['Message',['../class_message.html',1,'Message'],['../class_message.html#a4fc4f717b634e66070366cb7722d7761',1,'Message::Message()'],['../class_message.html#ada4b47391ebb6de3518de3ec28817c56',1,'Message::Message(bool boolean_expression)'],['../class_message.html#a0f9ed77d7adc95866f8347931ce972b9',1,'Message::Message(String *representation)'],['../class_message.html#ad4a2faf03fc02e47bcdd909fb091d71e',1,'Message::Message(Message_content_t *message_content)']]],
+  ['message_3',['message',['../struct_error_content__t.html#ab2dcb118850a3cf096228fd1938f10aa',1,'ErrorContent_t']]],
+  ['message_20service_20implementation_4',['Message-Service implementation',['../index.html#autotoc_md4',1,'']]],
+  ['message_2ecpp_5',['Message.cpp',['../_message_8cpp.html',1,'']]],
+  ['message_2eh_6',['Message.h',['../_message_8h.html',1,'']]],
+  ['message_5fcontent_5ft_7',['Message_content_t',['../struct_message__content__t.html',1,'Message_content_t'],['../struct_message__content__t.html#a9164f08532707a228969585d31e0b121',1,'Message_content_t::Message_content_t()'],['../struct_message__content__t.html#afaa1495254cb1f968c6eb9ce5b573d8a',1,'Message_content_t::Message_content_t(char sender_id, char receiver_id, String msg_txt, uint8_t txt_size)']]],
+  ['messageservice_8',['MessageService',['../class_message_service.html',1,'MessageService'],['../class_message_service.html#a178bf2fde7ecfacfcda9039631bd2463',1,'MessageService::MessageService(uint8_t instance_id)'],['../class_message_service.html#a246d3ae948d96ac7719ca964243a7659',1,'MessageService::MessageService(uint8_t instance_id, uint8_t service_id)']]],
+  ['messageservice_2ecpp_9',['MessageService.cpp',['../_message_service_8cpp.html',1,'']]],
+  ['messageservice_2eh_10',['MessageService.h',['../_message_service_8h.html',1,'']]],
+  ['messenger_20service_11',['example use-case: Messenger-service',['../index.html#autotoc_md2',1,'']]],
+  ['methods_12',['Methods',['../classarduino_mocking_1_1_software_serial.html#Public',1,'']]],
+  ['micros_13',['micros',['../classarduino_mocking_1_1_mock_time.html#ab64e9362462abf0408b234e7b144c0fc',1,'arduinoMocking::MockTime::micros()'],['../namespacearduino_mocking.html#a0e9de3c37e4e59ae09b1590268fa0e17',1,'arduinoMocking::micros()']]],
+  ['millis_14',['millis',['../classarduino_mocking_1_1_mock_time.html#a2441d392d09fda421b9dcb114b13817e',1,'arduinoMocking::MockTime::millis()'],['../namespacearduino_mocking.html#ae971adfb99d2ac9321473e3ae0e5d5e2',1,'arduinoMocking::millis()']]],
+  ['mockarduino_2ecpp_15',['mockArduino.cpp',['../mock_arduino_8cpp.html',1,'']]],
+  ['mockarduino_2eh_16',['mockArduino.h',['../mock_arduino_8h.html',1,'']]],
+  ['mockserial_17',['MockSerial',['../classarduino_mocking_1_1_mock_serial.html',1,'arduinoMocking::MockSerial'],['../classarduino_mocking_1_1_mock_serial.html#ada513d971da540ac8a25c78ec5ff0e8c',1,'arduinoMocking::MockSerial::MockSerial()']]],
+  ['mocksoftwareserial_2ecpp_18',['mockSoftwareSerial.cpp',['../mock_software_serial_8cpp.html',1,'']]],
+  ['mocksoftwareserial_2eh_19',['mockSoftwareSerial.h',['../mock_software_serial_8h.html',1,'']]],
+  ['mocktime_20',['MockTime',['../classarduino_mocking_1_1_mock_time.html',1,'arduinoMocking::MockTime'],['../classarduino_mocking_1_1_mock_time.html#a46e0483772a4946fcf28b7212aefdbfa',1,'arduinoMocking::MockTime::MockTime()']]],
+  ['modbus_20rtu_20implementation_21',['Modbus-RTU implementation',['../index.html#autotoc_md5',1,'']]],
+  ['msg_5ftext_22',['msg_text',['../struct_message__content__t.html#a7736c42dfb44d7c53abe38d7a11d360e',1,'Message_content_t']]]
 ];
