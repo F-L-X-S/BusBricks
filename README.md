@@ -1,7 +1,8 @@
 # BusBricks 
-Object-oriented building-blocks to customize bus-communication for different services and interfaces on Arduino-MCUs <br>
-
-- [X] Checkout detailed [BusBricks-documentation](https://f-l-x-s.github.io/BusBricks/)!
+OSI-oriented modularization to customize communication between Layer-7-services on interchangeable Layer-1/2-interfaces. <br>
+The architecture is usable for all MCUs of the Arduino-platform.
+<br>
+📖 [Checkout detailed Documentation](https://f-l-x-s.github.io/BusBricks/)
 
 ## Vision
 Provide configurable software-modules to customize the communication between services, hosted on different MCUs. <br> 
@@ -56,10 +57,11 @@ Conversely, the format, the information has after applying the rules of the next
 <img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/stackProcessing.svg" alt="stackProcessing" style="width:400px;">
 
 ## Deriving a custom Service 
+To derive a Layer-7-service, that can be used in combination with the predefined Layer-2-communication-interfaces, you have to
 - [x] [define content to handle](#define-the-content)
 - [x] [define a service to handle the specified content](#define-the-service)
 
-#### Define the content
+### Define the content
 Each [Service](https://f-l-x-s.github.io/BusBricks/class_service.html) has to know, how the conversion between the processable data structure (content) and the payload, that is sended or received by the [communication-layer](#communication-layer) (representation) is defined. This is done by 
 - [x] deriving a content-class from the [content-template](lib/Service/Content.h) ([docs](https://f-l-x-s.github.io/BusBricks/class_content.html))
 <br>
@@ -70,7 +72,7 @@ The mapping between content and representation (in this case `String`) is define
 
 - [x] adding specific functions to be used inside of the service (optional) (e.g. [string representation for printing](https://f-l-x-s.github.io/BusBricks/class_message.html#a8907afa8cc86db8a3623aea0caba0324) of the [Message-Class](https://f-l-x-s.github.io/BusBricks/class_message.html))
 
-#### Define the service 
+### Define the service 
 A [Service](https://f-l-x-s.github.io/BusBricks/class_service.html) is meant to process incoming payload and eventually generate new payload to be send. Received Payload is added to the Service with [```impart_pdu```](https://f-l-x-s.github.io/BusBricks/class_service.html#ac0c60bc735c64547dee269c6c3a62767) and the services response is able to be picked up by calling [```get_response```](https://f-l-x-s.github.io/BusBricks/class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f). Both functions of the [service-template](https://f-l-x-s.github.io/BusBricks/class_service.html) are using the representation (for services contents always String) of the Content.<br>
 Defining a custom service is done by
 - [x] deriving a service-class from the [service-template](lib/Service/Service.h)
@@ -100,7 +102,7 @@ The pio native-environment is setup in [platformio.ini](platformio.ini). All [au
  The environments for the target-architecture are configured in [platformio.ini](platformio.ini).
 
 ## License
-
+### GNU Affero General Public License v3.0
 This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](https://github.com/F-L-X-S/BusBricks/blob/5e3d14aac293e28b3e3d8c17ed7d4e8bd7617505/LICENSE) file for details.
 
 Copyright (c) 2024 Felix Schuelke
