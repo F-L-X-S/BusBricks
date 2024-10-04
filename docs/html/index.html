@@ -123,11 +123,9 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2_users_2felixschulke_2_developement_2_arduino_2_modbus___r_t_u_2_modbus___r_t_u_2_modbus-_r_t_u_2_r_e_a_d_m_e"></a></p>
-<p>Object-oriented building-blocks to customize bus-communication for different services and interfaces on Arduino-MCUs <br  />
-</p>
-<ul class="check">
-<li class="checked">Checkout detailed <a href="https://f-l-x-s.github.io/BusBricks/">BusBricks-documentation</a>!</li>
-</ul>
+<p>OSI-oriented modularization to customize communication between Layer-7-services on interchangeable Layer-1/2-interfaces. <br  />
+ The architecture is usable for all MCUs of the Arduino-platform. <br  />
+ 📖 <a href="https://f-l-x-s.github.io/BusBricks/">Checkout detailed Documentation</a></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Vision</h1>
 <p>Provide configurable software-modules to customize the communication between services, hosted on different MCUs. <br  />
@@ -215,14 +213,14 @@ Stackprocessing</h2>
 <p><img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/stackProcessing.svg" alt="stackProcessing" style="pointer-events: none; width:400px;" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md15"></a>
 Deriving a custom Service</h1>
-<ul class="check">
+<p>To derive a Layer-7-service, that can be used in combination with the predefined Layer-2-communication-interfaces, you have to</p><ul class="check">
 <li class="checked">define content to handle</li>
 </ul>
 <ul class="check">
 <li class="checked">define a service to handle the specified content</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md16"></a>
-Define the content</h3>
+<h2><a class="anchor" id="autotoc_md16"></a>
+Define the content</h2>
 <p>Each <a href="https://f-l-x-s.github.io/BusBricks/class_service.html">Service</a> has to know, how the conversion between the processable data structure (content) and the payload, that is sended or received by the communication-layer (representation) is defined. This is done by</p><ul class="check">
 <li class="checked">deriving a content-class from the <a href="lib/Service/Content.h">content-template</a> (<a href="https://f-l-x-s.github.io/BusBricks/class_content.html">docs</a>) <br  />
 </li>
@@ -235,8 +233,8 @@ Define the content</h3>
 <ul class="check">
 <li class="checked">adding specific functions to be used inside of the service (optional) (e.g. <a href="https://f-l-x-s.github.io/BusBricks/class_message.html#a8907afa8cc86db8a3623aea0caba0324">string representation for printing</a> of the <a href="https://f-l-x-s.github.io/BusBricks/class_message.html">Message-Class</a>)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md17"></a>
-Define the service</h3>
+<h2><a class="anchor" id="autotoc_md17"></a>
+Define the service</h2>
 <p>A <a href="https://f-l-x-s.github.io/BusBricks/class_service.html">Service</a> is meant to process incoming payload and eventually generate new payload to be send. Received Payload is added to the <a class="el" href="class_service.html" title="Service-Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha...">Service</a> with <a href="https://f-l-x-s.github.io/BusBricks/class_service.html#ac0c60bc735c64547dee269c6c3a62767"><code>impart_pdu</code></a> and the services response is able to be picked up by calling <a href="https://f-l-x-s.github.io/BusBricks/class_service.html#a601e6d2878ce2b292a3b7c6428f0d51f"><code>get_response</code></a>. Both functions of the <a href="https://f-l-x-s.github.io/BusBricks/class_service.html">service-template</a> are using the representation (for services contents always String) of the <a class="el" href="class_content.html" title="The cascading of processing information and the rules applied to it lead to the concept of content- a...">Content</a>.<br  />
  Defining a custom service is done by</p><ul class="check">
 <li class="checked">deriving a service-class from the <a href="lib/Service/Service.h">service-template</a></li>
@@ -277,6 +275,8 @@ uno and nano328p environment</h2>
 <p>The environments for the target-architecture are configured in <a href="platformio.ini">platformio.ini</a>.</p>
 <h1><a class="anchor" id="autotoc_md22"></a>
 License</h1>
+<h2><a class="anchor" id="autotoc_md23"></a>
+GNU Affero General Public License v3.0</h2>
 <p>This project is licensed under the GNU Affero General Public License v3.0. See the <a href="https://github.com/F-L-X-S/BusBricks/blob/5e3d14aac293e28b3e3d8c17ed7d4e8bd7617505/LICENSE">LICENSE</a> file for details.</p>
 <p>Copyright (c) 2024 Felix Schuelke </p>
 </div></div><!-- PageDoc -->
