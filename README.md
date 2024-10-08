@@ -51,10 +51,10 @@ In every iteration, an information is processed and the rules of the next level,
 Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called **representation**.<br>
 
 ### Classdiagram
-<img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/classdiagram.svg" alt="classdiagram" style="width:1700px;">
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/classdiagram.svg" alt="classdiagram" style="width:1700px;">
 
 ### Stackprocessing
-<img src="https://github.com/F-L-X-S/BusBricks/raw/main/docs/stackProcessing.svg" alt="stackProcessing" style="width:400px;">
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/stackProcessing.svg" alt="stackProcessing" style="width:400px;">
 
 ## Deriving a custom Service 
 To derive a Layer-7-service, that can be used in combination with the predefined Layer-2-communication-interfaces, you have to
