@@ -101,23 +101,6 @@ class ServiceInterface_modbusRTU: public ServiceInterface<CommInterface_modbusRT
          */
         void getPDU_from_services() override;
 
-        /**
-         * @brief Add PDUs from all received frames to the corresponding services.
-         * 
-         * This function processes all frames available in the receive stack (`recStack`). 
-         * For each frame, it checks the CRC-16 checksum and, if valid, adds the PDU to the appropriate service's receive stack. 
-         * If the frame's CRC check fails, it raises a CRC error. If no matching service is found for the frame's function code, 
-         * it raises a service-not-found error and discards the frame.
-         * 
-         * @details
-         * - If the receive stack is empty, the function returns immediately.
-         * - Frames with invalid CRC are discarded, and a CRC error is raised.
-         * - Frames with no matching service are discarded, and a service-not-found error is raised.
-         * - Valid frames are added to the corresponding service's receive stack.
-         * 
-         * @note The function continues processing until the receive stack is empty.
-         */
-        void addPDU_to_services() override;
 };
 
 #endif // SERVICEINTERFACE_MODBUSRTU
