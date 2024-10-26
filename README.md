@@ -53,6 +53,9 @@ Conversely, the format, the information has after applying the rules of the next
 ### Classdiagram
 <img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/classdiagram.svg" alt="classdiagram" style="width:1700px;">
 
+### Protocoll-stack
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/refs/heads/main/docs/protocollstack.svg" alt="protocollstack" style="width:1500px;">
+
 ### Stackprocessing
 <img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/stackProcessing.svg" alt="stackProcessing" style="width:400px;">
 
