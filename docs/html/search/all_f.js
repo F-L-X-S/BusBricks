@@ -9,8 +9,8 @@ var searchData=
   ['sendnewframe_6',['sendNewFrame',['../class_comm_interface_base.html#afb11f519c50f1e5a7ec22bd5f253a2ce',1,'CommInterfaceBase::sendNewFrame()'],['../class_comm_interface.html#a3cf21e5181e56d234dbe9e52e6f2cb70',1,'CommInterface::sendNewFrame()']]],
   ['sendstack_7',['sendStack',['../class_service_interface.html#a38bd169d6286c4ddbda050b7f28d093a',1,'ServiceInterface']]],
   ['serial_8',['Serial',['../namespacearduino_mocking.html#ace877ffb508b19b20cbc06b8f9837359',1,'arduinoMocking']]],
-  ['service_9',['Service',['../index.html#autotoc_md15',1,'Deriving a custom Service'],['../class_service.html',1,'Service&lt; content_class, stackSize &gt;']]],
-  ['service_10',['service',['../index.html#autotoc_md17',1,'Define the service'],['../index.html#autotoc_md2',1,'example use-case: Messenger-service']]],
+  ['service_9',['Service',['../index.html#autotoc_md16',1,'Deriving a custom Service'],['../class_service.html',1,'Service&lt; content_class, stackSize &gt;']]],
+  ['service_10',['service',['../index.html#autotoc_md18',1,'Define the service'],['../index.html#autotoc_md2',1,'example use-case: Messenger-service']]],
   ['service_20and_20communication_20layer_11',['Service- and Communication-Layer',['../index.html#autotoc_md9',1,'']]],
   ['service_20implementation_12',['Message-Service implementation',['../index.html#autotoc_md4',1,'']]],
   ['service_20layer_13',['Service-Layer',['../index.html#autotoc_md10',1,'']]],
@@ -33,9 +33,10 @@ var searchData=
   ['setup_5finterface_30',['setup_interface',['../class_comm_interface_base.html#ae4f76b89a083bc84aff2cc88303abf37',1,'CommInterfaceBase']]],
   ['simulateinput_31',['simulateInput',['../classarduino_mocking_1_1_mock_serial.html#a1ba440a4ceb82eee58a793a1656e77e8',1,'arduinoMocking::MockSerial::simulateInput()'],['../classarduino_mocking_1_1_mock_serial.html#a7cf70afc3ba560ddc5446f066c9c7252',1,'arduinoMocking::MockSerial::simulateInput(std::string input)'],['../classarduino_mocking_1_1_software_serial.html#af10cc233a2ac7f8a10f492af5b6b501b',1,'arduinoMocking::SoftwareSerial::simulateInput()'],['../classarduino_mocking_1_1_software_serial.html#a3024f7685f0d7008557f0912f7baa1df',1,'arduinoMocking::SoftwareSerial::simulateInput(std::string input)']]],
   ['softwareserial_32',['SoftwareSerial',['../classarduino_mocking_1_1_software_serial.html',1,'arduinoMocking::SoftwareSerial'],['../classarduino_mocking_1_1_software_serial.html#ab17052f24c5a40a476b07e26bb6d1f7a',1,'arduinoMocking::SoftwareSerial::SoftwareSerial()']]],
-  ['stackprocessing_33',['Stackprocessing',['../index.html#autotoc_md14',1,'']]],
-  ['stackprocessing_34',['stackProcessing',['../class_error_service.html#abdd6940a94fc8619c1ed31934b1cd3bd',1,'ErrorService::stackProcessing()'],['../class_message_service.html#ae02abdc8b83f6c62353dda1a42b2f1ff',1,'MessageService::stackProcessing()'],['../class_service_base.html#a6129f02c6e59212d0b5b6d4d451b30e9',1,'ServiceBase::stackProcessing()'],['../class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75',1,'Service::stackProcessing()']]],
-  ['stacksize_35',['STACKSIZE',['../_error_service_8h.html#a21d9543c516fffee84a7963224271f95',1,'STACKSIZE:&#160;ErrorService.h'],['../_message_service_8h.html#a21d9543c516fffee84a7963224271f95',1,'STACKSIZE:&#160;MessageService.h']]],
-  ['string_36',['String',['../namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf',1,'arduinoMocking']]],
-  ['suffixsize_37',['SUFFIXSIZE',['../_frame__modbus_r_t_u_8h.html#a1a4e85f0c42d838071c35c4c5bfa4e26',1,'Frame_modbusRTU.h']]]
+  ['stack_33',['Protocoll-stack',['../index.html#autotoc_md14',1,'']]],
+  ['stackprocessing_34',['Stackprocessing',['../index.html#autotoc_md15',1,'']]],
+  ['stackprocessing_35',['stackProcessing',['../class_error_service.html#abdd6940a94fc8619c1ed31934b1cd3bd',1,'ErrorService::stackProcessing()'],['../class_message_service.html#ae02abdc8b83f6c62353dda1a42b2f1ff',1,'MessageService::stackProcessing()'],['../class_service_base.html#a6129f02c6e59212d0b5b6d4d451b30e9',1,'ServiceBase::stackProcessing()'],['../class_service.html#a3eafa52c7f4bfe29698ba4a91c75dc75',1,'Service::stackProcessing()']]],
+  ['stacksize_36',['STACKSIZE',['../_error_service_8h.html#a21d9543c516fffee84a7963224271f95',1,'STACKSIZE:&#160;ErrorService.h'],['../_message_service_8h.html#a21d9543c516fffee84a7963224271f95',1,'STACKSIZE:&#160;MessageService.h']]],
+  ['string_37',['String',['../namespacearduino_mocking.html#a074bce778184555fd29d1370a36298bf',1,'arduinoMocking']]],
+  ['suffixsize_38',['SUFFIXSIZE',['../_frame__modbus_r_t_u_8h.html#a1a4e85f0c42d838071c35c4c5bfa4e26',1,'Frame_modbusRTU.h']]]
 ];

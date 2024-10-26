@@ -8,5 +8,6 @@ var searchData=
   ['processrecstack_5',['processRecStack',['../class_service_interface.html#a7c5ec5e13af8a67d1b08c963fcd71214',1,'ServiceInterface']]],
   ['processsendstack_6',['processSendStack',['../class_service_interface.html#a23feb243ed1748e04dd757aa5f788b3e',1,'ServiceInterface']]],
   ['processservices_7',['processServices',['../class_service_interface.html#a4dffc7c3e366b470e1075db65333b67e',1,'ServiceInterface']]],
-  ['public_20license_20v3_200_8',['GNU Affero General Public License v3.0',['../index.html#autotoc_md23',1,'']]]
+  ['protocoll_20stack_8',['Protocoll-stack',['../index.html#autotoc_md14',1,'']]],
+  ['public_20license_20v3_200_9',['GNU Affero General Public License v3.0',['../index.html#autotoc_md24',1,'']]]
 ];

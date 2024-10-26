@@ -34,19 +34,20 @@ var NAVTREE =
       [ "Service- and Communication-Layer", "index.html#autotoc_md9", null ],
       [ "Content and representation", "index.html#autotoc_md12", null ],
       [ "Classdiagram", "index.html#autotoc_md13", null ],
-      [ "Stackprocessing", "index.html#autotoc_md14", null ]
+      [ "Protocoll-stack", "index.html#autotoc_md14", null ],
+      [ "Stackprocessing", "index.html#autotoc_md15", null ]
     ] ],
-    [ "Deriving a custom Service", "index.html#autotoc_md15", [
-      [ "Define the content", "index.html#autotoc_md16", null ],
-      [ "Define the service", "index.html#autotoc_md17", null ]
+    [ "Deriving a custom Service", "index.html#autotoc_md16", [
+      [ "Define the content", "index.html#autotoc_md17", null ],
+      [ "Define the service", "index.html#autotoc_md18", null ]
     ] ],
-    [ "Build environments and testing", "index.html#autotoc_md18", [
-      [ "clang-build for local debugging", "index.html#autotoc_md19", null ],
-      [ "native environment", "index.html#autotoc_md20", null ],
-      [ "uno and nano328p environment", "index.html#autotoc_md21", null ]
+    [ "Build environments and testing", "index.html#autotoc_md19", [
+      [ "clang-build for local debugging", "index.html#autotoc_md20", null ],
+      [ "native environment", "index.html#autotoc_md21", null ],
+      [ "uno and nano328p environment", "index.html#autotoc_md22", null ]
     ] ],
-    [ "License", "index.html#autotoc_md22", [
-      [ "GNU Affero General Public License v3.0", "index.html#autotoc_md23", null ]
+    [ "License", "index.html#autotoc_md23", [
+      [ "GNU Affero General Public License v3.0", "index.html#autotoc_md24", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
