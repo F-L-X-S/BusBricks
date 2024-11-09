@@ -15,6 +15,7 @@
                 "-I${workspaceFolder}/lib/Frame",  
                 "-I${workspaceFolder}/lib/Interface",
                 "-I${workspaceFolder}/lib/ModbusRTU",  
+                "-I${workspaceFolder}/lib/IIC",  
                 "-g",
                 "-std=gnu++11", 
                 "-Wno-c++11-extensions",
