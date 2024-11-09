@@ -203,8 +203,13 @@ class ServiceInterface: public ErrorState{
 
                 // handle the Service-Clusters error-state
                 if (ServicesErrorState != noError) raiseError(ServicesErrorState);
-                if (ServicesErrorState = overflow) break; // Skip Discard and leave the rec-stack-processing
-            
+
+                // clear Error-state after handling error
+                services->clearErrorState();
+
+                // Skip Discard and leave the rec-stack-processing
+                if (ServicesErrorState = overflow) break; 
+
                 // discard frame
                 recStack.deleteElement();
             };
