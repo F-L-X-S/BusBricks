@@ -32,6 +32,8 @@
 #endif
 
 #include <Service.h>
+#include <Frame.h>
+#include <ErrorState.h>
 
 /**
  * @brief ServiceCluster-base-class to add class-functions to vtable
@@ -146,8 +148,8 @@ class ServiceCluster: public ServiceClusterBase{
          * @return false failed to add PDU
          */
         errorCodes impartPdu(Frame* FrameToAdd) override {
-            char ServiceID = FrameToAdd->getServideId();                                // Get the Service-ID of the given Frame
-            ServiceBase* destinationService = services->getService_byID(ServiceID);     // Pointer to the destination-Service 
+            char ServiceID = FrameToAdd->getServiceId();                                // Get the Service-ID of the given Frame
+            ServiceBase* destinationService = getService_byID(ServiceID);     // Pointer to the destination-Service 
             if (!destinationService){
                 raiseError(serviceNotFound);                                            // raise Service-not-found-error if no Service with this Service-ID exists
                 return getErrorState();
