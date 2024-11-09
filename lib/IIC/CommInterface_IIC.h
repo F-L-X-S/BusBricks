@@ -73,19 +73,14 @@ class CommInterface_IIC: public CommInterface<TwoWire>
         /**
          * @brief Receives a I2C-frame and writes it to `receiveBuffer`.
 
-         * @return `true` if a frame was successfully received and written to `receiveBuffer` within the receive timeout.
-         * @return `false` if no frame was received during `_recTimeout`.
+         * @return `true` if a frame was successfully received and written to `receiveBuffer`.
+         * @return `false` if no frame was received.
          * 
-         * @details The function operates in two modes:
-         * - **Slave Mode**: Begins receiving only if the frame is addressed to the device's ID.
-         * - **Master Mode**: Captures any incoming frame.
-         * 
-         * The function does not validate the content of the received frame. It uses timeouts to ensure the entire frame is received and then clears the communication interface's buffer.
+         * The function does not validate the content of the received frame. 
          * 
          * @note If `DEBUG` is defined, debugging information is printed to the serial monitor.
          */
         bool receive() override;
-
 
         /**
          * @brief Get I2C-specific device-identifier
@@ -97,10 +92,7 @@ class CommInterface_IIC: public CommInterface<TwoWire>
     
     private:
         /// @brief I2C-Device-ID
-        const char deviceId;                    
-
-        /// @brief time to wait for response during the receive-cycle [microseconds]      
-        unsigned long _recTimeout = 1000000;     
+        const char deviceId;                       
 
 };
 #endif // COMMINTERFACE_IIC_H

@@ -27,7 +27,7 @@
 CommInterface_IIC::CommInterface_IIC(TwoWire* Wire, char deviceId) : 
     deviceId(deviceId),
     CommInterface<TwoWire>(Wire) {
-      Wire->begin(deviceId);          // join bus with specified ID 
+      Wire->begin(deviceId);                // join bus with specified ID 
     };
 
 // Destructor
@@ -40,19 +40,26 @@ bool CommInterface_IIC::send(){
     const char* frame = sendBuffer->getData();                        // get start-adress of the frame to send
     uint8_t targetDeviceId = frame[0];                                // use first byte of frame as target-device-id
     interface->beginTransmission(targetDeviceId);                     // begin the transmission to the target-device
-    size_t framesize = (sendBuffer->getSize() -1);                    // framesize without target-device-id
-    interface->write(&frame[1], framesize);                           // write the frame without target-device-id to TwoWire-bus
+    interface->write(&frame[1], sendBuffer->getSize());               // write the frame with target-device-id to TwoWire-bus
     return true;
 };
 
 // Receiving 
 // the received Frame is directly written to the specified receive-buffer
-// after a frame was received within the receive-timeout, the function returns true
+// after a frame was received, the function returns true
 // the Comm-Interface is not checking any Content of the frame 
 bool CommInterface_IIC::receive(){
+    unsigned long startTime = micros();                             // Time, the function gets called
+    uint16_t numBytes = 0;                                          // Received number of bytes
 
-};
-
+    // Read Frame from Interface
+    while (interface->available()){
+        *receiveBuffer+= char(interface->read());                   // Write the received char to the specified buffer
+        numBytes++;                                                 // increase frame-length-counter 
+        if (numBytes >= MAXFRAMESIZE) break;
+    }
+    return numBytes!=0;    // retrun true if a Frame was received                  
+  };
 
 
 
