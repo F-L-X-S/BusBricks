@@ -1,0 +1,5 @@
+<map id="ServiceClusterBase" name="ServiceClusterBase">
+<area shape="rect" id="Node000001" title="ServiceCluster&#45;base&#45;class to add class&#45;functions to vtable." alt="" coords="5,79,143,105"/>
+<area shape="rect" id="Node000002" href="$class_error_state.html" title="A class to manage and track error states using error codes." alt="" coords="34,5,114,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,46,77,79,71,79,71,46"/>
+</map>

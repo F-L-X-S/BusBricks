@@ -1,17 +1,21 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_error_state.html" title="A class to manage and track error states using error codes." alt="" coords="5,70,86,96"/>
-<area shape="rect" id="Node000001" href="$class_service_interface.html" title=" " alt="" coords="134,5,374,46"/>
-<area shape="poly" id="edge5_Node000000_Node000001" title=" " alt="" coords="100,65,133,55,173,44,175,49,134,60,101,70"/>
-<area shape="rect" id="Node000003" href="$class_comm_interface_base.html" title="Communcation&#45;Interface&#45;Base&#45;Class of the CommInterface template specifies a standardized interface to..." alt="" coords="183,70,324,96"/>
-<area shape="poly" id="edge7_Node000000_Node000003" title=" " alt="" coords="101,80,183,80,183,86,101,86"/>
-<area shape="rect" id="Node000007" href="$class_service_interface.html" title="Template for generic Service&#45;Interface Defines the handling of incoming frames from CommInterface to ..." alt="" coords="145,120,363,161"/>
-<area shape="poly" id="edge11_Node000000_Node000007" title=" " alt="" coords="101,96,134,106,175,117,173,122,133,111,100,101"/>
-<area shape="rect" id="Node000002" href="$class_service_interface__modbus_r_t_u.html" title="Service&#45;Interface&#45;class for Modbus&#45;RTU: Impart incoming frames from the CommInterface to the designat..." alt="" coords="434,13,631,38"/>
-<area shape="poly" id="edge6_Node000001_Node000002" title=" " alt="" coords="390,23,433,23,433,28,390,28"/>
-<area shape="rect" id="Node000004" href="$class_comm_interface.html" title=" " alt="" coords="422,66,642,92"/>
-<area shape="poly" id="edge8_Node000003_Node000004" title=" " alt="" coords="340,79,422,78,422,83,340,84"/>
-<area shape="rect" id="Node000006" href="$class_comm_interface.html" title="Template for generic communication&#45;interface specifies a standardized interface to use for integratin..." alt="" coords="446,116,619,157"/>
-<area shape="poly" id="edge10_Node000003_Node000006" title=" " alt="" coords="340,97,446,117,445,122,339,102"/>
-<area shape="rect" id="Node000005" href="$class_comm_interface__modbus_r_t_u.html" title="The Modbus&#45;RTU CommInterface&#45;class specifies a communication interface with SoftwareSerial as interfa..." alt="" coords="690,66,883,92"/>
-<area shape="poly" id="edge9_Node000004_Node000005" title=" " alt="" coords="658,76,690,76,690,82,658,82"/>
+<area shape="rect" id="Node000000" href="$class_error_state.html" title="A class to manage and track error states using error codes." alt="" coords="5,124,86,150"/>
+<area shape="rect" id="Node000001" href="$class_service_interface.html" title=" " alt="" coords="134,10,374,50"/>
+<area shape="poly" id="edge5_Node000000_Node000001" title=" " alt="" coords="80,113,132,84,205,49,207,53,135,89,83,118"/>
+<area shape="rect" id="Node000003" href="$class_comm_interface_base.html" title="Communcation&#45;Interface&#45;Base&#45;Class of the CommInterface template specifies a standardized interface to..." alt="" coords="183,99,324,124"/>
+<area shape="poly" id="edge7_Node000000_Node000003" title=" " alt="" coords="101,127,182,117,183,123,102,133"/>
+<area shape="rect" id="Node000007" href="$class_service_cluster_base.html" title="ServiceCluster&#45;base&#45;class to add class&#45;functions to vtable." alt="" coords="185,148,322,174"/>
+<area shape="poly" id="edge11_Node000000_Node000007" title=" " alt="" coords="102,141,185,150,184,156,101,146"/>
+<area shape="rect" id="Node000009" href="$class_service_interface.html" title="Template for generic Service&#45;Interface Defines the handling of incoming frames from CommInterface to ..." alt="" coords="145,198,363,238"/>
+<area shape="poly" id="edge13_Node000000_Node000009" title=" " alt="" coords="81,156,135,184,166,195,164,200,133,189,78,160"/>
+<area shape="rect" id="Node000002" href="$class_service_interface__modbus_r_t_u.html" title="Service&#45;Interface&#45;class for Modbus&#45;RTU: Impart incoming frames from the CommInterface to the designat..." alt="" coords="434,5,631,31"/>
+<area shape="poly" id="edge6_Node000001_Node000002" title=" " alt="" coords="390,22,433,20,433,25,390,27"/>
+<area shape="rect" id="Node000004" href="$class_comm_interface.html" title=" " alt="" coords="422,55,642,80"/>
+<area shape="poly" id="edge8_Node000003_Node000004" title=" " alt="" coords="339,95,446,78,447,84,340,101"/>
+<area shape="rect" id="Node000006" href="$class_comm_interface.html" title="Template for generic communication&#45;interface specifies a standardized interface to use for integratin..." alt="" coords="446,104,619,145"/>
+<area shape="poly" id="edge10_Node000003_Node000006" title=" " alt="" coords="340,113,445,118,445,123,340,118"/>
+<area shape="rect" id="Node000005" href="$class_comm_interface__modbus_r_t_u.html" title="The Modbus&#45;RTU CommInterface&#45;class specifies a communication interface with SoftwareSerial as interfa..." alt="" coords="690,55,883,80"/>
+<area shape="poly" id="edge9_Node000004_Node000005" title=" " alt="" coords="658,65,690,65,690,70,658,70"/>
+<area shape="rect" id="Node000008" href="$class_service_cluster.html" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the..." alt="" coords="451,170,613,210"/>
+<area shape="poly" id="edge12_Node000007_Node000008" title=" " alt="" coords="338,167,451,179,450,184,338,172"/>
 </map>

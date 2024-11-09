@@ -1,9 +1,11 @@
 <map id="ErrorState::getErrorState" name="ErrorState::getErrorState">
-<area shape="rect" id="Node000001" title="Get the currently active error&#45;code." alt="" coords="246,78,411,104"/>
-<area shape="rect" id="Node000002" href="$class_service_interface.html#a7c5ec5e13af8a67d1b08c963fcd71214" title="Add items received by the CommInterface to the recStack and execute the CommInterface&#39;s receiveCycle ..." alt="" coords="16,5,187,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="266,76,174,49,175,44,267,71"/>
-<area shape="rect" id="Node000003" href="$class_service_interface.html#a23feb243ed1748e04dd757aa5f788b3e" title="Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is gett..." alt="" coords="16,71,187,111"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,94,187,94,187,88,231,88"/>
-<area shape="rect" id="Node000004" href="$class_comm_interface__modbus_r_t_u.html#a50b42ad0a40a82ebe5a7749313ca2283" title="Receives a Modbus RTU frame and writes it to receiveBuffer." alt="" coords="5,136,198,177"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="267,111,175,138,174,133,266,106"/>
+<area shape="rect" id="Node000001" title="Get the currently active error&#45;code." alt="" coords="246,96,411,122"/>
+<area shape="rect" id="Node000002" href="$class_service_cluster.html#a248bf50b452a17743e53f8e5eb3790f1" title="Add the payload of the referenced Frame to the belonging Service (Multiplexing by Service&#45;ID)" alt="" coords="14,5,189,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="290,91,246,68,197,46,160,34,161,29,199,41,248,63,292,86"/>
+<area shape="rect" id="Node000003" href="$class_service_interface.html#a7c5ec5e13af8a67d1b08c963fcd71214" title="Add items received by the CommInterface to the recStack and execute the CommInterface&#39;s receiveCycle ..." alt="" coords="16,55,187,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="230,97,187,91,187,85,231,92"/>
+<area shape="rect" id="Node000004" href="$class_service_interface.html#a23feb243ed1748e04dd757aa5f788b3e" title="Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is gett..." alt="" coords="16,120,187,161"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="231,125,187,131,187,126,230,120"/>
+<area shape="rect" id="Node000005" href="$class_comm_interface__modbus_r_t_u.html#a50b42ad0a40a82ebe5a7749313ca2283" title="Receives a Modbus RTU frame and writes it to receiveBuffer." alt="" coords="5,186,198,226"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="290,132,199,175,167,188,165,183,197,170,287,127"/>
 </map>

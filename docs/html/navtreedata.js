@@ -35,19 +35,20 @@ var NAVTREE =
       [ "Content and representation", "index.html#autotoc_md12", null ],
       [ "Classdiagram", "index.html#autotoc_md13", null ],
       [ "Protocoll-stack", "index.html#autotoc_md14", null ],
-      [ "Stackprocessing", "index.html#autotoc_md15", null ]
+      [ "Stackprocessing", "index.html#autotoc_md15", null ],
+      [ "Error-handling", "index.html#autotoc_md16", null ]
     ] ],
-    [ "Deriving a custom Service", "index.html#autotoc_md16", [
-      [ "Define the content", "index.html#autotoc_md17", null ],
-      [ "Define the service", "index.html#autotoc_md18", null ]
+    [ "Deriving a custom Service", "index.html#autotoc_md17", [
+      [ "Define the content", "index.html#autotoc_md18", null ],
+      [ "Define the service", "index.html#autotoc_md19", null ]
     ] ],
-    [ "Build environments and testing", "index.html#autotoc_md19", [
-      [ "clang-build for local debugging", "index.html#autotoc_md20", null ],
-      [ "native environment", "index.html#autotoc_md21", null ],
-      [ "uno and nano328p environment", "index.html#autotoc_md22", null ]
+    [ "Build environments and testing", "index.html#autotoc_md20", [
+      [ "clang-build for local debugging", "index.html#autotoc_md21", null ],
+      [ "native environment", "index.html#autotoc_md22", null ],
+      [ "uno and nano328p environment", "index.html#autotoc_md23", null ]
     ] ],
-    [ "License", "index.html#autotoc_md23", [
-      [ "GNU Affero General Public License v3.0", "index.html#autotoc_md24", null ]
+    [ "License", "index.html#autotoc_md24", [
+      [ "GNU Affero General Public License v3.0", "index.html#autotoc_md25", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -83,7 +84,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_char_array_8cpp.html",
-"classarduino_mocking_1_1_mock_serial.html#ada513d971da540ac8a25c78ec5ff0e8c"
+"classarduino_mocking_1_1_mock_serial.html#ab78a5a346275ab600281acb8b62350ce"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
