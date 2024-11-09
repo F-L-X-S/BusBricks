@@ -9,6 +9,7 @@ var _error_8h =
       [ "arbitrationError", "_error_8h.html#a88edd67ec29d18293fae821840fef3aca3d04e5ac1616b4f17188bf1cc86bdfd6", null ],
       [ "serviceNotFound", "_error_8h.html#a88edd67ec29d18293fae821840fef3aca675e49e713e97b6ccc278709766f5e93", null ],
       [ "frameLengthError", "_error_8h.html#a88edd67ec29d18293fae821840fef3acaebbf7bd809b94b7d0725f163a4d406a9", null ],
+      [ "overflow", "_error_8h.html#a88edd67ec29d18293fae821840fef3aca4faa9362458f0835d0b84183f40d7ce9", null ],
       [ "unknownError", "_error_8h.html#a88edd67ec29d18293fae821840fef3aca24ab257f4bbf0618975b737474845b82", null ]
     ] ]
 ];

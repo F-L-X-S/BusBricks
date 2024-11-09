@@ -1,5 +1,7 @@
 <map id="ServiceCluster&lt; number_of_services &gt;" name="ServiceCluster&lt; number_of_services &gt;">
-<area shape="rect" id="Node000001" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the..." alt="" coords="5,79,168,120"/>
-<area shape="rect" id="Node000002" href="$class_service_cluster_base.html" title="ServiceCluster&#45;base&#45;class to add class&#45;functions to vtable." alt="" coords="18,5,155,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,46,89,79,84,79,84,46"/>
+<area shape="rect" id="Node000001" title="The ServiceCluster provides functions to manage multiple services. The ServiceCluster is added to the..." alt="" coords="5,153,168,193"/>
+<area shape="rect" id="Node000002" href="$class_service_cluster_base.html" title="ServiceCluster&#45;base&#45;class to add class&#45;functions to vtable." alt="" coords="18,79,155,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,120,89,152,84,152,84,120"/>
+<area shape="rect" id="Node000003" href="$class_error_state.html" title="A class to manage and track error states using error codes." alt="" coords="46,5,127,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="89,46,89,79,84,79,84,46"/>
 </map>

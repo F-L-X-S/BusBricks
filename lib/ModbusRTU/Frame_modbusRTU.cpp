@@ -84,7 +84,7 @@ void Frame_modbusRTU::rep_to_content(){
 };
 
 // Get the Modbus-RTU-function-code of the frame-instance 
-char Frame_modbusRTU::getFunctionCode(){
+uint8_t Frame_modbusRTU::getServiceId(){
     return functionCode;
 };
 

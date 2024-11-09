@@ -1,9 +1,11 @@
 <map id="ServiceInterface_modbusRTU::communicate" name="ServiceInterface_modbusRTU::communicate">
-<area shape="rect" id="Node000001" title="Manages data transfer between the CommInterface and services." alt="" coords="5,93,203,134"/>
-<area shape="rect" id="Node000002" href="$class_service_interface.html#a7c5ec5e13af8a67d1b08c963fcd71214" title=" " alt="" coords="251,5,479,61"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,90,257,64,258,69,174,95"/>
-<area shape="rect" id="Node000003" href="$class_service_interface.html#a23feb243ed1748e04dd757aa5f788b3e" title=" " alt="" coords="251,85,479,141"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,110,235,110,235,116,203,116"/>
-<area shape="rect" id="Node000004" href="$class_service_interface.html#a4dffc7c3e366b470e1075db65333b67e" title=" " alt="" coords="251,165,479,221"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="174,132,258,158,257,163,172,137"/>
+<area shape="rect" id="Node000001" title="Manages data transfer between the CommInterface and services." alt="" coords="5,133,203,174"/>
+<area shape="rect" id="Node000002" href="$class_service_interface.html#ac740850d1a24a1d8a96f7a7bbf4eb784" title=" " alt="" coords="251,5,479,61"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,130,190,101,250,71,263,65,265,70,252,76,192,105,140,135"/>
+<area shape="rect" id="Node000003" href="$class_service_interface.html#a7c5ec5e13af8a67d1b08c963fcd71214" title=" " alt="" coords="251,85,479,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,135,235,130,235,136,204,141"/>
+<area shape="rect" id="Node000004" href="$class_service_interface.html#a23feb243ed1748e04dd757aa5f788b3e" title=" " alt="" coords="251,165,479,221"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="204,166,235,171,235,176,203,171"/>
+<area shape="rect" id="Node000005" href="$class_service_interface.html#a4dffc7c3e366b470e1075db65333b67e" title=" " alt="" coords="251,245,479,301"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="140,172,192,201,252,231,265,237,263,242,250,236,190,206,138,176"/>
 </map>

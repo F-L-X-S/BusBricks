@@ -140,7 +140,7 @@ Inheritance diagram for ServiceInterface&lt; CommInterfaceBase, frameType &gt;:<
 <div class="dynheader">
 Collaboration diagram for ServiceInterface&lt; CommInterfaceBase, frameType &gt;:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface__coll__graph.svg" width="687" height="231"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface__coll__graph.svg" width="687" height="228"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -190,6 +190,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processServic
 <tr class="memitem:a23feb243ed1748e04dd757aa5f788b3e" id="r_a23feb243ed1748e04dd757aa5f788b3e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23feb243ed1748e04dd757aa5f788b3e">processSendStack</a> ()</td></tr>
 <tr class="memdesc:a23feb243ed1748e04dd757aa5f788b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send all Frames, stored in the sendStack. As long as the sendStack is not empty, the function is getting pointers to the representation of the <a class="el" href="class_frame.html" title="Frame-Class as derived class from Content The derived classes define: -the conversion from a given pa...">Frame</a> on the bottom of the stack. The pointer to the string-formatted representation is imparted to the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> as teh next frame to be sent by calling sendNewFrame. Then the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s sendCycle get's executed. Exit, after the sendStack is empty.  <br /></td></tr>
 <tr class="separator:a23feb243ed1748e04dd757aa5f788b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48cffd1603069be11ee25c930a139c84" id="r_a48cffd1603069be11ee25c930a139c84"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48cffd1603069be11ee25c930a139c84">addPDU_to_services</a> ()</td></tr>
+<tr class="memdesc:a48cffd1603069be11ee25c930a139c84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add PDUs from all received frames to the corresponding services.  <br /></td></tr>
+<tr class="separator:a48cffd1603069be11ee25c930a139c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c5ec5e13af8a67d1b08c963fcd71214" id="r_a7c5ec5e13af8a67d1b08c963fcd71214"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c5ec5e13af8a67d1b08c963fcd71214">processRecStack</a> ()</td></tr>
 <tr class="memdesc:a7c5ec5e13af8a67d1b08c963fcd71214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add items received by the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> to the recStack and execute the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a>'s receiveCycle to wait for new incoming frames. Exit, if the recStack is full or the <a class="el" href="class_comm_interface.html" title="Template for generic communication-interface specifies a standardized interface to use for integratin...">CommInterface</a> did not received new Frames within the in receiveCycle specified timeout.  <br /></td></tr>
 <tr class="separator:a7c5ec5e13af8a67d1b08c963fcd71214"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -278,6 +281,47 @@ template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInt
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a48cffd1603069be11ee25c930a139c84" name="a48cffd1603069be11ee25c930a139c84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48cffd1603069be11ee25c930a139c84">&#9670;&#160;</a></span>addPDU_to_services()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename <a class="el" href="class_comm_interface_base.html">CommInterfaceBase</a> , typename frameType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="class_service_interface.html">ServiceInterface</a>&lt; <a class="el" href="class_comm_interface_base.html">CommInterfaceBase</a>, frameType &gt;::addPDU_to_services </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add PDUs from all received frames to the corresponding services. </p>
+<p>This function processes all frames available in the receive stack (<code>recStack</code>). For each frame, it checks the CRC-16 checksum and, if valid, adds the PDU to the appropriate service's receive stack. If the frame's CRC check fails, it raises a CRC error. If no matching service is found for the frame's function code, it raises a service-not-found error and discards the frame.</p>
+<ul>
+<li>If the receive stack is empty, the function returns immediately.</li>
+<li>Frames with no matching service are discarded, and a service-not-found error is raised.</li>
+<li>Valid frames are added to the corresponding service's receive stack.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>The function continues processing until the receive stack is empty. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface_a48cffd1603069be11ee25c930a139c84_cgraph.svg" width="867" height="348"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="aeaebdad7101c0a66bee56edc4e6a19c1" name="aeaebdad7101c0a66bee56edc4e6a19c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeaebdad7101c0a66bee56edc4e6a19c1">&#9670;&#160;</a></span>communicate()</h2>
 
@@ -420,7 +464,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface_a42226b8c236c344b6c5d171736a08f6e_icgraph.svg" width="410" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_service_interface_a42226b8c236c344b6c5d171736a08f6e_icgraph.svg" width="414" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

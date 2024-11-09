@@ -63,31 +63,6 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
     
 };
 
-// Add PDU from all received Frames to the dedicated Services 
-void ServiceInterface_modbusRTU::addPDU_to_services()
-{
-    // abort, if no new PDU available
-    if (recStack.empty()) return;
-    // Add all received PDUs to the Services 
-    while (!recStack.empty())
-    {
-        Frame_modbusRTU* receivedFrame = recStack.getElement();
-        if(!receivedFrame->checkCRC16()){
-            raiseError(crcError);
-        }else{
-            char ServiceID = receivedFrame->getFunctionCode();                          // Get the Modbus-RTU-Function-Code as Service-ID 
-            ServiceBase* destinationService = services->getService_byID(ServiceID);     // Pointer to the destination-Service 
-            if (!destinationService){
-                raiseError(serviceNotFound);                                            // raise Service-not-found-error
-                recStack.deleteElement();                                               // discard invalid Frame (no Service found)
-                continue;
-            }
-            String pdu = *receivedFrame->get_content();                                       // Get the Frames payload 
-            destinationService->impart_pdu(&pdu);                                       // Add a Content-Object created from PDU to the Services receive-stack 
-        }
-        recStack.deleteElement();                                                       // Delete the item added to services rec-stack from the interface-rec-stack
-    };
-};
 
 // Execute all relevant tasks for transferring data between CommInterface and Services:
 // - Get PDU from Services

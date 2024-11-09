@@ -37,7 +37,7 @@
  * @brief ServiceCluster-base-class to add class-functions to vtable
  * 
  */
-class ServiceClusterBase{
+class ServiceClusterBase: public ErrorState{
     public:
         /**
          * @brief Get pointer to the service with the given service-ID by iterating through the associated services and calling their get_ServiceID-function.
@@ -61,6 +61,15 @@ class ServiceClusterBase{
          * @return uint8_t total Number Of Services-objects associated to the cluster 
          */
         virtual uint8_t getNumberOfServices() const =0;
+
+        /**
+         * @brief Add the payload of the referenced Frame to the belonging Service 
+         * 
+         * @param FrameToAdd Frame, thats PDU has to be added to the Service 
+         * @return true PDU added successfully
+         * @return false failed to add PDU
+         */
+        virtual errorCodes impartPdu(Frame* FrameToAdd)=0;
 
         /**
          * @brief Destroy the Service Cluster Base object
@@ -128,6 +137,27 @@ class ServiceCluster: public ServiceClusterBase{
         uint8_t getNumberOfServices() const override {
             return number_of_services;
         }
+
+        /**
+         * @brief Add the payload of the referenced Frame to the belonging Service (Multiplexing by Service-ID)
+         * 
+         * @param FrameToAdd Frame, thats PDU has to be added to the Service 
+         * @return true PDU added successfully
+         * @return false failed to add PDU
+         */
+        errorCodes impartPdu(Frame* FrameToAdd) override {
+            char ServiceID = FrameToAdd->getServideId();                                // Get the Service-ID of the given Frame
+            ServiceBase* destinationService = services->getService_byID(ServiceID);     // Pointer to the destination-Service 
+            if (!destinationService){
+                raiseError(serviceNotFound);                                            // raise Service-not-found-error if no Service with this Service-ID exists
+                return getErrorState();
+            }
+            String pdu = *FrameToAdd->get_content();                                    // Get the Frames payload 
+            if (!destinationService->impart_pdu(&pdu)){                                 // Add a Content-Object created from PDU to the Services receive-stack 
+                raiseError(overflow);                                       // raise Overflow-Error, if the Rec-Stack of the Service is full
+            };                                       
+            return getErrorState();
+        };
 };
 
 #endif // SERVICECLUSTER_H

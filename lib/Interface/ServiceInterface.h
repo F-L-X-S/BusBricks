@@ -176,6 +176,47 @@ class ServiceInterface: public ErrorState{
         }
 
         /**
+         * @brief Add PDUs from all received frames to the corresponding services.
+         * 
+         * This function processes all frames available in the receive stack (`recStack`). 
+         * For each frame, it checks the CRC-16 checksum and, if valid, adds the PDU to the appropriate service's receive stack. 
+         * If the frame's CRC check fails, it raises a CRC error. If no matching service is found for the frame's function code, 
+         * it raises a service-not-found error and discards the frame.
+         * 
+         * @details
+         * - If the receive stack is empty, the function returns immediately.
+         * - Frames with no matching service are discarded, and a service-not-found error is raised.
+         * - Valid frames are added to the corresponding service's receive stack.
+         * 
+         * @note The function continues processing until the receive stack is empty.
+         */
+        virtual void addPDU_to_services()
+        {
+            // abort, if no new PDU available
+            if (recStack.empty()) return;
+            // Add all received PDUs to the Services 
+            while (!recStack.empty())
+            {
+                // Try to add Frame from rec-stack to Service
+                Frame* receivedFrame = recStack.getElement();     
+                errorCodes ServicesErrorState = services->impartPdu(receivedFrame);
+
+                // handle the Service-Clusters error-state
+                if (ServicesErrorState != noError) raiseError(ServicesErrorState);
+
+                // clear Error-state after handling error
+                services->clearErrorState();
+
+                // Skip Discard and leave the rec-stack-processing
+                if (ServicesErrorState = overflow) break; 
+
+                // discard frame
+                recStack.deleteElement();
+            };
+        };
+
+
+        /**
          * @brief Add items received by the CommInterface to the recStack and execute the CommInterface's receiveCycle to wait for new incoming frames.
          * Exit, if the recStack is full or the CommInterface did not received new Frames within the in receiveCycle specified timeout.
          * 

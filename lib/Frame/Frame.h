@@ -74,5 +74,11 @@ class Frame: public Content<String, CharArray>{
         * @param frame pointer to the char-array-object containing the byte-representation
         */
         Frame(CharArray* frame);
+
+        /**
+         * @brief Get the ServiceId, the PDU of the Frame belongs to (necessary for Service-multiplexing).
+         * The Extraction of the Service-Id from the Frame is protocoll-specific and has to be implemented in the derived class.
+         */
+        virtual uint8_t getServiceId()=0;
 };
 #endif // FRAME_H

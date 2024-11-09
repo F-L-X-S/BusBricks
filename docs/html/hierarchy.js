@@ -31,6 +31,9 @@ var hierarchy =
         ] ],
         [ "CommInterface< interface_type >", "class_comm_interface.html", null ]
       ] ],
+      [ "ServiceClusterBase", "class_service_cluster_base.html", [
+        [ "ServiceCluster< number_of_services >", "class_service_cluster.html", null ]
+      ] ],
       [ "ServiceInterface< CommInterfaceBase, frameType >", "class_service_interface.html", null ]
     ] ],
     [ "Message_content_t", "struct_message__content__t.html", null ],
@@ -44,9 +47,6 @@ var hierarchy =
         [ "MessageService", "class_message_service.html", null ]
       ] ],
       [ "Service< content_class, stackSize >", "class_service.html", null ]
-    ] ],
-    [ "ServiceClusterBase", "class_service_cluster_base.html", [
-      [ "ServiceCluster< number_of_services >", "class_service_cluster.html", null ]
     ] ],
     [ "arduinoMocking::SoftwareSerial", "classarduino_mocking_1_1_software_serial.html", null ]
 ];

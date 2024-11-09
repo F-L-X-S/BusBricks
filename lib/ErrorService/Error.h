@@ -78,6 +78,12 @@ enum errorCodes {
     frameLengthError = '5',
 
     /**
+     * @brief Send- or Receivestack reached max. size of items
+     * 
+     */
+    overflow = '6',
+
+    /**
      * @brief Unknown Error
      * 
      */
@@ -135,6 +141,8 @@ private:
                 return "Service-not-found: Service-Id was not found in the service-cluster";
             case frameLengthError:
                 return "Frame-Length-Error: Maximum length of Frame was violated";
+            case overflow:
+                return "Service-Stack-Overflow: Send- or Receivestack of Service has reached max. size of items";
             default:
                 return "Unknown Error";
         }

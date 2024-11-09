@@ -108,11 +108,11 @@ class Frame_modbusRTU: public Frame{
         bool checkCRC16();
 
         /**
-         * @brief Get the Modbus-RTU-function-code of the frame-instance 
+         * @brief Get the Service-ID (Modbus-RTU-function-code) of the frame-instance 
          * 
-         * @return char Modbus-RTU-function-code of the frame-instance 
+         * @return uint8_t Service-ID (Modbus-RTU-function-code) of the frame-instance 
          */
-        char getFunctionCode();
+        uint8_t getServiceId() override;
 
     private:
         /// @brief  Modbus-RTU-slave-id (device-id)

@@ -1,13 +1,13 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" href="$class_service_base.html" title="Service&#45;base&#45;class to add class&#45;functions to vtable." alt="" coords="5,55,101,80"/>
 <area shape="rect" id="Node000001" href="$class_service.html" title=" " alt="" coords="162,5,360,31"/>
-<area shape="poly" id="edge12_Node000000_Node000001" title=" " alt="" coords="115,48,148,40,194,29,196,34,149,45,116,53"/>
+<area shape="poly" id="edge14_Node000000_Node000001" title=" " alt="" coords="115,48,148,40,194,29,196,34,149,45,116,53"/>
 <area shape="rect" id="Node000003" href="$class_service.html" title=" " alt="" coords="149,55,373,80"/>
-<area shape="poly" id="edge14_Node000000_Node000003" title=" " alt="" coords="116,65,148,65,148,70,116,70"/>
+<area shape="poly" id="edge16_Node000000_Node000003" title=" " alt="" coords="116,65,148,65,148,70,116,70"/>
 <area shape="rect" id="Node000005" href="$class_service.html" title="Service&#45;Template to derive a Service class by defining the Content (derived Class of &quot;Content&quot;) to ha..." alt="" coords="180,104,342,145"/>
-<area shape="poly" id="edge16_Node000000_Node000005" title=" " alt="" coords="116,82,185,101,184,106,115,87"/>
+<area shape="poly" id="edge18_Node000000_Node000005" title=" " alt="" coords="116,82,185,101,184,106,115,87"/>
 <area shape="rect" id="Node000002" href="$class_error_service.html" title="Service class for handling Errors." alt="" coords="434,5,527,31"/>
-<area shape="poly" id="edge13_Node000001_Node000002" title=" " alt="" coords="375,16,433,16,433,21,375,21"/>
+<area shape="poly" id="edge15_Node000001_Node000002" title=" " alt="" coords="375,16,433,16,433,21,375,21"/>
 <area shape="rect" id="Node000004" href="$class_message_service.html" title="Service class for handling messages and acknowledgments." alt="" coords="421,55,539,80"/>
-<area shape="poly" id="edge15_Node000003_Node000004" title=" " alt="" coords="388,65,421,65,421,70,388,70"/>
+<area shape="poly" id="edge17_Node000003_Node000004" title=" " alt="" coords="388,65,421,65,421,70,388,70"/>
 </map>
