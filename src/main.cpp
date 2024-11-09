@@ -36,6 +36,7 @@
 
 #include <ServiceInterface_modbusRTU.h>
 #include <CommInterface_modbusRTU.h>
+#include <CommInterface_IIC.h>
 #include <MessageService.h>
 #include <ErrorService.h>
 
