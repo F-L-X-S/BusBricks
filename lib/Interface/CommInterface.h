@@ -155,9 +155,8 @@ class CommInterface: public CommInterfaceBase{
          * @brief Construct a new Comm-Interface object
          * 
          * @param interface pointer to an instance of the native bus-interface (setup outside of BusBricks)
-         * @param baudrate bits per second
          */
-        CommInterface(interface_type* interface, uint32_t baudrate): interface(interface){}; 
+        CommInterface(interface_type* interface): interface(interface){}; 
 
         /**
          * @brief Specify the next frame to be sent by the interface, 

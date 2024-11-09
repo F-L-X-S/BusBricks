@@ -26,7 +26,7 @@
 // Construct Modbus-RTU-Communication-Interface predefined SoftwareSerial-Inetrface
 CommInterface_modbusRTU::CommInterface_modbusRTU(SoftwareSerial* softwareserial, uint16_t baudrate, char deviceId) : 
     deviceId(deviceId),
-    CommInterface<SoftwareSerial>(softwareserial, baudrate) {
+    CommInterface<SoftwareSerial>(softwareserial) {
         _calculateTimeouts(baudrate);
 };
 
