@@ -32,7 +32,7 @@
 #endif
 
 #include <CommInterface.h>
-#include <ServiceCluster.h>
+#include <Cluster.h>
 #include <Frame.h>
 #include <Content_stack.h>
 #include <ErrorService.h>
@@ -61,7 +61,7 @@ class ServiceInterface: public ErrorState{
          * @param comm_interface pointer to an instance of a CommInterface-derived class-object 
          * @param services pointer to an instance of a ServiceCluster-derived class-object containing the associated services 
          */
-        ServiceInterface(CommInterfaceBase* comm_interface, ServiceClusterBase* services):
+        ServiceInterface(CommInterfaceBase* comm_interface, ClusterBase* services):
                 ErrorState(),
                 comm_interface(comm_interface), 
                 services(services) {};
@@ -80,7 +80,7 @@ class ServiceInterface: public ErrorState{
         CommInterfaceBase* comm_interface;        
 
         /// @brief pointer to ServiceCluster, containing the Services associated with the Interface (instance of ServiceCluster-derived class)             
-        ServiceClusterBase* services;                               
+        ClusterBase* services;                               
 
         /// @brief stack for received frames (instance of Content_stack-derived class, specified for type of frames, the bus is using)    
         Content_stack<frameType, STACKSIZE> recStack;     
@@ -108,9 +108,9 @@ class ServiceInterface: public ErrorState{
          * 
          */
         virtual void processServices(){
-            for (size_t i = 0; i < services->getNumberOfServices(); i++)
+            for (size_t i = 0; i < services->getNumberOfComponents(); i++)
                 {
-                    ServiceBase* destinationService = services->getService_byPos(i);            // Pointer to the destination-Service 
+                    ServiceBase* destinationService = services->getComponent_byPos(i);            // Pointer to the destination-Service 
                     destinationService->stackProcessing();
                 }
         }
@@ -123,7 +123,7 @@ class ServiceInterface: public ErrorState{
          * @param code The error code of the error to be raised.
          */
         void raiseError(errorCodes code) {
-            ServiceBase* service = services->getService_byID(ERRORSERVICE_ID);
+            ServiceBase* service = services->getComponent_byID(ERRORSERVICE_ID);
             if (service) {
                 ErrorService* errService = static_cast<ErrorService*>(service);
                 errService->raiseError(code);
