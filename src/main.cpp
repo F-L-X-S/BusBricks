@@ -33,7 +33,6 @@
 #endif
 
 #define DEBUG
-
 #include <ServiceInterface_modbusRTU.h>
 #include <CommInterface_modbusRTU.h>
 #include <CommInterface_IIC.h>
@@ -68,7 +67,7 @@ ServiceBase* serviceList[2] = {&msgService, &errService};
 
 // Create a Service-Cluster from ptr-list to the associated services 
 // RAM: 20 bytes
-ServiceCluster<2> services(serviceList);              
+Cluster<2> services(serviceList);              
 
 // instantiate the service-interface 
 // RAM: 146 bytes (Stacksize 3)
