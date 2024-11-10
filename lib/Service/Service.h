@@ -33,14 +33,26 @@
 
 #include "Content.h"
 #include "Content_stack.h"
+#include "Component.h"
 
 /**
  * @author Felix Schuelke (flxscode@gmail.com)
  * @brief Service-base-class to add class-functions to vtable
  * 
  */
-class ServiceBase {
+class ServiceBase: public Component {
 public:
+    /**
+     * @brief Default-Constructor a new Service Base object
+     * 
+     */
+    ServiceBase(): Component(){}  
+
+    /**
+     * @brief Constructor for a new Service Base object for usage in derived classes 
+     * 
+     */
+    ServiceBase(uint8_t _serviceId, uint8_t _instanceId): Component(_serviceId, _instanceId){} 
     /**
      * @brief Get the get the response-payload, stored at the response_pdu of the service instance  
      * 
@@ -79,20 +91,6 @@ public:
     virtual bool impart_pdu(String* pdu)=0;
 
     /**
-     * @brief Get pointer to the 1-byte ServiceID of the Service (unique for each Service-template derived Class)
-     * 
-     * @return uint8_t* ServiceID of the service
-     */
-    virtual uint8_t* get_ServiceID()=0;
-
-    /**
-     * @brief Get pointer to the 1-byte InstanceID of the Service-instance (unique for each Instance of Service within the whole communication-network)
-     * 
-     * @return uint8_t* InstanceID of the Service-instance
-     */
-    virtual uint8_t* get_InstanceID()=0;
-
-    /**
      * @brief Destroy the Service Base object
      * 
      */
@@ -113,9 +111,7 @@ public:
  */
 template<typename content_class, int stackSize>                                       
 class Service: public ServiceBase{
-protected: 
-    uint8_t serviceID;                                                                                // service-id
-    uint8_t instanceID;                                                                               // service-instance-id                                
+protected:                              
     Content_stack<content_class, stackSize> rec_stack;                                                // stack for received content-elements
     Content_stack<content_class, stackSize> send_stack;                                               // stack for received content-elements
     String response_pdu;                                                                              // PDU with response 
@@ -126,25 +122,7 @@ protected:
     }
 
 public: 
-    Service(uint8_t serviceID, uint8_t instanceID): serviceID(serviceID), instanceID(instanceID){}  
-
-    /**
-     * @brief Get pointer to the 1-byte ServiceID of the Service (unique for each Service-template derived Class)
-     * 
-     * @return uint8_t* ServiceID of the service
-     */
-    uint8_t* get_ServiceID() override {
-        return &serviceID;
-    }
-
-    /**
-     * @brief Get pointer to the 1-byte InstanceID of the Service-instance (unique for each Instance of Service within the whole communication-network)
-     * 
-     * @return uint8_t* InstanceID of the Service-instance
-     */
-    uint8_t* get_InstanceID() override {
-        return &instanceID;
-    }
+    Service(uint8_t _serviceId, uint8_t _instanceId): ServiceBase(_serviceId, _instanceId){}  
 
     /**
      * @brief Add a new Content-Object created from a received payload to the services receive-Stack. 
