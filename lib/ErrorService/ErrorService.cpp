@@ -23,10 +23,10 @@
 #include "ErrorService.h"
 
 // Constructor for creating Error-service with deafult Service-ID "e"
-ErrorService::ErrorService(uint8_t instance_id): Service<Error, STACKSIZE>(SERVICEID, instance_id){}
+ErrorService::ErrorService(uint8_t _instanceId): Service<Error, STACKSIZE>(SERVICEID, _instanceId){}
 
 // Constructor for creating Error-service with custom Service-ID 
-ErrorService::ErrorService(uint8_t instance_id, uint8_t service_id): Service<Error, STACKSIZE>(service_id, instance_id){}
+ErrorService::ErrorService(uint8_t _instanceId, uint8_t service_id): Service<Error, STACKSIZE>(service_id, _instanceId){}
 
 
 /**
@@ -50,7 +50,7 @@ void ErrorService::stackProcessing() {
         printError(last_error);
 
         // broadcast error if raised by local host 
-        if (instanceID==last_error->get_content()->instanceId)
+        if (instanceId==last_error->get_content()->instanceId)
         {
             send_stack.addElement(*last_error);
         }
@@ -78,6 +78,6 @@ void ErrorService::printError(Error* error) {
  * @param code The error code of the error to be raised.
  */
 void ErrorService::raiseError(errorCodes code) {
-    Error localError(instanceID,code);
+    Error localError(instanceId,code);
     rec_stack.addElement(localError);
 }
