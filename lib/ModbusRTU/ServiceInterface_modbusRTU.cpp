@@ -24,7 +24,7 @@
 #include "ServiceInterface_modbusRTU.h"
 
 // Construct Service-Interface 
-ServiceInterface_modbusRTU::ServiceInterface_modbusRTU(ServiceClusterBase* services, CommInterface_modbusRTU* comm_interface):
+ServiceInterface_modbusRTU::ServiceInterface_modbusRTU(ClusterBase* services, CommInterface_modbusRTU* comm_interface):
 ServiceInterface<CommInterface_modbusRTU, Frame_modbusRTU>(comm_interface, services){};
 
 // Destructor for ServiceInterface_modbusRTU
@@ -37,16 +37,16 @@ ServiceInterface_modbusRTU::~ServiceInterface_modbusRTU() {
 // - create frame from payload provided by service (service-/payload-specific)
 void ServiceInterface_modbusRTU::getPDU_from_services()
 {
-    for (size_t i = 0; i < services->getNumberOfServices(); i++)
+    for (size_t i = 0; i < services->getNumberOfComponents(); i++)
     {
         if (sendStack.full()) break;                                                // exit the loop if no space left in send stack
-        ServiceBase* destinationService = services->getService_byPos(i);            // Pointer to the destination-Service 
+        ServiceBase* destinationService = services->getComponent_byPos(i);            // Pointer to the destination-Service 
         while (destinationService->responseAvailable()){                            // skip iteration if the services response is empty 
             String servicePdu = destinationService->get_response();              // get the response-PDU provided by the service
-            char deviceId = *destinationService->get_InstanceID();                  // initialize the device-id by instance-id 
+            char deviceId = *destinationService->getInstanceId();                  // initialize the device-id by instance-id 
 
             // Handle service-type specific conversions
-            if (*destinationService->get_ServiceID() == static_cast<uint8_t>('m'))
+            if (*destinationService->getComponentId() == static_cast<uint8_t>('m'))
             {
                 MessageService* messageService = static_cast<MessageService*>(destinationService);   // cast as Message-service for specific functions
                 uint8_t destId = messageService->get_destinationId();                   // Get the Destination-Device ID (depending on forwarding flag)
@@ -54,7 +54,7 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
             }
 
             // Build Frame
-            char functionCode = *(destinationService->get_ServiceID());                 // Get the Function Code
+            char functionCode = *(destinationService->getComponentId());                 // Get the Function Code
             Frame_modbusRTU frame(&servicePdu, &deviceId, &functionCode);               // Construct the modbus-frame
             sendStack.addElement(frame);                                                // Add the Frame to the Interface-send-stack
             destinationService->clearResponse();                                

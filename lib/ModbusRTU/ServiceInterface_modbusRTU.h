@@ -52,7 +52,7 @@ class ServiceInterface_modbusRTU: public ServiceInterface<CommInterface_modbusRT
          * @param services pointer to Service-cluster containing all services associated with the ServiceInterface
          * @param comm_interface pointer to the CommInterface_modbusRTU-instance to use for communication
          */
-        ServiceInterface_modbusRTU(ServiceClusterBase* services, CommInterface_modbusRTU* comm_interface);
+        ServiceInterface_modbusRTU(ClusterBase* services, CommInterface_modbusRTU* comm_interface);
 
         /**
          * @brief Destroy the ServiceInterface_modbusRTU object
