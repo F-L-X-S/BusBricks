@@ -62,7 +62,7 @@ void MessageService::sendAck(Message* message){
     Message_content_t* content = message->get_content();
     // generate the ACK-Response 
     Message_content_t response_content;
-    response_content.sender_id = instanceID;                                           // own instance-id as sender                     
+    response_content.sender_id = instanceId;                                           // own instance-id as sender                     
     if (static_cast<String>(content->msg_text)!="\0"){  
         response_content.receiver_id = content->sender_id;                             // receiver is the sender of the received message
         response_content.msg_text = "ACK";                                             // Acknowledgement-text
@@ -76,7 +76,7 @@ void MessageService::sendAck(Message* message){
 // Send a new Message 
 void MessageService::sendMessage(char receiverId, String messagetext){
     Message_content_t response_content;
-    response_content.sender_id = instanceID;                                           // own instance-id as sender                     
+    response_content.sender_id = instanceId;                                           // own instance-id as sender                     
     response_content.receiver_id = receiverId;                           
     response_content.msg_text = messagetext;                                           
 
