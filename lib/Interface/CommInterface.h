@@ -32,7 +32,7 @@
 #endif
 
 #include<CharArray.h>
-#include<ErrorState.h>
+#include<Component.h>
 
 /**
  * @brief Communcation-Interface-Base-Class of the CommInterface template
@@ -50,7 +50,7 @@
     * ErrorState functions after calling the send or receive cycles
     * 
  */
-class CommInterfaceBase: public ErrorState
+class CommInterfaceBase: public Component
 {
 public:
     /**
@@ -90,10 +90,16 @@ public:
     virtual bool receivedNewFrame(){};
 
     /**
-     * @brief Construct a new Comm Interface Base object
+     * @brief Default-Constructor for a new Comm Interface Base object
      * 
      */
-    CommInterfaceBase(): ErrorState(){};
+    CommInterfaceBase(): Component(){};
+
+    /**
+     * @brief Constructor for a new Comm Interface Base object within the derived classes
+     * 
+     */
+    CommInterfaceBase(uint8_t componentId, uint8_t instanceId): Component(componentId, instanceId){};
 
     /**
      * @brief Destroy the Comm-Interface Base object
@@ -156,7 +162,10 @@ class CommInterface: public CommInterfaceBase{
          * 
          * @param interface pointer to an instance of the native bus-interface (setup outside of BusBricks)
          */
-        CommInterface(interface_type* interface): interface(interface){}; 
+        CommInterface(interface_type* interface, uint8_t componentId, uint8_t instanceId): 
+        CommInterfaceBase(componentId, instanceId),
+        interface(interface)
+        {}; 
 
         /**
          * @brief Specify the next frame to be sent by the interface, 
