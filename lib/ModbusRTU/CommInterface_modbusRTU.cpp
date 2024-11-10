@@ -23,10 +23,13 @@
 
 #include "CommInterface_modbusRTU.h"
 
+#define COMPONENT_ID 'c'
+#define INSTANCE_ID 'a'
+
 // Construct Modbus-RTU-Communication-Interface predefined SoftwareSerial-Inetrface
 CommInterface_modbusRTU::CommInterface_modbusRTU(SoftwareSerial* softwareserial, uint16_t baudrate, char deviceId) : 
     deviceId(deviceId),
-    CommInterface<SoftwareSerial>(softwareserial) {
+    CommInterface<SoftwareSerial>(softwareserial, COMPONENT_ID, INSTANCE_ID) {
         _calculateTimeouts(baudrate);
 };
 

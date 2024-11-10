@@ -23,10 +23,13 @@
 
 #include "CommInterface_IIC.h"
 
+#define COMPONENT_ID 'd'
+#define INSTANCE_ID 'a'
+
 // Construct I2C-Communication-Interface with the TwoWire-Instance created by including Wire.h
 CommInterface_IIC::CommInterface_IIC(TwoWire* Wire, char deviceId) : 
     deviceId(deviceId),
-    CommInterface<TwoWire>(Wire) {
+    CommInterface<TwoWire>(Wire, COMPONENT_ID, INSTANCE_ID) {
       Wire->begin(deviceId);                // join bus with specified ID 
     };
 
