@@ -29,7 +29,7 @@
 // Construct Modbus-RTU-Communication-Interface predefined SoftwareSerial-Inetrface
 CommInterface_modbusRTU::CommInterface_modbusRTU(SoftwareSerial* softwareserial, uint16_t baudrate, char deviceId) : 
     deviceId(deviceId),
-    CommInterface<SoftwareSerial>(softwareserial, COMPONENT_ID, INSTANCE_ID) {
+    CommInterface<SoftwareSerial, SocketRouter>(softwareserial, COMPONENT_ID, INSTANCE_ID) {
         _calculateTimeouts(baudrate);
 };
 
@@ -38,9 +38,9 @@ CommInterface_modbusRTU::~CommInterface_modbusRTU() {
 }
 
 // Sending
-bool CommInterface_modbusRTU::send(){    
-    if (sendBuffer==nullptr) return false;                            // check, if the sendbuffer-ptr is set to a valid memory
-    interface->write(sendBuffer->getData(), sendBuffer->getSize());   // write the byte-converted string to the interface  
+bool CommInterface_modbusRTU::send(CharArray* _sendBuffer){    
+    if (_sendBuffer==nullptr) return false;                            // check, if the sendbuffer-ptr is set to a valid memory
+    interface->write(_sendBuffer->getData(), _sendBuffer->getSize());   // write the byte-converted string to the interface  
     interface->flush();                                               // ensure, interfaces sending-buffer is completely empty before returning
     return true;
 };
@@ -49,7 +49,7 @@ bool CommInterface_modbusRTU::send(){
 // the received Frame is directly written to the specified receive-buffer
 // after a frame was received within the receive-timeout, the function returns true
 // the Comm-Interfece is not checking any Content of the frame 
-bool CommInterface_modbusRTU::receive(){
+bool CommInterface_modbusRTU::receive(CharArray* _receivedPayload){
     unsigned long startTime = micros();                             // Time, the function gets called
     uint16_t numBytes = 0;                                          // Received number of bytes
     bool receivingFlag = (deviceId == '\0') ? true:false;           // interface started receiving a frame (Slavemode: only if adressed to the device-ID, Mastermode: each frame) 
@@ -74,10 +74,10 @@ bool CommInterface_modbusRTU::receive(){
 
             // Append a nullbyte
             if (appendNullByte){
-              *receiveBuffer+= '\0';                          
+              *_receivedPayload+= '\0';                          
               appendNullByte = false;}
 
-            *receiveBuffer+= char(interface->read());                                   // Write the received char to the specified buffer
+            *_receivedPayload+= char(interface->read());                                   // Write the received char to the specified buffer
             numBytes++;                                                                 // increase frame-length-counter 
         }
         // if no char is received, wait for timeout    
@@ -87,7 +87,7 @@ bool CommInterface_modbusRTU::receive(){
   };
 
     // wait for Frame-timeout to ensure frame is complete, raise Error, if the silence-time is violated
-    if((_clearRxBuffer()>0) & (receiveBuffer->getSize()!=0)){
+    if((_clearRxBuffer()>0) & (_receivedPayload->getSize()!=0)){
       (numBytes>=MAXFRAMESIZE) ? raiseError(frameLengthError):raiseError(arbitrationError);
     } 
 

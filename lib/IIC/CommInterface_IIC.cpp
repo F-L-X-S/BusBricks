@@ -27,9 +27,9 @@
 #define INSTANCE_ID 'a'
 
 // Construct I2C-Communication-Interface with the TwoWire-Instance created by including Wire.h
-CommInterface_IIC::CommInterface_IIC(TwoWire* Wire, char deviceId) : 
+CommInterface_IIC::CommInterface_IIC(TwoWire* Wire, SocketRouter* _frameRouter, char deviceId) : 
     deviceId(deviceId),
-    CommInterface<TwoWire>(Wire, COMPONENT_ID, INSTANCE_ID) {
+    CommInterface<TwoWire, SocketRouter>(Wire, _frameRouter, COMPONENT_ID, INSTANCE_ID) {
       Wire->begin(deviceId);                // join bus with specified ID 
     };
 
@@ -38,12 +38,12 @@ CommInterface_IIC::~CommInterface_IIC() {
 }
 
 // default-Sending-function
-bool CommInterface_IIC::send(){
-    if (sendBuffer==nullptr) return false;                            // check, if the sendbuffer-ptr is set to a valid memory
-    const char* frame = sendBuffer->getData();                        // get start-adress of the frame to send
+bool CommInterface_IIC::send(CharArray* _sendBuffer){
+    if (_sendBuffer==nullptr) return false;                            // check, if the sendbuffer-ptr is set to a valid memory
+    const char* frame = _sendBuffer->getData();                        // get start-adress of the frame to send
     uint8_t targetDeviceId = frame[0];                                // use first byte of frame as target-device-id
     interface->beginTransmission(targetDeviceId);                     // begin the transmission to the target-device
-    interface->write(&frame[1], sendBuffer->getSize());               // write the frame with target-device-id to TwoWire-bus
+    interface->write(&frame[1], _sendBuffer->getSize());               // write the frame with target-device-id to TwoWire-bus
     return true;
 };
 
@@ -51,13 +51,12 @@ bool CommInterface_IIC::send(){
 // the received Frame is directly written to the specified receive-buffer
 // after a frame was received, the function returns true
 // the Comm-Interface is not checking any Content of the frame 
-bool CommInterface_IIC::receive(){
-    unsigned long startTime = micros();                             // Time, the function gets called
+bool CommInterface_IIC::receive(CharArray* _receivedPayload){
     uint16_t numBytes = 0;                                          // Received number of bytes
 
     // Read Frame from Interface
     while (interface->available()){
-        *receiveBuffer+= char(interface->read());                   // Write the received char to the specified buffer
+        *_receivedPayload+= char(interface->read());                   // Write the received char to the specified buffer
         numBytes++;                                                 // increase frame-length-counter 
         if (numBytes >= MAXFRAMESIZE) break;
     }

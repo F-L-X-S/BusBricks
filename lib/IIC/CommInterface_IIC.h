@@ -32,6 +32,7 @@
 #endif
 
 #include <CommInterface.h>
+#include <SocketRouter.h>
 
 /// @brief debugging flag to print debugging-information on Serial 
 //#define DEBUG
@@ -44,7 +45,7 @@
  *  Ensures correct data-transfer between standardized Frame-Objects in the Interface-Stack and Wire.
  * 
  */
-class CommInterface_IIC: public CommInterface<TwoWire>
+class CommInterface_IIC: public CommInterface<TwoWire, SocketRouter>
 {
     public:
         /**
@@ -53,7 +54,7 @@ class CommInterface_IIC: public CommInterface<TwoWire>
          * @param Wire pointer to the TwoWire-instance, the Comminterface should use (automatically instantiated by including Wire.h)
          * @param deviceId IIC-specific device-identifier 
          */
-        CommInterface_IIC(TwoWire* Wire, char deviceId);
+        CommInterface_IIC(TwoWire* Wire, SocketRouter* _frameRouter,char deviceId);
 
         /**
          * @brief Destroy the CommInterface_IIC object
@@ -68,7 +69,7 @@ class CommInterface_IIC: public CommInterface<TwoWire>
          * @return true frame was flushed to TwoWire-bus
          * @return false sendBuffer is nullptr
          */
-        bool send() override;
+        bool send(CharArray* _sendBuffer) override;
 
         /**
          * @brief Receives a I2C-frame and writes it to `receiveBuffer`.
@@ -80,7 +81,7 @@ class CommInterface_IIC: public CommInterface<TwoWire>
          * 
          * @note If `DEBUG` is defined, debugging information is printed to the serial monitor.
          */
-        bool receive() override;
+        bool receive(CharArray* _receivedPayload) override;
 
         /**
          * @brief Get I2C-specific device-identifier

@@ -31,8 +31,9 @@
     using namespace arduinoMocking;
 #endif
 
-#include<CharArray.h>
-#include<Component.h>
+#include <CharArray.h>
+#include <Component.h>
+#include <Socket.h>
 
 /**
  * @brief Communcation-Interface-Base-Class of the CommInterface template
@@ -54,58 +55,36 @@ class CommInterfaceBase: public Component
 {
 public:
     /**
-     * @brief Setup the Interface
-     *  has to be called in Setup-function
-     */
-    virtual void setup_interface(){};
-
-    /**
-     * @brief Add a new Frame to the send-buffer
-     * 
-     * @param sendFrame Pointer to CharArray-Object with frame to be send next  
-     */
-    virtual void sendNewFrame(CharArray* sendFrame){};
-
-    /**
-     * @brief Check, if the Frame was sent and the CommInterface is ready to send the next Frame 
-     * 
-     * @return true Frame, that was added by sendNewFrame-function was send 
-     * @return false Frame, that was added by sendNewFrame-function is not sent yet 
-     */
-    virtual bool finishedSending(){};
-
-    /**
-     * @brief Define the destination, the next received Frame should be copied to ba a pointer to an empty String-Object
-     * 
-     * @param destFrameBuffer pointer to an empty CharArray-Object, the next received frame should be stored in
-     */
-    virtual void getReceivedFrame(CharArray* destFrameBuffer){};
-
-    /**
-     * @brief Check, if a new Frame was received 
-     * 
-     * @return true a new frame was received and stored on the with getReceivedFrame specified Frame-Object
-     * @return false no new frame was received, getReceivedFrame specified Frame-Object still empty
-     */
-    virtual bool receivedNewFrame(){};
-
-    /**
      * @brief Default-Constructor for a new Comm Interface Base object
      * 
      */
-    CommInterfaceBase(): Component(){};
+    CommInterfaceBase();
 
     /**
-     * @brief Constructor for a new Comm Interface Base object within the derived classes
+     * @brief Constructor for a new Comm Interface Base object
      * 
      */
-    CommInterfaceBase(uint8_t componentId, uint8_t instanceId): Component(componentId, instanceId){};
+    CommInterfaceBase(uint8_t _componentId, uint8_t _instanceId):
+    Component(_componentId, _instanceId)
+    {};
 
     /**
      * @brief Destroy the Comm-Interface Base object
      * 
      */
     ~CommInterfaceBase(){};
+
+    /**
+     * @brief Socket of the Communication-Interface
+     * 
+     */
+    Socket socket;
+
+    /**
+     * @brief Setup the Interface
+     *  has to be called in Setup-function
+     */
+    virtual void setup_interface(){};
 };
 
 /**
@@ -123,19 +102,39 @@ public:
     * Stores errors occurred during internal processing by using the ErrorState class. The errors can be picked-up by calling the public 
     * ErrorState functions after calling the send or receive cycles
     * 
-    * @tparam interface_type type of native bus-interface to setup the Comm-interface for (e.g. SoftwareSerial)
+    * @tparam interfaceType type of native bus-interface to setup the Comm-interface for (e.g. SoftwareSerial)
 */
-template<typename interface_type>                                       
+template<typename interfaceType, typename routerType>                                       
 class CommInterface: public CommInterfaceBase{
+    private:
+        /// @brief CharArray-object, a received frame should be stored at
+        CharArray receivedPayload;  
+
+        /// @brief Pointer to the Router-Instance to construct the Frames from the received CharArrays and forward them to the target instances
+        routerType* frameRouter;
+
+        void receiveCycle(){
+            if(receive(&receivedPayload)){
+                socket.setTxObject(&receivedPayload, *(frameRouter->getComponentId()), *(frameRouter->getInstanceId()));
+            };
+        }
+
+        void sendCycle(){
+            // Try to send the CharArray the rxObject of socket is pointing to 
+            if (send(socket.getRxObject())){
+                // clear Socket-Receive-buffer
+                socket.clearRx();
+            };
+        }
+
+        void clearInterface(){
+            // initialize receive-Buffer after forwarding to another Component
+            receivedPayload = CharArray();
+
+        }
     protected:
         /// @brief pointer to an instance of the native bus-interface (setup outside of BusBricks)
-        interface_type* interface;                       
-
-        /// @brief pointer to the next frame to be send, set to nullptr if Frame was sent 
-        CharArray* sendBuffer = nullptr;                              
-
-        /// @brief pointer to CharArray-object, a received frame should be stored at, set to nullptr if Frame was copied to destination
-        CharArray* receiveBuffer = nullptr;                           
+        interfaceType* interface;                                                                        
 
         /**
          * @brief Send the frame, sendBuffer is pointing to
@@ -144,94 +143,33 @@ class CommInterface: public CommInterfaceBase{
          * @return true the frame, the sendBuffer was pointing to, was sent 
          * @return false the frame, the sendBuffer was pointing to, was not sent or sendBuffer nullptr (no frame to be sent)
          */
-        virtual bool send() = 0;                                       
+        virtual bool send(CharArray* _sendBuffer) = 0;                                       
         
 
         /**
-         * @brief Receive a Frame 
-         * (has to be done in the derived class)
+         * @brief Receive a Payload by receiving a Frame in a CharArray and writing the resulting Payload (representation of Frame-Object)
+         * to the _receivedPayload-Buffer. 
+         * (has to be implemented in the derived class)
          * 
-         * @return true a new Frame was received and stored at the String-obj, receiveBuffer is pointing to 
-         * @return false no new frame was received receiveBuffer still empty
+         * @return true a new Frame was received and stored obj, receiveBuffer is pointing to 
+         * @return false no new frame was received _receivedPayload still empty
          */
-        virtual bool receive() = 0;                                     
+        virtual bool receive(CharArray* _receivedPayload) = 0;                                     
 
     public:
         /**
          * @brief Construct a new Comm-Interface object
          * 
-         * @param interface pointer to an instance of the native bus-interface (setup outside of BusBricks)
+         * @param _interface Pointer to an instance of the native bus-interface (setup outside of BusBricks)
+         * @param _frameRouter Pointer to the Router-Instance to construct the Frames from the received CharArrays and forward them to the target instances
          */
-        CommInterface(interface_type* interface, uint8_t componentId, uint8_t instanceId): 
-        CommInterfaceBase(componentId, instanceId),
-        interface(interface)
-        {}; 
+        CommInterface(interfaceType* _interface, routerType* _frameRouter, uint8_t _componentId, uint8_t _instanceId): 
+        CommInterfaceBase(_componentId, _instanceId),
+        interface(_interface),
+        frameRouter(_frameRouter)
+        {
+            socket = Socket(componentId, instanceId, receiveCycle, sendCycle, clearInterface);
+        }; 
 
-        /**
-         * @brief Specify the next frame to be sent by the interface, 
-         * no overwrite, if the sendBuffer is already pointing to another frame
-         * 
-         * @param sendFrame pointer to next Frame-object to be send
-         */
-        void sendNewFrame(CharArray* sendFrame){
-            if (sendBuffer == nullptr)
-            {
-                sendBuffer = sendFrame;                                 // set the send-buffer-ptr to the Frame, that has to be sent 
-            }
-        };
-
-        /**
-         * @brief Check, if the Frame was sent and the CommInterface is ready to send the next Frame 
-         * Interface is ready to send a new frame, if the sendBuffer is nullpointer 
-         * 
-         * @return true ready to accept a new frame to send next with sendNewFrame-function
-         * @return false frame, sendBuffer is pointing to is not sent yet
-         * not ready to to accept a new frame in sendNewFrame-function
-         */
-        bool finishedSending(){
-            return sendBuffer==nullptr;
-        };
-
-        /**
-         * @brief Define the destination, the next received Frame should be stored at 
-         * 
-         * @param externalRecBuffer pointer to CharArray-object, the next received Frame should be stored at 
-         */
-        void getReceivedFrame(CharArray* externalRecBuffer){
-            receiveBuffer = externalRecBuffer;                            // set the receive-buffer-ptr to the destination, the next received Frame should be stored at 
-        };
-
-        /**
-         * @brief Check, if a new Frame was received and stored at the in getReceivedFrame specified location
-         * the interface is waiting waiting for getReceivedFrame-call to specify the location, the next received frame should be stored at
-         * 
-         * @return true a new frame was received and stored, waiting for getReceivedFrame-call to specify receiveBuffer
-         * @return false receiveBuffer is specified, but still empty
-         */
-        bool receivedNewFrame(){
-            return receiveBuffer==nullptr;
-        };
-
-        /**
-         * @brief Execution of receive-cycle, set the receiveBuffer to nullptr after a new frame was received 
-         * 
-         */
-        virtual void receiveCycle(){                                     
-            // Receiving
-            if (receive()) {
-                receiveBuffer = nullptr;                                
-            };
-        };
-        
-        /**
-         * @brief Execution of send-cycle, set the sendBuffer to nullptr, after the frame, sendBuffer was pointing at, was send 
-         * 
-         */
-        virtual void sendCycle(){   
-            // Sending
-            if (send()){
-                sendBuffer = nullptr;                                   
-            }; 
-        };
 };
 #endif // COMMINTERFACE_H

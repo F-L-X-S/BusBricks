@@ -35,6 +35,7 @@
 #endif
 
 #include <CommInterface.h>
+#include <SocketRouter.h>
 
 /// @brief debugging flag to print debugging-information on Serial 
 //#define DEBUG
@@ -47,7 +48,7 @@
  * and Monitors modbus-specific timeouts. Ensures correct data-transfer between standardized Frame-Objects in the Interface-Stack and SoftwareSerial.
  * 
  */
-class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
+class CommInterface_modbusRTU: public CommInterface<SoftwareSerial, SocketRouter>{
     public:
         /**
          * @brief Construct a new CommInterface_modbusRTU object 
@@ -71,7 +72,7 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
          * @return true frame was flushed to serial-bus
          * @return false sendBuffer is nullptr
          */
-        bool send() override;
+        bool send(CharArray* _sendBuffer) override;
 
         /**
          * @brief Receives a Modbus RTU frame and writes it to `receiveBuffer`.
@@ -97,7 +98,7 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial>{
          * 
          * @note If `DEBUG` is defined, debugging information is printed to the serial monitor.
          */
-        bool receive() override;
+        bool receive(CharArray* _receivedPayload) override;
 
         /**
          * @brief Get Modbus-specific device-identifier
