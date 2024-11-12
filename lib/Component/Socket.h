@@ -39,15 +39,37 @@ class Socket{
          * @brief Default-Constructor for a new Socket object
          * 
          */
+        Socket():
+        componentId('\0'), instanceId('\0'),
+        txComponentId('\0'), txInstanceId('\0'),
+        rxObject(nullptr), txObject(nullptr),
+        _receivingFinished(false), _receivingActive(false),
+        connCallback(), rxCallback(), ackCallback()
+        {};
+
+
+        /**
+         * @brief Constructor with IDs and without Events for a new Socket object
+         * 
+         */
         Socket(uint8_t _componentId, uint8_t _instanceId):
-        componentId(_componentId),
-        instanceId(_instanceId),
-        txComponentId('\0'),
-        txInstanceId('\0'),
-        rxObject(nullptr),
-        txObject(nullptr),
-        _receivingFinished(false),
-        _receivingActive(false)
+        componentId(_componentId), instanceId(_instanceId),
+        txComponentId('\0'), txInstanceId('\0'),
+        rxObject(nullptr), txObject(nullptr),
+        _receivingFinished(false), _receivingActive(false),
+        connCallback(), rxCallback(), ackCallback()
+        {};
+
+        /**
+         * @brief Constructor with IDs and Events for a new Socket object
+         * 
+         */
+        Socket(uint8_t _componentId, uint8_t _instanceId, void (*onConnEvent)(void), void (*onRxEvent)(void), void (*onAckEvent)(void)):
+        componentId(_componentId), instanceId(_instanceId),
+        txComponentId('\0'), txInstanceId('\0'),
+        rxObject(nullptr), txObject(nullptr),
+        _receivingFinished(false), _receivingActive(false),
+        connCallback(onConnEvent), rxCallback(onRxEvent), ackCallback(onAckEvent)
         {};
 
         /**
@@ -77,7 +99,7 @@ class Socket{
          * @brief Called by Component after it finished processing the received Object
          * 
          */
-        void processedRxObject(){
+        void clearRx(){
             _receivingFinished = true;
         };
 
@@ -88,13 +110,29 @@ class Socket{
         CharArray* txObject;
         uint8_t txComponentId;
         uint8_t txInstanceId;
+
+        // Transmission-flags
         bool _receivingFinished;
         bool _receivingActive;
+
+        /// @brief Function-pointer Event to call when sending Socket is able to establish a connection to a target-instance
+        void (*connCallback)(void);
+
+        /// @brief Function-pointer Event to call after receiving Socket received a new pointer in rxObject
+        void (*rxCallback)(void);
+
+        /// @brief Function-pointer Event to call after transmission was acknowledged by receiving instance
+        void (*ackCallback)(void);
+
+        // publish private-mmembers to transmission-function
         friend void transmission(Socket& sendingSocket, Socket& receivingSocket);
 };
 
 
 void transmission(Socket& sendingSocket, Socket& receivingSocket){
+    // execute functions to call in sending instance
+    sendingSocket.connCallback();
+
     // Continue for matching Identifier 
     if (receivingSocket.componentId == sendingSocket.txComponentId  && receivingSocket.instanceId == sendingSocket.instanceId){
         // Establish connection
@@ -104,6 +142,9 @@ void transmission(Socket& sendingSocket, Socket& receivingSocket){
 
             // set the receive-Object-pointer to the Object the tx-Object-pointer is pointing at 
             receivingSocket.rxObject = sendingSocket.txObject;
+
+            // Call the Receive-Event of the receiving socket
+            if (receivingSocket.rxCallback) receivingSocket.rxCallback();
 
         // End connection
         }else if (receivingSocket._receivingActive && receivingSocket._receivingFinished)
@@ -119,6 +160,9 @@ void transmission(Socket& sendingSocket, Socket& receivingSocket){
             // Reset Transmission-flags 
             receivingSocket._receivingActive = false;
             receivingSocket._receivingFinished = false;
+
+            // Call the Transmit-Event of the sending socket
+            if (sendingSocket.ackCallback) sendingSocket.ackCallback();
         }
     } 
     return;
