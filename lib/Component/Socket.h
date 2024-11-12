@@ -31,78 +31,46 @@
     using namespace arduinoMocking;
 #endif
 
-template<typename transmissionObjectType>  
+#include <CharArray.h>
+
 class Socket{
     public:
         /**
          * @brief Default-Constructor for a new Socket object
          * 
          */
-        Socket():
+        Socket(uint8_t _componentId, uint8_t _instanceId):
+        componentId(_componentId),
+        instanceId(_instanceId),
+        txComponentId('\0'),
+        txInstanceId('\0'),
         rxObject(nullptr),
-        txObject(transmissionObjectType()),
-        _transmissionFinished(true)
+        txObject(nullptr),
+        _receivingFinished(false),
+        _receivingActive(false)
         {};
 
         /**
-         * @brief Transmit a Object to the target-socket 
+         * @brief Add a new Object to the Socket that should be transmitted next. 
+         * After imparting the Object, the socket determines the Component- and the Instance-ID of the TX-Object.
          * 
-         * @param targetSocket Pointer to Socket to transmit to
-         */
-        void transmitTo(Socket* targetSocket){
-            if (targetSocket->readyToReceive()) targetSocket->impartRxObject(&txObject);
-        };
-
-        /**
-         * @brief Transmit a Object to the Socket by setting the rxObject-Pointer to the specified Object
-         * 
-         * @param obj Object to to add to Socket
-         */
-        void impartRxObject(transmissionObjectType* obj){
-            rxObject = obj;
-        };
-
-        /**
-         * @brief Add a new Object to the Socket that should be transmitted next 
-         * 
-         * @param _txObject Object to be transmitted by the socket
+         * @param _txObject Pointer to Object to be transmitted by the socket
          * @param _txComponentId Component-Id of the Target-Component the Object should be sent to 
          * @param _txInstanceId Instance-Id of the Target-Component the Object should be sent to 
          */
-        void impartTxObject(transmissionObjectType _txObject, uint8_t _txComponentId, uint8_t _txInstanceId){
+        void setTxObject(CharArray* _txObject, uint8_t _txComponentId, uint8_t _txInstanceId){
             txObject = _txObject;
             txComponentId = _txComponentId;
             txInstanceId = _txInstanceId;
         };
 
         /**
-         * @brief Check, if Socket is ready to receive a new Object
-         * 
-         * @return true Socket is ready to receive a new Object
-         * @return false Component has not finished processing the received Object
-         */
-        bool readyToReceive(){
-            return rxObject == nullptr;
-        }
-
-        /**
-         * @brief Check, if Socket is ready to transmit a new Object
-         * 
-         * @return true Socket is ready to transmit a new Object
-         * @return false Component has not finished transmitting
-         */
-        bool readyToTransmit(){
-            return _transmissionFinished;
-        }
-
-    protected:
-        /**
          * @brief Get Pointer to the Rx Object object (for processing inside the component)
          * 
-         * @return transmissionObjectType* Pointer to  Rx-Object
+         * @return CharArray* Pointer to  Rx-Object
          */
-        transmissionObjectType* getRxObject(){
-            return &rxObject;
+        CharArray* getRxObject(){
+            return rxObject;
         };
 
         /**
@@ -110,16 +78,50 @@ class Socket{
          * 
          */
         void processedRxObject(){
-            rxObject = nullptr;
+            _receivingFinished = true;
         };
 
     private:
-        transmissionObjectType* rxObject;
-        transmissionObjectType txObject;
+        uint8_t componentId;
+        uint8_t instanceId;
+        CharArray* rxObject;
+        CharArray* txObject;
         uint8_t txComponentId;
         uint8_t txInstanceId;
-        bool _transmissionFinished;
+        bool _receivingFinished;
+        bool _receivingActive;
+        friend void transmission(Socket& sendingSocket, Socket& receivingSocket);
 };
 
+
+void transmission(Socket& sendingSocket, Socket& receivingSocket){
+    // Continue for matching Identifier 
+    if (receivingSocket.componentId == sendingSocket.txComponentId  && receivingSocket.instanceId == sendingSocket.instanceId){
+        // Establish connection
+        if (!receivingSocket._receivingActive && !receivingSocket._receivingFinished){
+            // Transmission active till receiving Component processed Object 
+            receivingSocket._receivingActive = true;
+
+            // set the receive-Object-pointer to the Object the tx-Object-pointer is pointing at 
+            receivingSocket.rxObject = sendingSocket.txObject;
+
+        // End connection
+        }else if (receivingSocket._receivingActive && receivingSocket._receivingFinished)
+        {
+            // Reset rx- and tx-Pointer 
+            receivingSocket.rxObject = nullptr;
+            sendingSocket.txObject = nullptr;
+
+            // Reset Target IDs of sending Socket
+            sendingSocket.txComponentId = '\0';
+            sendingSocket.txInstanceId = '\0';
+
+            // Reset Transmission-flags 
+            receivingSocket._receivingActive = false;
+            receivingSocket._receivingFinished = false;
+        }
+    } 
+    return;
+}
 
 #endif // SOCKET_H
