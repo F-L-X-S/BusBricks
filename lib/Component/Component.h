@@ -31,7 +31,6 @@
     using namespace arduinoMocking;
 #endif
 
-#include <Socket.h>
 #include <ErrorState.h>
 
 class Component: public ErrorState{
@@ -40,7 +39,7 @@ class Component: public ErrorState{
          * @brief Default-Constructor for a new Component object
          * 
          */
-        Component(): ErrorState(){};
+        Component();
 
         /**
          * @brief Construct a new Component object
@@ -48,10 +47,11 @@ class Component: public ErrorState{
          * @param componentId Id of the Component-type (e.g. Service-Id or CommInterface-Id)
          * @param instanceId Id of the Component-Instance to identify and address an instance in the network
          */
-        Component(uint8_t componentId, uint8_t instanceId):
+        Component(uint8_t _componentId, uint8_t _instanceId):
             ErrorState(),
-            componentId(componentId),
-            instanceId(instanceId) {};  
+            componentId(_componentId),
+            instanceId(_instanceId)
+            {};  
 
         /**
          * @brief Get pointer to the 1-byte Component-ID (equal for connected Components all over the network)
