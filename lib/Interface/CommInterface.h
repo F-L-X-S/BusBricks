@@ -36,21 +36,21 @@
 #include <Socket.h>
 
 /**
- * @brief Communcation-Interface-Base-Class of the CommInterface template
+    * @brief Communcation-Interface-Base-Class of the CommInterface template
     * specifies a standardized interface to use for integrating 
-    * any hardware-interface (e.g. SoftwareSerial, OneWire...) into a Service-Interface 
+    * any hardware-interface (e.g. SoftwareSerial, OneWire...).
     * The template ensures the correct handling of send- and receive-buffers of the interface:
     *
     * sendBuffer set to nullptr:       the Interface is ready to send another frame
     * sendBuffer not set to nullptr:   the frame, sendBuffer is pointing to, has to be send next 
     *
-    * recBuffer set to nullptr:        the frame received last was written to the destination successfully, no new receive-Buffer was defined
-    * recBuffer not set to nullptr:    the interface is waiting to receive a new frame to write it to the destination, recBuffer is pointing to 
-    * 
+    * recBuffer empty:        the frame received last was processed by the targe-component, interface is ready to receive a new frame
+    * recBuffer not empty:    the interface has received a frame and transmitted the pointer to the receiveBuffer via socket, 
+    *                         interface is now waiting till the target component has processed the object
+    *     
     * Stores errors occurred during internal processing by using the ErrorState class. The errors can be picked-up by calling the public 
-    * ErrorState functions after calling the send or receive cycles
-    * 
- */
+    * ErrorState functions after calling the send- or receive-methods.
+*/
 class CommInterfaceBase: public Component
 {
 public:
@@ -84,35 +84,45 @@ public:
 /**
     * @brief Template for generic communication-interface
     * specifies a standardized interface to use for integrating 
-    * any hardware-interface (e.g. SoftwareSerial, OneWire...) into a Service-Interface 
+    * any hardware-interface (e.g. SoftwareSerial, OneWire...).
     * The template ensures the correct handling of send- and receive-buffers of the interface:
     *
     * sendBuffer set to nullptr:       the Interface is ready to send another frame
     * sendBuffer not set to nullptr:   the frame, sendBuffer is pointing to, has to be send next 
     *
-    * recBuffer set to nullptr:        the frame received last was written to the destination successfully, no new receive-Buffer was defined
-    * recBuffer not set to nullptr:    the interface is waiting to receive a new frame to write it to the destination, recBuffer is pointing to 
+    * recBuffer empty:        the frame received last was processed by the targe-component, interface is ready to receive a new frame
+    * recBuffer not empty:    the interface has received a frame and transmitted the pointer to the receiveBuffer via socket, 
+    *                         interface is now waiting till the target component has processed the object
     *     
     * Stores errors occurred during internal processing by using the ErrorState class. The errors can be picked-up by calling the public 
-    * ErrorState functions after calling the send or receive cycles
+    * ErrorState functions after calling the send- or receive-methods.
     * 
     * @tparam interfaceType type of native bus-interface to setup the Comm-interface for (e.g. SoftwareSerial)
+    * @tparam routerType type of the frame-router-component, the comm-interface's socket is connected to 
 */
 template<typename interfaceType, typename routerType>                                       
 class CommInterface: public CommInterfaceBase{
     private:
-        /// @brief Pointer to the Router-Instance to construct the Frames from the received CharArrays and forward them to the target instances
+        /// @brief Pointer to the Router-Instance that constructs frame-instances from the received CharArrays and forwards them to the target instances
         static routerType* frameRouter;
 
         /**
-         * @brief Add a received Frame to the Socket for transmitting to the associated frame-router
+         * @brief 
+         * Actions for cyclic updating of the socket-states:
+         * - Add a received Frame to the Socket for transmitting to the associated frame-router
+         * - Clear the sockets rx-buffer after the frame was sent
          *  Called when connection to the Socket is tried to be established
          * 
          */
         static void onSocketConnect(){
+            // Add received Frame to the Socket for transmitting to the associated frame-router
             if(receiveBuffer.getSize() != 0){
                 socket.setTxObject(&receiveBuffer, *(frameRouter->getComponentId()), *(frameRouter->getInstanceId()));
             };
+            // finished sending the last frame received by socket  
+            if(sendBuffer == nullptr){
+                socket.clearRx();
+            }
         };
 
         /**
@@ -156,12 +166,11 @@ class CommInterface: public CommInterfaceBase{
         
 
         /**
-         * @brief Receive a Payload by receiving a Frame in a CharArray and writing the resulting Payload (representation of Frame-Object)
-         * to the _receivedPayload-Buffer. 
+         * @brief Receives a Frame as a CharArray and writes it to the receiveBuffer. 
          * (has to be implemented in the derived class)
          * 
-         * @return true a new Frame was received and stored obj, receiveBuffer is pointing to 
-         * @return false no new frame was received _receivedPayload still empty
+         * @return true a new Frame was received and stored on receiveBuffer 
+         * @return false no new frame was received, receiveBuffer still empty
          */
         virtual bool receive() = 0;                                     
 
