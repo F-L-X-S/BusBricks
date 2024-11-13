@@ -75,12 +75,6 @@ public:
     ~CommInterfaceBase(){};
 
     /**
-     * @brief Socket of the Communication-Interface
-     * 
-     */
-    Socket socket;
-
-    /**
      * @brief Setup the Interface
      *  has to be called in Setup-function
      */
@@ -107,34 +101,49 @@ public:
 template<typename interfaceType, typename routerType>                                       
 class CommInterface: public CommInterfaceBase{
     private:
-        /// @brief CharArray-object, a received frame should be stored at
-        CharArray receivedPayload;  
-
         /// @brief Pointer to the Router-Instance to construct the Frames from the received CharArrays and forward them to the target instances
-        routerType* frameRouter;
+        static routerType* frameRouter;
 
-        void receiveCycle(){
-            if(receive(&receivedPayload)){
-                socket.setTxObject(&receivedPayload, *(frameRouter->getComponentId()), *(frameRouter->getInstanceId()));
+        /**
+         * @brief Add a received Frame to the Socket for transmitting to the associated frame-router
+         *  Called when connection to the Socket is tried to be established
+         * 
+         */
+        static void onSocketConnect(){
+            if(receiveBuffer.getSize() != 0){
+                socket.setTxObject(&receiveBuffer, *(frameRouter->getComponentId()), *(frameRouter->getInstanceId()));
             };
-        }
+        };
 
-        void sendCycle(){
-            // Try to send the CharArray the rxObject of socket is pointing to 
-            if (send(socket.getRxObject())){
-                // clear Socket-Receive-buffer
-                socket.clearRx();
+        /**
+         * @brief Set the pointer for the Frame to be send next to the Object, the Socket has received 
+         * Called after a incoming connection was established to the socket
+         */
+        static void onSocketReceive(){
+            if(sendBuffer == nullptr){
+                sendBuffer = socket.getRxObject();
             };
-        }
+        };
 
-        void clearInterface(){
-            // initialize receive-Buffer after forwarding to another Component
-            receivedPayload = CharArray();
+        /**
+         * @brief Initialize receive-Buffer after forwarding to another Component.
+         * Called after the target-socket has acknowledged receiving the buffer-content.
+         * 
+         */
+        static void onSocketAck(){
+            receiveBuffer = CharArray();
+        };
 
-        }
+
     protected:
+        /// @brief CharArray-object, a received frame should be stored at
+        static CharArray receiveBuffer;  
+
+        /// @brief Pointer to CharArray-object that has to be send 
+        static CharArray* sendBuffer; 
+
         /// @brief pointer to an instance of the native bus-interface (setup outside of BusBricks)
-        interfaceType* interface;                                                                        
+        static interfaceType* interface;                                                                        
 
         /**
          * @brief Send the frame, sendBuffer is pointing to
@@ -143,7 +152,7 @@ class CommInterface: public CommInterfaceBase{
          * @return true the frame, the sendBuffer was pointing to, was sent 
          * @return false the frame, the sendBuffer was pointing to, was not sent or sendBuffer nullptr (no frame to be sent)
          */
-        virtual bool send(CharArray* _sendBuffer) = 0;                                       
+        virtual bool send() = 0;                                       
         
 
         /**
@@ -154,7 +163,7 @@ class CommInterface: public CommInterfaceBase{
          * @return true a new Frame was received and stored obj, receiveBuffer is pointing to 
          * @return false no new frame was received _receivedPayload still empty
          */
-        virtual bool receive(CharArray* _receivedPayload) = 0;                                     
+        virtual bool receive() = 0;                                     
 
     public:
         /**
@@ -164,12 +173,14 @@ class CommInterface: public CommInterfaceBase{
          * @param _frameRouter Pointer to the Router-Instance to construct the Frames from the received CharArrays and forward them to the target instances
          */
         CommInterface(interfaceType* _interface, routerType* _frameRouter, uint8_t _componentId, uint8_t _instanceId): 
-        CommInterfaceBase(_componentId, _instanceId),
-        interface(_interface),
-        frameRouter(_frameRouter)
+        CommInterfaceBase(_componentId, _instanceId)
         {
-            socket = Socket(componentId, instanceId, receiveCycle, sendCycle, clearInterface);
+        interface = _interface;
+        frameRouter = _frameRouter;
+        socket = Socket(componentId, instanceId, onSocketConnect, onSocketReceive, onSocketAck);
         }; 
 
+        /// @brief Socket to connect CommInterface-Component to SocketRouter-Component
+        static Socket socket;
 };
 #endif // COMMINTERFACE_H
