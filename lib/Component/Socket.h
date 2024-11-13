@@ -124,7 +124,7 @@ class Socket{
         /// @brief Function-pointer Event to call after transmission was acknowledged by receiving instance
         void (*ackCallback)(void);
 
-        // publish private-mmembers to transmission-function
+        // publish private-members to transmission-function
         friend void transmission(Socket& sendingSocket, Socket& receivingSocket);
 };
 
