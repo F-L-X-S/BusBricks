@@ -54,10 +54,11 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial, SocketRouter
          * @brief Construct a new CommInterface_modbusRTU object 
          * 
          * @param softwareserial pointer to the SoftwareSerial-instance, the Comminterface should use  
+         * @param _frameRouter Pointer to the Router-Instance to construct the Frames from the received CharArrays and forward them to the target instances
          * @param baudrate baudrate in bps to calculate timeouts 
          * @param deviceId Modbus-specific device-identifier 
          */
-        CommInterface_modbusRTU(SoftwareSerial* softwareserial ,uint16_t baudrate, char deviceId);
+        CommInterface_modbusRTU(SoftwareSerial* softwareserial, SocketRouter* _frameRouter, uint16_t baudrate, char deviceId);
 
         /**
          * @brief Destroy the CommInterface_modbusRTU object
@@ -72,7 +73,7 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial, SocketRouter
          * @return true frame was flushed to serial-bus
          * @return false sendBuffer is nullptr
          */
-        bool send(CharArray* _sendBuffer) override;
+        bool send() override;
 
         /**
          * @brief Receives a Modbus RTU frame and writes it to `receiveBuffer`.
@@ -98,7 +99,7 @@ class CommInterface_modbusRTU: public CommInterface<SoftwareSerial, SocketRouter
          * 
          * @note If `DEBUG` is defined, debugging information is printed to the serial monitor.
          */
-        bool receive(CharArray* _receivedPayload) override;
+        bool receive() override;
 
         /**
          * @brief Get Modbus-specific device-identifier

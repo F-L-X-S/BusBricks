@@ -52,6 +52,7 @@ class CommInterface_IIC: public CommInterface<TwoWire, SocketRouter>
          * @brief Construct a new CommInterface_IIC object 
          * 
          * @param Wire pointer to the TwoWire-instance, the Comminterface should use (automatically instantiated by including Wire.h)
+         * @param _frameRouter Pointer to the Router-Instance to construct the Frames from the received CharArrays and forward them to the target instances
          * @param deviceId IIC-specific device-identifier 
          */
         CommInterface_IIC(TwoWire* Wire, SocketRouter* _frameRouter,char deviceId);
@@ -69,7 +70,7 @@ class CommInterface_IIC: public CommInterface<TwoWire, SocketRouter>
          * @return true frame was flushed to TwoWire-bus
          * @return false sendBuffer is nullptr
          */
-        bool send(CharArray* _sendBuffer) override;
+        bool send() override;
 
         /**
          * @brief Receives a I2C-frame and writes it to `receiveBuffer`.
@@ -81,7 +82,7 @@ class CommInterface_IIC: public CommInterface<TwoWire, SocketRouter>
          * 
          * @note If `DEBUG` is defined, debugging information is printed to the serial monitor.
          */
-        bool receive(CharArray* _receivedPayload) override;
+        bool receive() override;
 
         /**
          * @brief Get I2C-specific device-identifier
