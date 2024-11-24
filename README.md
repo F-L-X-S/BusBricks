@@ -51,13 +51,13 @@ In every iteration, an information is processed and the rules of the next level,
 Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called **representation**.<br>
 
 ### Classdiagram
-<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/classdiagram.svg" alt="classdiagram" style="width:1700px;">
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/classdiagram.svg" alt="classdiagram" style="width:100%;">
 
 ### Protocoll-stack
-<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/refs/heads/main/docs/protocollstack.svg" alt="protocollstack" style="width:1500px;">
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/refs/heads/main/docs/protocollstack.svg" alt="protocollstack" style="width:100%;">
 
 ### Stackprocessing
-<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/stackProcessing.svg" alt="stackProcessing" style="width:400px;">
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/stackProcessing.svg" alt="stackProcessing" style="width:75%;">
 
 ### Error-handling
 The Errors of a device are managed by a Service-derived [```ErrorService```](lib/ErrorService/ErrorService.h). Every component (no matter, if Service, ServiceInterface or CommInterface) can be enabled to raise errors by deriving the [```ErrorState```](lib/ErrorService/ErrorState.h) and calling ```raiseError()```. <br>
