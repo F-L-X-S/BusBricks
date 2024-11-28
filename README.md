@@ -51,13 +51,48 @@ In every iteration, an information is processed and the rules of the next level,
 Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called **representation**.<br>
 
 ### Classdiagram
-<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/classdiagram.svg" alt="classdiagram" style="width:1700px;">
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/classdiagram.svg" alt="classdiagram" style="width:100%;">
 
 ### Protocoll-stack
-<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/refs/heads/main/docs/protocollstack.svg" alt="protocollstack" style="width:1500px;">
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/refs/heads/main/docs/protocollstack.svg" alt="protocollstack" style="width:100%;">
 
 ### Stackprocessing
-<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/stackProcessing.svg" alt="stackProcessing" style="width:400px;">
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/stackProcessing.svg" alt="stackProcessing" style="width:75%;">
+
+### Error-handling
+The Errors of a device are managed by a Service-derived [```ErrorService```](lib/ErrorService/ErrorService.h). Every component (no matter, if Service, ServiceInterface or CommInterface) can be enabled to raise errors by deriving the [```ErrorState```](lib/ErrorService/ErrorState.h) and calling ```raiseError()```. <br>
+```cpp
+class CommInterfaceBase: public ErrorState{
+    public:
+        CommInterfaceBase(): ErrorState(){};
+}
+```
+The class-instance is now able to raise Errors and, if applicable, to handle them within the class itself. E.g.:<br>
+```cpp
+    // wait for Frame-timeout to ensure frame is complete, raise Error, if the silence-time is violated
+    if((_clearRxBuffer()>0) & (receiveBuffer->getSize()!=0)){
+      (numBytes>=MAXFRAMESIZE) ? raiseError(frameLengthError):raiseError(arbitrationError);
+    } 
+
+    // handle the Arbitration-Error with waiting for bus-silence
+    if(getErrorState()==arbitrationError) while(_clearRxBuffer()!=0);
+```
+
+To handle the Error outside the instance, the Error-state of the components has to be processed within the [```ServiceInterface```](lib/Interface/ServiceInterface.h) by checking the ErrorState of the called instances and, if applicable raising the Error with the same Error-code within the ServiceInterface: <br>
+
+```cpp
+errorCodes commInterfaceErrorState = comm_interface->getErrorState();
+if (commInterfaceErrorState!=noError) raiseError(commInterfaceErrorState);
+```
+
+Only Errors raised in [```ServiceInterface```](lib/Interface/ServiceInterface.h) are forwarded to an eventually registered [```ErrorService```](lib/ErrorService/ErrorService.h), that can execute error-code-specific actions (like printing the Error or broadcasting errors to the network). <br>
+After handling the Error of the called instance, the ErrorState has to be cleared:<br>
+```cpp
+comm_interface->clearErrorState();
+```
+
+The Error-codes are enumerated in the Content-derived [Error-class](lib/ErrorService/Error.h). To add new Error-cases, define a new Error-code in ```enum ErrorCodes``` and add an Error-message to the ```getErrorMessage(errorCodes code)```function within the [Error-class](lib/ErrorService/Error.h). The Error-Service will display those messages after an Error is either raised by another component on the local device or an Error-Frame was received.
+
 
 ### Error-handling
 The Errors of a device are managed by a Service-derived [```ErrorService```](lib/ErrorService/ErrorService.h). Every component (no matter, if Service, ServiceInterface or CommInterface) can be enabled to raise errors by deriving the [```ErrorState```](lib/ErrorService/ErrorState.h) and calling ```raiseError()```. <br>

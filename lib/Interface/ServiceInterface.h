@@ -102,7 +102,6 @@ class ServiceInterface: public ErrorState{
          */
         virtual void getPDU_from_services()=0;
 
-
         /**
          * @brief start the stackProcessing of the registered services 
          * 
