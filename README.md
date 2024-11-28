@@ -48,7 +48,9 @@ Modules being part of the Communication-Layer are specific for the chosen bus (e
 ### Content and representation
 The cascading of processing information and the rules applied to it lead to the concept of *content- and representation*.<br>
 In every iteration, an information is processed and the rules of the next level, closer to the physical layer are applied to it, the information closer to the format the service is able to process is called **Content**.<br> 
-Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called **representation**.<br>
+Conversely, the format, the information has after applying the rules of the next level closer to "Layer-0" is called **representation**.<br><br>
+<img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/refs/heads/main/docs/Content_Representation.svg" alt="Content and Representation" style="width:100%;">
+
 
 ### Classdiagram
 <img src="https://raw.githubusercontent.com/F-L-X-S/BusBricks/fa4a1927d184c56d71477509aa5243d7c93def95/docs/classdiagram.svg" alt="classdiagram" style="width:100%;">
