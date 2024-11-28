@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="class_service_interface.html#ac740850d1a24a1d8a96f7a7bbf4eb784" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="class_service_interface.html#a48cffd1603069be11ee25c930a139c84" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="355.25,-221.75 184,-221.75 184,-180 355.25,-180 355.25,-221.75"/>
 <text text-anchor="start" x="192" y="-208.25" font-family="Helvetica,sans-Serif" font-size="10.00">ServiceInterface&lt; CommInterface</text>
 <text text-anchor="start" x="192" y="-197" font-family="Helvetica,sans-Serif" font-size="10.00">_modbusRTU, Frame_modbusRTU</text>

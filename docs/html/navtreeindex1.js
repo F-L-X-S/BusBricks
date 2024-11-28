@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"classarduino_mocking_1_1_mock_serial.html#ab78a5a346275ab600281acb8b62350ce":[5,0,0,0,3],
 "classarduino_mocking_1_1_mock_serial.html#ab78a5a346275ab600281acb8b62350ce":[6,0,0,0,3],
 "classarduino_mocking_1_1_mock_serial.html#abca1ad8ef0287f2cbf3c5687cfa01a0c":[5,0,0,0,9],
 "classarduino_mocking_1_1_mock_serial.html#abca1ad8ef0287f2cbf3c5687cfa01a0c":[6,0,0,0,9],

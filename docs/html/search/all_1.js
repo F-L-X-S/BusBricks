@@ -2,7 +2,7 @@ var searchData=
 [
   ['a_20custom_20service_0',['Deriving a custom Service',['../index.html#autotoc_md17',1,'']]],
   ['addelement_1',['addElement',['../class_content__stack.html#a3d5491c67763ef3c19780619d70cb59a',1,'Content_stack']]],
-  ['addpdu_5fto_5fservices_2',['addPDU_to_services',['../class_service_interface.html#ac740850d1a24a1d8a96f7a7bbf4eb784',1,'ServiceInterface::addPDU_to_services()=0'],['../class_service_interface.html#a48cffd1603069be11ee25c930a139c84',1,'ServiceInterface::addPDU_to_services()']]],
+  ['addpdu_5fto_5fservices_2',['addPDU_to_services',['../class_service_interface.html#a48cffd1603069be11ee25c930a139c84',1,'ServiceInterface']]],
   ['affero_20general_20public_20license_20v3_200_3',['GNU Affero General Public License v3.0',['../index.html#autotoc_md25',1,'']]],
   ['and_20communication_20layer_4',['Service- and Communication-Layer',['../index.html#autotoc_md9',1,'']]],
   ['and_20nano328p_20environment_5',['uno and nano328p environment',['../index.html#autotoc_md23',1,'']]],

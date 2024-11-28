@@ -1,0 +1,5 @@
+<map id="Frame::getServiceId" name="Frame::getServiceId">
+<area shape="rect" id="Node000001" title="Get the ServiceId, the PDU of the Frame belongs to (necessary for Service&#45;multiplexing)...." alt="" coords="228,5,367,31"/>
+<area shape="rect" id="Node000002" href="$class_service_cluster.html#a248bf50b452a17743e53f8e5eb3790f1" title="Add the payload of the referenced Frame to the belonging Service (Multiplexing by Service&#45;ID)" alt="" coords="5,5,180,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,21,180,21,180,16,212,16"/>
+</map>
