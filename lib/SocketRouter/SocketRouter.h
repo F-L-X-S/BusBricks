@@ -42,6 +42,6 @@ class SocketRouter{
 
         /// @brief pointer to CommInterface-Cluster, containing the Communication-Interfaces associated with the Router 
         ClusterBase* commCluster;
-}
+};
 
 #endif //SOCKETROUTER_H
