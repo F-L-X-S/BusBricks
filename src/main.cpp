@@ -50,9 +50,12 @@
 // instantiate communication-interface
 SoftwareSerial serialInterface(RX, TX);                                         // initialize a Software-Serial-Interface
 
+// Instantiate Socket-Router 
+SocketRouter frameRouter;
+
 // Inastantiate Communication-Interface
 // RAM: 35 bytes
-CommInterface_modbusRTU comminterface(&serialInterface, BAUDRATE, DEVICE_ID);   
+CommInterface_modbusRTU comminterface(&serialInterface, &frameRouter, BAUDRATE, DEVICE_ID);   
 
 //---------------------------- Service-Layer ----------------------------
 // instantiate  Message Service with default Service-ID "m"
