@@ -103,15 +103,6 @@ class ServiceInterface: public ErrorState{
         virtual void getPDU_from_services()=0;
 
         /**
-         * @brief Impart all received PDUs from the receivestack to the associated services, 
-         * depending on how frametype stores the information, which service the payload is designated for
-         * (Implemented in derived Class)
-         * 
-         */
-        virtual void addPDU_to_services()=0;
-
-
-        /**
          * @brief start the stackProcessing of the registered services 
          * 
          */
