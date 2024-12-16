@@ -121,8 +121,7 @@ public:
      * @return false Stack is not empty 
      */
     bool empty(){
-        bool retVal = (size == 0) ? true:false;
-        return retVal;
+        return (size == 0);
     }          
 
     /**
