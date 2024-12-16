@@ -33,21 +33,16 @@ MessageService::MessageService(uint8_t instance_id, uint8_t service_id): Service
 // process all messages from the receive-stack, till the stack is empty
 // add all necessary messages to the send-stack 
 void MessageService::stackProcessing() {
-    // abort, if no new messages available 
-    if (rec_stack.empty()) return;   
-
     // process the rec-stack till it's empty                                                   
     while(!rec_stack.empty()){
         // get last element from receive stack
         Message* last_msg = rec_stack.getElement();
-        
         // Print received Message to terminal
         printMessage(last_msg);
-
         // Ack the received Message
         if (!(last_msg->get_content()->msg_text=="ACK")) sendAck(last_msg);
-        // delete the element the response was generated for                                           
-        rec_stack.deleteElement(0);       
+        // delete the element the response was generated for                                                                           
+        rec_stack.deleteElement(); 
     };                                                            
 };
 
