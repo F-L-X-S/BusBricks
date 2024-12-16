@@ -24,13 +24,14 @@
 
 #include "MessageService.h"
 
-#define INSTANCE_ID 0xF
+#define INSTANCE_ID 'A'
 
 int main(){
     // initialize message-service with instance-id 0xF
-    MessageService msg_service(INSTANCE_ID);       
+    char instanceId = INSTANCE_ID;
+    MessageService msg_service(instanceId);       
     // Create a sample PDU with Sender 0x1 and Receiver 0xF
-    std::string sample_pdu = "\x01\x0F:Hello";
+    std::string sample_pdu = "BA:Hello";
 
     // Impart PDU to Service till rec-stack is full
     bool recStack_not_full = true;
@@ -43,9 +44,10 @@ int main(){
         }
     }
     std::cout<<"Rec-Stack full"<<std::endl;
-
+    msg_service.stackProcessing();
     // Ack all Messages in Receive-Stack 
-    for (size_t i = 0; i < 5; i++) {
+    for (size_t i = 0; i < 6; i++) {
         std::cout << "Response-PDU:\t" << i+1 << ": " << msg_service.get_response() << std::endl;
+        msg_service.clearResponse();
     }
 }

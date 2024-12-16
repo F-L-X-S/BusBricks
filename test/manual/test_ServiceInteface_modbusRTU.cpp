@@ -37,7 +37,7 @@
     // PDU to Modbus-Frame
 String getModbusFrame(char functionCode, char DeviceId, String payload){
     Frame_modbusRTU frame(&payload, &DeviceId, &functionCode);
-    return *frame.get_representation();
+    return frame.get_representation()->getData();
 };
 
 int main(){
