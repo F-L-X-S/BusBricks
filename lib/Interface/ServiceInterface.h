@@ -183,8 +183,6 @@ class ServiceInterface: public ErrorState{
          */
         virtual void addPDU_to_services()
         {
-            // abort, if no new PDU available
-            if (recStack.empty()) return;
             // Add all received PDUs to the Services 
             while (!recStack.empty())
             {
@@ -199,7 +197,7 @@ class ServiceInterface: public ErrorState{
                 services->clearErrorState();
 
                 // Skip Discard and leave the rec-stack-processing
-                if (ServicesErrorState = overflow) break; 
+                if (ServicesErrorState == overflow) break; 
 
                 // discard frame
                 recStack.deleteElement();
@@ -224,9 +222,12 @@ class ServiceInterface: public ErrorState{
             // Serial debugging
             #ifdef DEBUG
                 Serial.println("Processing Receive-Stack...");
-            #endif                  
+            #endif      
+            // exit if no space on rec-stack
+            if (recStack.full()) return; 
+
             // Handle receivebuffer 
-            while (comm_interface->receivedNewFrame() && !recStack.full()){               
+            if (comm_interface->receivedNewFrame()){               
                 if (recItem.getSize() != 0){                        // Item not empty 
                     frameType recItemFrame(&recItem);               // Construct Frame-Class derived Object (nullptr if failed)
                     if (recItemFrame.isValid()){
@@ -241,8 +242,8 @@ class ServiceInterface: public ErrorState{
                 if (commInterfaceErrorState!=noError) raiseError(commInterfaceErrorState);
                 comm_interface->clearErrorState(); 
 
-                comm_interface->getReceivedFrame(&recItem);         // Impart memory the received item has to be stored at 
-                comm_interface->receiveCycle();                     // Receive new frames from comm-interface 
+                // Impart memory the received item has to be stored at 
+                comm_interface->getReceivedFrame(&recItem);         
             }
             comm_interface->receiveCycle();                         // Receive new frames from comm-interface
 
