@@ -63,6 +63,28 @@ void ServiceInterface_modbusRTU::getPDU_from_services()
     
 };
 
+/**
+ * @brief Check the CRC-validity of all Frames on the receive-stack and discard invalid Frames.
+ *  Raise crcError if invalid frame was found.
+ * 
+ */
+void ServiceInterface_modbusRTU::discardInvalidFrames()
+{
+    // iterate through rec-stack
+    for (size_t i = 0; i < STACKSIZE; i++)
+    {
+        if (Frame_modbusRTU* frame = recStack.getElement(i)){
+            // check CRC for frame stored on index i 
+            if (!frame->checkCRC16()){
+                recStack.deleteElement(i);
+                raiseError(crcError);
+            }
+        }else{
+            // leave loop if no frame is stored on index i 
+            break;
+        };
+    }
+}
 
 // Execute all relevant tasks for transferring data between CommInterface and Services:
 // - Get PDU from Services
@@ -73,6 +95,9 @@ void ServiceInterface_modbusRTU::communicate()
 {
     // get incoming frames from the Communication-Interface 
     processRecStack();
+
+    // Check received Frames for crc-validity 
+    discardInvalidFrames();
 
     // interact with Services          
     addPDU_to_services();

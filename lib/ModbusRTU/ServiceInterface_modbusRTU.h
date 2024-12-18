@@ -101,6 +101,13 @@ class ServiceInterface_modbusRTU: public ServiceInterface<CommInterface_modbusRT
          */
         void getPDU_from_services() override;
 
+        /**
+         * @brief Check the CRC-validity of all Frames on the receive-stack and discard invalid Frames.
+         *  Raise crcError if invalid frame was found.
+         * 
+         */
+        void discardInvalidFrames();
+
 };
 
 #endif // SERVICEINTERFACE_MODBUSRTU
