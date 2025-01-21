@@ -186,23 +186,22 @@ $(function(){initNavTree('_content__stack_8h_source.html',''); initResizable(tru
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
 <div class="foldopen" id="foldopen00123" data-start="{" data-end="}">
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="class_content__stack.html#a4710d468535ed030bf5f67052e68eebb">  123</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_content__stack.html#a4710d468535ed030bf5f67052e68eebb">empty</a>(){</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordtype">bool</span> retVal = (size == 0) ? <span class="keyword">true</span>:<span class="keyword">false</span>;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">return</span> retVal;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }          </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">return</span> (size == 0);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }          </div>
 </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="foldopen" id="foldopen00134" data-start="{" data-end="}">
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="class_content__stack.html#a200a86b0f3bdfa24e4a56b5e02efb02a">  134</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_content__stack.html#a200a86b0f3bdfa24e4a56b5e02efb02a">full</a>(){</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordtype">bool</span> retVal = (size == MaxSize) ? <span class="keyword">true</span>:<span class="keyword">false</span>;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordflow">return</span> retVal;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    }            </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="foldopen" id="foldopen00133" data-start="{" data-end="}">
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="class_content__stack.html#a200a86b0f3bdfa24e4a56b5e02efb02a">  133</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_content__stack.html#a200a86b0f3bdfa24e4a56b5e02efb02a">full</a>(){</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordtype">bool</span> retVal = (size == MaxSize) ? <span class="keyword">true</span>:<span class="keyword">false</span>;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordflow">return</span> retVal;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    }            </div>
 </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>};</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>};</div>
 </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="preprocessor">#endif </span><span class="comment">// CONTENT_STACK_H</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="preprocessor">#endif </span><span class="comment">// CONTENT_STACK_H</span></div>
 <div class="ttc" id="aclass_content__stack_html"><div class="ttname"><a href="class_content__stack.html">Content_stack</a></div><div class="ttdoc">Content-Stack-Template the content-stack stores the added items (call-by-value / copy) on internal ar...</div><div class="ttdef"><b>Definition</b> Content_stack.h:45</div></div>
-<div class="ttc" id="aclass_content__stack_html_a200a86b0f3bdfa24e4a56b5e02efb02a"><div class="ttname"><a href="class_content__stack.html#a200a86b0f3bdfa24e4a56b5e02efb02a">Content_stack::full</a></div><div class="ttdeci">bool full()</div><div class="ttdoc">Check if the Stack is full (size reached MaxSize)</div><div class="ttdef"><b>Definition</b> Content_stack.h:134</div></div>
+<div class="ttc" id="aclass_content__stack_html_a200a86b0f3bdfa24e4a56b5e02efb02a"><div class="ttname"><a href="class_content__stack.html#a200a86b0f3bdfa24e4a56b5e02efb02a">Content_stack::full</a></div><div class="ttdeci">bool full()</div><div class="ttdoc">Check if the Stack is full (size reached MaxSize)</div><div class="ttdef"><b>Definition</b> Content_stack.h:133</div></div>
 <div class="ttc" id="aclass_content__stack_html_a3d5491c67763ef3c19780619d70cb59a"><div class="ttname"><a href="class_content__stack.html#a3d5491c67763ef3c19780619d70cb59a">Content_stack::addElement</a></div><div class="ttdeci">bool addElement(content_class element)</div><div class="ttdoc">Add item to stack.</div><div class="ttdef"><b>Definition</b> Content_stack.h:72</div></div>
 <div class="ttc" id="aclass_content__stack_html_a4710d468535ed030bf5f67052e68eebb"><div class="ttname"><a href="class_content__stack.html#a4710d468535ed030bf5f67052e68eebb">Content_stack::empty</a></div><div class="ttdeci">bool empty()</div><div class="ttdoc">Check if the Stack is empty (size is 0)</div><div class="ttdef"><b>Definition</b> Content_stack.h:123</div></div>
 <div class="ttc" id="aclass_content__stack_html_a5ac2a896da7724281d9d85eb239f5084"><div class="ttname"><a href="class_content__stack.html#a5ac2a896da7724281d9d85eb239f5084">Content_stack::getElement</a></div><div class="ttdeci">content_class * getElement(int index=0)</div><div class="ttdoc">Get Pointer to element in the stack. Accepts positive and negative indexing.</div><div class="ttdef"><b>Definition</b> Content_stack.h:107</div></div>
